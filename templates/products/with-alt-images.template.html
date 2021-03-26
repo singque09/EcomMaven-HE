@@ -1,0 +1,386 @@
+[%site_value id:'footer_javascript'%]
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function() {
+			$.product_variationInit({
+				'loadtmplates': ['_buying_options', '_images','_header'],
+				'fns' : {
+					'onLoad' : function () {
+						$('.addtocart').button("loading");
+					},
+					'onReady' : function () {
+						$('.addtocart').button("reset");
+						$('.zoom').zoom();
+					},
+				}
+			});
+			[%if [@has_components@]%]
+				$.kit_variationInit({});
+			[%/if%]
+		});
+	</script>
+	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jcountdown/1.4/jquery.jcountdown.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('.zoom').zoom();
+		});
+	</script>
+	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/zoom/1.4/jquery.zoom-min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#sale-end").countdown({
+				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+			});
+		});
+	</script>
+	
+	<script>
+		if($('.form-control[data-extra="Monogram Initials (Capitals Only / Max. 4 Characters)"]').val() || $('.form-control[data-extra="Monogram Initials (Capitals Only / Max. 3 Characters)"]').val() || $('.form-control[data-extra="Monogram Initials (Capitals Only / Max. 2 Characters)"]').val()) {
+			/* monogram validate - added by Dusan 20170420 */
+			$(document).on('keypress', '.monogram-input', function onlyAlphabets(e, t) {
+				try {
+					if (window.event) {
+						var charCode = window.event.keyCode;
+					}
+					else if (e) {
+						var charCode = e.which;
+					}
+					else { return true; }
+					if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+						return true;
+					else
+						return false;
+				}
+				catch (err) {
+					alert(err.Description);
+				}
+			});
+			$('.btn-stack .btn').click(function() {
+				var text = $('.monogram-input').val();
+				var upperText = text.toUpperCase();
+				$('.monogram-input').val(upperText);
+			});
+		}
+	</script>
+[%/site_value%]
+[%cache type:'display' id:'[@inventory_id@]'%]
+<div class="container">
+	<!-- find me -->
+<div class="col-xs-12">
+	<div class="row">
+		<ul class="breadcrumb">
+			<li><a href="[@config:home_url@]">Home</a></li>
+			[%breadcrumb%][%param *body%]
+			<li><a href="[@url@]">[@name@]</a></li>
+			[%/param%][%/breadcrumb%]
+		</ul>
+	</div>
+	<div class="row top-section">
+		<div class="col-sm-7">
+			[%load_ajax_template id:'_images' type:'item' template:'images-alt' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+		</div>
+		<div class="col-sm-5">
+			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+			<form>
+				[%list_item_variations id:'[@current_sku@]'%]
+					[%param header%]
+					<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
+					<hr>
+					<div class="row">
+					[%/param%]
+					[%param *variation_header%]
+							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]">
+								<div class="variation-name">
+									<strong>[@specific_name@]</strong>
+								</div>
+								<div class="specific">
+									<input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+				[%/param%]
+				[%param *variation_body%]
+									<div class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
+										<a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+											[%if [@value_image@]%]
+												<img src="[@value_image@]" alt="[@value_name@]" />
+											[%/if%]
+											[%if [@value_name@]%]
+												[@value_name@]
+											[%ELSE%]
+												[@value_description@]
+											[%/if%]
+										</a>
+									</div>
+				[%/param%]
+				[%param *variation_body_radio%]
+									<label class="_itmspec_listitm btn btn-default" ref="[@specific_id@]_[@value_id@]">
+										<input class="_itmspec_radio" type="radio" name="_itmspec_radio[@specific_id@]" value="[@value_id@]" ref="[@specific_id@]_[@value_id@]" [%if [@selected@]%]checked[%/if%]> [@value_name@]
+									</label>
+				[%/param%]
+				[%param *variation_body_image%]
+									<span class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
+										<a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+											[%if [@value_image@]%]
+													<img src="[@value_image@]" alt="[@value_name@]">
+												[%else%]
+													[@value_name@]
+											[%/if%]
+										</a>
+									</span>
+				[%/param%]
+				[%param *variation_footer%]
+									<div class="clear"></div>
+								</div>
+							</div>
+				[%/param%]
+				[%param *variation_header_select%]
+							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]">
+								<div class="variation-name">
+									<strong>[@specific_name@]</strong>
+								</div>
+									<div class="specific">
+										<input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+										<div class="n-wrapper-form-control">
+											<span class="_itmspec_optpl" ref="[@specific_id@]">
+												<select class="_itmspec_opt form-control" ref="[@specific_id@]">
+					[%/param%]
+					[%param *variation_body_select%]
+													<option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@]</option>
+					[%/param%]
+					[%param *variation_footer_select%]
+												</select>
+											</span>
+										</div>
+									</div>
+							</div>
+					[%/param%]
+					[%param footer%]
+						</div>
+					[%/param%]
+				[%/list_item_variations%]
+				[%if ![@has_variation@]%]
+					[%load_template file:"products/includes/child_products.template.html"/%]
+				[%/if%]
+			</form>
+			[%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
+				[%load_ajax_template id:'_buying_options' type:'item' template:'buying_options' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+			[%/if%]
+			<div class="features">
+				[@features@]
+			</div>
+			<hr/>
+			[%payment_methods ignore_balance:'1'%]
+				[%param header%]
+					<ul class="list-inline payment-icons text-right">
+				[%/param%]
+				[%param *body%]
+					[%if [@name@] like 'American Express'%]
+						<li>
+							<div class="payment-icon-container">
+								<div class="payment-icon payment-icon-americanexpress"></div>
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'Visa'%]
+						<li>
+							<div class="payment-icon-container">
+								<img src="[%ntheme_asset%]img/visa-ico.jpg[%/ntheme_asset%]" alt="visa">
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'Master Card'%]
+						<li>
+							<div class="payment-icon-container">
+								<img src="[%ntheme_asset%]img/master-ico.jpg[%/ntheme_asset%]" alt="master card">
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'Discover'%]
+						<li>
+							<div class="payment-icon-container">
+								<div class="payment-icon payment-icon-discover"></div>
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'Diners'%]
+						<li>
+							<div class="payment-icon-container">
+								<div class="payment-icon payment-icon-diners"></div>
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'Cheque'%]
+						<li>
+							<div class="payment-icon-container">
+								<div class="payment-icon payment-icon-cheque"></div>
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'Money Order'%]
+						<li>
+							<div class="payment-icon-container">
+								<div class="payment-icon payment-icon-moneyorder"></div>
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'Direct Deposit'%]
+						<li>
+							<div class="payment-icon-container">
+								<img src="[%ntheme_asset%]img/direct-ico.jpg[%/ntheme_asset%]" alt="direct deposit">
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'bpay'%]
+						<li>
+							<div class="payment-icon-container">
+								<div class="payment-icon payment-icon-bpay"></div>
+							</div>
+						</li>
+					[%/if%]
+					[%if [@name@] like 'paypal'%]
+						<li>
+							<div class="payment-icon-container">
+								<img src="[%ntheme_asset%]img/pay-pal-ico.jpg[%/ntheme_asset%]" alt="pay pal">
+							</div>
+						</li>
+					[%/if%]
+				[%/param%]
+				[%param *footer%]
+					</ul>
+				[%/param%]
+			[%/payment_methods%]
+			[%if [@has_components@]%]
+			<hr>
+				<h2>Customise Your Purchase</h2>
+				[%load_template file:"products/includes/components.template.html"/%]
+			[%/if%]
+		</div>
+	</div>
+	<div class="row padding-t-small padding-b-med">
+		<div class="col-xs-12">
+			<div class="">
+				<div class="panel panel-default hamper-panel">
+					<div class="panel-heading hamper-cont-head">
+						<h4 class="panel-title text-center">
+							<a data-toggle="collapse" href="#collapseOne">
+								<i class="fa fa-angle-down pull-left"></i><i class="fa fa-gift"></i> Hamper Contents<i class="fa fa-angle-down pull-right"></i>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in">
+						<div class="scrollable-panel">
+							<div class="panel-body">
+								<div class="row">
+									[%THUMB_LIST type:'content' content_type:'beer' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Beer & Cider
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'savoury' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Savoury
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'sweet' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Biscuits & Sweets
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'wine' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Wine & Champagne
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'chocolate' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Chocolate
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'gifts' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Gifts & Accessories
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'pantry' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Pantry
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'also-included' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Also Included
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+								</div>
+							</div>
+						</div>
+						<hr/>
+					</div>
+				</div>
+				<div class="panel-group productinfocollapse" id="accordion">
+					<div class="panel panel-default padding-b-med">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" href="#collapseTwo" class="collapsed text-center">
+									<i class="fa fa-angle-down pull-left"></i> <i class="fa fa-truck"></i> Delivery Times <i class="fa fa-angle-down pull-right"></i>
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse in">
+							<div class="panel-body">
+								[%IF [@misc8@]%]
+									[@misc8@]
+								[%ELSE%]
+									[%content_zone id:'deliverytimes'%][%end content_zone%]
+								[%END IF%]
+							</div>
+						</div>
+					</div>
+					<div class="panel-body description">
+						[@description@]
+					</div>
+				</div>
+			</div>
+		</div><!--/.col-xs-12-->
+	</div><!--/.row-->
+</div><!--/.col-xs-12-->
+</div><!--/.container-->
+[%/CACHE%]
+</div><!--/.row-->

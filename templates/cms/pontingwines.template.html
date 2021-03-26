@@ -1,0 +1,178 @@
+[%site_value id:'footer_javascript'%]
+
+<script>
+$(document).ready(function() {
+	var docWidth = $(window).width();
+
+	// $.addToCartInit({
+	// 	'cart_id':'cartcontents',
+	// 	'target_id':'cartcontentsheader',
+	// 	'image_rel':'itmimg',
+	// 	'cart': {
+	// 				'footer': '</ul> <br> Total Item(s): <b>##item_count##</b><br />Sub Total: <b>##CURRENCY:product_total##</b><br/> ##IF:product_discount##Discount: <b>##CURRENCY:product_discount##</b><br/>##END IF:product_discount## <button class="viewcart btn btn-default" type="button" onclick="window.location=\'##checkouturl##\';" title="View Shopping Cart">View Cart</button> <button class="checkout btn btn-success" type="button" onclick="window.location=\'##checkouturl##&fn=payment\';" title="Checkout">Checkout</button><button class="edit-message btn btn-default" onclick="window.location=\'##checkouturl##&fn=upsell\';">Edit Card Message</button>'
+	// 	}
+	// });
+});
+</script>
+<script>
+		$(document).ready(function() {
+			if ($(window).width() < 768) {
+				$('#collapsable-description.collapse').collapse('hide')
+			}
+		})
+		$(window).resize(function() {
+			if ($(window).width() >= 768) {
+				$('#collapsable-description.collapse').collapse('show')
+			}
+			if ($(window).width() < 768) {
+				$('#collapsable-description.collapse').collapse('hide')
+			}
+		})
+	</script>
+[%/site_value%]
+	<div class="pontingWinesHolder" id="pontingWinesHolder">
+		<div class="home-page-slider">
+			 [%advert type:'text' template:'pontingCarousel' limit:'10' ad_group:'ponting-topSlider'%]
+				[%param *header%]
+					<div id="pontingCarousel">
+				[%/param%]
+				[%param *footer%]				
+					</div>
+				[%/param%]
+			[%/advert%]
+	
+		</div>
+		<div class="pontingTop">
+			<div class="pontingTopInner">
+				<div class="centerHolder-au">
+					<div class="pontingTitleHolder">
+						<h1 class="titleBaskerBig">[@CONTENT_EXTERNAL_SRC@]</h1>
+						<div class="bigUnderline"></div>
+						<h2 class="subTitleItalicBasker">[@CONTENT_EXTERNAL_REF1@]</h2>
+					</div>
+					<div class="pontingDescription">
+						<h3>[@CONTENT_EXTERNAL_REF2@]</h3>
+						<div class="smallLine"></div>
+						<p>[@content_description1@]</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pontingProductHolder">
+			<div class="centerHolder-au">
+				[%thumb_list type:'products' template:'noSchema-ponting' filter_category:'' filter_sku:'100a-Pont,108c-2-Pont,100a-3-Pont,206c-Pont,108c-4-Pont,104a-Pont' sortby:'top_sellers' limit:'6'%]
+					[%param *header%]
+						<div class="productSlider3">
+					[%/param%]
+					[%param *footer%]
+						</div>
+					[%/param%]
+				[%/thumb_list%]	
+			</div>
+		</div>
+		<div class="rowHolderGreybg">
+			<div class="row">
+				<div class="greyBgInnerHolder">
+					<div class="hidden-xs">
+						<div class="centerHolder-au">
+							<div class="textGreybgHolder">						
+							
+								[%advert type:'text' template:'pontingImgTxt' limit:'1' category:'0' ad_group:'ponting-imgText' sortby:'sortorder-asce'%]
+									[%param *header%]
+								<div class="innerContentAdverHolder-au">
+									[%/param%]
+									[%param footer%]
+								</div>				 
+									[%/param%]
+								[%/advert%]
+							</div>
+						</div>
+					</div>
+					<div class="visible-xs">
+						<div class="centerHolder-au">
+							<div class="textGreybgHolder">						
+							
+								[%advert type:'text' template:'pontingImgTxt' limit:'1' category:'0' ad_group:'ponting-imgText-mobile' sortby:'sortorder-asce'%]
+									[%param *header%]
+								<div class="innerContentAdverHolder-au">
+									[%/param%]
+									[%param footer%]
+								</div>				 
+									[%/param%]
+								[%/advert%]
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pontingQuoteHolder">
+			<div class="pontingQuoteInner">
+				<div class="centerHolder-au">
+					<div class="qouteImgHolder">
+						<img src="[%asset_url type:'content' id:'[@content_id@]-1'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" alt="[@CONTENT_EXTERNAL_REF3@]" />
+					</div>
+					<div class="qouteTextHolder">
+						<p>[@content_short_description1@]</p>
+						<div class="smallLine"></div>
+						<span>[@content_short_description2@]</span>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pontingFeaturedProdsHolder1 pontingFeaturedProdsHolder">
+			<div class="pontingFeaturedInner">
+				<div class="centerHolder-au">
+					[%advert type:'text' template:'pontingHamperFeat' limit:'3' category:'0' ad_group:'ponting-HamperFeat1' sortby:'sortorder-asce'%]
+						[%param *header%]
+					<div class="pontingHamperFeat1">
+						[%/param%]
+						[%param footer%]
+					</div>				 
+						[%/param%]
+					[%/advert%]
+				</div>
+			</div>
+		</div>
+		<div class="pontingImgCarouselHolder">
+			<div class="centerHolder-au">
+				[%advert type:'text' template:'pontingImgSlideSmall' limit:'3' category:'0' ad_group:'ponting-imgSlideSmall' sortby:'sortorder-asce'%]
+					[%param *header%]
+				<div class="pontingImgCarousel">
+					[%/param%]
+					[%param footer%]
+				</div>				 
+					[%/param%]
+				[%/advert%]
+			</div>
+		</div>
+		<div class="pontingFeaturedProdsHolder2 pontingFeaturedProdsHolder">
+			<div class="pontingFeaturedInner">
+				<div class="centerHolder-au">
+					[%advert type:'text' template:'pontingHamperFeat' limit:'3' category:'0' ad_group:'ponting-HamperFeat2' sortby:'sortorder-asce'%]
+						[%param *header%]
+					<div class="pontingHamperFeat1">
+						[%/param%]
+						[%param footer%]
+					</div>				 
+						[%/param%]
+					[%/advert%]
+				</div>
+			</div>
+		</div>
+		<div class="pontingBottomHolder">
+			<div class="pontingBottomInner">
+				<div class="centerHolder-au">
+					<div class="pontingBottomImgHolder">
+						<img src="[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" alt="[@CONTENT_EXTERNAL_REF3@]" />
+					</div>
+					<div class="pontingBottomTextHolder">
+						<h3>[@CONTENT_EXTERNAL_REF3@]</h3>
+						<div class="smallLine"></div>
+						<p>[@content_description2@]</p>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>

@@ -1,0 +1,1026 @@
+
+[%load_template file:"column_left/product.template.html"%][%/load_template%]
+
+<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function() {
+/* Requirements
+* 1: Extra option "Add Logo To Ribbon" (Default: No; Available option: Yes) then "Add Logo To Gift Card" (Default: No; Available option: Yes)
+* 2: Product COMPANY_LOGO without any extra options
+* 3: Discount for Product COMPANY_LOGO when there are 25+ Hampers
+* 4: And cusref1 and cusref2 to checkout page
+* 5: Customer misc9 = Default Card Design and misc10 = Default Ribbon Design
+* 6: Upload existing logo only show up when customer is logo in
+*/
+	$.extend({
+	  /* Funciton get_item_logo_requirement
+	   * Parameter: ind is the line number of the shopping cart
+		 * Check if  "Add Logo To Ribbon" or "Add Logo To Gift Card" option is selected for a specified item
+		 * Return Object
+		 *  ribbon: true if any "Add Logo To Ribbon" option is selected, otherwise false
+		 *  card: true if any "Add Logo To Gift Card" option is selected, otherwise false
+		 */
+		get_item_logo_requirement : function (ind) {
+			var rtn = {'ribbon':false,'card':false };
+			var ctr = $.toInt( $('#extras'+ind).val() );
+			for (var j=0; j<ctr; j++) {
+
+				var oname = $('#exname'+ind+'_'+j);
+
+				var chkkey = ''; // Name of the return flag (ribbon or card or empty)
+				if(oname.length > 0) {
+					var html = oname.html();
+					if(html.indexOf(' Logo ') >= 0 ) {
+						// When extra options contains the word (Logo) and (Ribbon or Card), activitate the company logo upload section
+						// We must have the options 'No' (default) [option value=0] and 'Yes' [option value=1]
+						// The extra options must be in the correct order "Add Logo To Ribbon" then "Add Logo To Gift Card"
+						if(html.indexOf('Ribbon') >= 0) {
+							// When extra options contains "Add Logo To Ribbon"
+							chkkey = 'ribbon';
+						} else if (html.indexOf('Card') >= 0) {
+							// When extra options contains "Add Logo To Gift Card"
+							chkkey = 'card';
+						}
+					}
+				}
+				if(chkkey != '') {
+					var obj = $('#extra'+ind+'_'+j);
+					if(obj.val() > 0) {
+						rtn[chkkey] = true; // Set the return flags
+					}
+				}
+			}
+
+			return rtn;
+		},
+
+
+	  /* Funciton get_logo_requirement
+		 * Check if any "Add Logo To Ribbon" or "Add Logo To Gift Card" option is selected
+		 * Return Object
+		 *  ribbon: true if any "Add Logo To Ribbon" option is selected, otherwise false
+		 *  card: true if any "Add Logo To Gift Card" option is selected, otherwise false
+		 */
+		get_logo_requirement : function () {
+
+			var rtn = {'ribbon':false,'card':false, 'ribbon_total':0, 'card_total':0};
+			var i=0;
+			var ctro = $('#extras'+i);
+			while(ctro.length) {
+				var itm_req = $.get_item_logo_requirement(i);
+				rtn['ribbon'] |= itm_req['ribbon'];
+				rtn['card'] |= itm_req['card'];
+				i++; ctro = $('#extras'+i);
+			}
+
+			return rtn;
+		},
+
+	  /* Funciton check_logo_options
+		 * Check if any "Add Logo To Ribbon" or "Add Logo To Gift Card" option is selected
+		 * Return Object
+		 *  ribbon: true if any "Add Logo To Ribbon" option is selected, otherwise false
+		 *  card: true if any "Add Logo To Gift Card" option is selected, otherwise false
+		 */
+		check_logo_options : function () {
+			var requirement = $.get_logo_requirement();
+			if(requirement['ribbon'] || requirement['card']) {
+				// Set Quantity of Logos required
+				$('#upld_logo_qty').val(requirement['ribbon'] && requirement['card']? '2' : '1');
+				$('.updllogopl').show();
+			} else {
+				$('#upld_logo_qty').val('0');
+				$('.updllogopl').hide();
+			}
+
+			// Show/Hide gift card selction
+			if(requirement['card']) {
+				$('.selcardpl').show();
+			} else {
+				$('.selcardpl').hide();
+				// Uncheck all selected gift card options
+				$('[name="cusref1"]').prop('checked', false);
+				$.set_example_pic(1);
+			}
+
+			// Show/Hide ribbon selction
+			if(requirement['ribbon']) {
+				$('.selribbonpl').show();
+			} else {
+				$('.selribbonpl').hide();
+				// Uncheck all selected ribbon options
+				$('[name="cusref2"]').prop('checked', false);
+				$.set_example_pic(2);
+			}
+		},
+
+	  /* Funciton sumbit_form
+	   * Parameter: upld is flag to indicate if the user want to upload the image (true) or continue to check out (false)
+		 * Submit form if all fields are validated
+		 */
+		sumbit_form : function (upld) {
+			if(upld) {
+				// Upload Company Logo
+				$('#fn').val('upsell');
+				var taget = $('#upsellcartform').attr('action');
+				if(taget.indexOf('#shupldlogo') < 0) {
+					$('#upsellcartform').attr('action', taget+'#shupldlogo');
+				}
+			} else {
+				// Continue Checkout
+				$('#fn').val('payment');
+			}
+
+			var requirement = $.get_logo_requirement();
+			var okay =true;
+			if(requirement['ribbon'] || requirement['card']) {
+				var img = $('#upld_logo_img').attr('src');
+				if(img.indexOf('/nologo.gif') >=0  && $('#upld_logo').val() == '' && !$('#upld_logo_existing').is(':checked')) {
+					// No logo is uploaded
+					okay =false;
+					$.nPopupBox("Don't forget to upload your company logo.", {'has-overlay':true});
+				}
+				// Set Company logo quantity
+				$('#upld_logo_qty').val(requirement['ribbon'] && requirement['card']? '2' : '1');
+				$('.updllogopl').show();
+			} else {
+				$('#upld_logo_qty').val('0');
+				$('.updllogopl').hide();
+			}
+
+			if(okay && !upld) {
+				// Vaildate Gift Card Design
+				if(requirement['card']) {
+					var seled = ($('[name="cusref1"]:checked').length > 0);
+					if(!seled) {
+						okay =false;
+						$.nPopupBox("Don't forget to choose your gift card design.", {'has-overlay':true});
+					}
+					$('.selcardpl').show();
+				} else {
+					$('.selcardpl').hide();
+					$('[name="cusref1"]').prop('checked', false);
+					$.set_example_pic(1);
+				}
+
+				// Vaildate Ribbon Design
+				if(requirement['ribbon']) {
+					var seled = ($('[name="cusref2"]:checked').length > 0);
+					if(!seled) {
+						okay =false;
+						$.nPopupBox("Don't forget to choose your ribbon design.", {'has-overlay':true});
+					}
+					$('.selribbonpl').show();
+				} else {
+					$('.selribbonpl').hide();
+					$('[name="cusref2"]').prop('checked', false);
+					$.set_example_pic(2);
+				}
+			}
+
+			if(okay) { $('#upsellcartform').submit(); }
+		},
+
+	  /* Funciton set_example_pic
+	   * Parameter: ind is the id of order reference field
+	   *            ref is the selected value
+		 * Set example image in the upload logo section
+		 */
+		set_example_pic : function (ind, ref) {
+			if(typeof(ref) != 'undefined') {
+				$('.cusref'+ind+'pic').each( function(){
+					if(ref == $(this).attr('ref') ) {
+						$('#cusref'+ind+'example').attr('src',$(this).attr('src'));
+					}
+				});
+			} else {
+				// Use default (first) image
+				$('#cusref'+ind+'example').attr('src',$('.cusref'+ind+'pic:first').attr('src'));
+			}
+		},
+
+	  /* Funciton set_branding_options
+	   * Parameter: ctr is the item number of the hamper list
+		 * Setect the correct value for branding options and show / hide the logo selection panel
+		 * Yes if either "Add Logo To Ribbon" or "Add Logo To Gift Card" option for the item is selected
+		 * No if none of the "Add Logo To Ribbon" or "Add Logo To Gift Card" options for the item are selected
+		 */
+		set_branding_options : function (ctr) {
+			if(typeof(ctr) != 'undefined') {
+				// For individual bradning option button
+				var ind = $.toInt($('.brandingbutton[value="yes"][item-count="'+ctr+'"]').attr('line-count'));
+				var itm_req = $.get_item_logo_requirement(ind);
+				var row =$('[branding-option="'+ctr+'"]');
+				if( itm_req['ribbon'] || itm_req['card'] ) {
+					// Check Yes
+					row.show();
+					$('.brandingbutton[value="yes"][item-count="'+ctr+'"]').prop('checked', true);
+				} else {
+					// Check No
+					row.hide();
+					$('.brandingbutton[value="no"][item-count="'+ctr+'"]').prop('checked', true);
+				}
+			} else {
+				// For all bradning option buttons
+				$('.brandingbutton[value="yes"]').each(function() {
+					var ctr=$.toInt($(this).attr('item-count'));
+					var ind = $.toInt($(this).attr('line-count'));
+					var itm_req = $.get_item_logo_requirement(ind);
+					var row =$('[branding-option="'+ctr+'"]');
+					if(itm_req['ribbon'] || itm_req['card']) {
+						// Check Yes
+						row.show();
+						$(this).prop('checked', true);
+					} else {
+						// Check No
+						row.hide();
+						$('.brandingbutton[value="no"][item-count="'+ctr+'"]').prop('checked', true);
+					}
+				});
+			}
+		}
+	});
+
+	// Validate form submission
+	$('.submit_btn').click(function(e){ $.sumbit_form(false); });
+
+	// Use uploaded company logo
+	$('.upload_btn').click(function(e){ $.sumbit_form(true); });
+
+	// Show / Hidden custom Gift Card / Ribbon design sections
+	$('.brandingsel').change(function(e){
+		var ctr=$.toText($(this).attr('item-count'));
+		$.set_branding_options(ctr);
+		$.check_logo_options();
+	});
+
+	// Move selected gift card image to the example section
+	$('[name="cusref1"]').click(function(e){ $.set_example_pic(1, $(this).val()); });
+	// Select the selected gift card design or use the default gift card design
+	$('[name="cusref1"]').each(function(e){
+		var ref = $(this).val();
+		if(ref == "[%NOHTML%][%IF [@customer_ref1@] eq ''%][@user:misc9@][%ELSE%][@customer_ref1@][%/IF%][%/NOHTML%]") {
+			$(this).prop('checked',true);
+			$.set_example_pic(1, $(this).val());
+		}
+	});
+
+	// Move selected ribbon image to the example section
+	$('[name="cusref2"]').click(function(e){ $.set_example_pic(2, $(this).val()); });
+	// Select the selected ribbon design or use the default ribbon design
+	$('[name="cusref2"]').each(function(e){
+		var ref = $(this).val();
+		if(ref == "[%NOHTML%][%IF [@customer_ref2@] eq ''%][@user:misc10@][%ELSE%][@customer_ref2@][%/IF%][%/NOHTML%]") {
+			$(this).prop('checked',true);
+			$.set_example_pic(2, $(this).val());
+		}
+	});
+
+	// Add click function to the branding option
+  $('.brandingbutton').click(function(){
+  	var ctr=$.toText($(this).attr('item-count'));
+  	var row =$('[branding-option="'+ctr+'"]');
+  	var sel = row.find('SELECT');
+
+  	if( $.isTrue($(this).val()) ) {
+  		row.show();
+  		sel.val('1'); // Select Yes to all options
+  	} else {
+  		row.hide();
+  		sel.val('0'); // Select No to all options
+  	}
+  	$.check_logo_options();
+	});
+
+	// Show / hide branding options on load
+	$.set_branding_options();
+	$.check_logo_options();
+});
+</script>
+<script type="text/javascript" language="javascript">
+// Copy Extra options and Check Gift Message Length
+$(document).ready(function() {
+	$.extend({
+		copy_extras : function (id) {
+			var i=0;
+			var ctro = $('#extras'+i);
+			while(ctro.length) {
+				if(i != id) {
+					var ctr = parseInt(ctro.val()); if(isNaN(ctr)) { ctr=0; }
+					for (var j=0; j<ctr; j++) {
+						var oname = $('#exname'+i+'_'+j);
+						var okay = true;
+						if(okay) {
+							var obj = $('#extra'+i+'_'+j);
+							var val = $('#extra'+id+'_'+j);
+							obj.val(val.val());
+						}
+					}
+				}
+				i++; ctro = $('#extras'+i);
+			}
+
+			$.set_branding_options();
+			$.check_logo_options();
+		}
+	});
+
+	$('.copy_btn').click(function(e){
+		$.copy_extras($(this).attr('ref'));
+		return false;
+	});
+
+	$('.inputtext').bind('keyup blur',function(e){
+		var id = $(this).attr('id');
+		var obj = $('#'+id+'ctr');
+		if(obj.length) {
+			var len = obj.attr('ref'); if(isNaN(len)) { len=0; }
+			if(len > 0) {
+				var val = ''+$(this).val();
+				if(val.length > len) { val = val.substr(0,len); $(this).val( val ); }
+				obj.html(''+(len-val.length));
+			}
+		}
+	});
+});
+</script>
+<!-- Gallant Digital edit -->
+<script>
+	$(document).ready(function() {
+		$.addToCartInit({'nofancybox':true,'cart_id':'cartcontents','target_id':'cartcontentsheader','image_rel':'itmimg'});
+		$.extend({
+		// removeCartItem override
+			removeCartItem: function(ind, fns, addExtra) {
+				var nobj = $.getAddToCartParam();
+				if (!(fns instanceof Object)) {
+					fns = {};
+				}
+				if (nobj != null ) {
+					var param = nobj['param'];
+					var fn = 'addtocart';
+					$.do_ajax(fn, {
+						'proc': 'RemoveItem',
+						'sku': ind,
+						'parentname': param['show_parent_name']
+					}, true, {
+						'SUCCESS': {
+							'def': {
+								'ind': 0,
+								'sku': '',
+								'brand': '',
+								'name': '',
+								'price': 0,
+								'qty': 0,
+								'image': '',
+								'extra': '',
+								'total': {
+									'product_total': 0,
+									'product_discount': 0,
+									'product_subtotal': 0,
+									'shipping_total': 0,
+									'shipping_discount': 0,
+									'shipping_cost': 0,
+									'grand_total': 0,
+									'discount_total': 0,
+									'shipping_method': '',
+									'item_count': 0
+								},
+								'msg': ''
+							},
+							'fn': function(code, data) {
+								$.buildCartItem(data);
+								if (typeof (fns['onReady']) == 'function') {
+									fns['onReady'](data);
+								}
+								param['show_notifications'] = false;
+								if (param['show_notifications']) {
+									var msgdata = data['lastitem'];
+									var notification = '';
+									var done = false;
+									if (typeof (data['lastitem']) != 'undefined' && data['lastitem'] instanceof Object) {
+										for (var k in data['lastitem']) {
+											msgdata[k] = data['lastitem'][k];
+										}
+									}
+									if (typeof (msgdata['price']) != 'undefined' && typeof (qty) != 'undefined') {
+										msgdata['sub_total'] = $.formatCurrency(msgdata['price'] * qty);
+										msgdata['price'] = $.formatCurrency(msgdata['price']);
+									}
+									if (param['withunit'] && typeof (msgdata['base_unit']) == 'string') {
+										if (msgdata['base_unit'].length > 0) {
+											if (typeof (param['unit_alias'][msgdata['base_unit']]) == 'string') {
+												msgdata['base_unit'] = param['unit_alias'][msgdata['base_unit']]
+											}
+											if (typeof (msgdata['unit']) == 'string') {
+												if (typeof (param['unit_alias'][msgdata['unit']]) == 'string') {
+													msgdata['unit'] = param['unit_alias'][msgdata['unit']]
+												}
+											}
+											notification = $.parse_ntemplate(param['cart']['successremmessage_withunit'], msgdata);
+											done = true;
+										}
+									}
+									if (!done) {
+										notification = $.parse_ntemplate(param['cart']['successremmessage'], msgdata);
+									}
+									if ($.isMobileView()) {
+										$.mobilePopupMessage(notification);
+									} else if (param['nofancybox']) {} else {
+										$.nPopupBox(notification, {
+											'duration': param['notifications']['duration'],
+											'has-overlay': param['notifications']['show_overlay'],
+											'has-close-btn': param['notifications']['show_close']
+										});
+									}
+									if (typeof param['fns']['onMessage'] == 'function') {
+										param['fns']['onMessage'](notification);
+									}
+								}
+								// Edited
+								if (jQuery.isFunction(addExtra)) {
+									addExtra();
+								}
+							},
+						},
+						'FAIL': {
+							'def': {
+								'msg': ''
+							},
+							'fn': function(code, data) {
+								if (param['msg'][data['msg']]) {
+									var msg = $.parse_ntemplate(param['msg'][data['msg']], data);
+								}
+							}
+						},
+						'ERROR': {
+							'def': {
+								'response': ''
+							},
+							'fn': function(code, data) {
+								if (param['debug']) {
+									alert(data['response']);
+								}
+							}
+						}
+					});
+				}
+			}
+		});
+		$('.check-label.exp').click(function() {
+			if( $(this).nextAll('.added').length > 0) {
+				$.removeCartItem($(this).nextAll('.added').val());
+				$(this).nextAll('.added').removeClass('added');
+			} else {
+				var modelExp = $(this).nextAll('.experience').attr('data-model');
+				var expInput = $(this).parents('.options-form-container').find("[data-extra='Experience']");
+				if(expInput.val() == '') {
+					expInput.val(modelExp);
+				} else {
+					expInput.val(expInput.val()+', '+modelExp);
+				}
+				$(this).nextAll('.mysku').addClass('added');
+				$(this).nextAll('.experience').click();
+			}
+		});
+		$('.check-label.gc').click(function() {
+			modelGC = $(this);
+			var addedItem = $(this).parents('.hampercontentwrap').find('.added');
+			if (addedItem.length > 0) {
+				addedItem.removeClass('added');
+				addedItem.prevAll('.check-val').click();
+				$.removeCartItem(addedItem.val(),'',function(){
+						addExtra();
+					});
+			} else {
+				addExtra();
+			}
+			function addExtra () {
+				modelGC.nextAll('.addtocart').click();
+				modelGC.parents('.options-form-container').find("[data-extra='Gift Card']").val(modelGC.attr('data-model'));
+				modelGC.nextAll('.mysku').addClass('added');
+			}
+		});
+		$("[data-extra='Gift Card']").each(function(){
+			if($(this).val() == '') $(this).val('FREE Gift Card');
+		});
+		$(".exname").click(function() {
+			$(this).find('.fa').first().toggleClass('fa-angle-up');
+		});
+	});
+</script>
+
+
+<!--##[%/SITE_VALUE%]##-->
+<style type="text/css">
+.copy_btn {
+}
+.inputtext {
+}
+.inputtext_count {
+	font-size: 8px;
+}
+.removelogotext {
+	font-size: 10px;
+}
+.updllogopl {
+	display: none;
+}
+.selcardpl {
+	display: none;
+}
+.selribbonpl {
+	display: none;
+}
+.cusref1pic {
+}
+.submit_btn {
+}
+.upload_btn {
+}
+</style>
+<style>
+.visible {
+	display: table-row !important;
+	visibility: visible !important;
+}
+</style>
+
+[%load_template file:"cart/cart.error.html"%][%/load_template%]
+<div class="hide">
+	[%cart_items%]
+		[%param *header%]
+		[%/param%]
+		[%param *body%]
+			<div class="item">
+				<p class="item-name">[@model@]</p>
+				<p class="item-extra">[@extra@]</p>
+			</div>
+		[%/param%]
+		[%param *footer%]
+		[%/param%]
+	[%/cart_items%]
+</div>
+<div class="col-md-6 padding-b-small padding-t-small text-left">
+	<h2 class="">Add Your Gift Card Message</h2>
+</div>
+<div class="col-md-6 padding-0">
+	<div class="float_right upsell-btn-holder top-holder padding-b-small">
+		<input type="hidden" id="continue_to_payment" name="continue_to_payment" value="0">
+		<input class="submit_btn btn btn-success" type="button" value="Continue To Checkout &gt;" style="font-size:18px;" />
+	</div>
+</div>
+<div class="col-xs-12 wrapper-productupsell">
+  <form method="post" enctype="multipart/form-data" action="[%URL page:'checkout'%][%/URL%]" id="upsellcartform">
+    <input type="hidden" name="fn" id="fn" value="payment" />
+    <input type="hidden" name="upsell" value="y" />
+    <div id="productoptions">
+      <div class="panel panel-default">
+        [%cart_items splititems:'y'%][%PARAM header%]
+
+        [%SET [@data:total_cart_items@]%][@total_items@][%/ SET%]
+
+        [%/PARAM%][%PARAM hidden%]
+        <input type="hidden" name="line[@line@]" id="line[@line@]" value="[@counter@]" />
+        [%/PARAM%]
+        [%PARAM *body%]
+        <div class="clearfix hamper-options-container panel-body">
+          <div class="row">
+            <div class="col-xs-12 padding-0">
+              <div class="hampercardhead product-name">#[@item_count@] &nbsp; [@model@]</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="options-img-container col-xs-12 col-sm-4 col-md-4">
+				<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'/%]" align="left" alt="[@model@]" border="0">
+				<input type="hidden" name="line[@line@]" id="line[@line@]" value="[@counter@]" />
+              <br />
+            </div>
+            <div class="options-form-container col-xs-12 col-sm-8 col-md-8"> [%extra_options id:'[@SKU@]' currentextra:'[@currentextras@]'%]
+              [%PARAM *header%]
+              <table class="productoptions table table-striped" border="0" cellspacing="0" cellpadding="4">
+                [%/PARAM%]
+                [%PARAM *number_option%]
+				<tr><span id="exname[@line@]_[@count@]">[@name@]</span>:</tr>
+				<tr><input type="text" class="form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" value="[@currentextra@]"></tr>
+                [%/PARAM%]
+                [%PARAM *text_option%]
+				<tr>
+					<span id="exname[@line@]_[@count@]" class="exname [%IF [@name@] LIKE 'Gift Card' OR [@name@] LIKE 'Experience'%]bordered[%/IF%]" data-toggle="collapse" data-target="#myexname[@line@]_[@count@]" aria-expanded="false" aria-controls="myexname[@line@]_[@count@]">
+						[%IF [@name@] LIKE 'Gift Card' OR [@name@] LIKE 'Experience'%]Choose [%/IF%] [@name@]:
+						[%IF [@name@] LIKE 'Message'%]
+							<i>( Remember to say who it’s from! )</i>
+						[%/IF%]
+						[%IF [@name@] LIKE 'Gift Card' OR [@name@] LIKE 'Experience'%]<i class="pull-right fa fa-angle-down" aria-hidden="true"></i>[%/IF%]
+					</span>
+				</tr>
+				<tr>
+					[%IF [@length@] > 100%]
+                    <textarea class="inputtext form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" cols="20" rows="4">[@currentextra@]</textarea>
+                    <div class="inputtext_count"><span id="extra[@line@]_[@count@]ctr" ref="[@length@]">[@length@]</span> Character(s) Left</div>
+                    [%ELSE%]
+                    <input type="text" class="form-control [%IF [@name@] LIKE 'Gift Card' OR [@name@] LIKE 'Experience'%]hidden[%/IF%]" data-extra="[@name@]" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" value="[@currentextra@]">
+					<div class="collapse" id="myexname[@line@]_[@count@]">
+						[%IF [@name@] LIKE 'Gift Card'%]
+							[%crosssell id:'[@SKU@]' limit:'12' template:'upsellgiftcards' show_all:'1'%]
+							[%PARAM HEADER%]
+								<div class="youmayalsowish">
+								  <div class="panel panel-default">
+									<div class="panel-body">
+									  <div class="row hampercontentwrap padding-tb-small">
+										[%/PARAM%]
+							[%PARAM FOOTER%]
+									  </div>
+									</div>
+								  </div>
+								</div>
+								[%/PARAM%]
+							[%/crosssell%]
+						[%/IF%]
+						[%IF [@name@] LIKE 'Experience'%]
+							[%UPSELL_PRODUCTS id:'[@SKU@]' limit:'12' template:'upsellexperiences' show_all:'1'%]
+							[%PARAM HEADER%]
+								<div class="youmayalsowish">
+								  <div class="panel panel-default">
+									<div class="panel-body">
+									  <div class="row hampercontentwrap padding-tb-small">
+										[%/PARAM%]
+							[%PARAM FOOTER%]
+									  </div>
+									</div>
+								  </div>
+								</div>
+								[%/PARAM%]
+							[%/UPSELL_PRODUCTS%]
+						[%/IF%]
+					</div>
+                    [%/IF%]
+				</tr>
+                [%/PARAM%]
+                [%PARAM *select_option%]
+				[%IF [@name@] LIKE ' Logo ' AND [@name@] LIKE 'Ribbon'%]
+					<tr>
+						<td colspan="2">
+							<div class="row">
+								<!-- TODO: Designer - Corporate Branding section -->
+								<div class="col-xs-12 col-sm-3 custom-left-padding">
+									Would You like Corporate Branded ribbon or gift card?
+								</div>
+								<div class="col-xs-12 col-sm-3 text-center wrapper-branding-button">
+									<label><input class="brandingbutton" item-count="[@item_count@]" line-count="[@line@]" type="radio" name="cb[@item_count@]" value="no"> No</label>
+									<label><input class="brandingbutton" item-count="[@item_count@]" line-count="[@line@]" type="radio" name="cb[@item_count@]" value="yes"> Yes</label>
+								</div>
+								 <div class="col-xs-12 col-sm-6 text-right three-images">
+									<img width="110" src="/assets/images/ribbons/Navy-Blue-with-Silver-Foil.jpg">
+									<img width="110" src="/assets/images/ribbons/Emerald-Green-Ribbon-Gold-Foil.jpg">
+									<img width="110" src="/assets/images/ribbons/Red-Ribbon-Gold-Print.jpg">
+								</div>
+							</div>
+							<div branding-option="[@item_count@]">
+								<hr>
+								<table width="100%">
+									[%/IF%]
+										<tr title="[@name@]" class="additional-item[@item_count@] text-left">
+										  <td class="additional-item-contain">
+											<!-- TODO: Designer - Show ? (for Logo) or : (Default) at the end of the extra option -->
+																<span id="exname[@line@]_[@count@]">[@name@]</span>[%IF [@name@] LIKE ' Logo ' AND ([@name@] LIKE 'Ribbon' OR [@name@] LIKE 'Card')%]?[%ELSE%]:[%/IF%]
+
+											[%IF [@name@] LIKE ' Logo ' AND ([@name@] LIKE 'Ribbon' OR [@name@] LIKE 'Card')%]
+											<!-- TODO: Designer - Corporate Branding Cost -->
+
+											<div class="small">($75 one off set-up fee for orders less than 25 hampers)</div>
+
+											[%/IF%]
+										  </td>
+										</tr>
+										<tr>
+										  <td width="100%" class="additional-item-contain padding-b-small">
+											  <select class="extrasel form-control [%IF [@name@] LIKE ' Logo ' AND ([@name@] LIKE 'Ribbon' OR [@name@] LIKE 'Card')%]brandingsel[%/IF%]" item-count="[@item_count@]" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]">
+												  [@choices@]
+											  </select>
+										  </td>
+										</tr>
+								[%IF [@name@] LIKE ' Logo ' AND [@name@] LIKE 'Card'%]
+								</table>
+								<!-- TODO: Designer - Corporate Branding Info -->
+								<div class="small">(if you have ordered branding before, ensure you are logged in so you aren't recharged set-up fee)</div>
+							</div>
+						</td>
+					</tr>
+					[%/IF%]
+              [%/PARAM%]
+              [%PARAM *choices%]
+					<option type="text" value="[@option_id@]" [%IF [@option_id@] == [@currentextra@]%]selected[%/IF%] >
+					[%nohtml%][@text@][%/nohtml%]
+					[%IF [@price@] != 0%]
+					  [%IF [@name@] like ' LOGO '%]
+						[%FORMAT type:'currency'%][@price@][%/FORMAT%] per hamper
+					  [%ELSE%]
+						([%FORMAT type:'currency'%][@price@][%/FORMAT%])
+					  [%/IF%]
+					[%/IF%]
+					</option>
+              [%/PARAM%]
+              [%PARAM *footer%]
+              </table>
+              <input type="hidden" name="extras[@line@]" id="extras[@line@]" value="[@total_options@]"/>
+              [%/PARAM%]
+              [%/extra_options%]
+
+[%IF [@line@] == 0 AND [@total_cart_items@] > 1%]
+<!-- TODO: Designer - Copy message button -->
+<button class="copy_btn btn btn-success" ref="[@line@]">Copy settings from this hamper to all hampers</button>
+<p class="recipient-reminder padding-tb-tin">( Remember to change the recipient’s name )</p>
+[%/IF%]
+            </div>
+          </div>
+        </div>
+        [%/PARAM%]
+        [%PARAM footer%]
+
+        [%/PARAM%]
+        [%/cart_items%] </div>
+    </div>
+    <a name="shupldlogo"></a>
+    <div class="selcardpl">
+      <div class="panel panel-default">
+        <div>
+          <h4 class="panel-title">Choose Your Gift Card Design <span class="small">(the messages are example messages)</span></h4>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="hampercardhead"> Click images to enlarge... </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-1"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign1.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign1.jpg" ref="gift-tag-1" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-2"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign2.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign2.jpg" ref="gift-tag-2" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-3"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign3.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign3.jpg" ref="gift-tag-3" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-4"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign4.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign4.jpg" ref="gift-tag-4" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-5"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign5.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign5.jpg" ref="gift-tag-5" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-6"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign6.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign6.jpg" ref="gift-tag-6" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-7"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign7.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign7.jpg" ref="gift-tag-7" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-8"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign8.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign8.jpg" ref="gift-tag-8" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-9"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign9.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign9.jpg" ref="gift-tag-9" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-10"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign10.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign10.jpg" ref="gift-tag-10" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-11"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign11.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign11.jpg" ref="gift-tag-11" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref1" value="gift-tag-12"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/giftcards/GiftTagDesign12.jpg" rel="product_images" class="fancybox"><img class="cusref1pic" width="120px" src="[$imageurl$]/images/giftcards/GiftTagDesign12.jpg" ref="gift-tag-12" /></a></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- TODO: Designer - select ribbon -->
+    <div class="selribbonpl">
+      <div class="panel panel-default">
+        <div>
+          <h4 class="panel-title">Choose Your Ribbon</h4>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="hampercardhead"> Click images to enlarge... </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-1"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Black-Ribbon-Silver-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Black-Ribbon-Silver-Foil.jpg" ref="gift-ribbon-1" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-2"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Black-Ribon-with-Gold-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Black-Ribon-with-Gold-Foil.jpg" ref="gift-ribbon-2" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-3"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Emerald-Green-Ribbon-Gold-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Emerald-Green-Ribbon-Gold-Foil.jpg" ref="gift-ribbon-3" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-4"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Emerald-Green-Ribbon-Silver-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Emerald-Green-Ribbon-Silver-Foil.jpg" ref="gift-ribbon-4" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-5"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Navy-Blue-with-Silver-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Navy-Blue-with-Silver-Foil.jpg" ref="gift-ribbon-5" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-6"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Navy-Ribbon-with-Gold-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Navy-Ribbon-with-Gold-Foil.jpg" ref="gift-ribbon-6" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-7"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Red-Ribbon-Gold-Print.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Red-Ribbon-Gold-Print.jpg" ref="gift-ribbon-7" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-8"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Red-Ribbon-Silver-Print2.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Red-Ribbon-Silver-Print2.jpg" ref="gift-ribbon-8" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-9"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Royal-Blue-Ribbon-with-Gold-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Royal-Blue-Ribbon-with-Gold-Foil.jpg" ref="gift-ribbon-9" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-10"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Royal-Blue-Ribbon-with-Silver-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Royal-Blue-Ribbon-with-Silver-Foil.jpg" ref="gift-ribbon-10" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-11"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Tangerine-Ribbon-Gold-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Tangerine-Ribbon-Gold-Foil.jpg" ref="gift-ribbon-11" /></a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+              <table border="0" cellpadding="4" cellspacing="0">
+                <tr>
+                  <td><input type="radio" name="cusref2" value="gift-ribbon-12"></td>
+                  <td width="85%"><a href="[$imageurl$]/images/ribbons/Tangerine-Ribbon-Silver-Foil.jpg" rel="product_images" class="fancybox"><img class="cusref2pic" width="120px" src="[$imageurl$]/images/ribbons/Tangerine-Ribbon-Silver-Foil.jpg" ref="gift-ribbon-12" /></a></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="updllogopl">
+      <div class="panel panel-default">
+        <div>
+          <h4 class="panel-title">Upload Your Company Logo</h4>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 hidden">
+<!-- TODO: Designer - example images -->
+
+              <div class="selcardpl"> <img id="cusref1example" src="[$imageurl$]/template/images/example.png" title="Example" width="250px"/> </div>
+              <div class="selribbonpl"> <img id="cusref2example" src="[$imageurl$]/template/images/example.png" title="Example" width="250px"/> </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 logo-block">
+              <div class="hampercardhead hidden">Upload your logo file here or choose your existing logo.</div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                  <table cellpadding="0" cellspacing="2" border="0">
+                    <tr>
+                      <td align="center"><img id="upld_logo_img" width="100px" src="[%asset_url type:'cart' default:'[$imageurl$]/nologo.gif'%][%/asset_url%]?[%RANDOM_NUMBER timestamp:'1'%][%/RANDOM_NUMBER%]" /></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-xs-12 col-sm-9 choose-file">
+                  <input type="file" name="upld_logo" id="upld_logo" />
+
+                  <input class="upload_btn btn btn-success" type="button" value="Upload Logo" />
+				  <br>
+				  <br>
+                  <p class="helper-text"> We accept GIF, JPG and PNG formats. Maximum file size is 5MB. </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <input type="hidden" name="upld_logo_sku" value="COMPANY_LOGO">
+                  <input type="hidden" id="upld_logo_qty" name="upld_logo_qty" value="0">
+<!-- TODO: Designer - use existing logo -->
+[%IF [@user:username@] ne [@config:NOREGUSERNAME@]%]
+<input type="checkbox" id="upld_logo_existing" name="upld_logo_existing" value="1" [%IF [@form:upld_logo_existing@] > 0 %]checked[%/IF%]> My Company logo is already uploaded from a previous order
+[%/IF%]
+                  <div class="clear"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+<br />
+[%GA_FUNNEL%]/purchase/upsell.html[%/GA_FUNNEL%]
+[%load_template file:"column_right/checkout.template.html"%][%/load_template%]
+</div>
+<div class="float_right upsell-btn-holder">
+  <input type="hidden" id="continue_to_payment" name="continue_to_payment" value="0">
+  <input class="submit_btn btn btn-success" type="button" value="Continue To Checkout &gt;" style="font-size:18px;" />
+</div>

@@ -1,0 +1,81 @@
+
+
+
+[%set [@countAdded@] %]
+    [%calc [@count@] + 1 /%]
+[%/set%]
+[%set [@oddEven@] %]
+    [%calc [@countAdded@]%2 /%]
+[%/set%]
+
+[%if [@oddEven@] == 0  %]
+
+<div class="row textalignLeft-au">
+	<div class="centerHolder-au">
+		<div class="col-xs-7 imageHolderWrapper-au">
+			<div class="outerImageHolder">
+				<div class="borderImageHolder">
+				</div>
+				<div class="imageHolderNoBorder-au">
+					<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%]" alt="[@headline@]">
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-5 textHolderWrapper-au">
+			<div class="hugeNumberHolder">
+				<span>[@countAdded@]</span>
+			</div>
+			<div class="textHolder-au">
+				<h3>[@headline@]</h3>
+				<div class="narrowBorderBelowH3-au">
+					<div class="clearBoth"></div>
+						<div class="narrowBorder"></div>
+					<div class="clearBoth"></div>
+				</div>
+				<p class="textalignRight-au">
+					[%url_decode%]
+						[%url_encode%]
+							[@description@]
+						[%/url_encode%]
+					[%/url_decode%]
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+[%else%]
+<div class="row textalignRight-au">
+	<div class="centerHolder-au">
+		<div class="col-xs-5 textHolderWrapper-au">
+			<div class="hugeNumberHolder">
+				<span>[@countAdded@]</span>
+			</div>
+			<div class="textHolder-au">
+				<h3>[@headline@]</h3>
+				<div class="narrowBorderBelowH3-au">
+					<div class="clearBoth"></div>
+						<div class="narrowBorder"></div>
+					<div class="clearBoth"></div>
+				</div>
+				<p class="textalignRight-au">
+					[%url_decode%]
+						[%url_encode%]
+							[@description@]
+						[%/url_encode%]
+					[%/url_decode%]
+				</p>
+			</div>
+		</div>
+		<div class="col-xs-7 imageHolderWrapper-au">
+			<div class="outerImageHolder">
+				<div class="borderImageHolder">
+				</div>
+				<div class="imageHolderNoBorder-au">
+					<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%]" alt="[@headline@]">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+[%/if%]

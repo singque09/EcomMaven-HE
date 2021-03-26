@@ -1,0 +1,88 @@
+
+<div  class="wrapper-thumbnail-ponting col-xs-6 col-sm-3">
+	<div id="schema-per-product-ponting" class="thumbnail-ponting">
+        <div class="wfd-wrapper">
+				[%if [@promo_save@] > 0%]
+				<span class="wfd out">
+					<span>
+						[%format type:'percent'%][@promo_save@][%/format%] OFF
+					</span>
+				</span>
+			[%/if%]
+        [%IF [@store_quantity@] > 0 AND [@preorder@] %]
+            <span class="wfd free">
+                <span>
+                    Pre-order <br/>now!
+                </span>
+            </span>
+        [%ELSEIF [@store_quantity@] < 1 AND [@preorder@] %]
+            <span class="wfd free">
+                <span class="wfd__down">
+                    Coming <br/>Soon
+                </span>
+            </span>
+        [%ELSEIF [@store_quantity@] > 0 %]
+            <span class="wfd free">
+                <span class="wfd__up">
+                    Free <br/>Delivery
+                </span>
+            </span>
+        [%ELSE%]
+            <span class="wfd out">
+                <span>
+                    Sold <br/>Out
+                </span>
+            </span>
+		[%END IF%]
+	</div>
+		<a href="[@URL@]" class="thumbnail-image">
+            <img  class="lazy_load product-image" data-src="[%asset_url type:'product' thumb:'thumbL' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" alt="[@model@]" rel="itmimg[@SKU@]">
+		</a>
+		<div class="caption-ponting">
+			<h3 class="wrapper-thumbnail__title"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'55' rmhtml:'1'%][@model@][%/FORMAT%]</a></h3>
+			<span class="wrapper-thumbnail__price">
+				<a href="[@URL@]" title="[@model@]">
+					[%if [@inpromo@]%]
+						<!-- <span class="price-info-label">Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]</span> -->
+						<span class="amount">[%format type:'currency' dp:'0'%][@promo_price@][%/format%]</span>
+					[%else%]
+						<!-- <span class="price-info-label">[%if [@has_child@]%]From&nbsp;[%/if%]</span> -->
+						<span class="amount">[%format type:'currency' dp:'0'%][@store_price@][%/format%]</span>
+					[%/if%]
+				</a>
+			</span>
+            <span class="wrapper-thumbnail__cart">
+                <form class="form-inline buying-options">
+    				<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+    				<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+    				<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+    				<input type="hidden" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="1" class="input-tiny">
+    				[%if [@has_child@]%]
+    			        <a href="[@url@]" title="Add to Cart" class="btn-primary btn btn--black btn-block" rel="[@rndm@][@SKU@]">See Options</a>
+    				[%else%]
+        				[%if [@store_quantity@] > 0 AND [@preorder@] %]
+        			    <button type="button" title="Pre-Order Now!" class="addtocart btn btn--black btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+        				[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
+        				<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn--black btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+        				[%else%]
+        				[%/if%]
+        			[%/if%]
+    			</form>
+            </span>
+		</div>
+
+		<div class="savings-container-ponting">
+			[%if [@misc19@] AND [@misc19@] eq 'y' AND [@misc20@] eq 'n'%]
+				<div class="thumb-sash selling-sash">
+					<span>Selling Fast</span>
+				</div>
+			[%/if%]
+			[%if [@misc20@] AND [@misc20@] eq 'y' %]
+				<div class="thumb-sash soldout-sash">
+					<span>Sold Out</span>
+				</div>
+			[%/if%]
+		</div>
+	</div>
+</div>
+

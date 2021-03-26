@@ -1,0 +1,140 @@
+[%site_value id:'footer_javascript'%]
+	<script src="[%ntheme_asset%]js/jcountdown/jquery.jcountdown.min.js[%/ntheme_asset%]"></script>
+	<script>
+		$(document).ready(function() {
+			var systime = "[%FORMAT type:'date' format:'#Y-#m-#d-#h-#i-#s'%]now[%END FORMAT%]";
+			var date = systime.split("-");
+			var current_date = new Date(date[0]*1,date[1]*1-1,date[2],0,0,0);
+			var current_time = parseInt(date[3]); if(isNaN(current_time)) { current_time=0; }
+			var current_day = current_date.getDay();
+
+			if (current_day >= 1 && current_day <= 5 && current_time >= 1 && current_time <= 12) {
+				$(".head-top-info").show();
+			}
+			var datestring = ((current_date.getMonth() + 1) +"/"+ current_date.getDate())+"/"+current_date.getFullYear();
+
+			[%set [@unix_time@]%][%format type:'date' format:'#U'%]now[%/format%][%/set%]
+			$("#same-day-shipping-end").countdown({
+				htmlTemplate: "%h<span class='time-unit'>h</span> %i<span class='time-unit'>m</span> %s<span class='time-unit'>s</span>",
+				date: datestring + " [%content_zone id:'countdown_endtime'%][%/content_zone%]",
+				offset: 11,
+				leadingZero: true,
+				servertime: [%calc [@unix_time@] * 1000 /%]
+			});
+		});
+	</script>
+[%/site_value%]
+
+ <style>
+  function dc_call_after_convert() {
+    window.dc_call_after_convert = null;
+    (function(){
+         var oldcontent = '';
+         setInterval(
+            function() {
+               try {
+                  var currentText = jQuery('body').eq(0).text();
+                  if (currentText != oldcontent ) {
+                       if (window.dc_convert_now) {
+                           dc_convert_now();
+                           oldcontent = jQuery('body').eq(0).text();
+                       }
+                  }
+               }catch(e){}
+           },500);
+    })();
+
+      
+  }
+		           if(location.pathname != "/_myacct/view_order" || document.querySelector("#cartcontentsheader > span").innerHTML != 0) {
+                		function dc_ld(){ var dc_dlay = document.createElement("script"); dc_dlay.setAttribute('type', 'text/javascript'); dc_dlay.setAttribute('language', 'javascript'); dc_dlay.setAttribute('id', 'dcdlay'); dc_dlay.setAttribute("src", "http"+(window.location.protocol.indexOf("https:")==0?"s://converter":"://converter2")+".dynamicconverter.com/accounts/12/12914"+"."+"js"); document.getElementsByTagName("head")[0].appendChild(dc_dlay); } setTimeout('dc_ld()',10);
+                	}
+		    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
+<meta name="description" content="[%url_info name:'meta_description'/%]"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][@config:homeurl@][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%][@config:homeurl@]/assets/website_logo.png[%/if%]"/>
+<meta property="og:title" content="[%url_info name:'page_title'/%]"/>
+<meta property="og:site_name" content="[@config:website_name@] "/>
+[%if [@config:current_page_type@] eq 'customer' or [@config:current_page_type@] eq 'checkout'%]
+<meta name="robots" content="noindex" />
+[%/if%]
+[@config:GOOGLE_VERIFICATION_CODE@]
+<title>[%url_info name:'page_title'/%]</title>
+<link rel="canonical" href="[@config:canonical_url@]"/>
+<link rel="shortcut icon" href="[@config:homeurl@]/assets/favicon_logo.png"/>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,300,300italic' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.min.css?1234567890123456789012345678901234567890123456789012345678901234567890123[%/ntheme_asset%]" media="all"/>
+[%cdn_asset html:'1' type:'css' domain:'maxcdn.bootstrapcdn.com' library:'font-awesome' version:'4.4.0'%]css/font-awesome.min.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'jquery_ui' version:'1.11.1'%]css/custom-theme/jquery-ui-1.8.18.custom.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
+<!--[if lte IE 8]>
+	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
+<![endif]-->
+[%tracking_code type:'Declaration'/%]
+
+<script src="//assets.findify.io/www.thehamperemporium.com.au.min.js" async defer></script>
+
+
+</head>
+<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@] col-xs-12">
+<!-- <div class="row head-top-info">
+	<div id="same-day-shipping" class="container">
+		<span class="col-xs-12 shipping-countdown">
+			<i class="fa fa-clock-o"></i> Same Day Sydney, Next Day Capital City Delivery available if you order within... <span id="same-day-shipping-end" class="time"></span>
+		</span>
+	</div>
+</div> -->
+<div class="wrapper-header">
+	<div class="row top-header">
+		<div class="container">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 text-center padding-tb-thin">
+			[%content_zone id:'headertext' if_empty:''/%]
+			</div>
+			<div class="col-sm-3 text-right padding-t-thin right-column">
+					<div class="col-xs-3 sign-in pull-right">
+						[%if [@user:username@]%]
+							<a href="/_myacct"><i class="fa fa-user" aria-hidden="true"></i> <span class="user-name-txt">[%if [@user:bill_first_name@]%][@user:bill_first_name@][%else%]My Account[%/if%]</span></a>
+						[%else%]
+							<a href="/_myacct"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
+						[%/if%]
+					</div>
+					<div id="header-cart" class="col-xs-2 cart pull-right">
+						<a id="cartcontentsheader" href="[%url page:'checkout' type:'cart'/%]"><i class="fa fa-shopping-cart"></i> <span rel="a2c_item_count" class="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span></a>
+						<ul class="dropdown-menu">
+							<li class="box" id="neto-dropdown">
+								<div class="body padding" id="cartcontents"></div>
+								<div class="footer"></div>
+							</li>
+						</ul>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div class="row bottom-header">
+		<div class="container">
+			<div class="wrapper-logo">
+				<a href="[@config:homeurl@]" title="[@config:company_name@]">
+					<img class="logo" src="[@config:imageurl@]/website_logo.png?12" alt="[@config:company_name@]"/>
+				</a>
+			</div>
+			<div class="checkout text-right phone">
+				<p class="call-us-text">Call Us</p>
+				<i class="fa fa-phone"></i> <span>1300 459 452</span>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="main-content" role="main">
+	<div class="row">
+		<div class="container">
+		   

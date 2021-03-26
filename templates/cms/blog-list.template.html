@@ -1,0 +1,52 @@
+
+
+
+<div class="container blogListDG">
+
+<div class="col-xs-12">
+[%thumb_list type:'content' content_type:'blog' limit:'100' sortby:'date_posted-desc' filter_category:'7020'%]
+            [%param *header%]
+                <section class="row my-3 text-center" aria-label="Our Blog">
+                    <p style="text-align: center;"><img alt="" src="/assets/images/Hamper Blog.jpg" style="max-width: 100%;" /></p>
+
+<p style="text-align: center;">Welcome to The Hamper Emporium Blog, where you'll find information about our people and our products while having fun along the way!</p>
+
+<p style="text-align: center;">As Australia's leading gift hamper store, we're backed by over a decade of experience delivering happiness right across Australia, and with over 200,000 happy customers and counting.. this is our story.</p>
+
+<p style="text-align: center;">&nbsp;</p>
+
+<p style="text-align: center;">&nbsp;</p>
+            [%/param%]
+            [%param *body%]
+                <div class="col-md-4 col-sm-6 blogListDiv">
+                    <div class="row hampercontentwrap" style="display:inline-block;">
+                            <article class="col-12 col-sm-12">
+                                <div id ="blog-image-container" class="">
+                                    <a href="[@URL@]">
+                                         <img style=" max-width: 100%" src="[%ASSET_URL type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/ASSET_URL%]" alt="[@content_name@]" class="img-fluid"/>
+									</a>
+    								<div class="blogContents">
+                                        <h4><a href="[@URL@]" itemprop="url">[@content_name@]</a></h4>
+                                        [%if [@content_short_description1@]%]
+                                            <p id="blogContent"> [%format type:'text' rmhtml:'1' maxlength:'180'%][@content_short_description1@][%/format%]...</p>
+                                        [%else%]
+                                            <p id="blogContent"> [%format type:'text' rmhtml:'1' maxlength:'180'%][@content_description1@][%/format%]...</p>
+                                        [%/if%]
+    									<div class="publishDetails">
+                                        	<div class="authorCat text-muted" style="margin-bottom : 10px; font-size: 12px;">
+                                        	  <center>[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]</center>
+                                        	</div>
+    									</div>
+                                        <a href="[@URL@]" class="btn btn-default btn-block">Read Full Post</a>
+                                    </div>
+                                 
+                                </div>
+                            </article>
+                    </div>
+                </div>
+            [%/param%]
+            [%param *footer%]
+            [%/param%]
+        [%/thumb_list%]
+</div>
+</div>

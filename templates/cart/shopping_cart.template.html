@@ -1,0 +1,358 @@
+<div class="padding-b-med padding-t-small">
+<div class="col-xs-12">
+	<div class="page-header small-custom-margin-b">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<h2 class="cart-page-title"><i class="fa fa-lock" aria-hidden="true"></i> Shopping Cart</h2>
+			</div>
+			<div class="col-xs-12 col-md-6 cart-page-btn-holder text-right">
+				<div class="col-xs-12">
+					<button class="btn btn-success btn-lg btn-block btn-checkout" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-lock icon-white"></i> Checkout Now</button>
+				</div>
+				<div class="col-xs-12">
+					<a class="btn btn-default btn-lg gift-card-btn pull-right btn-checkout" href="[%url page:'checkout'%][%END url%]&fn=upsell" title="Edit Gift Message(s)" rel="no-follow"><i class="fa fa-tag"></i> Edit Card Message</a>
+				</div>
+			</div>
+			[%config id:'ALLOW_USER_QUOTE' if:'==' value:'1'%]
+				<div class="col-xs-12 col-md-3">
+					<button class="btn btn-default btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create Quote From Cart </button>
+				</div>
+			[%/config%]
+		</div>
+	</div>
+	[%load_template file:'cart/cart.error.html'/%]
+	[%cart_items%]
+	[%param header%]
+	<div class="row">
+		<div class="col-xs-12">
+			<form method="post" name="checkout" action="[%url page:'checkout'/%]">
+				<input type="hidden" name="recal" value="1" />
+					<div class="hidden-xs row row-padded item-heading">
+						<div class="col-sm-6 col-md-8">
+						</div>
+						<div class="col-sm-2 col-md-1 quantity-label-cart">
+							Quantity
+						</div>
+						<div class="col-sm-2 text-center price-label-cart">
+							Price
+						</div>
+						<div class="col-sm-2 col-md-1">
+						</div>
+					</div>
+					[%/param%]
+					[%param *body%]
+					<div class="row item">
+						<div class="col-xs-12 col-sm-3 col-md-2 image">
+							<a href="[@url@]"><img class="img-responsive" src="[@thumb@]"/></a>
+						</div>
+						<div class="col-xs-12 col-sm-9 col-md-6 description-info">
+							<a href="[@url@]">
+								<h4>[@model@]</h4>
+								<p class="details">[@extra@]</p>
+							</a> [%if [@aff_id@] eq '[@config:AFF_EBAY_ID@]'%]
+							<p>eBay ID: [@aff_ref@]</p>
+							[%/if%]
+
+							[%if [@aff_id@] eq '[@config:AFF_FREE_ID@]'%]
+							<p><span class="label label-success">Free Gift</span></p>
+							[%/if%]
+
+							[%if [@preorder@]%]
+							<p><span class="label label-warning">On pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span></p>
+							[%/if%]
+
+
+							[%if [@has_components@]%]
+							[%cart_item_components counter:'[@counter@]'%]
+							[%param header%]
+							<ul class="list-unstyled">
+								[%/param%]
+								[%param *body%]
+								<li>
+									<input type="hidden" name="compsku[@count@]_[@component_count@]" value="[@SKU@]">
+									<label>[@model@] x </label>
+									<input type="text" min="[@min_assemble@]" max="[@max_assemble@]" name="compqty[@count@]_[@component_count@]" class="form-control [%if [@fixed_assemble@]%]readonly [%/if%]" [%if [@fixed_assemble@]%]readonly[%/if%] value="[@qty@]" size="3">
+								</li>
+								[%/param%]
+								[%param *footer%]
+							</ul>
+							<input type="hidden" name="components[@count@]" value="[@total_components@]">
+							[%/param%]
+							[%/cart_item_components%]
+							[%/if%]
+							[%if [@gifts_available@]%]
+								<h4>Congratulations! The above purchase has made you eligible for [@gifts_available@] of the following FREE Gifts!</h4>
+								<span class="help-box">You can add any of the following gifts to your shopping Shopping Cart now and you will not be charged for them!</span> <br />
+								<br />
+								[%free_gifts id:'[@SKU@]'%]
+									[%param *header%]
+										<div class="row">
+									[%/param%]
+									[%PARAM *body%]
+										<div class="col-md-4">
+											<div class="thumbnail">
+												<a href="[%url type:'item ' id:'[@SKU@]'%][%END url%]" class="thumbnail-image"><img width="120" height="120" src="[@thumb@]" alt="[@model@]" /> </a>
+												<div class="caption"> <a href="[%url type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'70' rmhtml:'1'%][@model@][%/format%]</a>
+													<p><a class="btn btn-success btn-block"href="[%url page:'checkout' qs:'sku=[@SKU@]&gift=[@counter@]'/%]">Add to Cart</a> </p>
+												</div>
+											</div>
+										</div>
+									[%/param%]
+									[%PARAM *footer%]
+										</div>
+									[%/param%]
+								[%/free_gifts%]
+							[%/if%]
+						</div>
+						<div class="col-md-4 pull-right qty-price-del-wrap">
+							<div class="col-md-4 col-xs-4 text-center padding-t-med quantity">
+								<input name="line[@count@]" type="hidden" value="[@counter@]" />
+								<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
+							</div>
+							<div class="col-md-4 col-xs-4 text-center padding-t-med cart-item-price">
+								[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
+								[%if [@discount_percent@] > 0%]
+									<p><i>-[%format type:'percent'%][@discount_percent@][%/format%]</i></p>
+								[%/if%]
+								<h4>[%format type:'currency'%][@subtotal@][%/format%]</h4>
+							</div>
+							<div class="col-md-4 col-xs-4 text-center padding-t-med edit">
+								<a class="remove-button" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
+							</div>
+						</div>
+					</div>
+					[%/param%]
+					[%param *footer%]
+			</form>
+		</div>
+	</div>
+	<div class="row row-padded padding-t-small padding-b-med btn-stack">
+		<div class="col-xs-12 col-md-3">
+			<a class="btn btn-default gift-card-btn" href="[%url page:'checkout'%][%END url%]&fn=upsell" title="Edit Gift Message(s)" rel="no-follow"><i class="fa fa-tag"></i> Edit Card Message</a>
+		</div>
+		<div class="col-xs-12 col-md-3 col-md-offset-3">
+			<button type="button" onclick="window.location='[%last_visited default:'[$homeurl$]'%][%END last_visited%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class=" icon-chevron-left"></i> Continue Shopping</button>
+		</div>
+		<div class="col-xs-12 col-md-3">
+			<button type="button" class="btn btn-default btn-block" onclick="javascript:document.checkout.submit();" title="Update Changes"><i class="fa fa-refresh"></i> Update My Changes</button>
+		</div>
+	</div>
+	<div class="row row-padded">
+		<div class="col-xs-12 col-md-5 discount-panel">
+			<div id="shipbox" class="shipbox-delivery">
+				<div class="panel panel-shipbox">
+						<div class="panel-body row">
+						<h4 class="text-center"><i class="fa fa-truck"></i> Delivery Time Calculator</h4>
+						<p class="text-center" style="font-size:12px;">Orders placed by 1pm Sydney time weekdays are dispatched on the same day</p>
+						<hr>
+						<form method="post" action="[%URL page:'checkout'%][%END URL%]">			
+							<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
+							<input type="hidden" id="ship_country" name="ship_country" value="AU" />
+							<div class="form-group col-xs-6 col-md-4 postcode-input">
+								<label class="postcode-strong">Postal Code</label>
+								<input type="text" class="form-control" size="5" id="ship_zip" name="ship_zip" value="[@ship_zip@]" />
+							</div>
+							<div class="form-group n-wrapper-form-control col-xs-6 col-md-4 suburb-input">
+								<label class="postcode-strong">Suburb</label>
+								<span id="ship_selector"></span>
+								<input type="text"  class="form-control" id="ship_city" name="ship_city"  value="[%session id:'ship_city'/%]" size="50" maxlength="50"/>
+							</div>
+							<div class="col-xs-12 col-md-4 submit-button">
+								<input type="submit" class="btn btn-outline-secondary btn-block" value="Check" />
+							</div>
+							[%site_value id:'footer_javascript'%]
+								<script>
+									$(document).ready(function() {
+										$.postcode_selectorInit({
+											'id': 'ship_selector',
+											'country_id': 'ship_country',
+											'city_id': 'ship_city',
+											'zip_id': 'ship_zip',
+											'state_id': 'ship_state',
+										});
+									});
+								</script>
+							[%/ site_value%]
+							[%site_value id:'footer_javascript'%]
+								<script>
+									$(document).ready(function(){
+										$('.delivery-date-modified').each(function(){
+											// Get the number of days
+											var days = $(this).data('time');
+											
+											// Increase from todays date
+											var todaysDate = new Date();
+											var adjustedDate = new Date();
+											adjustedDate.setDate(todaysDate.getDate() + days);
+
+											var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+											var dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+											// Insert new date text
+											var newText = 'Estimated arrival on ' + dayNames[adjustedDate.getDay()]+ ' ' + adjustedDate.getDate() + ' ' + monthNames[adjustedDate.getMonth()];
+											
+											$(this).html(newText);
+										});
+									});
+								</script>
+							[%/site_value%]
+						</form>
+					</div>
+					[%shipping_methods country:'[@ship_country@]' zip:'[@ship_zip@]'%]
+						[%param header%]
+							<form method="post" class="shipping-form" name="SHsummary" action="[%url page:'checkout'/%]">
+						[%/param%]
+						[%param *body%]
+							<div class="form-group">
+							<hr />
+							<label class="label-block" for="[@id@]">
+								<input class="pull-left input-field-cart" type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%if [@id@] == [@shipping_method_id@]%]checked[%/if%]>
+								<p id="ship_collapse" class="shipping-method">
+								<strong>[@shipping_method@]</strong>
+								<span class="pull-right">[%if [@cost@] ne '0.00'%][%format type:"currency"%][@cost@][%END format%][%else%]Free[%/if%]
+								</span><br>
+								[%if [@delivery_time@] AND [@shipping_method@] like 'Standard Delivery' OR [@shipping_method@] like 'Express Delivery'%]
+									<span class="delivery-date delivery-date-modified" data-time="[@delivery_time@]"></span>
+								[%/if%]
+								</p>
+								<p class="shipping-description">[@shipping_description@]</p>
+								</label>
+							</div>
+						[%/param%]
+						[%param footer%]
+							</form>
+						[%/param%]
+						[%param ifempty%]
+							Free Standard Delivery Australia wide. Express premium delivery options available in checkout.
+						[%/param%]
+					[%/shipping_methods%]
+				</div>
+			</div>
+			<div class="panel panel-shipbox">
+				<div class="panel-body text-center">
+					<h4 class="text-center">Discount Code</h4><hr>
+					<form method="post" action="[%url page:'checkout'/%]">
+						<p>If you have a coupon or discount code enter it below.</p>
+						<div class="form-group">
+							<input class="form-control" type="text" name="addcpn" value="" />
+						</div>
+						<input type="submit" class="btn btn-default btn-block" value="Apply Discount Code">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-7">
+			[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'CartCTA' /%][%/if%]
+			<table class="table">
+				<tr>
+					<td>Sub Total</td>
+					<td class="text-right">[%format type:'currency'%][@product_total@][%/format%]</td>
+				</tr>
+				<tr>
+					<td>Shipping Cost To Post Code [@ship_zip@]</td>
+					<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
+				</tr>
+				[%active_coupons%]
+					[%param *header%]
+					<tr>
+						<td><b>Discounts Applied</b></td>
+						<td>&nbsp;</td>
+					</tr>
+					[%/param%]
+					[%param *body%]
+					<tr>
+						<td> [@code@] [@title@] <a href="[%url page:'checkout' qs:'rmcpn=[@code@]'/%]"><i class="fa fa-times"></i></a>
+						</td>
+						<td class="text-right">-[%format type:'currency'%][@discount@][%/format%]</td>
+					</tr>
+					[%/param%]
+				[%/active_coupons%]
+
+				[%if [@discount_total@] > 0%]
+				<tr>
+					<td>Discount Total</td>
+					<td class="text-right">-[%format type:'currency'%][@discount_total@][%/format%]</td>
+				</tr>
+				[%/if%]
+
+				[%if ![@notax@]%]
+				<tr>
+					<td>GST [%if [@tax_inc@]%]Inc.[%/if%]</td>
+					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
+				</tr>
+				[%/if%]
+				<tr>
+					<td ><b>Shopping Cart Total</b></td>
+					<td class="text-right" ><h3>[%format type:'currency'%][@grand_total@][%/format%]</h3></td>
+				</tr>
+			</table>
+			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
+
+					<input type="hidden" name="payment" value="6"/>
+					[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
+							[%param *header%]
+							<div class="row">
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">Select your payment plan</h4>
+						</div>
+						<div class="panel-body">
+							<select class="form-control" name="plan">
+								<option value="">Select your payment plan</option>
+								[%/param%]
+							[%param *body%]
+								<option value="[@id@]" [%if [%id%] eq [@payment_plan_id@]%]selected[%/if%]>[@name@]</option>
+								[%/param%]
+							[%param *footer%]
+							</select>
+						</div>
+					</div>
+					</div>
+
+					</div>
+					[%/param%]
+				[%/ payment_plans%]
+
+				<div class="row">
+					<div class="col-xs-12 col-md-5 cart-icons-holder">
+						[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
+							[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
+								<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
+							[%END IF%]
+							[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
+								<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'%][%END URL%]">
+									<img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass">
+								</a>
+							[%END IF%]
+						[%END IF%]
+					</div>
+					<div class="col-xs-12 col-md-7 text-center cart-page-btn-holder">
+						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
+							<i class="fa fa-lock"></i> Checkout Now
+						</button>
+					</div>
+				</div>
+				</div>
+			</form>
+			[%/param%]
+			[%/cart_items%]
+		</div>
+	</div>
+	<div class="findify-element" id="cart-findify-rec-1"></div>
+</div>
+</div>
+
+<!-- Do not edit below this line-->
+<script type="text/javascript" language="javascript">
+function rmcart (id) { var obj = document.getElementById(id); if(obj) { obj.value="0"; document.checkout.submit(); } }
+</script>
+[%ga_funnel%]/purchase/shopping_cart.html[%/ga_funnel%]
+
+<div data-findify-event="update-cart">
+    [%cart_items%]
+        [%param *body%]
+        <div data-findify-item-id="[%if [@parent_sku@] ne '0' and [@parent_sku@] ne ''%][@parent_sku@][%else%][@sku@][%/if%]" data-findify-variant-item-id="[@sku@]" data-findify-unit-price="[@price@]" data-findify-quantity="[@qty@]"></div>
+        [%/param%]
+    [%/cart_items%]
+</div>

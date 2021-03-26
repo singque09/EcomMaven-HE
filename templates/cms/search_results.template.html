@@ -1,0 +1,130 @@
+<div class="container">
+[%SET [@page_type@]='category'/%]
+	[%breadcrumb%]
+		[%PARAM *header%]
+		<ul class="breadcrumb">
+			<li>
+				<a href="[@config:home_url@]">Home</a>
+			</li>
+		[%/PARAM%]
+		[%PARAM *body%]
+			<li>
+				<a href="[@url@]">Search for '[@name@]'</a>
+			</li>
+		[%/PARAM%]
+		[%PARAM *footer%]
+			</ul>
+		[%/PARAM%]
+	[%/breadcrumb%]
+	[%FILTER ID:'keywords' if:'ne' value:''%]
+		<h1 class="page-header">
+			Search [@config:website_name@]
+		</h1>
+		<div class="search-results-search">
+			<form class="" name="productsearch" method="get" action="/">
+				<input type="hidden" name="rf" value="kw" />
+				<div class="input-group">
+					<input class="form-control input-lg" id="name_search" autocomplete="off" name="kw" value="[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]" type="search"/>
+					<span class="input-group-btn">
+						<button type="submit" value="Search" class="btn search-btn btn-default"><i class="fa fa-search"></i></button>
+					</span>
+				</div>
+			</form>
+		</div>
+	[%/FILTER%]
+	[%FILTER ID:'keywords' if:'eq' value:''%]
+		<h1>
+			[%url_info name:'page_heading' if:'eq' value:''%]
+				[%PARAM if_true%]
+					[@name@]
+				[%/PARAM%]
+				[%PARAM if_false%]
+					[%url_info name:'page_heading'%][%end url_info%]
+				[%/PARAM%]
+			[%/url_info%]
+			[%DATA ID:'id' if:'eq' value:''%]
+				[%FILTER ID:'keywords' if:'ne' value:''%][%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%][%/FILTER%]
+			[%/DATA%]
+		</h1>
+	[%/FILTER%]
+	[%FILTER ID:'keywords' if:'ne' value:' '%]
+		[%THUMB_LIST type:'products' template:'search' limit:'[@config:THUMB_LIMIT@]'%]
+			[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
+				[%PARAM *header%]
+					<hr/>
+					<div class="row padding-b-med sort_container">
+						
+						<div class="col-md-9 hidden-xs hidden-sm text-left">
+							<div class="btn-text">
+								<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-5 col-md-3">
+							<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
+								<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
+								<div class="form-group">
+									<label class="control-label col-xs-4">Sort</label>
+									<div class="col-xs-8">
+										<select name="sortby" onChange="return this.form.submit();" class="form-control">
+											<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
+												Most Popular
+											</option>
+											<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>
+												Name
+											</option>
+											
+											<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>
+												Lowest Price
+											</option>
+											<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>
+												Highest Price
+											</option>
+										</select>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
+						<div class="row">
+					[%/PARAM%]
+					[%PARAM *footer%]
+						</div>
+					</div>
+					[%IF [@total_results@] > [@config:thumb_limit@]%]
+						<div class="row">
+							<div class="col-xs-12">
+								<hr />
+								<div class="text-center">
+									<ul class="pagination">
+										[%paging limit:'3'%]
+											[%PARAM *previous_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
+											[%PARAM *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+											[%PARAM *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+											[%PARAM *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+											[%PARAM *next_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
+										[%/paging%]
+									</ul>
+								</div>
+							</div>
+						</div>
+					[%/IF%]
+				[%/PARAM%]
+				[%PARAM *ifempty%]
+					<div class="row">
+						<div class="col-xs-12">
+							[%FILTER ID:'keywords' if:'ne' value:''%]
+								<p>Search was unable to find any product results for '[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
+							[%/FILTER%]
+							[%FILTER ID:'keywords' if:'eq' value:''%]
+								<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
+							[%/FILTER%]
+							<hr />
+						</div>
+					</div>
+				[%/PARAM%]
+			[%/THUMB_LIST%]
+		</div>
+	[%/FILTER%]
+</div>
+</div>

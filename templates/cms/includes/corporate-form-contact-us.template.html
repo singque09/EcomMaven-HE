@@ -1,0 +1,223 @@
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/contact.css[%/ntheme_asset%]" media="all"/>
+<div class="container">
+	[%breadcrumb%]
+		[%param *header%]
+			<ul class="breadcrumb contact-breadcrumb">
+				<li><a href="[@config:home_url@]">Home</a></li>
+		[%/param%]
+		[%param *body%]
+			<li><a href="[@url@]">[@name@]</a></li>
+		[%/param%]
+		[%param *body_current%]
+			<li>[@name@]</li>
+		[%/param%]
+		[%param *footer%]
+			</ul>
+		[%/param%]
+	[%/breadcrumb%]
+
+	<h1 class="contact-heading">[@content_name@]</h1>
+
+	<ul class="nav nav-pills tabs" role="tablist">
+		[%show_content id:'7137' %]
+			[%param *body%]
+				<li role="presentation" class="tab"><a href="[@content_label1@]" class="tabs-button">[@content_name@]</a></li>
+			[%/param%]
+		[%/show_content%]
+		[%show_content id:'7143' %]
+			[%param *body%]
+				<li role="presentation" class="tab"><a href="[%if [@haslogin@]%][@content_label1@][%else%][@content_label2@][%/if%]" class="tabs-button">[@content_name@]</a></li>
+			[%/param%]
+		[%/show_content%]
+		[%show_content id:'7144' %]
+			[%param *body%]
+				<li role="presentation" class="tab"><a href="[@content_label1@]" class="tabs-button">[@content_name@]</a></li>
+			[%/param%]
+		[%/show_content%]
+	</ul>
+
+	<section class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		[%thumb_list type:'content' content_type:'faq' limit:'5' filter_category:'7176'%]
+			[%param *body%]
+				<div class="accordion">
+					<div role="tab" id="heading[@page_id@]">
+						<h3 class="accordion-heading">
+							<a role="button" data-toggle="collapse" class="accordion-link collapsed" data-parent="#accordion" href="#collapse[@page_id@]" aria-expanded="true" aria-controls="collapse[@page_id@]">
+								[@content_name@]
+								<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="18" height="20.55"><path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path></svg>
+							</a>
+						</h3>
+					</div>
+					<div id="collapse[@page_id@]" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading[@page_id@]">
+						<div class="accordion-body">
+							[@content_description1@]
+						</div>
+					</div>
+				</div>
+			[%/param%]
+		[%/thumb_list%]
+	</section>
+
+	<section class="contact-details">
+		<h2 class="contact-heading">Need more information? <br />We're here for you!</h2>
+		[%content_zone id:'contact_details'%][%end content_zone%]
+	</section>
+
+</div>
+
+<section id="contact-form" class="contact-form-section">
+	<div class="container contact-form">
+		<h2 class="email-heading">Email us</h2>
+		[%parse%]
+			[@content_description3@]
+		[%/parse%]
+	</div>
+</section>
+
+<section class="container contact-locations">
+	<article class="contact-location__large">
+		[%show_content id:'7154' %]
+			[%param *body%]
+				<h2 class="contact-heading">Our Warehouse & Shipping Location</h2>
+				<div class="row">
+					<div class="col-md-6">
+						<h3 class="contact-heading2">[@content_name@]</h3>
+						[@content_description1@]
+					</div>
+					<div class="col-md-6">
+						[@content_description2@]
+					</div>
+				</div>
+			[%/param%]
+		[%/show_content%]
+	</article>
+	<h2 class="text-center contact-heading2">Our Support Office Locations</h2>
+	<p class="text-center contact-intro">Orders can not be shipped or picked up from these locations</p>
+	<div class="row">
+		<div class="col-md-4">
+			<article class="contact-location">
+				[%show_content id:'7155' %]
+					[%param *body%]
+					[@content_description2@]
+					[@content_description1@]
+					[%/param%]
+				[%/show_content%]
+			</article>
+		</div>
+		<div class="col-md-4">
+			<article class="contact-location">
+				[%show_content id:'7156' %]
+					[%param *body%]
+					[@content_description2@]
+					[@content_description1@]
+					[%/param%]
+				[%/show_content%]
+			</article>
+		</div>
+		<div class="col-md-4">
+			<article class="contact-location">
+				[%show_content id:'7157' %]
+					[%param *body%]
+					[@content_description2@]
+					[@content_description1@]
+					[%/param%]
+				[%/show_content%]
+			</article>
+		</div>
+	</div>
+</section>
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Store",
+      "image":"https://www.thehamperemporium.com.au/assets/website_logo.png?12",
+      "name": "The Hamper Emporium",
+      "description": "We are in the business of giving. At The Hamper Emporium, we are committed to providing the finest products, including Xmas Hampers, at an affordable price, because we understand why it’s important to tell the people you care about what they mean to you.",
+      "priceRange":"$-$$$",
+      "openingHours": "Mo-Fr, 09:00-17:00",
+      "telephone": "1300 459 452 / +61 2 9645 3516 ",
+      "address":
+      {
+          "@type": "PostalAddress",
+          "streetAddress": "c1/391 Park Rd, Regents Park NSW 2143",
+          "addressLocality": "Regents Park",
+          "addressRegion": "NSW",
+          "addressCountry": "AUS"
+      },
+     "aggregateRating":
+     {
+        "@type": "AggregateRating",
+        "bestRating": "4.5 of 5.0",
+        "ratingCount": "860",
+        "ratingValue": "87%"
+      }
+    }
+</script>
+
+
+<script>
+	jQuery(document).ready(function(){
+		/* $('form input[type="submit"]').prop("disabled", true); */
+			jQuery("#inp-one_off_bulk").click(function(){
+            if(jQuery(this).prop("checked") == true){
+                jQuery('.second-radio_selected :input, .third-radio_selected :input, .fourth-radio_selected :input').prop("disabled", true);
+                jQuery('.first-radio_selected :input').prop("disabled", false);
+				
+                jQuery('.second-radio_selected, .third-radio_selected, .fourth-radio_selected').removeClass("displayBlock");
+                jQuery('.second-radio_selected, .third-radio_selected, .fourth-radio_selected').addClass("displayNone");
+                
+                jQuery('.first-radio_selected').addClass("displayBlock");
+                jQuery('.first-radio_selected').removeClass("displayNone");
+            }
+            else if(jQuery(this).prop("checked") == false){
+                jQuery('.first-radio_selected input').prop("disabled", false);
+            }
+        });
+        jQuery("#inp-corporate_branding").click(function(){
+            if(jQuery(this).prop("checked") == true){
+                jQuery('.first-radio_selected :input, .third-radio_selected :input, .fourth-radio_selected :input').prop("disabled", true);
+                jQuery('.second-radio_selected :input').prop("disabled", false);
+				
+                jQuery('.first-radio_selected, .third-radio_selected, .fourth-radio_selected').removeClass("displayBlock");
+                jQuery('.first-radio_selected, .third-radio_selected, .fourth-radio_selected').addClass("displayNone");
+                
+                jQuery('.second-radio_selected').addClass("displayBlock");
+                jQuery('.second-radio_selected').removeClass("displayNone");
+            }
+            else if(jQuery(this).prop("checked") == false){
+                jQuery('.first-radio_selected input').prop("disabled", false);
+            }
+        });
+        jQuery("#inp-settlement_gifts").click(function(){
+            if(jQuery(this).prop("checked") == true){
+                jQuery('.second-radio_selected :input, .first-radio_selected :input, .fourth-radio_selected :input').prop("disabled", true);
+                jQuery('.third-radio_selected :input').prop("disabled", false);
+				
+                jQuery('.second-radio_selected, .first-radio_selected, .fourth-radio_selected').removeClass("displayBlock");
+                jQuery('.second-radio_selected, .first-radio_selected, .fourth-radio_selected').addClass("displayNone");
+                
+                jQuery('.third-radio_selected').addClass("displayBlock");
+                jQuery('.third-radio_selected').removeClass("displayNone");
+            }
+            else if(jQuery(this).prop("checked") == false){
+                jQuery('.first-radio_selected input').prop("disabled", false);
+            }
+        });
+        jQuery("#inp-christmas_order").click(function(){
+            if(jQuery(this).prop("checked") == true){
+                jQuery('.second-radio_selected :input, .third-radio_selected :input, .first-radio_selected :input').prop("disabled", true);
+                jQuery('.fourth-radio_selected :input').prop("disabled", false);
+				
+                jQuery('.second-radio_selected, .first-radio_selected, .first-radio_selected').removeClass("displayBlock");
+                jQuery('.second-radio_selected, .first-radio_selected, .first-radio_selected').addClass("displayNone");
+                
+                jQuery('.fourth-radio_selected').addClass("displayBlock");
+                jQuery('.fourth-radio_selected').removeClass("displayNone");
+            }
+            else if(jQuery(this).prop("checked") == false){
+                jQuery('.first-radio_selected input').prop("disabled", false);
+            }
+        });
+    });
+</script>
+

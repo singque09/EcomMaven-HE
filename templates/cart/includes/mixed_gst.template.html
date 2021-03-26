@@ -1,0 +1,21 @@
+[%set [@totalmixedgst@]%][@tax_total@][%/set%]
+[%cart_items%]
+    [%param *header%]
+        [%set [@^totalmixedgst@]%][@tax_total@][%/set%]
+    [%/param%]
+[%/cart_items%]
+[%cart_items%]
+    [%param *body%]
+        [%set [@misc22gst@]%][%format type:'number' dp:'2'%][@misc22@][%/format%][%/set%]
+        [%set [@mixedgst@]%][%if [@misc22gst@] eq '' OR [@misc22gst@] <= 0%]10[%else%][@misc22@][%/if%][%/set%]
+        [%set [@mixedgstprice@]%][%calc [@subtotal@]-([@subtotal@]/(1+[@mixedgst@]/100)) /%][%/set%]
+        [%set [@original_gst@]%][%calc [@subtotal@]-([@subtotal@]/1.1) /%][%/set%]
+        [%set [@mixed_difference@]%][%calc [@mixedgstprice@]-[@original_gst@]/%][%/set%]
+        [%set [@^totalmixedgst@]%][%calc [@^totalmixedgst@] + [@mixed_difference@] /%][%/set%]
+    [%/param%]
+[%/cart_items%]
+
+
+
+
+<input type="hidden" id="mixedGST" value="[%format type:'currency'%][@totalmixedgst@][%/format%]">

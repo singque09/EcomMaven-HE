@@ -1,0 +1,306 @@
+
+section.corporate-branding.padding-tb-med.mailchimpNeil {
+    display: none;
+}
+/* checkbox - start */
+/* The container */
+.mc-checkBox .container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  /* margin-bottom: 12px; */
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display : inline-block;
+  width: 50%;
+}
+
+/* Hide the browser's default checkbox */
+.mc-checkBox .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border : 1px solid #999;
+}
+
+/* On mouse-over, add a grey background color */
+.mc-checkBox .container:hover input ~ .checkmark {
+  border : 1px solid #333;
+}
+
+/* When the checkbox is checked, add a blue background */
+.mc-checkBox .container input:checked ~ .checkmark {
+  border : 1px solid #333;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.mc-checkBox .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.mc-checkBox .container .checkmark:after {
+    content: '\d7';
+    font-size: 44px;
+    margin-top: -23px;
+    margin-left: -3px;
+    font-weight : 100;
+    color : black;
+}
+/* checkbox - end */
+div#ddexitpop1 {
+    max-width: 500px;
+    border : none;
+    padding: 0;
+    border-radius: 0;
+    background: url('/assets/image/popupMain1.jpg');
+    background-repeat : no-repeat;
+    background-color : #fff;
+    padding-top: 230px;
+    background-size: 100% auto;
+}
+div#mc_embed_signup-Popup {
+    background: #fff;
+    padding : 0 40px;
+    padding-bottom : 40px;
+}
+
+
+input#mce-FNAME {
+    text-transform: capitalize;
+}
+
+input#mce-EMAIL {
+    text-transform: uppercase;
+}
+
+div#mc_embed_signup_scroll h2, .popupAll .successMC h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 44px;
+    margin-bottom: 16px;
+    margin-top: 7px;
+    font-family: "Baskerville";
+    padding-top: 20px;
+    color: #2B2B2B;
+}
+
+div#mc_embed_signup_scroll > p {
+    margin-top: -7px;
+    font-size: 17px;
+    text-align: center;
+    font-family: montserrat;
+    text-transform: uppercase;
+    letter-spacing: 3.4px;
+    color: #2B2B2B;
+}
+
+.indicates-required {
+    display: none;
+}
+
+.mc-field-group {
+    width: 100%;
+    float: left;
+}
+
+.mc-field-group input#mce-EMAIL, .mc-field-group input#mce-FNAME,.mc-field-group input#mce-PHONE {
+    width: 96%;
+    height : 35px;
+    margin : 5px;
+    padding : 15px;
+    border: transparent;
+    border-bottom: solid 1px #888888;
+    text-align: center;
+    font-family: 'montserrat';
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.mc-checkBox li{
+    list-style: none;
+}
+.mc-checkBox > span {
+    max-width: 60%;
+    display : block;
+    float : left;
+    padding-left : 15px;
+    font-size: 12px;
+}
+.mc-checkBox > ul {
+    max-width: 40%;
+    display : block;
+    float : left;
+    padding-left : 15px;
+}
+div#mc_embed_signup_scroll {
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+input#mc-embedded-subscribe-Popup, .popupAll .successMC button {
+    width: 300px;
+    height: 45px;
+    background: #2B2B2B;
+    color : #fff;
+    text-transform : uppercase;
+    font-family: 'montserrat';
+    font-size: 18px;
+    letter-spacing: 4px;
+    font-weight: 200;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    border: transparent;
+    margin-top: 15px !important;
+    margin-top: 20px;
+}
+.displayNone {
+	display : none;
+}
+.displayBlock {
+	display : block;
+}
+label.error {
+	color : #ff0000;
+}
+.noThanksClose {
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: underline;
+    color: #888888;
+    font-size: 11px !important;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    margin-bottom: -10px;
+}
+.noThanksClose.popupClose {    
+    font-size: 12px;
+    cursor: pointer;
+}
+
+input#mce-PHONE:disabled {border-color: #ebebe4;}
+
+input#mce-PHONE:disabled::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ebebe4;
+}
+input#mce-PHONE:disabled:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ebebe4;
+}
+input#mce-PHONE:disabled::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ebebe4;
+}
+input#mce-PHONE:disabled:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ebebe4;
+}
+
+.exitX {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #ffffff;
+    margin: 10px;
+    font-size: 22px;
+}
+
+.exitX:after {
+    content: '\d7';
+    font-size: 40px;
+    display: block;
+    margin-top: -20px;
+    cursor: pointer;
+}
+.popupAll div#successMC {
+    background: #fff;
+    margin-bottom: 50px;
+}
+.popupAll div#successMC button.popupClose {
+    width : auto;
+    padding : 0 30px;
+}
+.popupAll div#successMC {
+    background: #fff;
+    margin-bottom: 50px;
+}
+
+@media (max-width : 670px) {
+    div#ddexitpop1 {
+        width : 80%;
+        padding : 20px;
+        padding-top : 130px;
+
+    }
+    div#mc_embed_signup_scroll h2 {
+        font-size : 30px;
+        font-weight : 400;
+    }
+    .mc-field-group {
+        width : 100%;
+    }
+    .mc-field-group input#mce-EMAIL, .mc-field-group input#mce-FNAME,.mc-field-group input#mce-PHONE {
+        width : 100%;
+        margin : 5px 0;
+        height : 20px;
+    }
+    .mc-checkBox > span {
+        max-width : 65%;
+        padding-left : 0;
+    }
+    .mc-checkBox > ul {
+        max-width : 35%;
+        padding-left : 0;
+    }
+    .mc-checkBox > ul li{
+        float : left;
+        max-width : 60%;
+        font-size : 12px;
+        padding-left : 10px;
+    }
+	
+	.popupAll div#successMC h2 {
+		font-size : 30px
+	}
+
+	.popupAll div#successMC button.popupClose {
+		font-size : 8px;    
+	}
+
+    
+	.popupAll .successMC button {
+		font-size: 10px;
+	}
+
+	.popupAll .successMC h2 {
+		font-size: 19px;
+	}
+	input#mc-embedded-subscribe-Popup, .popupAll .successMC button {
+		width : 100%;
+	}
+	div#mc_embed_signup_scroll > p {
+		font-size : 12px;
+	}
+
+}

@@ -1,0 +1,630 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Banner */
+  .corporate-main-banner {
+      height: 430px;
+      display: flex;
+      align-items: center;
+      background-image: url(../img/corporate-hampers/corp-banner.jpg);
+      background-position: center;
+      background-size: cover;
+      position: relative;
+  }
+  
+  .corporate-main-banner__panel {
+      background: rgba(0,0,0,0.7);
+      color: white;
+      text-align: center;
+      border: 1px solid white;
+      padding: 0 40px;
+      margin: 0;
+  }
+  
+  .corporate-main-banner__text {
+      margin: 10px 0 20px;
+      font-size: 1.3em;
+  }
+  
+  .corporate__helplink {
+      text-decoration: underline;
+      font-size: 0.9em;
+      padding: 0 0 10px;
+      display: inline-block;
+      color: #BFA774;
+  }
+  
+  @media (min-width: 1025px) {
+  
+      .corporate__helplink {
+          padding-top: 20px;
+      }
+  }
+  
+  .corporate-main-banner__btn {
+      background: white;
+      font-size: 12px;
+      color: black;
+      font-weight: bold;
+      padding: 8px 30px;
+      border-radius: 2px;
+      clear: both;
+      display: inline-block;
+  }
+  
+  .corporate-banner-footer {
+      text-align: center;
+      background: black;
+      padding: 20px 0;
+      font-size: 1.3em;
+      border-top: 4px solid #BFA774;
+  }
+  
+  .corporate-banner-footer__text {
+      color: white;
+      text-decoration: none;
+  }
+  
+  .corporate-banner-footer svg {
+      margin: 0 0 -2px 10px;
+  }
+  
+  @media(max-width: 768px) {
+      .corporate-main-banner {
+          height: 426px;
+      }
+      .corporate-banner-footer {
+          font-size: 1.1em;
+      }
+  }
+  
+  /* Products list */
+  .corporate-products {
+      padding: 60px 0;
+  }
+  
+  .corporate-tabs {
+      text-align: center;
+  }
+  
+  .corporate-tabs li {
+      display: inline-block;
+      width: 20%;
+      float: none;
+  }
+  
+  .corporate-tabs li a {
+      padding: 18px 0;
+  }
+  
+  .corporate-products__tabs li a {
+      background: #eee;
+      color: black;
+      border-radius: 2px;
+  }
+  
+  .corporate-products__tabs li a:hover,
+  .corporate-products__tabs>li.active>a,
+  .corporate-products__tabs>li.active>a:hover,
+  .corporate-products__tabs>li.active>a:focus {
+      background: black;
+      color: white;
+  }
+  
+  .corporate-products__panes {
+      padding-top: 60px;
+  }
+  
+  .btn--black {
+      width: auto;
+      text-align: center;
+      background: transparent linear-gradient(180deg, #393839 0%, #000000 100%) 0% 0% no-repeat padding-box;
+      font-size: 0.9em;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      display: inline-block;
+  }
+  
+  .btn--black:hover, .btn--black:focus, .btn--black:active {
+      color: white;
+      background: #BFA774;
+      text-decoration: none;
+  }
+  
+  .corporate-products__full-range {
+      padding-top: 20px;
+      text-align: center;
+  }
+  .btn--range {
+      background: white;
+      border: 1px solid black;
+      padding: 18px 0;
+      min-width: 33%;
+      display: inline-block;
+      box-sizing: border-box;
+      color: black;
+      text-decoration: none;
+  }
+  
+  .btn--range:hover {
+      text-decoration: none;
+      color: white;
+      background: black;
+  }
+  
+  @media (max-width: 768px) {
+      .corporate-products__tabs li {
+          width: 33%;
+          padding: 10px 0;
+          font-size: 13px;
+      }
+      .corporate-products {
+          padding: 60px 0 0;
+      }
+  }
+  
+  
+  /* Corporate Gifts Section */
+  
+  .corporate-gifts-section {
+      display: flex;
+      align-items: stretch;
+  
+  }
+  
+  .corporate-gifts-section__image {
+      flex: 55%;
+      background-position: center;
+      background-image: url(../img/corporate-hampers/red-ribbon.jpg);
+      background-size: cover;
+  }
+  
+  .corporate-gifts-section__text {
+      flex: 45%;
+      padding: 30px 50px 25px;
+  }
+  .corporate-gifts-section__copy {
+      padding-top: 50px;
+      line-height: 1.9em;
+  }
+  .corporate-gifts-section__copy span {
+      max-width: 400px;
+      display: inline-block;
+  }
+  
+  .gift_buttons {
+      padding: 10px 20px;
+      border-radius: 3px;
+      box-sizing: content-box;
+      font-size: 13px;
+      min-width: 100px;
+  }
+  
+  @media(max-width: 768px) {
+      .corporate-gifts-section {
+          display: block;
+      }
+      .corporate-gifts-section__image {
+          width: 100%;
+          height: 300px;
+          display: block;
+      }
+      .corporate-gifts-section__text {
+          display: block;
+          padding: 0px 50px 50px;
+          text-align: center;
+      }
+      .gift_buttons, .gift_buttons.btn--black {
+          width: 100%;
+          box-sizing: border-box;
+          margin-bottom: 10px;
+      }
+  }
+  @media(max-width: 480px) {
+      .slick-slide {
+          opacity: 0.6;
+      }
+      .slick-slide.slick-active {
+          opacity: 1;
+      }
+  }
+  
+  /* Corporate Branding Section */
+  .corporate-branding__header {
+      text-align: center;
+      background: black;
+      color: white;
+      border-top: 4px solid #BFA774;
+      padding: 0;
+  }
+  
+  .corporate-branding__header .corporate-branding__title {
+      margin: 0;
+      font-size: 3.1em;
+      padding: 80px 0;
+      line-height: 1.4em;
+  }
+  
+  .corporate-branding__gold {
+      color: #BFA774;
+  }
+  
+  .corporate-branding__tabs li a {
+      background: black;
+      color: white;
+      border-radius: 0;
+  }
+  
+  .corporate-branding__tabs li a:hover,
+  .corporate-branding__tabs>li.active>a,
+  .corporate-branding__tabs>li.active>a:hover,
+  .corporate-branding__tabs>li.active>a:focus {
+      background: white;
+      color: black;
+  }
+  
+  .corporate-branding__panes {
+      font-size: 13px;
+      line-height: 1.7em;
+  }
+  .corporate-branding__panes ul {
+      margin: 10px 0;
+      font-size: 15px;
+      line-height: 1.9em;
+      font-weight: bold;
+      padding-left: 20px;
+  }
+  
+  .corporate-branding__panel.panel {
+      -webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+      text-align: center;
+  }
+  
+  .corporate-branding__panel.panel .panel-heading {
+      background: black;
+      color: white;
+      border: none;
+  }
+  
+  .corporate-branding__panel.panel .panel-body {
+      font-size: 12px;
+      color: black;
+      line-height: 1.9em;
+  }
+  
+  .corporate-branding__panel.panel h1 {
+      width: 20px;
+      margin: 20px auto 10px;
+      background: white;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: bold;
+  }
+  
+  .panel__textwrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+  }
+  
+  .panel__text {
+      flex: auto;
+      padding-bottom: 20px;
+  }
+  .panel__divider {
+      border-top: 4px dotted black;
+      width: 33%;
+      padding: 10px;
+  }
+  .panel__divider--link {
+      border-top: 4px dotted black;
+      position: absolute;
+      width: 70%;
+      top: 95px;
+      left: 15%;
+  }
+  .panel__phone {
+      font-size: 28px;
+      font-weight: bold;
+      padding-bottom: 20px;
+  }
+  
+  .corporate-branding__img p {
+      margin: 0;
+  }
+  
+  .corporate-branding__img img {
+      width: 100% !important;
+  }
+  
+  .branding-accordion.accordion-link {
+      padding: 1.5rem 2rem;
+      margin: 2px -15px;
+      color: white;
+      background: black;
+  }
+  
+  .branding-accordion:hover,
+  .branding-accordion:focus,
+  .branding-accordion:active,
+  .branding-accordion.active:link {
+      text-decoration: none;
+      /* color: white;
+      background: black; */
+  }
+  
+  .branding-accordion.active:visited {
+      background-color: #f8f8f8;
+      color: #39383a;
+  }
+  
+  .branding-accordion:active svg,
+  .branding-accordion:focus svg {
+      -moz-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg);
+  }
+  
+  .corporate-branding__mobile-header {
+      font-size: 1.5em;
+      line-height: 1.4em;
+  }
+  
+  @media(max-width: 768px) {
+      .corporate-branding .tab-pane {
+          padding-top: 40px;
+      }
+      .corporate-branding__panel.panel {
+          text-align: left;
+      }
+      .corporate-branding__panel.panel h1 {
+          display: inline-block;
+          margin: 0;
+          width: 27px;
+          margin-right: 4px;
+          font-size: 24px;
+          margin-bottom: 16px;
+      }
+      .corporate-branding__panel.panel p {
+          width: 250px;
+          text-align: center;
+          line-height: 1.4em;
+          vertical-align: middle;
+      }
+      .corporate-branding__desc ul li {
+          width: 70px;
+          height: 70px;
+          padding: 10px 5px;
+          border-radius: 50%;
+          border: 1px solid black;
+          vertical-align: middle;
+          display: table-cell;
+          font-size: 10px;
+          line-height: 1.3em;
+          text-align: center;
+      }
+      .corporate-branding__desc ul {
+          margin: 0;
+          padding: 0;
+          text-transform: uppercase;
+          list-style: none;
+          text-align: center;
+          display: table;
+          border-spacing: 10px;
+          margin: 0 auto;
+      }
+  }
+  
+  /* Corporate Interest Section */
+  .corporate-interest__banner {
+      background: url(../img/corporate-hampers/cheers.jpg);
+      background-position: center;
+      background-size: cover;
+      position: relative;
+  }
+  
+  .black-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+  }
+  
+  .black-overlay-light {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.1);
+  }
+  
+  .corporate-interest__icon {
+      width: 80px;
+      height: 80px;
+      background: white;
+      margin: 20px auto;
+      border-radius: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+  }
+  
+  .shipped-icon {
+      background-image: url(../img/corporate-hampers/shipped.svg);
+      background-size: 60%;
+  }
+  .ribbon-icon {
+      background-image: url(../img/corporate-hampers/ribbon.svg);
+      background-size: auto 50px;
+  }
+  .person-icon {
+      background-image: url(../img/corporate-hampers/person.svg);
+      background-position: top;
+      background-size: auto 70px;
+  }
+  .surprise-icon {
+      background-image: url(../img/corporate-hampers/surprise.svg);
+      background-size: auto 40px;
+  }
+  
+  .corporate-interest__banner h2 {
+      color: white;
+      font-weight: 500;
+  }
+  .corporate-interest__banner p {
+      font-weight: 500;
+      font-size: 16px;
+  }
+  .corporate-interest__button {
+      background: white;
+      padding: 10px 20px;
+      border-radius: 3px;
+      width: 300px;
+      color: black;
+      display: inline-block;
+      margin: 7px auto;
+  }
+  
+  @media(max-width: 768px) {
+      .corporate-interest__banner .container {
+          padding: 50px 15px;
+      }
+  }
+  
+  /* Slider Styles */
+  .ribbon__wrapper {
+      display: block;
+      position: relative;
+  }
+  
+  .ribbon__wrapper .slick-arrow {
+      top: 42%;
+  }
+  
+  .ribbon__wrapper .slick-arrow::before {
+      font-size: 30px;
+  }
+  
+  .ribbon__slide {
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 3px;
+      vertical-align: top;
+  }
+  
+  .ribbon__slide.testimonials__slide {
+      padding: 20px;
+  }
+  
+  .ribbon__slide img {
+      width: 100%;
+  }
+  
+  .ribbon__slide p {
+      margin: 0;
+  }
+  
+  .ribbon__slide .slide__img {
+      width: 100%;
+      height: 100px;
+      background-position: center;
+      background-size: contain;
+      margin-bottom: 20px;
+  }
+  
+  .ribbon__subtitle {
+      padding: 10px 0;
+      display: inline-block;
+      font-size: 13px;
+  }
+  
+  .testimonials__subtitle {
+      color: #BFA774;
+      font-weight: bold;
+      font-size: 13px;
+      display: inline-block;
+      padding-top: 10px;
+  }
+  
+  .slick-dots {
+      bottom: -35px;
+  }
+  
+  .slick-dots li {
+      margin: 0;
+      width: 15px;
+  }
+  
+  .slick-dots li button:before {
+      font-size: 30px;
+  }
+  
+  @media(max-width: 768px) {
+      .testimonials__slick {
+          text-align: center;
+      }
+  }
+  
+  
+  /* Accordion */
+  .accordion {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: .5rem !important;
+  }
+  
+  .accordion-body {
+    margin-top: .5rem;
+    padding: 2.5rem 3rem;
+  }
+  
+  @media (min-width: 1025px) {
+  
+    .accordion-body {
+      padding: 3rem 4rem;
+    }
+  }
+  
+  .accordion-heading.accordion-heading.accordion-heading {
+    margin: 0 !important;
+  }
+  
+  .accordion-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 2.5rem 3rem;
+    color: #39383a;
+  }
+  
+  .accordion-link:not(.collapsed) {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .accordion-link:not(.collapsed) svg {
+    transform: rotate(180deg);
+  }
+  
+  .accordion-body *:last-child {
+    margin-bottom: 0;
+  }
+  
+  
+  /* Category styles */
+  .category-banner__title {
+      color: white;
+      font-family: 'Roboto Slab',serif;
+      font-size: 5.4em;
+  }
+  .category__title {
+      display: block;
+      float: none;
+  }
+  

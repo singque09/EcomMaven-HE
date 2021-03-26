@@ -1,0 +1,401 @@
+[%site_value id:'footer_javascript'%]
+
+<script>
+$(document).ready(function() {
+	var docWidth = $(window).width();
+
+	// $.addToCartInit({
+	// 	'cart_id':'cartcontents',
+	// 	'target_id':'cartcontentsheader',
+	// 	'image_rel':'itmimg',
+	// 	'cart': {
+	// 				'footer': '</ul> <br> Total Item(s): <b>##item_count##</b><br />Sub Total: <b>##CURRENCY:product_total##</b><br/> ##IF:product_discount##Discount: <b>##CURRENCY:product_discount##</b><br/>##END IF:product_discount## <button class="viewcart btn btn-default" type="button" onclick="window.location=\'##checkouturl##\';" title="View Shopping Cart">View Cart</button> <button class="checkout btn btn-success" type="button" onclick="window.location=\'##checkouturl##&fn=payment\';" title="Checkout">Checkout</button><button class="edit-message btn btn-default" onclick="window.location=\'##checkouturl##&fn=upsell\';">Edit Card Message</button>'
+	// 	}
+	// });
+});
+</script>
+<script>
+		$(document).ready(function() {
+			if ($(window).width() < 768) {
+				$('#collapsable-description.collapse').collapse('hide')
+			}
+		})
+		$(window).resize(function() {
+			if ($(window).width() >= 768) {
+				$('#collapsable-description.collapse').collapse('show')
+			}
+			if ($(window).width() < 768) {
+				$('#collapsable-description.collapse').collapse('hide')
+			}
+		})
+	</script>
+[%/site_value%]
+<div class="container category-section-wrapper">
+[%SET [@page_type@]='category'/%]
+
+[%breadcrumb%]
+	[%PARAM *header%]
+		<ul class="breadcrumb">
+			<li>
+				<a href="[@config:home_url@]">Home</a>
+			</li>
+	[%/PARAM%]
+	[%PARAM *body%]
+		<li>
+			<a href="[@url@]">[@name@]</a>
+		</li>
+	[%/PARAM%]
+	[%PARAM *footer%]
+		</ul>
+	[%/PARAM%]
+[%/breadcrumb%]
+<h1 itemprop="name" class="page-header">
+	[%url_info name:'page_heading' if:'eq' value:''%]
+		[%PARAM if_true%]
+			[@content_name@]
+		[%/PARAM%]
+		[%PARAM if_false%]
+			[%url_info name:'page_heading'%][%end url_info%]
+		[%/PARAM%]
+	[%end url_info%]
+	[%IF [@keywords@] == ''%]
+		[%FILTER ID:'keywords' if:'ne' value:''%][%NOHTML%][%FILTER ID:'keywords'%][%/FILTER%][%/NOHTML%][%/FILTER%]
+	[%/IF%]
+</h1>
+[%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
+	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
+		[%param *header%]
+			<div id="homepageCarousel" class="carousel slide">
+				[%if [@total_showing@] > 1%]
+					<ol class="carousel-indicators">
+						[%site_value id:'counter' type:'load'/%]
+					</ol>
+				[%/if%]
+				<div class="carousel-inner">
+		[%/param%]
+		[%param *footer%]
+				</div>
+				[%if [@total_showing@] > 1%]
+					<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
+						<span class="fa fa-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
+						<span class="fa fa-chevron-right"></span>
+					</a>
+				[%/if%]
+			</div>
+			<hr>
+		[%/param%]
+		[%param *ifempty%]
+		[%/param%]
+	[%/advert%]
+
+	[%set [@cat_img@]%][%asset_url type:'content' id:'[@content_id@]'/%][%/set%]
+
+	[%if [@cat_img@] ne ''%]
+	<img itemprop="image" src="[@cat_img@]?[@config:NETO_CSS_VERSION@]" class="img-responsive" alt="[@content_label1@]">
+	[%/if%]
+		[%if [@content_short_description1@] ne '' %] 
+		<style>
+		.h2catHolder {
+			margin-top: 30px;
+			margin-bottom: 20px;
+		}
+		#n_category .h2catHolder {
+			font-size: 16px;
+		  }
+		}
+		</style>
+		<div class="h2catHolder">
+			<h2>[@content_short_description1@]</h2>
+		</div>
+		[%/if%]
+	[%if [@content_short_description1@] or [@content_short_description2@] or [@content_short_description3@] or [@content_description1@] or [@content_description2@] or [@content_description3@]%]
+		
+		
+		<div id="collapsable-description" class="category-description collapse">
+			[@content_description1@]
+		</div>
+		<div class="text-right">
+			<a class="btn collapsed" role="button" data-toggle="collapse" href="#collapsable-description" aria-expanded="false" aria-controls="collapsable-description">
+				View More
+			</a>
+		</div>
+
+		<hr>
+	[%/if%]
+[%/if%]
+
+<style>.findify-component-spinner,.findify-component-spinner:after{border-radius:50%;width:60px;height:60px}.findify-component-spinner{margin:60px auto 0!important;position:relative;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:findify-component-spinner-animation .7s infinite cubic-bezier(.67,.35,.7,.8);animation:findify-component-spinner-animation .7s infinite cubic-bezier(.67,.35,.7,.8);-ms-transform-origin:50% 50%;-webkit-transform-origin:50% 50%;transform-origin:50% 50%;border-top:3px solid #eaeaea;border-right:3px solid #eaeaea;border-bottom:3px solid #eaeaea;border-left:3px solid #c6c6c6}@-webkit-keyframes findify-component-spinner-animation{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}100%{-webkit-transform:rotate(450deg);transform:rotate(450deg)}}@keyframes findify-component-spinner-animation{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}100%{-webkit-transform:rotate(450deg);transform:rotate(450deg)}}
+</style>
+<div data-findify="search">
+    <div class="findify-component-spinner"></div>
+  <div class="findify-fallback" style="display:none;">
+
+		[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]' %]
+			[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
+			[%PARAM *header%]
+			<div class="row padding-b-med sort_container">
+				<div class="col-md-3 hidden-xs hidden-sm text-left">
+					<div class="btn-text">
+						<strong itemprop="numberOfItems">[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6 category-boxes-holder">
+				[%if [@content_id@] eq '39' or [@content_name@] eq 'New Baby' or [@content_id@] eq '33'%]
+					[%ADVERT type:'text' template:'sidebar-christmas' limit:'6' ad_group:'mini-category-banner'%]
+						[%PARAM *header%]
+							<ul class="category list-group">
+						[%END PARAM%]
+						[%PARAM *footer%]
+							</ul>
+						[%END PARAM%]
+					[%END ADVERT%]
+				[%/if%]
+				</div>
+				<div class="col-xs-12 col-sm-5 col-md-3 sort-form-wrapper">
+					<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
+						<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
+						<div class="form-group">
+							<label class="control-label col-xs-4 sort-label">Sort</label>
+							<div class="col-xs-8 sort-drop-wrapper">
+								<select name="sortby" onChange="return this.form.submit();" class="form-control">
+									<option itemprop="itemListOrder	" value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
+										Most Popular
+									</option>
+									<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>
+										Name
+									</option>
+									<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>
+										Lowest Price
+									</option>
+									<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>
+										Highest Price
+									</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
+				<div class="row padding-b-med">
+				[%/PARAM%]
+				[%PARAM *footer%]
+				</div>
+			</div>
+			[%IF [@total_results@] > [@config:thumb_limit@]%]
+				<div class="row">
+					<div class="col-xs-12">
+						<hr />
+						<div class="text-center">
+							<ul class="pagination">
+								[%paging limit:'3'%]
+									[%PARAM *previous_page%]<li><a href="[@URL@]"><i class="fa fa-angle-left"></i></a></li>[%/PARAM%]
+									[%PARAM *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+									[%PARAM *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+									[%PARAM *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+									[%PARAM *next_page%]<li><a href="[@URL@]"><i class="fa fa-angle-right"></i></a></li>[%/PARAM%]
+								[%/paging%]
+							</ul>
+						</div>
+					</div>
+				</div>
+			[%/IF%]
+			[%/PARAM%]
+			[%PARAM *ifempty%]
+				<div class="row">
+					<div class="col-xs-12">
+						<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
+					</div>
+				</div>
+			[%/PARAM%]
+
+		[%/THUMB_LIST%]
+	</div>
+</div>
+	<!--  DG EDIT BLOG list-->
+<div class="col-12-lg">
+    <div class="blog-section col-sm-6" id="blogCatDG">
+        <!-- related content blog-->
+        <div id="blog-list">
+        [%list type:'content' filter:'related_content=[@content_id@]' limit:'2'%]
+		[%param *header%]
+		<section class="row my-3 text-center" aria-label="Our Blog">
+			<div class="col-12">
+			<div class="row">
+	[%/param%]
+            [%param *body%]
+            <article class="col-12 col-sm-12">
+
+				<div id ="blog-image-container" class="col-sm-6">
+					<a href="[@URL@]">
+						 <img style=" max-width: 100%" src="[%ASSET_URL type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/ASSET_URL%]" alt="[@content_name@]" class="img-fluid"/>
+					</a>
+				</div>
+
+				<div class="col-sm-6 blogContents">
+					<h4><a href="[@URL@]" itemprop="url">[@content_name@]</a></h4>
+				   <div align="center">
+					   <p style="text-align: center;">[%format type:'date'%][@date_posted@][%/format%]</p>
+					</div>
+					
+				[%if [@content_short_description1@]%]
+					<p id="blogContent">[%format type:'text' rmhtml:'1' truemaxlength:'110'%][@content_short_description1@][%/format%]...</p>
+				[%else%]
+					<p id="blogContent">[%format type:'text' rmhtml:'1' truemaxlength:'110'%][@content_description1@][%/format%]...</p>
+				[%/if%]
+				<a href="[@URL@]" class="btn btn-default btn-block">Read Full Post</a>
+				</div>
+
+			</article>
+			[%/param%]
+			[%param *footer%]
+
+                        </div>
+                    </div>
+					<div class="readAllBlogs">
+						<a href="/blog">Read all blog posts</a>
+					</div>
+                </section>
+            [%/param%]
+        [%/list%]
+        <!-- End related content blog-->
+        </div>
+    </div>
+    <div class="YT-section col-sm-6">
+        <div class='embed-container'>
+
+           [%advert type:'text' limit:'1' ad_group:'Category-Video'%]
+                [%param *body%]
+                    <div id="vid-src" style="display:none;">
+                        [@url@]
+                    </div>
+                [%/param%]
+            [%/advert%]
+
+
+           <!-- [%if [@content_id@] eq '40' %]
+                <div id="vid-src" style="display:none;">[%content_zone id:'new-baby-category-video'%][%end content_zone%]</div>
+            [%elseif [@content_id@] eq '91' %]
+                <div id="vid-src" style="display:none;">[%content_zone id:'pamper-category-video'%][%end content_zone%]</div>
+            [%elseif [@content_id@] eq '45' %]
+               <div id="vid-src" style="display:none;">[%content_zone id:'hers-category-video'%][%end content_zone%]</div>
+            [%elseif [@content_id@] eq '34' %]
+            <div id="vid-src" style="display:none;">[%content_zone id:'champagne-hampers-video'%][%end content_zone%]</div>
+            [%else%]
+                <div id="vid-src" style="display:none;">[%content_zone id:'category-video'%][%end content_zone%]</div>
+            [%/if%]-->
+                <div class="video" id="yt-img-container">
+                    <div class="playbutton ytPlayVid"></div>
+                    <img id="yt-video" class="ytPlayVid" src=""  />
+                </div>
+                  <div id="close">Close X</div>
+
+            <div class="tube" id="yt-vid-container">&nbsp;</div>
+             <!--  digitalgrowth added yt
+                                <div class='onq-youtube-player' style='width: 100%; display: block; cursor: pointer; overflow: hidden;' data-id='m5VExMOdEDU' data-ssv='false' data-spc='false' data-sta='false' data-afs='false' data-dkc='false' data-ecc='false' data-eap='false'>
+                                    <img class="lazy_load" data-src='//i.ytimg.com/vi/m5VExMOdEDU/hqdefault.jpg' style='display: block; left: 0; margin: auto; max-width: 100%; max-height: 100%; position: absolute; right: 0;'>
+                                    <div style='height: 72px; width: 72px; left: 50%; top: 50%; margin-left: -36px; margin-top: -36px; position: absolute; background: url("https://www.thehamperemporium.com.au/assets/image/play_button.png") no-repeat; background-size: 72px;'></div>
+                                </div>
+                                <script async>!function(){for(var t=document.getElementsByClassName("onq-youtube-player"),e=0;e<t.length;e++)t[e].onclick=function(){var t=document.createElement("iframe"),e="true"==this.dataset.ssv?"1":"0",s="true"==this.dataset.spc?"1":"0",i="true"==this.dataset.sta?"1":"0",a="true"==this.dataset.dkc?"1":"0",r="true"==this.dataset.ecc?"1":"0",o="true"==this.dataset.eap?"1":"0";for(t.setAttribute("src","//www.youtube.com/embed/"+this.dataset.id+"?rel="+e+"&controls="+s+"&showinfo="+i+"&disablekb="+a+"&cc_load_policy="+r+"&autoplay="+o),t.setAttribute("frameborder","0"),t.setAttribute("id","youtube-iframe"),t.setAttribute("style","min-width: 600px; min-height: 310px; /*position: absolute;*/ padding:70px 70px 20px 20px; top: 0; left: 0;"),"true"==this.dataset.afs&&t.setAttribute("allowfullscreen","");this.firstChild;)this.removeChild(this.firstChild);this.appendChild(t)}}();</script>
+             -->
+
+<!-- hidden digitalgrowth /* <iframe data-src="[@url@]" frameborder='0' allowfullscreen></iframe> */ -->
+		</div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script async>
+             $(document).ready(function(){
+
+            
+                 if(!document.querySelector("#content-count")){
+                     $('#related-blog').hide();
+                     $('#blog-list').show();
+                 }else{
+                     $('#related-blog').show();
+                     $('#blog-list').hide();
+                 }
+                 if(document.querySelector("#vid-src")){
+                      var preloadImage = document.querySelector("#vid-src").innerHTML.split("=").pop();
+                 }else{
+                      var preloadImage = "m5VExMOdEDU";
+                 }
+                document.querySelector("#yt-video").src = 'https://img.youtube.com/vi/'+preloadImage+'/maxresdefault.jpg';
+
+                 $('#yt-img-container').show();
+                 $('#close').hide();
+                  $(".ytPlayVid").click(function(){
+                        console.log('play button clicked!');
+                            var videoSrc = document.querySelector("#vid-src").innerHTML.split("=").pop();
+                            var video = '<div class="video-container"><iframe src="https://www.youtube.com/embed/'+ videoSrc +'?&amp;autoplay=1&amp;rel=0&amp;fs=0&amp;showinfo=0&amp;autohide=3&amp;modestbranding=1"></iframe></div>';
+                           $('#yt-img-container').hide();
+                            $("#yt-vid-container").html(video);
+                            $('#close').show();
+                             $(".ytPlayVid").hide();
+                  });
+                   $('#close').click(function(){
+                         $('#yt-img-container').show();
+                         $('#yt-vid-container').empty();
+                         $('#close').hide();
+                     });
+                
+
+			 });
+			 
+         </script>
+<!--  DG EDIT BLOG list-->
+
+<!-- TrustBox widget - Carousel -->
+
+		<!-- digitalworth removed /*
+<div class="row">
+		<div class="col-xs-12">
+			<div
+				class="trustpilot-widget trustpilot-widget-large"
+				data-locale="en-AU"
+				data-template-id="53aa8912dec7e10d38f59f36"
+				data-businessunit-id="559cc61a0000ff000580d967"
+				data-style-height="130px"
+				data-style-width="100%"
+				data-theme="light"
+				data-stars="5">
+				<a href="https://au.trustpilot.com/review/www.thehamperemporium.com.au"target="_blank">Trustpilot</a>
+			</div>
+		</div>
+	</div>
+	[%site_value id:'footer_javascript'%]
+	<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+	[%/site_value%]
+	*/ -->
+	<!-- End TrustBox widget -->
+[%if [@content_label2@] ne ''%]
+    <section>
+	<div class="row author-row">
+		<div class="col-xs-12">
+			[%if [@content_short_description2@] %]<h2>[@content_short_description2@]</h2>[%else%]<hr>[%/if%]
+		</div>
+		<div class="col-xs-4 col-sm-2 col-md-2 col-lg-1 author-image-wrapper">
+			[%if [@content_label2@] like 'Amy'%]
+				<img class="img-circle img-responsive" src="[%ntheme_asset%]img/Amy-200x200.jpg[%/ntheme_asset%]" alt="[@content_label2@]">
+			[%else%]
+				<img class="img-circle img-responsive" src="[%ntheme_asset%]img/Emily-200x200.jpg[%/ntheme_asset%]" alt="[@content_label2@]">
+			[%/if%]
+		</div>
+		<div class="col-xs-8 col-sm-4 col-md-4">
+			<blockquote>
+				<p><strong>Published by <a href="[%if [@content_label2@] like 'Amy'%]/about-us/amy-mcwaters[%else%]/about-us/emily-mcwaters[%/if%]">[@content_label2@]</a></strong></p>
+				<footer>Updated on [@content_label3@]</footer>
+			</blockquote>
+		</div>
+	</div>
+	</section>
+[%/if%]
+
+<div class="category-description bottom">
+	[@content_description2@]
+</div>
+
+</div>
+</div>

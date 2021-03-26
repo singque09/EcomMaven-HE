@@ -1,0 +1,421 @@
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxchimp/1.3.0/jquery.ajaxchimp.js"></script>
+
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/ddexitpop.css[%/ntheme_asset%]" media="all"/>
+<script  src="[%ntheme_asset%]js/ddexitpop.js[%/ntheme_asset%]"></script>
+
+<!-- /***********************************************
+* Exit Intent Pop Up Script (with mobile fallback)- By Dynamic Drive (www.dynamicdrive.com)
+* Please keep this notice intact
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/ -->
+
+</script>
+
+<script>
+
+//*** Initialize DD Exit Pop Up Script:
+
+jQuery(function(){
+	ddexitpop.init({
+		contentsource: ['id', 'ddexitpop1'],
+		fxclass: 'slideInUp',
+		displayfreq: '1day',
+		onddexitpop: function($popup){
+			console.log('Exit Pop Animation Class Name: ' + ddexitpop.settings.fxclass)
+		}
+
+	})
+})
+
+</script>
+
+<script>
+/* checkbox setting */
+    jQuery(document).ready(function(){
+		/* $('form input[type="submit"]').prop("disabled", true); */
+		jQuery(".checkboxYes").click(function(){
+            if(jQuery(this).prop("checked") == true){
+                jQuery('.mcPhone').prop("disabled", false);
+                jQuery('.checkboxNo').prop("checked", false);
+                jQuery('.checkboxYes').prop("checked", true);
+            }
+            else if(jQuery(this).prop("checked") == false){
+                jQuery('.mcPhone').prop("disabled", false);
+                jQuery('.checkboxYes').prop("checked", false);
+                jQuery('.checkboxNo').prop("checked", true);
+            }
+        });
+        jQuery(".checkboxNo").click(function(){
+            if(jQuery(this).prop("checked") == true){
+                jQuery('.checkboxYes').prop("checked", false);
+                jQuery('.checkboxNo').prop("checked", true);
+                jQuery('.mcPhone').prop("disabled", true);
+            }
+            else if(jQuery(this).prop("checked") == false){
+                jQuery('.mcPhone').prop("disabled", false);
+                jQuery('.checkboxYes').prop("checked", true);
+                jQuery('.checkboxNo').prop("checked", false);
+            }
+        });
+		$('.popupClose').on('click', function(){
+			ddexitpop.hidepopup()
+		});
+    });
+</script>
+<style>
+
+section.corporate-branding.padding-tb-med.mailchimpNeil {
+    display: none;
+}
+/* checkbox - start */
+/* The container */
+.mc-checkBox .container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  /* margin-bottom: 12px; */
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display : inline-block;
+  width: 50%;
+}
+
+/* Hide the browser's default checkbox */
+.mc-checkBox .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border : 1px solid #999;
+}
+
+/* On mouse-over, add a grey background color */
+.mc-checkBox .container:hover input ~ .checkmark {
+  border : 1px solid #333;
+}
+
+/* When the checkbox is checked, add a blue background */
+.mc-checkBox .container input:checked ~ .checkmark {
+  border : 1px solid #333;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.mc-checkBox .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.mc-checkBox .container .checkmark:after {
+    content: '\d7';
+    font-size: 44px;
+    margin-top: -23px;
+    margin-left: -3px;
+    font-weight : 100;
+    color : black;
+}
+/* checkbox - end */
+div#ddexitpop1 {
+    max-width: 500px;
+    border : none;
+    padding: 18px;
+    border-radius : 10px;
+    background: url('/assets/themes/ose-master-2020-02-25_00383980-Neil/img/popupImg.jpg');
+    background-repeat : no-repeat;
+    background-color : #fff;
+    padding-top: 221px;
+    background-size: 100% auto;
+}
+
+
+div#mc_embed_signup_scroll h2, .successMC h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 7px;
+	font-family: "Baskerville";
+}
+
+div#mc_embed_signup_scroll > p {
+    margin-top: -7px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.indicates-required {
+    display: none;
+}
+
+.mc-field-group {
+    width: 50%;
+    float: left;
+}
+
+.mc-field-group input#mce-EMAIL, .mc-field-group input#mce-FNAME,.mc-field-group input#mce-PHONE {
+    width: 96%;
+    height : 35px;
+    margin : 5px;
+    border : solid 1px #333;
+    padding : 15px;
+}
+.mc-checkBox li{
+    list-style: none;
+}
+.mc-checkBox > span {
+    max-width: 60%;
+    display : block;
+    float : left;
+    padding-left : 15px;
+    font-size: 12px;
+}
+.mc-checkBox > ul {
+    max-width: 40%;
+    display : block;
+    float : left;
+    padding-left : 15px;
+}
+div#mc_embed_signup_scroll {
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+input#mc-embedded-subscribe, .successMC button {
+    width: 100%;
+    height: 45px;
+    background : #333;
+    color : #fff;
+    text-transform : uppercase;
+    font-family : 'Open Sans',sans-serif;
+    border : transparent;
+}
+.displayNone {
+	display : none;
+}
+.displayBlock {
+	display : block;
+}
+label.error {
+	color : #ff0000;
+}
+.noThanksClose {
+    text-align: center;
+    margin-top: 5px;
+}
+.noThanksClose.popupClose {    
+    font-size: 12px;
+    cursor: pointer;
+}
+
+input#mce-PHONE:disabled {border-color: #ebebe4;}
+
+input#mce-PHONE:disabled::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ebebe4;
+}
+input#mce-PHONE:disabled:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ebebe4;
+}
+input#mce-PHONE:disabled::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ebebe4;
+}
+input#mce-PHONE:disabled:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ebebe4;
+}
+
+.exitX {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #ffffff;
+    margin: 10px;
+    font-size: 22px;
+}
+
+.exitX:after {
+    content: '\d7';
+    font-size: 40px;
+    display: block;
+    margin-top: -20px;
+    cursor: pointer;
+}
+
+@media (max-width : 670px) {
+    div#ddexitpop1 {
+        width : 80%;
+        max-width : 300px;
+        padding : 20px;
+        padding-top : 130px;
+
+    }
+    div#mc_embed_signup_scroll h2 {
+        font-size : 30px;
+        font-weight : 400;
+    }
+    .mc-field-group {
+        width : 100%;
+    }
+    .mc-field-group input#mce-EMAIL, .mc-field-group input#mce-FNAME,.mc-field-group input#mce-PHONE {
+        width : 100%;
+        margin : 5px 0;
+        height : 20px;
+    }
+    .mc-checkBox > span {
+        max-width : 65%;
+        padding-left : 0;
+    }
+    .mc-checkBox > ul {
+        max-width : 35%;
+        padding-left : 0;
+    }
+    .mc-checkBox > ul li{
+        float : left;
+        max-width : 60%;
+        font-size : 12px;
+        padding-left : 10px;
+    }
+    
+}
+</style>
+<script src="https://www.thehamperemporium.com.au/assets/themes/ose-master-2020-02-25_00383980-Neil/js/jquery-ajaxchimp-master/jquery.ajaxchimp.js"></script>
+
+<section class="corporate-branding padding-tb-med mailchimpNeil">
+
+	<div id="ddexitpop1" class="ddexitpop">
+		<!-- Begin Mailchimp Signup Form -->
+		<div id="exitX" class="exitX popupClose"></div>
+		<div id="mc_embed_signup" class="removeAfterSuccess">
+			<form action="https://thehamperemporium.us4.list-manage.com/subscribe/post?u=3cedafdc7f0554b60ebfb02c0&amp;id=2161241a36"  id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+				<div id="errorMessageMC">
+				</div>
+				<div id="mc_embed_signup_scroll">
+					<h2>Join The Experts In Corporate Gifting</h2>
+					<p>Receive news and offers that will save you time and grow your business</p>
+					<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+					<div class="mc-field-group">
+						<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
+					</div>
+					<div class="mc-field-group">
+						<input type="text" value="" name="FNAME" class="required" id="mce-FNAME" placeholder="First name">
+					</div>
+					<div class="mc-field-group input-group mc-checkBox">
+						<span>Would you like a call from our corporate account manager? </span>
+						<ul>
+							<li class="container">
+								<label for="mce-group[68397]-68397-0">
+								<input type="checkbox" value="1" name="group[68397][1]" id="mce-group[68397]-68397-0" class="checkboxYes">
+								<span class="checkmark"></span>
+								<label for="mce-group[68397]-68397-0">Yes</label>								
+							</li>
+							<li class="container">
+								<label for="mce-group[68397]-68397-1">
+								<input type="checkbox" value="2" name="group[68397][2]" id="mce-group[68397]-68397-1" class="checkboxNo">
+								<span class="checkmark"></span>
+								<label for="mce-group[68397]-68397-1">No</label>
+							</li>
+						</ul>
+					</div>
+					<div class="mc-field-group size1of2 mc-phoneNumber">
+						<input type="text" name="PHONE" class="mcPhone" value="" id="mce-PHONE" placeholder="Phone number" disabled>
+					</div>
+					<div id="mce-responses" class="clear">
+						<div class="response" id="mce-error-response" style="display:none"></div>
+						<div class="response" id="mce-success-response" style="display:none"></div>
+					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3cedafdc7f0554b60ebfb02c0_2161241a36" tabindex="-1" value=""></div>
+					
+<div class="g-recaptcha popupRecaptcha" data-sitekey="6LcIh_0UAAAAAJoy2JrYm0cWm1peaWMOsd2X0Fh1">&nbsp;</div>
+					<div class="clear"></div>
+					<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+					<div class="noThanksClose">
+						<span class="noThanksClose popupClose">No Thanks</span>
+					</div>
+					<label for="mce-EMAIL" class="displayNone"></label>
+				</div>				
+			</form>
+		</div>
+		<div id="successMC" class="successMC displayNone">
+			<h2>Thank you for subscribing!<br />We'll be in touch soon</h2>
+			<button class="popupClose"><span>Close & Start Shopping</span></button>
+		</div>
+	<!--End mc_embed_signup-->
+	</div>
+	
+<script>
+
+
+document.getElementById("mc-embedded-subscribe-form").addEventListener("submit",function(evt)
+  {
+  
+  var response = grecaptcha.getResponse();
+  if(response.length == 0) 
+  { 
+    //reCaptcha not verified
+    alert("please verify you are humann!"); 
+    evt.preventDefault();
+    return false;
+  }
+  //captcha verified
+  //do the rest of your validations here
+  
+});
+/* captcha validator - end */
+</script>
+
+	
+<script>
+ $('#mc-embedded-brochure').ajaxChimp({
+    url: 'https://thehamperemporium.us4.list-manage.com/subscribe/post?u=3cedafdc7f0554b60ebfb02c0&amp;id=d30936ecd0'
+});
+ $('#mc-embedded-brochure-form').ajaxChimp({
+    url: 'https://thehamperemporium.us4.list-manage.com/subscribe/post?u=3cedafdc7f0554b60ebfb02c0&amp;id=e580c78d08'
+});
+ $('#mc-embedded-subscribe-form').ajaxChimp({
+    url: 'https://thehamperemporium.us4.list-manage.com/subscribe/post?u=3cedafdc7f0554b60ebfb02c0&amp;id=2161241a36'
+});
+
+ $('#mc-embedded-vcp').ajaxChimp({
+    url: 'https://thehamperemporium.us4.list-manage.com/subscribe/post?u=3cedafdc7f0554b60ebfb02c0&amp;id=0abee4344d'
+});
+
+</script>	
+<script>
+/* ask to sign in */
+$(".askToSignInYes").click(function(){
+  $(".askToSignIn").addClass("displayNone");
+  $(".askToSignIn").removeClass("displayBlock");
+  $(".yesToSignIn").addClass("displayBlock");
+  $(".yesToSignIn").removeClass("displayNone");
+});
+$(".askToSignInNo").click(function(){
+  $(".askToSignIn").addClass("displayNone");
+  $(".askToSignIn").removeClass("displayBlock");
+  $(".downloadBulkOrderForm").addClass("displayBlock");
+  $(".downloadBulkOrderForm").removeClass("displayNone");
+});
+</script>
+</section>

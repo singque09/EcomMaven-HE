@@ -1,0 +1,31 @@
+<section class="padding-tb-med">
+	<div class="container corporate-testimonials">
+        <div class="row padding-t-med">
+            <div class="col-xs-12"><h2 class="section-title padding-b-med">Meet Some Of Our <span class="text-gold">Happy</span> Customers</h2></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="ribbon__wrapper">
+                    [%THUMB_LIST type:'content' content_type:'testimonials' limit:'9999' filter_category:'' sortby:'sortorder'%]
+                        [%PARAM *header%]
+                        <div class="testimonials__slick">
+                        [%END PARAM%]
+                            [%PARAM *body%]
+                            <div class="ribbon__slide testimonials__slide">
+                                <div class="slide__img"
+                                style="background: url([%asset_url type:'content' id:'[@content_id@]' /%]);
+                                background-position: center; background-size: contain; background-repeat: no-repeat;">
+                                </div>
+                                <p>[@content_description1@]</p>
+                                <span class="testimonials__subtitle">[@content_name@]</span>
+                            </div>
+                            [%END PARAM%]
+                        [%PARAM *footer%]
+                        </div>
+                        [%END PARAM%]
+                    [%END THUMB_LIST%]
+                </div>
+            </div>
+        </div>
+	</div>
+</section>

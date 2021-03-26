@@ -1,0 +1,119 @@
+.wfd-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    z-index: 2;
+  }
+
+.wrapper-thumbnail .wfd {
+    color: white;
+    background: #BFA774;
+    border: none;
+    height: 50px;
+    width: 50px;
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+    text-transform: none;
+    padding: 0;
+    font-weight: bold;
+    line-height: 1.1em;
+    margin: 4px 0 0 -10px;
+    text-transform: uppercase;
+}
+
+.wrapper-thumbnail .wfd span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.wrapper-thumbnail .wfd.free {
+    background: #BFA774;
+
+}
+
+.wrapper-thumbnail .wfd.out {
+    background: #FA6868;
+}
+
+.wfd__up {
+    padding-bottom: 5px;
+}
+
+.wfd__down {
+    padding-top: 5px;
+}
+
+.wrapper-thumbnail .thumbnail {
+    overflow: visible;
+}
+.wrapper-thumbnail .wrapper-thumbnail__price {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.wrapper-thumbnail .wrapper-thumbnail__price .amount {
+    display: inline-block;
+    float: none;
+    width: auto;
+    text-align: center;
+    color: #BFA774;
+    font-size: 20px;
+    font-weight: bold;
+}
+.wrapper-thumbnail .thumbnail .caption {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.wrapper-thumbnail .caption .wrapper-thumbnail__title {
+    text-align: center;
+    height: 2.5em;
+    margin: 0 0 10px 0 !important;
+    font-size: 1em;
+}
+
+.wrapper-thumbnail__cart {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+}
+
+.btn--black {
+    width: auto;
+    text-align: center;
+    background: transparent linear-gradient(180deg, #393839 0%, #000000 100%) 0% 0% no-repeat padding-box;
+    font-size: 0.9em;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    display: inline-block;
+}
+
+.btn--black:hover, .btn--black:focus, .btn--black:active {
+    color: white;
+    background: #BFA774;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .wrapper-thumbnail:nth-child(4n + 1) {
+        clear: both;
+      }
+}
+
+@media (max-width: 767px) {
+    .wrapper-thumbnail {
+        margin-bottom: 0;
+    }
+    .wrapper-thumbnail .thumbnail {
+        margin-bottom: 25px;
+    }
+    .wrapper-thumbnail:nth-child(2n + 1) {
+        clear: both;
+}
+}

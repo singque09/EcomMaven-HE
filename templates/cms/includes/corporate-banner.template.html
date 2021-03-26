@@ -1,0 +1,44 @@
+<section class="corporate-main-banner"
+style="background-image: url([%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%])">
+    <div class="black-overlay-light"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-4 col-md-offset-8">
+                <div class="panel corporate-main-banner__panel">
+                    <div class="panel-body">
+                        <p class="corporate-main-banner__text">[@content_short_description1@]</p>
+    					<a class="btn corporate-main-banner__btn" href="[@CONFIG:bulk_upload_link@]">
+    						<span>Bulk Order Form</span>
+    					</a>
+                        <p><a class="corporate__helplink" href="#faqs">What is a bulk order?</a></p>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="container-clearfix corporate-banner-footer">
+    <a class="mx-auto corporate-banner-footer__text" href="#branding">[@content_short_description2@] <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="15" height="17.14"><path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path></svg></a>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            [%breadcrumb%]
+            	[%PARAM *header%]
+            		<ul class="breadcrumb">
+            			<li>
+            				<a href="[@config:home_url@]">Home</a>
+            			</li>
+            	[%/PARAM%]
+            	[%PARAM *body%]
+            		<li>
+            			<a href="[@url@]">[@name@]</a>
+            		</li>
+            	[%/PARAM%]
+            	[%PARAM *footer%]
+            		</ul>
+            	[%/PARAM%]
+            [%/breadcrumb%]
+        </div>
+    </div>
+</div>

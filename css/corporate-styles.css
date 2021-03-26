@@ -1,0 +1,1352 @@
+.main-content-corporate .container {
+    max-width: 1200px
+}
+.section-title {
+    font-size: 46px;
+    line-height: 1.4em;
+    font-weight: 500
+}
+
+.text-white {
+    color: #fff
+}
+
+.text-gold {
+    color: #bfa774
+}
+
+.text-blue {
+    color: #3d9ac1
+}
+
+.text-red {
+    color: #6f0000;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size:28px;
+        line-height: 1.2em
+    }
+}
+
+.custom-list {
+    display: inline-block;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none
+}
+
+.custom-list li {
+    padding-left: 30px;
+    background: url(../img/corporate-hampers/tick-img.png);
+    background-repeat: no-repeat;
+    background-position: left 16px;
+    background-size: 20px;
+    font-size: 20px;
+    line-height: 1.2em;
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+p {
+    font-family: 'Roboto Slab',serif
+}
+.back-button {
+    text-align: center;
+}
+.back-button input {
+    background: #caa47c;
+    border: none;
+    color: white;
+    padding: 10px 26px;
+    font-size: 16px;
+}
+
+.btn-blue {
+    background: #288db3
+}
+
+.main-content-corporate .btn {
+    font-family: 'Roboto Condensed',sans-serif;
+    text-transform: uppercase;
+    background: #bfa774;
+    color: #fff;
+    padding: 16px 40px
+}
+
+.corporate-banner-buttons .btn {
+    width: 242px;
+    background: #bda576;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-shadow: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 12px 34px;
+    text-align: center;
+    position: relative;
+    height: 58px;
+    display: table;
+    word-wrap: normal;
+    white-space: normal;
+    margin-right: 0
+}
+
+.corporate-banner-buttons .btn:hover {
+    background: #736444
+}
+
+.corporate-banner-buttons .ico {
+    position: absolute;
+    left: 18px;
+    width: 22px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.corporate-banner-buttons span {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0px 15px;
+    line-height: 16px;
+    text-transform: uppercase
+}
+
+.bootom-buttons {
+    width: 100%;
+    float: left;
+    margin-bottom: 0px
+}
+
+.bootom-buttons .btn {
+    float: left;
+    width: 23%!important;
+    margin-left: 1%;
+    margin-right: 1%!important
+}
+
+@media (max-width: 1200px) {
+    .bootom-buttons .btn {
+        height:72px!important
+    }
+
+    .corporate-banner-buttons span {
+        padding: 0px 10px
+    }
+}
+
+@media (max-width: 1024px) {
+    .corporate-contact-section {
+        height:auto;
+        padding: 10px
+    }
+
+    .bootom-buttons .btn {
+        height: 56px!important;
+        width: 48%!important
+    }
+}
+
+@media (max-width: 768px) {
+    .bootom-buttons .btn {
+        height:56px!important;
+        width: 245px!important;
+        margin: 0 auto!important;
+        margin-bottom: 10px!important;
+        float: none
+    }
+}
+
+.corporate-main-banner .corporate-banner-buttons {
+    width: 500px;
+    float: right;
+    margin-top: 140px;
+    margin-right: 5%
+}
+
+.corporate-main-banner .corporate-banner-buttons .btn {
+    clear: both;
+    float: right
+}
+
+.corporate-main-banner {
+    height: 430px;
+    background: url(/assets/images/Corporate/HE_Corporate_Banner_CorporateGifts_Standard%20%281%29.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast
+}
+
+.wrapper-thumbnail .price {
+	font-family: 'Open Sans', sans-serif;
+}
+
+@media (max-width: 1024px) {
+    .corporate-main-banner {
+        height:420px
+    }
+
+    .corporate-main-banner .corporate-banner-buttons {
+        width: 100%;
+        margin-top: 100px;
+        margin-right: 0%
+    }
+}
+
+@media (max-width: 768px) {
+    .corporate-main-banner {
+        height:380px
+    }
+
+    .corporate-main-banner .corporate-banner-buttons {
+        margin-top: 160px
+    }
+
+    .corporate-main-banner .corporate-banner-buttons .btn {
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 12px
+    }
+}
+
+@media (max-width: 768px) {
+    .corporate-products .thumbnail .caption .price {
+        font-size:20px
+    }
+
+    .thumbnail {
+        margin-bottom: 0px
+    }
+}
+
+.free-delivery-section {
+    height: auto;
+    background: url(../img/corporate-hampers/free-delivery-bg.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 39px 90px
+}
+
+.free-delivery-section ul {
+    float: left;
+    list-style: none;
+    font-family: 'Roboto Slab',serif;
+    color: #fff;
+    clear: both;
+    display: inline-block;
+    max-width: 450px;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 20px
+}
+
+.free-delivery-section ul li {
+    padding-left: 30px;
+    background: url(../img/corporate-hampers/tick-img.png);
+    background-repeat: no-repeat;
+    background-position: left 16px;
+    background-size: 20px;
+    font-size: 26px;
+    line-height: 1.2em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative
+}
+
+@media (max-width: 1200px) {
+    .free-delivery-section {
+        padding:60px
+    }
+}
+
+@media (max-width: 1024px) {
+    .free-delivery-section {
+        height:auto
+    }
+}
+
+@media (max-width: 768px) {
+    .free-delivery-section {
+        padding:20px
+    }
+
+    .free-delivery-section ul li {
+        font-size: 18px
+    }
+}
+
+.ribbons-section {
+    height: 500px;
+    background: url(../img/corporate-hampers/ribbons-bg.jpg);
+    background-position: left top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    position: relative
+}
+
+.ribbons-section .btn {
+    background: #000a2a;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 17px 76px;
+    font-size: 17px;
+    position: absolute;
+    bottom: 34px;
+    left: 44px
+}
+
+.ribbons-section .btn:hover {
+    background: #35436f
+}
+
+@media (max-width: 768px) {
+    .ribbons-section {
+        height:380px
+    }
+}
+
+@media (max-width: 480px) {
+    .ribbons-section {
+        height:219px
+    }
+
+    .ribbons-section .btn {
+        padding: 11px 46px;
+        font-size: 14px;
+        bottom: 10px;
+        left: 17px
+    }
+}
+
+.corporate-testimonials {
+    text-align: center
+}
+
+.corporate-testimonials p {
+    width: 100%;
+    display: inline-block
+}
+
+.corporate-testimonials .image-wrapper {
+    width: 240px;
+    height: 170px;
+    display: inline-block;
+    position: relative
+}
+
+.corporate-testimonials img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    float: none!important;
+    margin: auto
+}
+
+.corporate-contact-section {
+    height: 500px;
+    background: url(../img/corporate-hampers/corporate-contact-bg.jpg);
+    background-position: left top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    position: relative;
+    padding: 45px 90px
+}
+
+.corporate-contact-section .text-wrapper {
+    width: 540px;
+    float: right;
+    margin-top: 134px
+}
+
+.corporate-contact-section .text-wrapper {
+    font-family: 'Roboto Slab',serif;
+    color: #fff;
+    font-size: 31px;
+    text-align: center;
+    margin-bottom: 30px
+}
+
+.corporate-contact-section .title {
+    font-size: 54px;
+    display: block;
+    line-height: 48px
+}
+
+.corporate-contact-section .phone {
+    color: #c7a774;
+    font-size: 54px;
+    font-weight: 300;
+    display: block;
+    margin-top: 14px
+}
+
+.corporate-contact-section .phone:before {
+    background: url(../img/corporate-hampers/contact-phone-ico.png);
+    background-size: 100% 100%;
+    background-position: center center;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    content: "";
+    image-rendering: -webkit-optimize-contrast;
+    margin-right: 20px
+}
+
+@media (max-width: 1200px) {
+    .corporate-contact-section {
+        background:url(../img/corporate-hampers/corporate-contact-bg.jpg);
+        background-position: center top;
+        background-size: cover
+    }
+}
+
+@media (max-width: 1024px) {
+    .corporate-contact-section {
+        height:auto;
+        padding: 10px
+    }
+}
+
+@media (max-width: 768px) {
+    .corporate-contact-section .text-wrapper {
+        width:inherit;
+        float: none;
+        margin-top: 100px
+    }
+
+    .corporate-contact-section .text-wrapper {
+        font-size: 18px;
+        margin-bottom: 20px
+    }
+
+    .corporate-contact-section .title {
+        font-size: 24px;
+        line-height: 30px
+    }
+
+    .corporate-contact-section .phone {
+        font-size: 24px;
+        font-weight: 300;
+        margin-top: 10px
+    }
+
+    .corporate-contact-section .phone:before {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px
+    }
+}
+
+.settlement-gifts {
+    height: auto;
+    background: url(../img/corporate-hampers/settlement-bg.jpg);
+    background-position: center center;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    position: relative;
+    padding: 20px
+}
+
+.settlement-gifts .text-center {
+    background: rgba(0,9,41,0.9);
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto
+}
+
+.settlement-gifts .main-title {
+    top: 50%;
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 54px
+}
+
+.settlement-gifts .main-title span {
+    color: #bfa774;
+    font-weight: 400;
+    clear: both;
+    display: block
+}
+
+@media (max-width: 1200px) {
+    .settlement-gifts .text-center {
+        width:380px;
+        height: 380px
+    }
+
+    .settlement-gifts .main-title {
+        font-size: 34px
+    }
+}
+
+@media (max-width: 1024px) {
+    .settlement-gifts .text-center {
+        width:380px;
+        height: 380px
+    }
+
+    .settlement-gifts .main-title {
+        font-size: 34px
+    }
+}
+
+@media (max-width: 768px) {
+    .settlement-gifts .text-center {
+        width:240px;
+        height: 240px
+    }
+
+    .settlement-gifts .main-title {
+        font-size: 28px
+    }
+}
+
+.ideal-gifts-section {
+    height: auto;
+    background: url(../img/corporate-hampers/ideal-gifts-bg.jpg);
+    background-position: right top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 45px 90px
+}
+
+.ideal-gifts-section ul {
+    float: right;
+    list-style: none;
+    font-family: 'Roboto Slab',serif;
+    color: #fff;
+    clear: both;
+    display: inline-block;
+    max-width: 350px;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 40px;
+    text-align: left
+}
+
+.ideal-gifts-section ul li {
+    padding-left: 30px;
+    background: url(../img/corporate-hampers/tick-img.png);
+    background-repeat: no-repeat;
+    background-position: left 16px;
+    background-size: 20px;
+    font-size: 20px;
+    line-height: 1.2em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative
+}
+
+.ideal-gifts-section .bootom-buttons .btn {
+    float: right
+}
+
+@media (max-width: 1200px) {
+    .ideal-gifts-section {
+        padding:60px
+    }
+}
+
+@media (max-width: 1024px) {
+    .ideal-gifts-section {
+        height:auto
+    }
+}
+
+@media (max-width: 768px) {
+    .ideal-gifts-section {
+        padding:20px
+    }
+
+    .ideal-gifts-section ul li {
+        font-size: 18px
+    }
+
+    .ideal-gifts-section .bootom-buttons .btn {
+        float: none
+    }
+}
+
+.engraved-gifts {
+    height: auto;
+    background: url(../img/corporate-hampers/engraved-gifts-bg.jpg);
+    background-position: right top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 45px 90px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Roboto Slab',serif;
+    font-size: 25px;
+    font-weight: 300;
+    height: 500px;
+	overflow: hidden;
+}
+
+.engraved-gifts .content-wrapper {
+    width: 650px;
+    height: 650px;
+    padding: 120px;
+    border-radius: 50%;
+    border: 3px dotted rgba(255,255,255,0.51);
+    position: absolute;
+    right: -92px;
+    top: -114px;
+    display: table
+}
+
+.engraved-gifts .content {
+    display: table-cell;
+    vertical-align: middle
+}
+
+.engraved-gifts h2 {
+    color: #bfa774;
+    font-size: 41px;
+    margin-bottom: 40px
+}
+
+.engraved-gifts .content p {
+    margin-bottom: 0px
+}
+
+@media (max-width: 768px) {
+    .engraved-gifts {
+        color:#fff;
+        text-align: center;
+        font-family: 'Roboto Slab',serif;
+        font-size: 16px;
+        background-position: left center;
+        font-weight: 300;
+        height: 387px;
+        overflow: hidden
+    }
+
+    .engraved-gifts .content-wrapper {
+        width: 350px;
+        height: 350px;
+        padding: 48px;
+        border-radius: 50%;
+        border: 2px dotted rgba(255,255,255,0.51);
+        position: absolute;
+        right: -102px;
+        top: -30px;
+        display: table;
+        background: rgba(47,28,10,0.28)
+    }
+
+    .engraved-gifts h2 {
+        color: #bfa774;
+        font-size: 28px;
+        margin-bottom: 10px
+    }
+}
+
+.vouchers-section {
+    height: auto;
+    background: url(../img/corporate-hampers/vouchers-bg.png);
+    background-position: 600px top;
+    background-color: #000a2a;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 46px 60px;
+    color: #fff;
+    font-family: 'Roboto Slab',serif;
+    font-size: 25px;
+    font-weight: 300;
+    background-repeat: no-repeat;
+    background-size: auto 100%
+}
+
+.vouchers-section .content {
+    width: 486px
+}
+
+.vouchers-section h2 {
+    color: #bfa774;
+    font-size: 31px;
+    margin-bottom: 40px
+}
+
+.vouchers-section .btn {
+    position: absolute;
+    right: 14px;
+    bottom: 0px;
+    border: 40px;
+    background: #bfa774;
+    color: #fff;
+    padding: 14px 54px
+}
+
+@media (max-width: 768px) {
+    .vouchers-section {
+        background:url(../img/corporate-hampers/vouchers-bg.png);
+        background-position: 500px top;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-color: #000a2a
+    }
+
+    .vouchers-section .content {
+        width: 240px
+    }
+
+    .vouchers-section h2 {
+        font-size: 24px;
+        margin-bottom: 20px
+    }
+
+    .custom-list li {
+        font-size: 16px
+    }
+
+    .vouchers-section .btn {
+        position: relative;
+        right: inherit;
+        bottom: inherit;
+        border: 40px;
+        background: #bfa774;
+        color: #fff;
+        padding: 14px 54px;
+        margin: 0 auto;
+        float: none;
+        display: table
+    }
+}
+
+@media (max-width: 480px) {
+    .vouchers-section {
+        background:url(../img/corporate-hampers/vouchers-bg.png);
+        background-position: 216px top;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-color: #000a2a;
+        padding: 38px 35px
+    }
+}
+
+.platform-section {
+    height: auto;
+    background: url(../img/corporate-hampers/platform-bg.jpg);
+    background-position: right top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 45px 90px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Roboto Slab',serif;
+    font-size: 25px;
+    font-weight: 300;
+    height: 500px;
+    overflow: hidden
+}
+
+.platform-section .content-wrapper {
+    background: #000227;
+    width: 565px;
+    height: 565px;
+    border-radius: 50%;
+    display: table;
+    position: absolute;
+    padding: 81px;
+    text-align: right;
+    padding-right: 160px;
+    top: -100px;
+    right: -188px
+}
+
+.platform-section .content {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 200;
+    font-size: 31px;
+    line-height: 38px
+}
+
+.platform-section .content span {
+    font-weight: 600;
+    color: #c0a971;
+    display: inline-block
+}
+
+.platform-section .btn {
+    font-family: 'Roboto Condensed',sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    background: #c0a971;
+    padding: 14px 60px;
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 20px
+}
+
+@media (max-width: 480px) {
+    .platform-section {
+        height:auto;
+        background: url(../img/corporate-hampers/platform-bg.jpg);
+        background-position: center top;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast;
+        padding: 20px 30px;
+        height: 520px
+    }
+
+    .platform-section .content-wrapper {
+        background: rgba(0,2,39,0.8100000000000001);
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        display: table;
+        position: absolute;
+        padding: 45px;
+        text-align: center;
+        top: 18px;
+        right: inherit;
+        left: 50%;
+        margin-left: -170px
+    }
+
+    .platform-section .content {
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 26px
+    }
+
+    .platform-section .btn {
+        font-family: 'Roboto Condensed',sans-serif;
+        text-transform: uppercase;
+        color: #fff;
+        background: #c0a971;
+        padding: 12px 48px;
+        font-size: 16px;
+        font-weight: 300;
+        margin-top: 10px
+    }
+}
+
+.corporate-staff-banner {
+    height: 520px;
+    background: url(../img/corporate-hampers/corporate-staff-main-banner.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast
+}
+
+@media (max-width: 768px) {
+    .corporate-staff-banner {
+        height:180px
+    }
+}
+
+@media (min-width: 1024px) {
+    .staff-products .grid-4 .col-sm-4 {
+        width:50%;
+        padding: 0% 6%
+    }
+}
+.staff-ideal-gifts-section h3 {
+    color: white;
+}
+
+.staff-ideal-gifts-section {
+    height: 520px;
+    background: url(../img/corporate-hampers/staff-ideal-gifts-bg.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 76px
+}
+
+.container.staff-ideal-gifts-section p {
+    color: #fff;
+    font-size: 31px;
+    font-weight: 300;
+    width: 360px;
+    margin-bottom: 40px;
+    padding-left: 10px
+}
+
+@media (max-width: 1024px) {
+    .staff-ideal-gifts-section {
+        height:auto;
+        background: url(../img/corporate-hampers/staff-ideal-gifts-bg.jpg);
+        background-position: center top;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast;
+        padding: 50px
+    }
+
+    .staff-ideal-gifts-section .btn {
+        height: 56px!important;
+        width: 31%!important
+    }
+}
+
+@media (max-width: 768px) {
+    .staff-ideal-gifts-section {
+        height:auto;
+        background: url(../img/corporate-hampers/staff-ideal-gifts-bg.jpg);
+        background-position: center top;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast;
+        padding: 20px
+    }
+
+    .container.staff-ideal-gifts-section p {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 300;
+        width: 100%;
+        margin-bottom: 40px;
+        padding-left: 10px
+    }
+
+    .staff-ideal-gifts-section .btn {
+        height: 56px!important;
+        width: 100%!important
+    }
+}
+
+.corporate-christmas-banner {
+    height: 520px;
+    background: url(../img/corporate-hampers/HE_Corporate_Banner_ChristmasGifts_Standard.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast
+}
+
+.christmas-products .section-title {
+    color: #bfa774
+}
+
+.christmas-bulk-orders {
+    background: url(../img/corporate-hampers/christmas-bulk-orders-bg.jpg);
+    padding: 52px;
+    font-size: 25px;
+    background-size: cover;
+}
+
+.christmas-bulk-orders .content {
+    width: 600px;
+    padding-left: 10px;
+    font-weight: 300
+}
+
+.christmas-bulk-orders .title {
+    font-size: 33px;
+    font-weight: 600
+}
+
+.christmas-order-details {
+    background: url(../img/corporate-hampers/christmas-order-details-bg.jpg);
+    padding: 124px 40px;
+    font-size: 25px;
+    background-size: cover;
+}
+
+.christmas-order-details .content {
+    width: 400px;
+    text-align: center;
+    float: right
+}
+
+.christmas-order-details .content p {
+    font-size: 37px;
+    margin-bottom: 40px
+}
+
+@media (max-width: 768px) {
+    .corporate-christmas-banner {
+        height:320px;
+        background: url(../img/corporate-hampers/corporate-christmas-main-banner.jpg);
+        background-position: center top;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast
+    }
+
+    .christmas-order-details .content {
+        width: 100%
+    }
+}
+
+.corporate-branded-banner {
+    height: 520px;
+    background: url(../img/corporate-hampers/corporate-branding-main-banner.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast
+}
+
+.corporate-branded {
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 40px;
+    text-align: center
+}
+
+.corporate-branded .main-title {
+    font-size: 58px;
+    margin-bottom: 20px
+}
+
+.corporate-branded .strong {
+    display: inline-block;
+    font-weight: 400
+}
+
+.corporate-branded .ico {
+    max-width: 100%;
+    width: 100%
+}
+
+.corporate-branded .small-title {
+    font-size: 18px;
+    margin-top: 20px
+}
+
+.corporate-branded .thumb {
+    padding: 4px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.corporate-branded .text {
+    padding-left: 10%;
+    padding-right: 10%
+}
+
+@media (max-width: 768px) {
+    .corporate-branded-banner {
+        height:220px;
+        background: url(../img/corporate-hampers/corporate-branding-main-banner.jpg);
+        background-position: center top;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast
+    }
+
+    .corporate-branded .main-title {
+        font-size: 34px
+    }
+
+    .corporate-branded {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 28px;
+        text-align: center
+    }
+
+    .corporate-branded .thumb {
+        padding: 10px
+    }
+
+    .corporate-branded .small-title {
+        font-size: 14px;
+        margin-top: 12px
+    }
+}
+
+.corporate-platform-banner {
+    height: 520px;
+    background: url(../img/corporate-hampers/Dedicated-Gifting-Platform_top-banner.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast
+}
+
+.platform-solution {
+    height: 500px;
+    background: url(../img/corporate-hampers/platform-solution-bg.jpg);
+    background-position: right top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.platform-solution .content {
+    font-size: 25px;
+    text-align: center;
+    width: 440px;
+    float: right;
+    font-weight: 200;
+    line-height: 32px;
+    margin-top: 100px;
+    margin-right: 30px
+}
+
+.platform-solution .content .strong {
+    font-weight: 400
+}
+
+.how-it-works {
+    background: url(../img/corporate-hampers/how-it-works-bg.jpg);
+    background-position: center top;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    padding: 100px
+}
+
+.how-it-works {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 300
+}
+
+.how-it-works .title {
+    font-size: 42px
+}
+
+.how-it-works .ico {
+    margin-bottom: 20px;
+    max-width: 348px;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.case-study .laptop-bg {
+    background-position: left top;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    height: 500px
+}
+
+.case-study .laptop-bg .img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: auto;
+    z-index: -1
+}
+
+.case-study {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 33px
+}
+
+.case-study .title {
+    font-size: 39px;
+    margin-bottom: 32px
+}
+
+.case-study .content {
+    width: 40%;
+    float: right;
+    margin-top: 100px;
+    margin-right: 8%
+}
+
+
+.video-holder {
+	position: relative;
+	text-align: center;
+}
+.video-holder #video {
+	max-width: 100%;
+}
+#controls {
+    position: absolute;
+    background: none!important;
+    padding: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    opacity: 0;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    height: 100%;
+}
+.video-holder:hover #controls {
+    opacity: 1;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+}
+.play-video {
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background-image: url(../img/play-sign.png)!important;
+    height: 60px;
+    width: 60px;
+	border: none;
+    background: none;
+}
+.play-video:focus {outline:0;}
+.pause-video {
+    background-image: url(../img/pause-sign.png)!important;
+}
+.video-info-wrapper {
+	padding-top: 15%;
+}
+.video-info-wrapper p {
+	text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 33px;
+}
+
+@media (max-width: 1024px) {
+    .how-it-works {
+        padding:40px
+    }
+
+    .how-it-works .ico {
+        margin-bottom: 20px;
+        max-width: 280px
+    }
+
+    .case-study {
+        font-size: 20px;
+        line-height: 26px
+    }
+
+    .case-study .laptop-bg {
+        background-position: left top;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        height: 400px
+    }
+}
+
+@media (max-width: 991px) {
+	.video-holder {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.video-info-wrapper {
+		padding-top: 0px;
+		width: 100%;
+	}
+	.video-info-wrapper p {
+		text-align: center;
+		font-size: 18px;
+		font-weight: 300;
+		line-height: 33px;
+	}
+	#controls {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 900px) {
+    .case-study .laptop-bg {
+        height:300px
+    }
+
+    .content {
+        width: 43%;
+        float: right;
+        margin-top: 50px;
+        margin-right: 4%
+    }
+}
+
+@media (max-width: 767px) {
+    .corporate-platform-banner {
+        height:260px;
+        background: url(../img/corporate-hampers/corporate-platform-main-banner.jpg);
+        background-position: center top;
+        background-size: cover;
+        image-rendering: -webkit-optimize-contrast
+    }
+
+    .platform-solution {
+        height: 308px;
+        background: url(../img/corporate-hampers/platform-solution-bg.jpg);
+        background-position: 76% top;
+        background-size: auto 100%
+    }
+
+    .platform-solution .content {
+        font-size: 14px;
+        text-align: center;
+        width: 170px;
+        float: right;
+        font-weight: 200;
+        line-height: 17px;
+        margin-right: 10px;
+        margin-top: 20px
+    }
+
+    .how-it-works .title {
+        font-size: 30px
+    }
+
+    .how-it-works .ico {
+        margin-bottom: 20px;
+        max-width: 210px
+    }
+
+    .how-it-works {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 300
+    }
+
+    .case-study .title {
+        font-size: 28px;
+        margin-bottom: 32px
+    }
+
+    .case-study {
+        font-size: 16px;
+        line-height: 23px
+    }
+
+    .case-study .content {
+        width: 100%;
+        float: right;
+        margin-top: 0;
+        margin-right: 0
+    }
+
+    .case-study .laptop-bg {
+        background-position: left top;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        height: auto;
+        float: left
+    }
+
+    .case-study .laptop-bg .img {
+        position: relative;
+        left: 0;
+        top: 0;
+        height: auto;
+        width: 100%;
+        z-index: -1;
+        margin-bottom: 20px
+    }
+}

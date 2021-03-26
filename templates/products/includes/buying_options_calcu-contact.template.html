@@ -1,0 +1,231 @@
+<div class="extra-options">
+		<div id="shipbox" class="shipbox-delivery">
+			<div class="panel panel-shipbox">
+			  <div class="panel-body">
+					
+					  <div class="row btn-stack">
+						  <div class="col-xs-12 col-md-3 hidden">
+							  <input type="number" name="input" id="n_qty" value="1" size="2" class="form-control" placeholder="Qty">
+						  </div>
+						  <div class="col-xs-12 col-md-3 hidden">
+							  <select id="country" class="form-control">
+								  [%countries%]
+									  [%PARAM *body%]
+										  <option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+									  [%END PARAM%]
+								  [%END countries%]
+							  </select>
+						  </div>
+						  <div class="col-xs-6 col-md-4 postcode-input">
+							<strong class="postcode-strong">Postcode</strong>
+							<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
+							<input type="hidden" id="ship_country" value="AU"/>
+							<input type="text" id="ship_zip" name="ship_zip" value="[@ship_zip@]" class="form-control" placeholder="Post Code">	
+						</div>
+						  <div class="col-xs-6 col-md-4 suburb-input">
+							<strong class="postcode-strong">Suburb/City</strong>
+							<span id="ship_selector"></span>
+							<input type="text" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]" class="form-control" size="50" maxlength="50"/>
+						  </div>
+						  <div class="col-xs-12 col-md-4 submit-button">
+							  <button type="button" class="btn btn-block btn-success btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.suburbSelectorInit })" title="Calculate"><i class="fa fa-refresh"></i> Check</button>
+						  </div>
+					  </div>
+					  [%shipping_methods sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+						  [%PARAM *header%]
+						  [%END PARAM%]
+						  [%PARAM *body%]
+
+						  [%if [@delivery_date@] eq ''%]
+					  		[%set [@delivery_date@]%][%format type:'date' format:'#U'%]now[%/format%][%/set%]
+						  [%/if%]
+							  <hr />
+							  <p id="ship_collapse" class="shipping-method">
+								<strong>[@shipping_method@]</strong>
+								<span class="pull-right">[%if [@cost@] ne '0.00'%][%format type:"currency"%][@cost@][%END format%][%else%]Free[%/if%]
+								</span><br>
+								[%if ([@delivery_time@] OR [@delivery_time@] eq'0') AND ([@shipping_method@] like 'Standard Delivery' OR [@shipping_method@] like 'Express')%]
+									<span class="delivery-date">Estimated arrival on [%format type:'date' format:'#w #d #k'%][@delivery_date@][%/format%]</span>
+									<!-- <p>[@delivery_time@]</p> -->
+								[%/if%]
+								<!-- <p>[@delivery_time@]</p> -->
+								</p>
+							  <p class="shipping-description">[@shipping_description@]</p>
+						  [%END PARAM%]
+						  [%PARAM *footer%]
+							  </p>
+						  [%END PARAM%]
+						  [%PARAM *ifempty%]
+
+							  [%if [@ship_zip@]%]
+								<p class="alert alert-danger alert-shipping-error">Shipping not available to selected location.</p>
+							[%else%]
+								<hr>
+								<p>Enter your delivery postcode above to see available delivery options and timeframes.</p>
+							[%/if%]
+							
+						<!--	  This can maybe be removed. Commenting out for now
+							<div class="extra-options">
+								<div id="shipbox" class="shipbox-delivery">
+									<div class="panel panel-shipbox">
+										<div class="panel-body">
+											<h4 class="text-center"><i class="fa fa-truck"></i> Delivery Time Calculator</h4>
+											<p class="text-center" style="font-size:12px;">Orders placed by 1pm Sydney time weekdays are dispatched on the same day</p>
+											<hr>
+												<div class="row btn-stack">
+													<div class="col-xs-12 col-md-3 hidden">
+														<input type="number" name="input" id="n_qty" value="1" size="2" class="form-control" placeholder="Qty">
+													</div>
+													<div class="col-xs-12 col-md-3 hidden">
+														<select id="country" class="form-control">
+															[%countries%]
+																[%PARAM *body%]
+																	<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+																[%END PARAM%]
+															[%END countries%]
+														</select>
+													</div>
+													<div class="col-xs-6 col-md-4 postcode-input">
+													<strong class="postcode-strong">Postcode</strong>
+													<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
+													<input type="hidden" id="ship_country" value="AU"/>
+													<input type="text" id="ship_zip" name="ship_zip" value="[%session id:'ship_zip'/%]" class="form-control" placeholder="Post Code">	
+												</div>
+													<div class="col-xs-6 col-md-4 suburb-input">
+													<strong class="postcode-strong">Suburb/City</strong>
+													<span id="ship_selector"></span>
+													<input type="text" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]" class="form-control" size="50" maxlength="50"/>
+													</div>
+													<div class="col-xs-12 col-md-4 submit-button">
+														<button type="button" class="btn btn-block btn-success btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.suburbSelectorInit })" title="Calculate"><i class="fa fa-refresh"></i> Check</button>
+													</div>
+												</div>
+											[%site_value id:'footer_javascript'%]
+												<script>
+													$(document).ready(function(){
+														$('.delivery-date-modified').each(function(){
+															// Get the number of days
+															var days = $(this).data('time');
+															
+															// Increase from todays date
+															var todaysDate = new Date();
+															var adjustedDate = new Date();
+															adjustedDate.setDate(todaysDate.getDate() + days);
+							
+															var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+															var dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+							
+															// Insert new date text
+															var newText = 'Estimated arrival on ' + dayNames[adjustedDate.getDay()]+ ' ' + adjustedDate.getDate() + ' ' + monthNames[adjustedDate.getMonth()];
+															
+															$(this).html(newText);
+														});
+													});
+												</script>
+											[%/site_value%]
+												[%shipping_methods sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+													[%PARAM *header%]
+													[%END PARAM%]
+													[%PARAM *body%]
+													[%if [@delivery_date@] eq ''%]
+														[%set [@delivery_date@]%][%format type:'date' format:'#U'%]now[%/format%][%/set%]
+													[%/if%]
+														<hr />
+														<p id="ship_collapse" class="shipping-method">
+														<strong>[@shipping_method@]</strong>
+														<span class="pull-right">[%if [@cost@] ne '0.00'%][%format type:"currency"%][@cost@][%END format%][%else%]Free[%/if%]
+														</span><br>
+														[%if [@delivery_time@] AND [@shipping_method@] like 'Standard Delivery' OR [@shipping_method@] like 'Express'%]
+															<span class="delivery-date delivery-date-modified" data-time="[@delivery_time@]"></span>
+														[%/if%]
+														</p>
+														<p class="shipping-description">[@shipping_description@]</p>
+													[%END PARAM%]
+													[%PARAM *footer%]
+														</p>
+													[%END PARAM%]
+													[%PARAM *ifempty%]
+														[%if [@ship_zip@]%]
+														<p class="alert alert-danger alert-shipping-error">Shipping not available to selected location.</p>
+													[%else%]
+														<hr>
+														<p>Enter your delivery postcode above to see available delivery options and timeframes.</p>
+													[%/if%]
+													[%END PARAM%]
+												[%END shipping_methods%]
+										</div>
+									</div>
+								</div>
+								[%site_value id:'footer_javascript'%]
+										<script>
+										var productShippingCalc = {
+										// Checks if shipping calculator is in the DOM
+										hasShippingCalc: function(id){
+											if(!id) { id = '#shipbox'; }
+											if($(id).length > 0){
+												return true;
+											}
+											return false;
+										},
+										suburbSelectorInit: function(){
+											var hasShippingCalc = productShippingCalc.hasShippingCalc();
+											if(hasShippingCalc){
+												$.postcode_selectorInit({
+													'id':'ship_selector',
+													'country_id':'ship_country',
+													'city_id':'ship_city',
+													'state_id':'ship_state',
+													'zip_id':'ship_zip'
+												});
+											}
+										}
+									}
+									$(document).ready(function(){
+										productShippingCalc.suburbSelectorInit();
+									});
+									</script>
+								[%/site_value%]
+							</div>
+						-->
+						  [%END PARAM%]
+					  [%END shipping_methods%]
+			  </div>
+			</div>
+		</div>
+		<!-- End Shipping Options -->
+		[%site_value id:'footer_javascript'%]
+				<script>
+				var productShippingCalc = {
+				// Checks if shipping calculator is in the DOM
+				hasShippingCalc: function(id){
+					if(!id) { id = '#shipbox'; }
+					if($(id).length > 0){
+						return true;
+					}
+					return false;
+				},
+				suburbSelectorInit: function(){
+					var hasShippingCalc = productShippingCalc.hasShippingCalc();
+					if(hasShippingCalc){
+						$.postcode_selectorInit({
+							'id':'ship_selector',
+							'country_id':'ship_country',
+							'city_id':'ship_city',
+							'state_id':'ship_state',
+							'zip_id':'ship_zip'
+						});
+					}
+				}
+			}
+			$(document).ready(function(){
+				productShippingCalc.suburbSelectorInit();
+			});
+			</script>
+		[%/site_value%]
+		<!-- [%IF [@short_description@]%]
+		<p>
+		[@short_description@]
+		</p>
+		[%END IF%] -->
+	</div>
+	

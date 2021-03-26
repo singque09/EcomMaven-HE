@@ -1,0 +1,189 @@
+[%site_value id:'footer_javascript'%]
+	<script>
+		// Grab a handle to the video
+		var video = document.getElementById("video");
+		// Turn off the default controls
+		video.controls = false;
+		function togglePlayPause() {
+			var playpause = document.getElementById("playpause");
+			if (video.paused || video.ended) {
+				playpause.title = "pause";
+				playpause.innerHTML = "";
+				video.play();
+			}
+			else {
+				playpause.title = "play";
+				playpause.innerHTML = "";
+				video.pause();
+			}
+			$(playpause).toggleClass('pause-video');
+		}
+
+		video.addEventListener('play', function() {
+			var playpause = document.getElementById("playpause");
+			playpause.title = "pause";
+			playpause.innerHTML = "";
+		}, false);
+		video.addEventListener('pause', function() {
+			var playpause = document.getElementById("playpause");
+			playpause.title = "play";
+			playpause.innerHTML = "";
+		}, false);
+	</script>
+[%/site_value%]
+<section class="corporate-platform-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="text-center">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="container">
+	[%breadcrumb%]
+		[%PARAM *header%]
+			<ul class="breadcrumb">
+				<li>
+					<a href="[@config:home_url@]">Home</a>
+				</li>
+		[%/PARAM%]
+		[%PARAM *body%]
+			<li>
+				<a href="[@url@]">[@name@]</a>
+			</li>
+		[%/PARAM%]
+		[%PARAM *footer%]
+			</ul>
+		[%/PARAM%]
+	[%/breadcrumb%]
+</div>
+<section class="padding-tb-med">
+	<div class="container platform-solution">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="content-wrapper">
+					<div class="content text-white">
+						<p>Do you have a large number of recipients you would like to reward or incentivize?</p>
+						<p>Worried about choosing the wrong gift for a client or employee?</p>
+						<p>Spending too much time trying to select the perfect gift?</p>
+						<p class="strong">WE HAVE GOT THE SOLUTION</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="padding-b-med">
+	<div class="container how-it-works text-white">
+		<div class="row">
+			<div class="col-xs-12 padding-b-small"><h2 class="title text-white">How it all works</h2></div>
+			<div class="col-xs-12 col-sm-6 padding-t-med">
+				<img class="ico" src="[%ntheme_asset%]img/corporate-hampers/step-1.png[%/ntheme_asset%]/">
+				<p>Select the gifts and experiences you would like to be available for your recipients to choose from.</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 padding-t-med">
+				<img class="ico" src="[%ntheme_asset%]img/corporate-hampers/step-2.png[%/ntheme_asset%]/">
+				<p>We create a dedicated web address featuring
+					your logo and personalised message and the
+					products that you have selected. See an
+					example URL here: sample.mygifthub.com.au
+					(voucher code ‘sample123’).</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 padding-t-med">
+				<img class="ico" src="[%ntheme_asset%]img/corporate-hampers/step-3.png[%/ntheme_asset%]/">
+				<p>Your recipients are given a gift voucher with your
+				custom message and branding. They are instructed
+				to go to the dedicated web address, choose their gift,
+				enter their unique code and delivery details.</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 padding-t-med">
+				<img class="ico" src="[%ntheme_asset%]img/corporate-hampers/step-4.png[%/ntheme_asset%]/">
+				<p>The chosen gift is delivered directly to
+				their door within days. All selection and
+				delivery questions are directed to our
+				dedicated in house customer service team.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="video-wraper">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 video-holder">
+				<video id="video" controls>
+				  <source src="[%ntheme_asset%]img/dedicated-video.mp4[%/ntheme_asset%]" type="video/mp4">
+				</video>
+				<div id="controls">
+					<button id="playpause" title="play" onclick="togglePlayPause()" class="play-video"></button>
+				</div>
+			</div>
+			<div class="col-sm-4 video-info-wrapper">
+				<p>Watch this short video to get an overview of the entire process.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="padding-tb-med">
+	<div class="container case-study">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="title">Allianz: <span class="text-gold">Case Study</span></h2>
+				<p>Brief: To develop a Gifting Platform for Allianz to reward their employees for 5 and 10 years of service.</p>
+				<p>- A simple ordering process for an Allianz manager to select
+				a gift for their team member.</p>
+				<p>- A different range of gifts for 5 and 10 year employees.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 laptop-bg padding-tb-med">
+			<div class="content">
+				<img class="img" src="[%ntheme_asset%]img/corporate-hampers/laptop-img.jpg[%/ntheme_asset%]/">
+				<p><span class="strong">Project Overview:</span> Gifts Australia
+				developed a dedicated gifting platform
+				for Allianz 5 and 10 year employees.</p>
+			</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="title">How Allianz use their <span class="text-gold">gifting platform</span></h2>
+				<p>- Allianz HR department sends an order for voucher codes to Gifts Australia each month.</p>
+				<p>- Vouchers are generated and sent to the Allianz managers.</p>
+				<p>- The Allianz Manager can than access the gifting platform. </p>
+				<p>- The voucher code will log them into the appropriate site (either 5yr or 10yr gifts).</p>
+				<p>- The manager selects a gift for their team member.</p>
+				<p>- Gifts are dispatched within one business day of the order being received.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="padding-tb-med">
+	<div class="container corporate-contact-section">
+		<div class="row">
+			<div class="col-sm-12">
+    			<div class="text-wrapper">
+    			    <span class="small-title">Contact a Member of</span>
+    				<span class="title">Our Corporate Team</span>
+    				<span class="phone">1300 459 452</span>
+    			</div>
+    			<div class="text-center corporate-banner-buttons bootom-buttons">
+					<a class="btn" data-fancybox-type="iframe" href="https://thehamperemporiumcorporate.wufoo.eu/forms/p73ipsf0bd7uvl/" target="_blank">
+						<span>Enquire about a Gifting Platform</span>
+						<img class="ico" src="[%ntheme_asset%]img/corporate-hampers/make-enquiry-ico.png[%/ntheme_asset%]/">
+					</a>
+					<a class="btn" href="/assets/files/Corporate_Brochure_HE_2019.pdf" download >
+						<span>Download Brochure</span>
+						<img class="ico" src="[%ntheme_asset%]img/corporate-hampers/download-ico.png[%/ntheme_asset%]/">
+					</a>
+					<a class="btn" href="[@CONFIG:bulk_upload_link@]">
+						<span>Download Bulk Order Form</span>
+						<img class="ico" src="[%ntheme_asset%]img/corporate-hampers/download-ico.png[%/ntheme_asset%]/">
+					</a>
+					<a class="btn custom-view-more-btn" rel="nofollow" href="https://help.thehamperemporium.com.au/hc/en-gb/sections/360000024296-Corporate-Gifting-Platform">More Information</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,787 @@
+[%site_value id:'footer_javascript'%]
+	<script>
+		$(".productvidwrap").on("click", function(e) {
+			e.preventDefault()
+		})
+	</script>
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function() {
+			$.product_variationInit({
+				'loadtmplates': ['_buying_options', '_images','_header'],
+				'fns' : {
+					'onLoad' : function () {
+						$('.addtocart').button("loading");
+					},
+					'onReady' : function () {
+						$('.addtocart').button("reset");
+						$('.zoom').zoom();
+						imageGallery ()
+						countCharacters();
+						noMonogramChecker.reset();
+					},
+				}
+			});
+			[%if [@has_components@]%]
+				$.kit_variationInit({});
+			[%/if%]
+			
+			imageGallery ()
+			countCharacters();
+			noMonogramChecker.reset();
+			noMonogramChecker.checkMonogram();
+			nCartInitCallbacks.push(function() {setTimeout(noMonogramChecker.checkMonogram)});
+		});
+		function imageGallery () {
+			$('.thumb-image').click(function(){
+				$('#main-image').attr('src',$(this).find('img').attr('src'));
+				$('.zoomImg').attr('src',$(this).find('img').attr('src'));
+				$('.fancybox').attr('href',$(this).find('img').attr('src'));
+			});
+		}
+	</script>
+	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jcountdown/1.4/jquery.jcountdown.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('.zoom').zoom();
+		});
+	</script>
+	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/zoom/1.4/jquery.zoom-min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#sale-end").countdown({
+				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+			});
+		});
+
+			function countCharacters() {
+			$('.inputtext').bind('keyup blur',function(e){
+				var id = $(this).attr('id');
+				var obj = $('#'+id+'ctr');
+				if(obj.length) {
+					var len = obj.attr('ref'); if(isNaN(len)) { len=0; }
+					if(len > 0) {
+						var val = ''+$(this).val();
+						if(val.length > len) { val = val.substr(0,len); $(this).val( val ); }
+						obj.html(''+(len-val.length));
+					}
+				}
+			});
+		};
+
+				let noMonogramChecker = {
+			checkMonogram: function() {
+				
+				var monogramCheckBox = $('#no-monogram');
+				var monogramErrorDisplay =  $('#no-monogram').closest("[data-buy-logic='true']").find(".monogram-info");
+				var relevantAddToCartBtns = $('#no-monogram').closest("[data-buy-logic='true']").find(".addtocart");
+				var noMonoChecked = monogramCheckBox.is(":checked");
+				var monogramElems = $(".monogram");
+				var engravingSpecified = monogramElems.toArray().reduce((result, cur_element) => result || cur_element.value.length > 0 && cur_element.value != 'N/A', false);
+				
+
+				//customer selected no mongram required
+				if (noMonoChecked && this.id=="no-monogram") {
+					monogramElems.val("N/A")
+					relevantAddToCartBtns.prop('disabled', false);
+					monogramErrorDisplay.css('display','none')
+				} 
+				// customer hasn't specified an engraving
+				else if (!engravingSpecified) {
+					monogramElems.val("");
+					relevantAddToCartBtns.prop('disabled', true);
+					monogramErrorDisplay.css('display','initial')
+				}
+				// product ready to add to cart
+				else {
+					monogramCheckBox.prop("checked",false);
+					relevantAddToCartBtns.prop('disabled', false);
+					monogramErrorDisplay.css('display','none');
+				}
+			},
+
+			reset: function() {
+				$('#no-monogram, .monogram').off("change keyup", null, this.checkMonogram);
+				$('#no-monogram, .monogram').on("change keyup", null, null, this.checkMonogram);
+			}
+		}
+	</script>
+	
+	<script async>
+		/* monogram validate - added by Dusan 20170420 */
+		$(document).on('keypress', '.monogram-input', function onlyAlphabets(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+                    return true;
+                else
+                    return false;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+		});
+		/* monogram clear on edit */
+		$(document).on('focus', '.monogram-input', function (e, t) {
+            if ($(this).val() == "N/A") {
+				$(this).val("");
+				$("#no-monogram").prop('checked',false)
+				noMonogramChecker.checkMonogram();
+			}
+		});
+
+		$('.btn-stack .btn').click(function() {
+			$('.monogram-input').each(function() {
+				var text = $(this).val();
+				var upperText = text.toUpperCase();
+				$(this).val(upperText)	
+			})
+		});
+	</script>
+	
+	  <!-- /* hidden by DG */ -->
+<script src="[%ntheme_asset%]plugins/swiper/js/swiper.min.js[%/ntheme_asset%]"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  $(".productvidwrap").fancybox({
+			maxWidth        : 800,
+			maxHeight        : 600,
+			fitToView        : false,
+			width                : '90%',
+			height                : '70%',
+			autoSize        : false,
+			closeClick        : false,
+			openEffect        : 'none',
+			closeEffect        : 'none'
+		  });
+	
+		});
+	  </script>
+<!--	  /* hidden by DG */ -->
+	<script>
+	// Collapse blocks
+	var docWidth = $(document).width();
+	if(docWidth < 768) {
+		$('.panel-title.hamper').click(function(){
+			$(this).find('i').toggleClass('fa-chevron-up');
+			$(this).find('i').toggleClass('fa-chevron-down');
+			$('.hamper-contents-scroll').toggleClass('active');
+		});
+		$('.delivery-returns-title').click(function(){
+			$(this).find('i').toggleClass('fa-chevron-up');
+			$(this).find('i').toggleClass('fa-chevron-down');
+			$('.delivery-returns-content').toggleClass('expanded');
+		});
+		$('.product-details-title').click(function(){
+			$(this).find('i').toggleClass('fa-chevron-up');
+			$(this).find('i').toggleClass('fa-chevron-down');
+			$('.product-details-content').toggleClass('expanded');
+		});
+	}
+	if(docWidth < 768) {
+		$('#swiper').addClass('swiper-container');
+		$('#swiperWrapper').addClass('swiper-wrapper');
+		var swiper = new Swiper('.swiper-container', {
+			//pagination: '.swiper-pagination',
+			//paginationClickable: true,
+			loop: true,
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			spaceBetween: 10
+		});
+	}
+	</script>
+[%/site_value%]
+
+<style>
+
+.popover.top {
+    min-width: 450px;
+    border: transparent;
+}
+
+
+.popuptxtHolder {
+    font-size: 12px;
+    font-family: Montserrat;
+}
+
+.popupImgHolder img {
+    width: 100%;
+}
+.popupImgHolder {
+    padding-left : 25px;
+    padding-right : 15px;
+}
+.popupImgHolder .col-xs-12 {
+    padding-left : 0;
+    padding-right : 0;
+    margin-bottom: 3px;
+}
+.popupImgHolder .col-xs-6 {
+    padding-left : 0;
+    padding-right : 0;
+}
+
+span.popupHeading {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 7px;
+    color: #707070;
+}
+
+span.learnMoreVP button {
+    background: transparent !important;
+    color: #707070 !important;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    border: transparent;
+    text-decoration : underline;
+    padding-left: 3px;
+}
+span.learnMoreVP button:hover {
+    color :  #BFA774 !important;
+    text-decoration : underline;
+    padding-left: 3px;
+}.virtualPartyHolder img {
+    width: 100%;
+}
+
+.virtualPartyHolder {
+    border: 1px solid #D1D1D1;
+    border-radius: 7px;
+}
+.virtualPartyHolder .gcInputField input {
+    border : transparent !Important;
+    border-radius : 20px !important;
+    width: 10px;
+    height: auto;
+    float: left;
+    margin-right: 6px;
+}
+
+.gcNameHolder {
+    font-size: 14px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: #707070;
+}
+
+.gcInputField label {
+    color: #707070;
+    font-size: 14px;
+    font-family: 'Montserrat';
+}
+
+.selectOptionHolder {
+    /* background-color: #F5F5F5; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.virtualPartyHolder {
+    background-color: #F5F5F5;
+}
+
+.imgHolderPartyP {
+    padding-right: 0;
+}
+.virtualPartyWrapper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#virtualParty0, #virtualParty0label {
+    display: none;
+}
+span.learnMoreVP button:focus {
+    outline: none;
+    outline-style: none;
+}
+.extraSelectHolder, .hiddenVirtualOption {
+    display: none;
+}
+@media (max-width : 534px) {
+    .gcNameHolder, span.learnMoreVP button {
+        font-size: 9px;
+        line-height: 1;
+    }
+
+    .gcInputField label {
+        font-size: 9px;
+        margin-bottom: 0 !important;
+        line-height : 1;
+    }
+
+    .virtualPartyHolder .gcInputField input {
+        margin-top: 0px;
+    }
+
+    .gcInputField {
+        line-height: 1;
+    }
+}
+
+@media (min-width : 768px) and (max-width : 1170px){
+    .gcNameHolder, span.learnMoreVP button {
+        font-size: 9px;
+        line-height: 1;
+    }
+
+    .gcInputField label {
+        font-size: 9px;
+        margin-bottom: 0 !important;
+        line-height : 1;
+    }
+
+    .virtualPartyHolder .gcInputField input {
+        margin-top: 0px;
+    }
+
+    .gcInputField {
+        line-height: 1;
+    }
+}
+
+</style>
+[%cache type:'display' id:'[@inventory_id@]'%]
+<div class="container">
+<div class="col-xs-12">
+	<div class="row">
+		<ul class="breadcrumb">
+			<li><a href="[@config:home_url@]">Home</a></li>
+			[%breadcrumb%][%param *body%]
+			<li><a href="[@url@]">[@name@]</a></li>
+			[%/param%][%/breadcrumb%]
+		</ul>
+	</div>
+	<div class="row top-section">
+		<div class="col-sm-7">
+			[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+		</div>
+		<div class="col-sm-5">
+			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+			<form>
+				[%list_item_variations id:'[@current_sku@]'%]
+					[%param header%]
+					<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
+					<hr>
+					<div class="row">
+					[%/param%]
+					[%param *variation_header%]
+							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]">
+								<div class="variation-name">
+									<strong>[@specific_name@]</strong>
+								</div>
+								<div class="specific">
+									<input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+				[%/param%]
+				[%param *variation_body%]
+									<div class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
+										<a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+											[%if [@value_image@]%]
+												<img src="[@value_image@]" alt="[@value_name@]" />
+											[%/if%]
+											[%if [@value_name@]%]
+												[@value_name@]
+											[%ELSE%]
+												[@value_description@]
+											[%/if%]
+										</a>
+									</div>
+				[%/param%]
+				[%param *variation_body_radio%]
+									<label class="_itmspec_listitm btn btn-default" ref="[@specific_id@]_[@value_id@]">
+										<input class="_itmspec_radio" type="radio" name="_itmspec_radio[@specific_id@]" value="[@value_id@]" ref="[@specific_id@]_[@value_id@]" [%if [@selected@]%]checked[%/if%]> [@value_name@]
+									</label>
+				[%/param%]
+				[%param *variation_body_image%]
+									<span class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
+										<a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+											[%if [@value_image@]%]
+													<img src="[@value_image@]" alt="[@value_name@]">
+												[%else%]
+													[@value_name@]
+											[%/if%]
+										</a>
+									</span>
+				[%/param%]
+				[%param *variation_footer%]
+									<div class="clear"></div>
+								</div>
+							</div>
+				[%/param%]
+				[%param *variation_header_select%]
+							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]">
+								<div class="variation-name">
+									<strong>[@specific_name@]</strong>
+								</div>
+									<div class="specific">
+										<input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+										<div class="n-wrapper-form-control">
+											<span class="_itmspec_optpl" ref="[@specific_id@]">
+												<select class="_itmspec_opt form-control" ref="[@specific_id@]">
+					[%/param%]
+					[%param *variation_body_select%]
+													<option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@]</option>
+					[%/param%]
+					[%param *variation_footer_select%]
+												</select>
+											</span>
+										</div>
+									</div>
+							</div>
+					[%/param%]
+					[%param footer%]
+						</div>
+					[%/param%]
+				[%/list_item_variations%]
+				[%if ![@has_variation@]%]
+					[%load_template file:"products/includes/child_products.template.html"/%]
+				[%/if%]
+			</form>
+			[%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
+				[%load_ajax_template id:'_buying_options' type:'item' template:'buying_options' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+			[%/if%]
+			
+[%SITE_VALUE id:'footer_javascript'%]	
+
+<script>
+$(document).ready(function(){
+var vgContent =  $("#popUpHolderWrapper").html();
+
+    $('[data-toggle="popover"]').popover({
+        placement : 'top',
+		trigger : 'click',
+        html : true,
+        content : vgContent
+    });
+
+     $('#virtualParty0').change(function() {
+        if($(this).is(":checked")){
+          $('#virtualParty1').attr('checked', false);
+        }    
+    });
+    
+    $('#virtualParty1').change(function() {
+        if($(this).is(":checked")){
+          $('#virtualParty0').attr('checked', false);
+          $('#productextra5').val(1);
+          
+        } 
+        else{
+        	$('#virtualParty0').prop('checked', true);
+          $('#productextra5').val(0);
+        }
+          
+         
+    });
+    
+    
+	
+});
+	
+	
+</script>
+
+[%/SITE_VALUE%]
+
+
+<div class="popUpHolderWrapper" id="popUpHolderWrapper" style="display : none;">
+	[%advert type:'text' template:'' limit:'8' ad_group:'virtualGathering-Pop' category:'0'%]
+		[%param *header%]
+		[%/param%]
+		[%param *body%]
+		<div class="popupHolderPP">
+			<div class="row">
+				<div class="col-xs-5 popupImgHolder">
+					<div class="row">
+						<div class="col-xs-12"><img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%]">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-7 popuptxtHolder">
+					<div class="popuptxtInner">
+						<span class="popupHeading">[@headline@]</span>
+						<span class="popupP">[@description@]</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		[%/param%]
+		[%param footer%]
+		[%/param%]
+	[%/advert%]
+</div>
+			
+			<div class="features">
+				[@features@]
+			</div>
+			[%if [@store_price@] < 1000%]
+			    <div class="paymentProductDG">
+    				<div>
+    				    <img class="zip-img" src="[%ntheme_asset%]img/Colour@4x.png[%/ntheme_asset%]" width="100px" alt="ZipMoney">
+    				    <p class="zip-text"><strong>own</strong> it now, pay later</p>
+    				</div>
+    				<div>
+    				    <img class="afterpay-img" src="/assets/image/afterpay.png" alt="afterpay">
+    				</div>
+				</div>
+				
+			[%/if%]
+			<hr style="margin-top:5px;"/>
+			[%payment_methods ignore_balance:'1'%]
+				[%param header%]
+					<div class="payment-icons">
+				[%/param%]
+				[%param *body%]
+					[%if [@name@] like 'American Express'%]
+						<div>
+							<div class="payment-icon-container">
+								<div class="payment-icon grey-payment-icon payment-icon-americanexpress"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'Visa'%]
+						<div>
+							<div class="payment-icon-container">
+									<div class="payment-icon grey-payment-icon payment-icon-visa"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'MasterCard'%]
+						<div>
+							<div class="payment-icon-container">
+									<div class="payment-icon grey-payment-icon payment-icon-mastercard"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'Discover'%]
+						<div>
+							<div class="payment-icon-container">
+								<div class="payment-icon grey-payment-icon payment-icon-discover"></div>
+							</div>
+						</div>t
+					[%/if%]
+					[%if [@name@] like 'Diners'%]
+						<div>
+							<div class="payment-icon-container">
+								<div class="payment-icon grey-payment-icon payment-icon-diners"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'Cheque'%]
+						<div>
+							<div class="payment-icon-container">
+								<div class="payment-icon grey-payment-icon payment-icon-cheque"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'Money Order'%]
+						<div>
+							<div class="payment-icon-container">
+								<div class="payment-icon grey-payment-icon payment-icon-moneyorder"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'Direct Deposit'%]
+						<div>
+							<div class="payment-icon-container">
+									<div class="payment-icon grey-payment-icon payment-icon-directdeposit"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'bpay'%]
+						<div>
+							<div class="payment-icon-container">
+								<div class="payment-icon grey-payment-icon payment-icon-bpay"></div>
+							</div>
+						</div>
+					[%/if%]
+					[%if [@name@] like 'paypal'%]
+						<div>
+							<div class="payment-icon-container">
+									<div class="payment-icon grey-payment-icon payment-icon-paypal"></div>
+							</div>
+						</div>
+					[%/if%]
+				[%/param%]
+				[%param *footer%]
+					</div>
+				[%/param%]
+			[%/payment_methods%]
+			[%if [@has_components@]%]
+			<hr>
+				<h2>Customise Your Purchase</h2>
+				[%load_template file:"products/includes/components.template.html"/%]
+			[%/if%]
+		</div>
+	</div>
+	<div class="row padding-t-small padding-b-med">
+		<div class="col-xs-12">
+			<div class="">
+				<div class="panel panel-default hamper-panel">
+					<div class="panel-heading hamper-cont-head">
+						<h4 class="panel-title text-center">
+							<a data-toggle="collapse" href="#collapseOne">
+								<i class="fa fa-angle-down pull-left"></i><i class="fa fa-gift"></i> Hamper Contents<i class="fa fa-angle-down pull-right"></i>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in">
+						<div class="scrollable-panel">
+							<div class="panel-body">
+								<div class="row">
+									[%THUMB_LIST type:'content' content_type:'beer' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Beer & Cider
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'savoury' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Savoury
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'sweet' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Biscuits & Sweets
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'wine' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Wine & Champagne
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'chocolate' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Chocolate
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'gifts' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Gifts & Accessories
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'pantry' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Pantry
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+									[%THUMB_LIST type:'content' content_type:'also-included' filter_category:'' filter_inventory_id:'[@inventory_id@]' template:'hampercontent' limit:'100' ignore_keywords:'1' ignore_session_filter:'1'%]
+									[%PARAM *header%]
+									<div class="prodheadcollapse">
+										Also Included
+									</div>
+									<div class="row hampercontentwrap">
+										[%END PARAM%][%PARAM FOOTER%]
+									</div>
+									[%END PARAM%]
+									[%END THUMB_LIST%]
+								</div>
+							</div>
+						</div>
+						<hr/>
+					</div>
+				</div>
+				<div class="panel-group productinfocollapse" id="accordion">
+					<div class="panel panel-default padding-b-med">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" href="#collapseTwo" class="collapsed text-center">
+									<i class="fa fa-angle-down pull-left"></i> <i class="fa fa-truck"></i> Delivery Times <i class="fa fa-angle-down pull-right"></i>
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse in">
+							<div class="panel-body">
+								[%IF [@misc8@]%]
+									[@misc8@]
+								[%ELSE%]
+									[%content_zone id:'deliverytimes'%][%end content_zone%]
+								[%END IF%]
+							</div>
+						</div>
+					</div>
+					<div class="panel-body description">
+					    <div class="authorCat text-muted" style="margin-bottom : 10px; font-size: 12px;">
+                    	    <!--Author: [@content_label2@]  &nbsp; Date Posted: [@content_label3@]-->
+                    	</div>
+						[@description@]
+					</div>
+				<div class="row" style="max-height:720px !important;">
+<script src="/assets/themes/DG-2019-10-31/js/rating-script.js"></script>
+
+    </div>
+
+			</div>
+		</div><!--/.col-xs-12-->
+		<div class="findify-element" id="product-findify-rec-1"></div>
+	</div><!--/.row-->
+</div><!--/.col-xs-12-->
+</div><!--/.container-->
+[%/CACHE%]
+</div><!--/.row-->
+
+<div data-findify-event="view-page" data-findify-item-id="[%if [@parent_sku@] ne '0' and [@parent_sku@] ne ''%][@parent_sku@][%else%][@sku@][%/if%]" data-findify-variant-item-id="[@sku@]"></div>
+<div data-findify-filter="brand" data-findify-filter-value="[@brand@]"></div>
+<div data-findify-filter="id" data-findify-filter-value="[%if [@parent_sku@] ne '0' and [@parent_sku@] ne ''%][@parent_sku@][%else%][@sku@][%/if%]"></div>
+[%content_path id:'[@inventory_id@]' type:'category' limit: '1' %]\
+    [%param *body%]
+        [%set [@current_path@]%][@content_name@][%/set%]
+        [%content_path content_id:'[@content_id@]' show_path:'y' type:'category' %]
+            [%param *body%]
+                [%if [@^content_id@] ne [@content_id@]%]
+                    [%set [@^current_path@]%][@content_name@] > [@^current_path@][%/set%]
+                [%/if%] 
+            [%/param%]
+        [%/content_path%]
+        <div data-findify-filter="category" data-findify-filter-value="[@current_path@]"></div>
+    [%/param%]
+[%/content_path%]
+<div data-findify-event="update-cart">
+    [%cart_items%]
+        [%param *body%]
+        <div data-findify-item-id="[%if [@parent_sku@] ne '0' and [@parent_sku@] ne ''%][@parent_sku@][%else%][@sku@][%/if%]" data-findify-variant-item-id="[@sku@]" data-findify-unit-price="[@price@]" data-findify-quantity="[@qty@]"></div>
+        [%/param%]
+    [%/cart_items%]
+</div>

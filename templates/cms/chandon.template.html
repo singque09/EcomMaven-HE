@@ -1,0 +1,184 @@
+[%site_value id:'footer_javascript'%]
+
+<script>
+$(document).ready(function() {
+	var docWidth = $(window).width();
+
+	// $.addToCartInit({
+	// 	'cart_id':'cartcontents',
+	// 	'target_id':'cartcontentsheader',
+	// 	'image_rel':'itmimg',
+	// 	'cart': {
+	// 				'footer': '</ul> <br> Total Item(s): <b>##item_count##</b><br />Sub Total: <b>##CURRENCY:product_total##</b><br/> ##IF:product_discount##Discount: <b>##CURRENCY:product_discount##</b><br/>##END IF:product_discount## <button class="viewcart btn btn-default" type="button" onclick="window.location=\'##checkouturl##\';" title="View Shopping Cart">View Cart</button> <button class="checkout btn btn-success" type="button" onclick="window.location=\'##checkouturl##&fn=payment\';" title="Checkout">Checkout</button><button class="edit-message btn btn-default" onclick="window.location=\'##checkouturl##&fn=upsell\';">Edit Card Message</button>'
+	// 	}
+	// });
+});
+</script>
+<script>
+		$(document).ready(function() {
+			if ($(window).width() < 768) {
+				$('#collapsable-description.collapse').collapse('hide')
+			}
+		})
+		$(window).resize(function() {
+			if ($(window).width() >= 768) {
+				$('#collapsable-description.collapse').collapse('show')
+			}
+			if ($(window).width() < 768) {
+				$('#collapsable-description.collapse').collapse('hide')
+			}
+		})
+	</script>
+[%/site_value%]
+<style>
+.titleBaskerBig {
+    font-size: 75px;
+}
+
+.chandonYoutubeVideo iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.chandonYoutubeVideo {height: 366px;}
+
+.textGreybgHolder ul li {
+    font-size: 14px;
+    font-family: 'Montserrat' !important;
+    line-height: 1.7;
+    color: #2B2B2B;
+    list-style: none;
+    padding-bottom: 4px;
+}
+
+.rowHolderGreybg {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+.textGreybgHolder ul li:before {
+    content: '- ';
+    margin-left: -17px;
+    margin-right: 8px;
+}
+.textGreybgHolder ul {
+    padding-left : 25px;
+}
+.pontingPriceFeatHolder span {
+    font-size: 18px;
+}
+.textGreybgHolder .textHolderWrapper-ponting {
+    max-width: none !important;
+}
+
+.textGreybgHolder .innerContentAdverHolder-au {
+    max-width: none !important;
+}
+@media (max-width : 767px) {
+    .titleBaskerBig {
+        font-size: 35px;
+    }
+}
+</style>
+	<div class="pontingWinesHolder" id="pontingWinesHolder">
+		<div class="home-page-slider">
+						<img src="[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" alt="[@CONTENT_EXTERNAL_REF3@]" />
+	
+		</div>
+		<div class="pontingTop">
+			<div class="pontingTopInner">
+				<div class="centerHolder-au">
+					<div class="pontingTitleHolder">
+						<h1 class="titleBaskerBig">[@content_name@]</h1>
+						[%if [@content_short_description1@]%]<h2 class="subTitleItalicBasker">[@content_short_description1@]</h2>[%/if%]
+					</div>
+					[%if [@CONTENT_EXTERNAL_REF2@]%]
+						<div class="chandonYoutubeVideo">
+								<iframe src="https://www.youtube.com/embed/[@CONTENT_EXTERNAL_REF2@]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+					[%/if%]
+					<div class="pontingDescription">
+						<h3>[@content_short_description2@]</h3>
+						<div class="smallLine"></div>
+						<p>[@content_description2@]</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pontingProductHolder">
+			<div class="centerHolder-au">
+				[%thumb_list type:'products' template:'noSchema-ponting' filter_category:'7527' sortby:'top_sellers' limit:'6'%]
+					[%param *header%]
+						<div class="productSlider3">
+					[%/param%]
+					[%param *footer%]
+						</div>
+					[%/param%]
+				[%/thumb_list%]	
+			</div>
+		</div>
+		<div class="rowHolderGreybg">
+			<div class="row">
+				<div class="greyBgInnerHolder">
+					<div class="hidden-xs">
+						<div class="centerHolder-au">
+							<div class="textGreybgHolder">						
+							
+								[%advert type:'text' template:'chandonImgTxt' limit:'1' category:'0' ad_group:'chandon-prize' sortby:'sortorder-asce'%]
+									[%param *header%]
+								<div class="innerContentAdverHolder-au">
+									[%/param%]
+									[%param footer%]
+								</div>				 
+									[%/param%]
+								[%/advert%]
+							</div>
+						</div> 
+					</div>
+					<div class="visible-xs">
+						<div class="centerHolder-au">
+							<div class="textGreybgHolder">						
+							
+								[%advert type:'text' template:'chandonImgTxt' limit:'1' category:'0' ad_group:'chandon-prize-mobile' sortby:'sortorder-asce'%]
+									[%param *header%]
+								<div class="innerContentAdverHolder-au">
+									[%/param%]
+									[%param footer%]
+								</div>				 
+									[%/param%]
+								[%/advert%]
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pontingFeaturedProdsHolder1 pontingFeaturedProdsHolder">
+			<div class="pontingFeaturedInner">
+				<div class="centerHolder-au">
+					[%advert type:'text' template:'chandonHamperFeat' limit:'6' category:'0' ad_group:'chandon-prod' sortby:'sortorder-asce'%]
+						[%param *header%]
+					<div class="pontingHamperFeat1">
+						[%/param%]
+						[%param footer%]
+					</div>				 
+						[%/param%]
+					[%/advert%]
+				</div>
+			</div>
+		</div>
+		<div class="pontingBottomHolder">
+			<div class="pontingBottomInner">
+				<div class="centerHolder-au">
+					<div class="pontingBottomImgHolder">
+						<img src="[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" alt="[@CONTENT_EXTERNAL_REF3@]" />
+					</div>
+					<div class="pontingBottomTextHolder">
+						<h3>[@CONTENT_EXTERNAL_REF1@]</h3>
+						<div class="smallLine"></div>
+						<p>[@content_description3@]</p>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>

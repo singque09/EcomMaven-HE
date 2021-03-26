@@ -1,0 +1,393 @@
+<div class="default_page aboutUsNewN">
+     
+<p class="text-muted">
+	[%IF [@content_author@]%]
+		Author: [@content_author@] &nbsp;
+	[%/IF%]
+	[%if [@date_posted@] != 0000-00-00 00:00:00%]
+		Date Posted:[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]&nbsp;
+	[%/IF%]
+</p>
+[%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
+	[%param *header%]
+		<div id="homepageCarousel" class="carousel slide">
+			[%if [@total_showing@] > 1%]
+				<ol class="carousel-indicators">
+					[%site_value id:'counter' type:'load'/%]
+				</ol>
+			[%/if%]
+			<div class="carousel-inner">
+	[%/param%]
+	[%param *footer%]
+			</div>
+			[%if [@total_showing@] > 1%]
+				<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
+					<span class="fa fa-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
+					<span class="fa fa-chevron-right"></span>
+				</a>
+			[%/if%]
+		</div>
+		<hr>
+	[%/param%]
+	[%param *ifempty%]
+	[%/param%]
+[%/advert%]
+[%advert type:'product' limit:'8' template:'' ad_group:''%]
+	[%param *header%]
+		<div class="row">
+	[%/param%]
+	[%param footer%]
+		</div>
+		<hr>
+	[%/param%]
+[%/advert%]
+[%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
+	<p>
+		[@content_short_description1@]
+		[@content_short_description2@]
+		[@content_short_description3@]
+	</p>
+	[%parse%]
+		[@content_description1@]
+		[@content_description3@]
+		[@content_wufoo_form@]
+	[%/parse%]
+[%/if%]
+[%thumb_list type:'content' content_type:'' template:'' limit:'20'%]
+	[%param *footer%]
+		<ul class="pagination">
+			[%paging limit:'3'%]
+				[%param *previous_page%]<li><a href="[@URL@]">Previous Page</a></li>[%/param%]
+				[%param *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+				[%param *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+				[%param *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+				[%param *next_page%]<li><a href="[@URL@]">Next Page</a></li>[%/param%]
+			[%/paging%]
+		</ul>
+	[%/param%]
+[%/thumb_list%]
+[%thumb_list type:'products' template:'' limit:'[@config:related_limit@]'%]
+	[%param header%]
+		<hr>
+		<div class="row">
+	[%/param%]
+	[%param footer%]
+		</div>
+	[%/param%]
+[%/thumb_list%]
+[%IF [@content_allow_reviews@]%]
+<div class="dropdown">
+	<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+		Share: <i class="fa fa-facebook-square text-facebook"></i>
+		<i class="fa fa-twitter-square text-twitter"></i>
+		<i class="fa fa-pinterest-square text-pinterest"></i>
+			<!--<i class="fa fa-google-plus-square text-google-plus"></i>-->
+	<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook"></i> Facebook</a></li>
+		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@content_name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter"></i> Twitter</a></li>
+		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@content_name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a></li>
+		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>
+	</ul>
+</div>
+<a id="comments"></a><hr />
+[%thumb_list type:'content_reviews' limit:'5'%]
+	[%param filter_1%][@CONTENT_ID@][%/param%]
+	[%param *header%]
+		<h3>Comments ([@reviews@])</h3>
+	[%/param%]
+	[%param *body%]
+		<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+			<blockquote>
+				<h4 itemprop="name"><i>[%nohtml%][@title@][%/nohtml%]</i></h4>
+				<div>
+					<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
+				</div>
+				<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span>
+				[%IF [@review_response@]%]
+					<br /><br />
+					<blockquote>
+						<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
+					</blockquote>
+				[%/IF%]
+			</blockquote> <hr />
+		</div>
+	[%/param%]
+[%/thumb_list%]
+<h3>Leave a comment</h3>
+<form name="edit_review" method="post" role="form" action="[%URL page:'account' type:'write_contentreview'%][%/URL%]">
+	<fieldset>
+		<input type="hidden" name="fn" value="confirm">
+		<input type="hidden" name="item" value="[@content_id@]">
+		<input type="hidden" name="checked_terms_and_conditions" value="1">
+		<input type="hidden" name="rating_value" id="rating_value" value="5"/>
+		<div class="form-group">
+			<label for="review_title">Title For Comment</label>
+			<input class="form-control" type="text" name="review_title" id="review_title" value="[%nohtml%][@form:review_title@][%/nohtml%]" required/>
+		</div>
+		<div class="form-group">
+			<label for="review_text">Your Comment</label>
+			<textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
+		</div>
+		[%ajax_loader%]
+			[%if ![@user:username@] or [@user:username@] eq 'noreg'%]
+				<div class="form-group">
+					<label for="customername">Your Name</label>
+					<input class="form-control" type="text" name="customername" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" required/>
+				</div>
+				<div class="form-group">
+					<label for="emailaddress">Your Email Address</label>
+					<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" required/>
+				</div>
+			[%/if%]
+		[%/ajax_loader%]
+		<p>
+			<button type="submit" class="btn btn-success" />Post Comment</button>
+		</p>
+		<p class="text-muted">Comments have to be approved before showing up</p>
+	</fieldset>
+</form>
+[%/if%]
+
+	<div class="row headerImageHolder">
+		<img src="/assets/image/au-top1.png">
+	</div>
+	<div class="row greyBg">
+		<div class="col-xs-12">			
+			<div class="centerHolder-au">
+				<h2 class="uppercaseHeader">Beautiful. Luxurious. Personal</h2>
+				<p>At The Hamper Emporium, we strive for nothing short of excellence. Our mission is to connect people through luxury gifting. Gone are the days of tacky baskets wrapped in cellophane. You won’t find tired, mundane grocery store products in our hampers. Instead, make way for world-class wines, gourmet treats, and gorgeous pamper gifts. Each hamper is curated with the utmost care to make your gesture unforgettable.</p>
+				<span class="joinUs-au">Join us & come along for the ride</a>
+			</div>
+			<div class="downArrowHolder">
+				<div class="downArrowHolderInner">
+					<i class="fa fa-arrow-down" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row thirdRowholder-au">
+		<div class="container">
+			<div class="row">
+				<div class="centerHolder-au">
+					<span class="au-midFont" id="weBelieve">
+					We believe...
+					</span>
+				</div>
+			</div>
+			<div class="row textalignRight-au">
+				<div class="centerHolder-au">
+					<div class="col-xs-5 textHolderWrapper-au">
+						<div class="hugeNumberHolder">
+							<span>1</span>
+						</div>
+						<div class="textHolder-au">
+							<h3>Your recipient Deserves luxury</h3>
+							<div class="narrowBorderBelowH3-au">
+								<div class="clearBoth"></div>
+									<div class="narrowBorder"></div>
+								<div class="clearBoth"></div>
+							</div>
+							<p class="textalignRight-au">
+							Regardless of whether you’re gifting for a special occasion or ‘just because’, they deserve the very best. Our expert team has designed each hamper to be a luxurious experience. </p>
+							
+							<p class="textalignRight-au">When you’re gifting, don’t settle for second-rate. Add a splash of indulgence to their everyday life with a present that exceeds their expectations.</p>
+						</div>
+					</div>
+					<div class="col-xs-7 imageHolderWrapper-au">
+						<div class="outerImageHolder">
+							<div class="borderImageHolder">
+							</div>
+							<div class="imageHolderNoBorder-au">
+								<img src="/assets/image/au-recipient.png">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row textalignLeft-au">
+				<div class="centerHolder-au">
+					<div class="col-xs-7 imageHolderWrapper-au">
+						<div class="outerImageHolder">
+							<div class="borderImageHolder">
+							</div>
+							<div class="imageHolderNoBorder-au">
+								<img src="/assets/image/au-supporting.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-5 textHolderWrapper-au">
+						<div class="hugeNumberHolder">
+							<span>2</span>
+						</div>
+						<div class="textHolder-au">
+							<h3>Supporting local Benefits the community</h3>
+							<div class="narrowBorderBelowH3-au">
+								<div class="clearBoth"></div>
+									<div class="narrowBorder"></div>
+								<div class="clearBoth"></div>
+							</div>
+							<p class="textalignRight-au">We are proud to partner with incredible Australian brands and producers. For us, it’s a win-win situation. Our hamper recipients are able to sample new products they may not have tried otherwise, which enriches the gifting experience. We also love helping smaller brands grow by increasing the scope of their incredible products.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row textalignRight-au">
+				<div class="centerHolder-au">
+					<div class="col-xs-5 textHolderWrapper-au">
+						<div class="hugeNumberHolder">
+							<span>3</span>
+						</div>
+						<div class="textHolder-au">
+							<h3>Quality ingredients Make quality gifts</h3>
+							<div class="narrowBorderBelowH3-au">
+								<div class="clearBoth"></div>
+									<div class="narrowBorder"></div>
+								<div class="clearBoth"></div>
+							</div>
+							<p class="textalignRight-au">It’s true, we have high standards. That means we source only the finest items to be included in our gift hampers. Why? Because every detail counts when you’re curating the perfect gift. With over a decade of experience, we have learnt that quality begets quality. We put time and effort into ensuring your gift is exceptional.
+							</p>
+						</div>
+					</div>
+					<div class="col-xs-7 imageHolderWrapper-au">
+						<div class="outerImageHolder">
+							<div class="borderImageHolder">
+							</div>
+							<div class="imageHolderNoBorder-au">
+								<img src="/assets/image/au-quality.png">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row textalignLeft-au">
+				<div class="centerHolder-au">
+					<div class="col-xs-7 imageHolderWrapper-au">
+						<div class="outerImageHolder">
+							<div class="borderImageHolder">
+							</div>
+							<div class="imageHolderNoBorder-au">
+								<img src="/assets/image/au-connect.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-5 textHolderWrapper-au">
+						<div class="hugeNumberHolder">
+							<span>4</span>
+						</div>
+						<div class="textHolder-au">
+							<h3>Hampers connect People</h3>
+							<div class="narrowBorderBelowH3-au">
+								<div class="clearBoth"></div>
+									<div class="narrowBorder"></div>
+								<div class="clearBoth"></div>
+							</div>
+							<p class="textalignRight-au">By selecting the perfect hamper for your recipient, you’re showing them your appreciation and care. Take advantage of our free premium gift card to write them a personalised message that they will cherish. Regardless whether those who matter to you are nearby or far apart, the act of gifting will always bring you closer together.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row textalignRight-au">
+				<div class="centerHolder-au">
+					<div class="col-xs-5 textHolderWrapper-au">
+						<div class="hugeNumberHolder">
+							<span>5</span>
+						</div>
+						<div class="textHolder-au">
+							<h3>Gifting should Be Uncomplicated</h3>
+							<div class="narrowBorderBelowH3-au">
+								<div class="clearBoth"></div>
+									<div class="narrowBorder"></div>
+								<div class="clearBoth"></div>
+							</div>
+							<p class="textalignRight-au">Whoever said giving high-quality gifts needs to be difficult? We seek to add simplicity to your gifting process. Because first impressions count, we present our hampers in luxury gift boxes that are bound to impress. No further wrapping is required! Our completely free shipping Australia-wide means distance is no obstacle to showing how much you care.
+							</p>
+						</div>
+					</div>
+					<div class="col-xs-7 imageHolderWrapper-au">
+						<div class="outerImageHolder">
+							<div class="borderImageHolder">
+							</div>
+							<div class="imageHolderNoBorder-au">
+								<img src="/assets/image/au-gifting.png">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row textalignLeft-au">
+				<div class="centerHolder-au">
+					<div class="col-xs-7 imageHolderWrapper-au">
+						<div class="outerImageHolder">
+							<div class="borderImageHolder">
+							</div>
+							<div class="imageHolderNoBorder-au">
+								<img src="/assets/image/au-brand.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-5 textHolderWrapper-au">
+						<div class="hugeNumberHolder">
+							<span>6</span>
+						</div>
+						<div class="textHolder-au">
+							<h3>Your brand can make a lasting impact</h3>
+							<div class="narrowBorderBelowH3-au">
+								<div class="clearBoth"></div>
+									<div class="narrowBorder"></div>
+								<div class="clearBoth"></div>
+							</div>
+							<p class="textalignRight-au">You’re at the forefront of your industry. Why would you trust your reputation to someone who isn’t at the forefront of theirs? As experts in corporate gift hampers, we can help your business stay top of mind all year long with corporate gifting.</p>
+							
+							<p class="textalignRight-au">Impress your colleagues and clients with our extensive range and corporate branding options.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row companyTeam">
+				<div class="centerHolder-au">
+					<div class="col-xs-12">
+						<h3 class="header-au">The people who make it happen</h3>
+						<div class="outerImageHolder">
+							<div class="borderImageHolder">
+							</div>
+							<div class="imageHolderNoBorder-au">
+								<img src="/assets/image/au-team.png">
+							</div>
+						</div>
+						<div class="textHolderNormal-au">
+							<p>Founded in 2007, The Hamper Emporium is Australian owned and operated. We are part of the Sydney based SOL Group Australia. After over a decade of experience in the industry, we are proud to be Australia’s leading provider of luxury gift hampers.
+							</p>
+							
+							<p>We are able to bring you Australia’s leading gift hampers because of the passion and dedication of our team. Everyone who is involved in the hamper creation process, from the amazing producers we partners with to our incredible professional gift wrappers, has an impact on the final product.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="centerHolder-au">
+					<h3 class="header-au">Our customers love us</h3>
+					<div class="reviewsHolder-au">
+							[%advert type:'text' template:'reviews' limit:'100' category:'0' ad_group:'reviews'%]
+								[%param *header%]
+						<div class="reviewSlider">
+								[%/param%]
+								[%param footer%]
+						</div>				 
+								[%/param%]
+							[%/advert%]
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+
+
+
+</div>

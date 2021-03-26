@@ -1,0 +1,91 @@
+<div class="col-xs-12">
+
+<ul class="breadcrumb"> 
+<li><a href="[@config:home_url@]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="[@URL@]">Wish Lists</a></li>
+</ul>
+
+<!--##[%DATA id:'error' if:'eq' value:'LIST_NOT_FOUND'%]##-->
+<div class="alert alert-danger">
+<a class="close" data-dismiss="alert">×</a>
+Cannot find wish list.
+</div>
+<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'LIST_DELETED'%]##-->
+<div class="alert alert-success">
+<a class="close" data-dismiss="alert">×</a>
+Wish list '<!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##-->' has been deleted.
+</div>
+<!--##[%END DATA%]##-->
+<div class="page-header">
+<h1>My Wish Lists</h1>
+</div>
+
+<!--##[%thumb_list limit:'10' type:'list_wishlists'%]##-->
+<!--##[%PARAM pgnum%][%FORM id:'pgquote'%][%END FORM%][%END PARAM%]##-->
+<!--##[%PARAM header%]##-->
+<table class="table table-striped wishlist-table">
+	<thead>
+		<tr>
+			<th class="width-40-per">List Name</th>
+			<th class="hidden">Status / Visibility</th>
+			<th class="width-20-per">Occasion Date</th>
+			<th class="width-20-per">Created Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--##[%END PARAM%]##-->
+		<!--##[%PARAM *body%]##-->
+		<tr>
+			<td><a href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%END URL%]">[@wishlist_name@]&nbsp;</a></td>
+			<td class="hidden"><!--##[%DATA id:'wishlist_active' if:'eq' value:'y'%]
+[%PARAM if_true%]##--><span class="label label-success">Active</span><!--##[%END PARAM%]
+[%PARAM if_false%]##--><span class="label label-important">Inactive</span><!--##[%END PARAM%]
+[%END DATA%]##-->
+<!--##[%DATA id:'wishlist_private' if:'eq' value:'y'%]
+[%PARAM if_true%]##--><span class="label">Private</span><!--##[%END PARAM%]
+[%PARAM if_false%]##--><span class="label label-success">Public</span><!--##[%END PARAM%]
+[%END DATA%]##-->
+</td>
+			<td class="hidden"><!--##[%DATA id:'reminder_inc_days' if:'>' value:'0'%]
+[%PARAM if_true%]##-->[@reminder_inc_days@] Day(s)<!--##[%END PARAM%]
+[%PARAM if_false%]##-->-<!--##[%END PARAM%]
+[%END DATA%]##--></td>
+			<td><!--##[%FORMAT type:'date' format:'#d #k #Y' default:'-'%]##-->[@date_expiry@]<!--##[%END FORMAT%]##--></span></td>
+			<td><!--##[%FORMAT type:'date' format:'#d #k #Y' default:'-'%]##-->[@date_created@]<!--##[%END FORMAT%]##--></span></td>
+			<td class="no-border white-bg">
+				<a class="btn btn-block btn-primary wishlist-edit-btn" href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%END URL%]"><i class="fa fa-edit"></i> Edit</a>
+			</td>
+			<td class="no-border white-bg">
+				<a class="btn btn-block btn-danger wishlist-delete-btn" href="[%URL page:'account' type:'wishlist' id:'[@wishlist_id@]' qs:'proc=deletelist' %][%END URL%]"><i class="fa fa-trash-o"></i> Delete</a>
+			</td>
+		</tr>
+		<!--##[%END PARAM%]##-->
+		<!--##[%PARAM *footer%]##-->
+	</tbody>
+</table>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM ifempty%]##-->
+<p>You have not added a wishlist. Add a new wishlist below. </p>
+<!--##[%END PARAM%]##-->
+<!--##[%END thumb_list%]##-->
+
+	<form class="form-inline" method="POST" action="[%URL page:'account' type:'wishlist'%][%END URL%]">
+		<input type="hidden" name="proc" value="addlist"/>
+		<div class="row">
+			<div class="col-xs-12 col-md-3">
+				<label for="inputEmail1" class="control-label">Wishlist Name</label><br/>
+				<input class="form-control full-width-input" type="text" name="wh_name" value=""/>
+				<br/>
+			</div>
+		</div>
+		<div class="row padding-t-small">
+			<div class="col-xs-12 col-md-3">
+				<input class="btn btn-block btn-success" type="submit" name="submit" value="Add New Wishlist" />
+			</div>
+		</div>
+	</form>
+
+</div>

@@ -1,0 +1,51 @@
+<div class="wrapper-thumbnail col-xs-6 col-sm-4">
+	<div class="thumbnail" itemscope itemtype="http://schema.org/Product">
+	    <meta itemprop="brand" content="The Hamper Emporium"/>
+		<meta itemprop="mpn" content="[@SKU@]"/>
+		<meta itemprop="sku" content="[@SKU@]"/>
+		<meta itemprop="name" content="[@name@]" />
+        <a href="[@URL@]" class="thumbnail-image">
+            
+            <meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]"/>
+            <img  class="lazy_load product-image" data-src="[%asset_url type:'product' thumb:'thumbL' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" alt="[@model@]" rel="itmimg[@SKU@]">
+		</a>
+		<div class="caption">
+		    <meta itemprop="description" content="[%format type:'text' truemaxlength:'150' nohtml:'1' rmhtml:'1'%][@description@][%/FORMAT%]..."/>
+			<h3><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'55' rmhtml:'1'%][@model@][%/FORMAT%]</a></h3>
+			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<a href="[@URL@]" title="[@model@]">
+				<meta itemprop="url" content="[@URL@]"/>
+			     [%IF [@store_quantity@] > 0 %]
+			        <meta itemprop="availability" content="http://schema.org/InStock"/>
+			    [%ELSE%]
+			    	    <meta itemprop="availability" content="https://schema.org/OutOfStock"/>
+			     [%END IF%]
+
+					[%if [@inpromo@]%]
+						<!-- Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%] -->
+						<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
+						<span itemprop="price" class="amount" content="[@promo_price@]">[%format type:'currency' dp:'0'%][@promo_price@][%/format%]</span>
+					[%else%]
+						<!-- [%if [@has_child@]%]From&nbsp;[%/if%] -->
+						<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%]2020-12-30[%END format%]"/>
+						<span itemprop="price" class="amount" content="[@store_price@]">[%format type:'currency' dp:'0'%][@store_price@][%/format%]</span>
+					[%/if%]
+					<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
+					[%IF [@store_quantity@] < 1 %]<span class="wfd out">Sold Out</span>[%ELSE%]<span class="wfd free">free delivery</span>[%END IF%]
+				</a>
+			</p>
+		</div>
+		<div class="savings-container">
+			[%if [@misc19@] AND [@misc19@] eq 'y' AND [@misc20@] eq 'n'%]
+				<div class="thumb-sash selling-sash">
+					<span>Selling Fast</span>
+				</div>
+			[%/if%]
+			[%if [@misc20@] AND [@misc20@] eq 'y' %]
+				<div class="thumb-sash soldout-sash">
+					<span>Sold Out</span>
+				</div>
+			[%/if%]
+		</div>
+	</div>
+</div>

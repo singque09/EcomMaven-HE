@@ -1,0 +1,125 @@
+.redesigned-theme-2018 form li div label {
+    width : 140px !important;
+}
+form#form14 {
+   /* border: 5px solid #555; */
+   background-color : #f9f9f9;
+   padding : 20px;
+}
+
+form .textbox{
+    width : 100% !important;
+}
+
+form ul li {
+    width : 50% !important ;
+    float : left !important;
+    clear : none;
+}
+form.wufoo li.focused {
+    background-color : #f9f9f9 !important;
+}
+form ul li label {
+    width : 20% !important;
+    float :left;
+    clear : none;
+}
+form ul li > div {
+    width : 80% !important;
+    float :left;
+    clear : none;
+}
+
+form .textbox > div{
+    width : 100% !important;
+}
+
+form .textbox > label{
+    float : right !important;
+    bottom : 5px;
+    left : 170px;
+    position : absolute !important;
+}
+.req {
+    display : none !Important;
+}
+.checkbox .subfield label.choice {
+    width : 100% !important;
+    display : block !important;
+}
+
+form li.buttons {
+    width : 100% !important;
+}
+form li.buttons > div:before {
+    content : "One entry per person. Entries may be made via. The Hamper Emporium website entry form. We’ll choose our 20 favourite answers who will each receive a Moët Christmas Hamper valued at $149. Winners will be informed by email on 2nd August 2019. Delivery of hamper prizes within Australia only";
+    display : block;
+    max-width : 70%;
+    float : left;
+    font-size : 12px;
+}
+
+
+input#saveForm {
+    background-color : #548235;
+    border : transparent;
+    width : 20%;
+    float : right !Important;
+}
+
+header#header {
+    margin-bottom: 0;
+    border: transparent;
+    padding-bottom: 0;
+}
+header#header h2 {
+    margin-bottom : 5px;
+    font-size : 24px !Important;
+    font-weight : 700 !important;
+    font-family : arial !important;
+    line-height : 1 !important;
+    margin-top : 10px;
+}
+header#header div {
+    padding-bottom : 0;
+    font-size : 18px !important;
+}
+
+@media (max-width : 991px) {    
+    form ul li > div {
+        width : 75% !important;
+        margin-left : 5px;
+        margin-top : 8px;
+    }    
+    input#saveForm {
+        width : 110px;
+    }
+}
+@media (max-width : 701px) {    
+    input#saveForm {
+        width : 60%;
+        margin-left : 10px;
+        top : 0;
+    }
+
+    form li.buttons > div:before {
+        max-width : 100%;
+        width : 100%;
+        margin-bottom : 20px;
+        margin-left : 20%;;
+    }
+    
+    form ul li {
+        width : 100% !important;
+    }  
+    form ul li > div {
+        margin-top : 0px;
+    }    
+}
+@media (max-width : 400px) {  
+    form ul li > div {
+        max-width : 65%;
+        margin-left : 25px;
+        margin-top : 8px;
+    }    
+}
