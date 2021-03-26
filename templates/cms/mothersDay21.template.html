@@ -1,174 +1,367 @@
-<div class="container default_page">
-[%breadcrumb%]
-	[%param *header%]
-		<ul class="breadcrumb">
-			<li><a href="[@config:home_url@]">Home</a></li>
-	[%/param%]
-	[%param *body%]
-		<li><a href="[@url@]">[@name@]</a></li>
-	[%/param%]
-	[%param *body_current%]
-		<li>[@name@]</li>
-	[%/param%]
-	[%param *footer%]
-		</ul>
-	[%/param%]
-[%/breadcrumb%]
-<h1 class="page-header">[@content_name@]</h1>
-<p class="text-muted">
-	[%IF [@content_author@]%]
-		Author: [@content_author@] &nbsp;
-	[%/IF%]
-	[%if [@date_posted@] != 0000-00-00 00:00:00%]
-		Date Posted:[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]&nbsp;
-	[%/IF%]
-</p>
-<img src="[%asset_url type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'/%]" class="pull-right margin-1rem"/>
-<img src="[%asset_url type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'/%]"  class="pull-right"/>
-[%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
-	[%param *header%]
-		<div id="homepageCarousel" class="carousel slide">
-			[%if [@total_showing@] > 1%]
-				<ol class="carousel-indicators">
-					[%site_value id:'counter' type:'load'/%]
-				</ol>
-			[%/if%]
-			<div class="carousel-inner">
-	[%/param%]
-	[%param *footer%]
-			</div>
-			[%if [@total_showing@] > 1%]
-				<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
-					<span class="fa fa-chevron-left"></span>
-				</a>
-				<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
-					<span class="fa fa-chevron-right"></span>
-				</a>
-			[%/if%]
-		</div>
-		<hr>
-	[%/param%]
-	[%param *ifempty%]
-	[%/param%]
-[%/advert%]
-[%advert type:'product' limit:'8' template:'' ad_group:''%]
-	[%param *header%]
-		<div class="row">
-	[%/param%]
-	[%param footer%]
-		</div>
-		<hr>
-	[%/param%]
-[%/advert%]
-[%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
-	<p>
-		[@content_short_description1@]
-		[@content_short_description2@]
-		[@content_short_description3@]
-	</p>
-	[%parse%]
-		[@content_description1@]
-		[@content_description2@]
-		[@content_description3@]
-		[@content_wufoo_form@]
-	[%/parse%]
-[%/if%]
-[%thumb_list type:'content' content_type:'' template:'' limit:'20'%]
-	[%param *footer%]
-		<ul class="pagination">
-			[%paging limit:'3'%]
-				[%param *previous_page%]<li><a href="[@URL@]">Previous Page</a></li>[%/param%]
-				[%param *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
-				[%param *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
-				[%param *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
-				[%param *next_page%]<li><a href="[@URL@]">Next Page</a></li>[%/param%]
-			[%/paging%]
-		</ul>
-	[%/param%]
-[%/thumb_list%]
-[%thumb_list type:'products' template:'' limit:'[@config:related_limit@]'%]
-	[%param header%]
-		<hr>
-		<div class="row">
-	[%/param%]
-	[%param footer%]
-		</div>
-	[%/param%]
-[%/thumb_list%]
-[%IF [@content_allow_reviews@]%]
-<div class="dropdown">
-	<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-		Share: <i class="fa fa-facebook-square text-facebook"></i>
-		<i class="fa fa-twitter-square text-twitter"></i>
-		<i class="fa fa-pinterest-square text-pinterest"></i>
-			<!--<i class="fa fa-google-plus-square text-google-plus"></i>-->
-	<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook"></i> Facebook</a></li>
-		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@content_name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter"></i> Twitter</a></li>
-		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@content_name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a></li>
-		<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>
-	</ul>
-</div>
-<a id="comments"></a><hr />
-[%thumb_list type:'content_reviews' limit:'5'%]
-	[%param filter_1%][@CONTENT_ID@][%/param%]
-	[%param *header%]
-		<h3>Comments ([@reviews@])</h3>
-	[%/param%]
-	[%param *body%]
-		<div itemprop="review" itemscope itemtype="http://schema.org/Review">
-			<blockquote>
-				<h4 itemprop="name"><i>[%nohtml%][@title@][%/nohtml%]</i></h4>
-				<div>
-					<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
-				</div>
-				<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span>
-				[%IF [@review_response@]%]
-					<br /><br />
-					<blockquote>
-						<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
-					</blockquote>
-				[%/IF%]
-			</blockquote> <hr />
-		</div>
-	[%/param%]
-[%/thumb_list%]
-<h3>Leave a comment</h3>
-<form name="edit_review" method="post" role="form" action="[%URL page:'account' type:'write_contentreview'%][%/URL%]">
-	<fieldset>
-		<input type="hidden" name="fn" value="confirm">
-		<input type="hidden" name="item" value="[@content_id@]">
-		<input type="hidden" name="checked_terms_and_conditions" value="1">
-		<input type="hidden" name="rating_value" id="rating_value" value="5"/>
-		<div class="form-group">
-			<label for="review_title">Title For Comment</label>
-			<input class="form-control" type="text" name="review_title" id="review_title" value="[%nohtml%][@form:review_title@][%/nohtml%]" required/>
-		</div>
-		<div class="form-group">
-			<label for="review_text">Your Comment</label>
-			<textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
-		</div>
-		[%ajax_loader%]
-			[%if ![@user:username@] or [@user:username@] eq 'noreg'%]
-				<div class="form-group">
-					<label for="customername">Your Name</label>
-					<input class="form-control" type="text" name="customername" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" required/>
-				</div>
-				<div class="form-group">
-					<label for="emailaddress">Your Email Address</label>
-					<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" required/>
-				</div>
-			[%/if%]
-		[%/ajax_loader%]
-		<p>
-			<button type="submit" class="btn btn-success" />Post Comment</button>
-		</p>
-		<p class="text-muted">Comments have to be approved before showing up</p>
-	</fieldset>
-</form>
-[%/if%]
-</div>
+<style>
+/* universal css */
+.img1Bg {
+    background: url("[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]");
+	background-size : cover;
+}
+#main-content .ff-basker {
+    font-family: 'baskerville' !important;
+}
 
+#main-content .fs45px {
+    font-size: 45px !important;
+}
+
+#main-content .ff-montserrat {
+    font-family: 'Montserrat' !important;
+}
+
+#main-content .fs18px {
+    font-size: 18px !important;
+}
+.letterSpacing4 {
+    letter-spacing: 2px;
+}
+.line-height1-3 {
+    line-height: 1.3;
+}
+.letterSpacing2 {
+    letter-spacing: 2px;
+}
+.space20px {
+    height: 20px;
+}
+
+#main-content .fs14px {
+    font-size: 14px !important;
+}
+
+#main-content .fw-bold {
+    font-weight: 700 !important;
+}
+
+.box-shadow {
+    -webkit-box-shadow: 0px 0px 13px -1px rgba(0,0,0,0.81);
+    box-shadow: 0px 0px 13px -1px rgba(0,0,0,0.81);
+}
+/* universal css - end */
+/* css specific page */
+
+
+.md21FormHolder {
+    padding: 5px;
+    background: #fff;
+    margin-top: 50px;
+}
+
+.formHolderInner {
+    padding: 40px 60px;
+	border: 1px solid #BFA774;
+}
+.instructionFormHolder {
+    border: 1px solid #dfdfdf;
+    padding: 10px;
+}
+.textHeaderHolder {
+    max-width: 650px;
+    margin: auto;
+}
+.innerHolder {
+    max-width: 995px;
+    margin: auto;
+}
+.flexProducts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+h3.wrapper-thumbnail__title a {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+#main-content .mothersDay21Wrapper button.addtocart.btn--black {
+    background-color: #BFA774 !important;
+}
+
+button.addtocartMday21 {
+    background: #BFA774;
+    border: transparent;
+    color: #fff;
+    padding: 5px 20px;
+}
+
+.wrapper-thumbnail .wrapper-thumbnail__price .amount {
+    color: #333;
+}
+
+#main-content .caption h3.wrapper-thumbnail__title {
+    height: 40px !important;
+    display : block;
+    margin-bottom: 15px !important;
+}
+
+.caption {
+    margin-top: 15px;
+}
+/* slider */
+
+.sliderImgHolder {
+    max-width: 70%;
+    float: left;
+}
+
+.sidetextsHolder {
+    max-width: 30%;
+    float: left;
+    padding: 35px 30px;
+    background-color: #333;
+    color: #fff;
+}
+/* slider - end */
+/* css specific page - end */
+</style>
+
+[%SITE_VALUE id:'footer_javascript'%]
+	<!-- codes here -->
+<script>
+ $('.mday21slider').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
+[%/SITE_VALUE%]
+
+
+
+
+<div class="wrapper mothersDay21Wrapper">
+	<div class="firstRowWrapper img1Bg">
+		<div class="container firstRowHolder">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12 col-sm-6 offset-sm-2 md21FormHolder box-shadow">
+						<div class="formHolderInner">
+							<div class="formHeaderHolder text-center line-height1-3">
+								<span class="ff-basker fs45px">[@content_short_description1@]</span>
+							</div>
+							<div class="space20px"></div>
+							<div class="belowHeaderFormHolder text-center">
+								<p class="ff-montserrat fs18px">[@content_description1@]</p>
+							</div>
+							<div class="space20px"></div>
+							<div class="mcFormHolder">
+								<div class="instructionFormHolder">
+									<p class="ff-montserrat fs14px fw-bold">[@content_short_description2@]</p>
+									<p class="ff-montserrat fs14px">[@content_description2@]</p>
+								</div>
+								<a href="#terms"><span class="ff-montserrat fs12px">Terms & Conditions</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="space20px"></div>
+	<div class="col-xs-12 secondRowSliderHolder">
+		<div class="innerHolder">
+			<div class="textHeaderHolder text-center">
+				<span class="ff-basker fs45px">[@content_short_description3@]</span>
+			</div>
+			<div class="md21sliderHolder">
+				
+		<div class="home-page-slider">
+			 [%advert type:'text' template:'' limit:'10' ad_group:'mday21-slider' category:'0'%]
+				[%param *header%]
+					<div class="mday21slider">
+				[%/param%]
+				[%param *body%]					
+						<div class="col-xs-12">
+							<div class="thumbnail">	
+								<div class="sliderImgHolder">
+									<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" >
+								</div>
+								<div class="sidetextsHolder">
+									<div class="innerTextHolder">
+										<span class="headline fw-bold ff-montserrat letterSpacing2 fs18px">[@headline@]</span>
+										<div class="space20px"></div>
+										<p class="ff-montserrat">[@description@]<br/>
+									</div>
+									<div class="countHolder">
+										<span>[%calc [@count@]+1 /%]/[@total@]</span>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+				[%/param%]
+				[%param *footer%]				
+					</div>
+				[%/param%]
+			[%/advert%]
+	
+		</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="space20px"></div>
+	<div class="col-xs-12 thirdRowProductsHolder">
+		<div class="innerHolder">
+			<div class="textHeaderHolder text-center line-height1-3">
+				<span class="ff-basker fs45px">[@CONTENT_EXTERNAL_REF1@]</span>			
+			</div>
+			
+			<div class="space20px"></div>
+			<div class="space20px"></div>
+			<div class="col-xs-12 md21FeaturedProductsHolder">
+			
+
+			[%advert type:'product' template:'' limit:'10' ad_group:'mday21-products' category:'0'%]
+				[%param *header%]
+					<div class="row flexProducts">
+				[%/param%]			
+				[%param *body%]				
+					<div class="wrapper-thumbnail col-xs-6 col-sm-4">
+						<div class="thumbnail" itemscope itemtype="http://schema.org/Product">
+									<meta itemprop="brand" content="The Hamper Emporium"/>
+							<meta itemprop="mpn" content="[@SKU@]"/>
+							<meta itemprop="sku" content="[@SKU@]"/>
+							<meta itemprop="name" content="[@name@]" />
+							<meta itemprop="description" content="[%format type:'text' truemaxlength:'150' nohtml:'1' rmhtml:'1'%][@description@][%/FORMAT%]..."/>
+						
+							[%IF [@store_quantity@] > 0 AND [@preorder@] %]
+								<span class="wfd free">
+									<span>
+										Pre-order <br/>now!
+									</span>
+								</span>
+							[%ELSEIF [@store_quantity@] < 1 AND [@preorder@] %]
+								<span class="wfd free">
+									<span class="wfd__down">
+										Coming <br/>Soon
+									</span>
+								</span>
+							[%ELSEIF [@store_quantity@] > 0 %]
+								<span class="wfd free">
+									<span class="wfd__up">
+										Free <br/>Delivery
+									</span>
+								</span>
+							[%ELSE%]
+								<span class="wfd out">
+									<span>
+										Sold <br/>Out
+									</span>
+								</span>
+							[%END IF%]
+							
+							<a href="[@URL@]" class="thumbnail-image">
+								<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]"/>
+								<img  class="lazy_load product-image" data-src="[%asset_url type:'product' thumb:'thumbL' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" alt="[@model@]" rel="itmimg[@SKU@]">
+							</a>
+							<div class="caption">
+								<h3 itemprop="name" class="wrapper-thumbnail__title"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'55' rmhtml:'1'%][@model@][%/FORMAT%]</a></h3>
+								
+								<span class="wrapper-thumbnail__cart">
+									<form class="form-inline buying-options">
+										<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+										<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+										<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+										<input type="hidden" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="1" class="input-tiny">
+										[%if [@store_quantity@] > 0 AND [@preorder@] %]
+											<button type="button" title="Pre-Order Now!" class="addtocart addtocartMday21Pre btn btn--black btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+										[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
+											<button type="button" title="Add to Cart" class="addtocartMday21" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+										[%else%]
+										[%/if%]
+									</form>
+								</span>
+								<span class="wrapper-thumbnail__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+									<a href="[@URL@]" title="[@model@]">
+											<meta itemprop="url" content="[@URL@]"/>
+							  [%IF [@store_quantity@] > 0 %]
+										<meta itemprop="availability" content="http://schema.org/InStock"/>
+									[%ELSE%]
+											<meta itemprop="availability" content="https://schema.org/OutOfStock"/>
+									 [%END IF%]
+										[%if [@inpromo@]%]
+											<!-- Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%] -->
+												<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
+											<span itemprop="price" content="[@promo_price@]" class="amount">[%format type:'currency' dp:'0'%][@promo_price@][%/format%]</span>
+										[%else%]
+											<!-- [%if [@has_child@]%]From&nbsp;[%/if%] -->
+											<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%]2020-12-30[%END format%]"/>
+											<span itemprop="price" content="[@store_price@]" class="amount">[%format type:'currency' dp:'0'%][@store_price@][%/format%]</span>
+										[%/if%]
+										<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
+									</a>
+								</span>
+							</div>
+
+							<div class="savings-container">
+								[%if [@misc19@] AND [@misc19@] eq 'y' AND [@misc20@] eq 'n'%]
+									<div class="thumb-sash selling-sash">
+										<span>Selling Fast</span>
+									</div>
+								[%/if%]
+								[%if [@misc20@] AND [@misc20@] eq 'y' %]
+									<div class="thumb-sash soldout-sash">
+										<span>Sold Out</span>
+									</div>
+								[%/if%]
+							</div>
+						</div>
+					</div>
+
+
+				[%/param%]			
+				[%param *footer%]
+					</div>
+				[%/param%]
+				[%param *ifempty%]
+					[%random_products category:'0' template:'' limit:'8'%]
+						[%param *header%]
+							<hr />
+							<div class="row">
+						[%/param%]
+						[%param *footer%]
+							</div>
+						[%/param%]
+					[%/random_products%]
+				[%/param%]
+			[%/advert%]
+			</div>
+			<div class="col-xs-12 textHolder text-center">
+				<a href="#" class="letterSpacing2">[@CONTENT_EXTERNAL_REF2@]</a>
+			</div>
+		</div>
+	</div>
 </div>

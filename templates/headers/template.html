@@ -101,7 +101,7 @@
 
 	[%/PARAM%]
 [%/breadcrumb%]
-
+[%IF [@config:current_page_type@] == 'home' %] <meta name="facebook-domain-verification" content="ft9fc1ug9eti54u2nllstmfjokyu2d" /> [%/IF%]
 
 </head>
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@] col-xs-12 [%IF [@config:current_page_type@] != 'home' %] inner_pages [%/IF%]">
@@ -262,9 +262,6 @@
 										<li class="">
 											<a href="https://www.thehamperemporium.com.au/gift-hampers">All Gift Hampers</a>
 										</li>
-										<li class="">
-											<a href="https://www.thehamperemporium.com.au/Christmas-Hampers">Christmas Hampers</a>
-										</li>
 										[%else%]
 										
 										<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%] mobileNavl1-[@count@]"><a href="[@url@]">[@name@]</a>
@@ -294,9 +291,6 @@
 										</li>
 									[%/param%]
 									[%param footer%]
-										<li class="">
-											<a href="https://www.thehamperemporium.com.au/win-a-trip-to-the-yarra-valley">Chandon Hampers</a>
-										</li>
 									<li class="visible-xs">
 										<a href="/gift-hampers">All Gift Hampers</a>
 									</li>

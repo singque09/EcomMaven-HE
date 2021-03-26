@@ -271,120 +271,22 @@
 		[%/if%]
 
 		[%if [@content_id@] ne '201' %]
-        <script type="text/javascript" async>
-         window.onload=function(){
-                //Triggers Installation of Zendesk script
-              document.getElementById('mock-button').addEventListener('click', function (e)
-              {
-                  //start loading button
-                 /*     var $this = $(this);
-                   $this.button('loading');
-                    setTimeout(function() {
-                       $this.button('reset');
-                   }, 6500); */
-                   //end loading code
-                    var len = $('script[src*="https://static.zdassets.com/ekr/snippet.js?key=8aa0b125-a9b0-4852-9ec0-3b729581505d"]').length; 
-                    console.log(len);
-                    if (len === 0) {
-                         var runZed = document.createElement('script');
-                         runZed.setAttribute('id', 'ze-snippet');
-                        runZed.setAttribute('src', 'https://static.zdassets.com/ekr/snippet.js?key=8aa0b125-a9b0-4852-9ec0-3b729581505d');
-                        var appendZen = document.getElementsByTagName("head")[0].appendChild(runZed);
-                    }
-                console.log('clicked');
-                });
-             }
-        </script>
-        <script async>
-            
-             /* walandio edits */
-                $(document).ready(function(){
-                  $("#mock-button").click(function(){
-                    $(".zenShow").hide();
-						$(".zenHide").css("display","inline-block !important");
-						$('.zenHide').delay(3000).fadeOut(800);
-						$('.contacUsIconInner').delay(3000).fadeOut(800);
-						setTimeout(function(){ $zopim.livechat.window.show(); }, 3000);
-                  });
-                });
-            /* walandio edits - end */
-        </script>
-        <!-- Mock Button-->
-        <div class="floating-button" id="mock-button">
-            <!-- <i id="mock-button"  data-loading-text="<i class='fa fa-spinner fa-spin'>" class="btn fa fa-comment" style="display : none;"></i>
-        -->
-            <i class="fa fa-spinner fa-spin zenHide" style="line-height : 1.6"></i>
-            <i class="fa fa-comment zenShow"></i>
-        </div>
-            <!-- digital growth - edits - end -->
 <div class="nactivity"></div>
+
+
+<!-- Start of thehamperemporium Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8aa0b125-a9b0-4852-9ec0-3b729581505d"> </script>
+<!-- End of thehamperemporium Zendesk Widget script -->
 		[%else%]
-		
-        <style>
-			.floatIcon {
-				position: fixed;
-				bottom: 15px;
-				left: 25px;
-				font-size : 17px;
-			}
-			.floatIcon .fa-comment {
-				font-size: 25px !important;
-				margin-left : -2px;
-				margin-top : -2px;
-			}
-			div#mock-button2 {
-				cursor: pointer;
-			}
-			div#mock-button2 .fa {
-				color: #fff;
-				font-size: 20px;
-			}
-			div#mock-button2 .contacUsIconInner {
-				background: #bb8a65;
-				border-radius: 56px;
-				max-width: 41px;
-				padding: 4px 10px;
-				width: 43px;
-				height: 41px;
-				margin-top: 20px;
-			}
-
-		</style>
-        <!-- Mock Button-->
-		<div class="floatIcon" id="mock-button2">
-			<div class="contacUsIconInner col-xs-2">
-				<i class="fa fa-spinner fa-spin zenHide" style="line-height: 1.6; display: none;"></i>
-				<i class="fa fa-comment zenShow"></i>
-			</div>
-		</div>
-            <!-- digital growth - edits - end -->
 <div class="nactivity"></div>
+
+<!-- Start of thehamperemporium Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8aa0b125-a9b0-4852-9ec0-3b729581505d"> </script>
+<!-- End of thehamperemporium Zendesk Widget script -->
+
 
         <script async>
             
-             /* walandio edits */
-                $(document).ready(function(){
-                    $(".zenHide").hide();
-					$("#mock-button1,#startChatting,#mock-button2").click(function(){
-					
-                    var len = $('script[src*="https://static.zdassets.com/ekr/snippet.js?key=8aa0b125-a9b0-4852-9ec0-3b729581505d"]').length; 
-                    console.log(len);
-                    if (len === 0) {
-                         var runZed = document.createElement('script');
-                         runZed.setAttribute('id', 'ze-snippet');
-                        runZed.setAttribute('src', 'https://static.zdassets.com/ekr/snippet.js?key=8aa0b125-a9b0-4852-9ec0-3b729581505d');
-                        var appendZen = document.getElementsByTagName("head")[0].appendChild(runZed);
-                    }
-						$(".zenShow").hide();
-						$(".zenHide").show();
-						$(".zenHide").css("display","inline-block !important");
-						$('.zenHide').delay(3000).fadeOut(800);
-						$('.contacUsIconInner').delay(3000).fadeOut(800);
-						setTimeout(function(){ $zopim.livechat.window.show(); }, 3000);
-						
-					});
-                });
-            /* walandio edits - end */
 			
 			$(function() {
 			  $("#reasonsForEnquiry").change(function() {
