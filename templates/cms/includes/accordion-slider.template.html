@@ -1,0 +1,315 @@
+<style>
+	.accordionContainer{
+		display:flex;
+
+    justify-content: center;
+	}
+  	.accordionWrapper {
+		display:inline-block; 
+		background-color:#fff; 
+		overflow:hidden;
+	}
+	.accordionWrapper .set::after{
+		content: "";
+		clear: both;
+		display: table;
+	}
+	.accordionWrapper .productImage {
+		vertical-align:top; 
+		border:0; 
+		margin:0; 
+		padding:0;
+	}
+	.accordionWrapper div{
+		display:inline; 
+		float:left; 
+		margin:auto;
+	}
+	.accordionWrapper div.title {
+		border-right: 2px solid white;
+	}
+	.accordionWrapper div.content {
+		display:none;
+	}
+	.accordionWrapper div.info {
+		display:none;
+	}
+	#info {
+		border-right: 2px solid white;
+		position: relative;
+		width:0;
+		-webkit-transition: right .35s ease-in-out;
+		transition: right .35s ease-in-out;
+	}
+	.productImage {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 550px;
+	}
+	.productContent {
+		width: 650px;
+	}
+	.sidetextsHolder {
+		display:none;
+		height: 550px;
+		min-width: 280px;
+		padding: 35px 30px;
+		background-color: #333;
+		color: #fff;
+	}
+	.imageSpacer{
+		min-width: 235px;
+	}
+	.description{
+		height: 360px;
+		overflow: hidden;
+	}
+	.countHolder{
+		display: flex !important;
+		flex-direction: row;
+		align-items: center;
+	}
+	.infoArrow{
+    	font-size: 30px;
+		cursor: pointer;
+	}
+	.countHolder .leftArrow{
+    	margin-right: 15px;
+	}
+	.countHolder .rightArrow{
+    	margin-left: 15px;
+	}
+	@media (min-width: 768px) and (max-width: 1023px) {
+		.productImage {
+			height: 400px;
+		}
+		.description{
+			height: 210px;
+			overflow: hidden;
+		}
+		.sidetextsHolder {
+			height: 400px;
+		}
+		.productContent {
+			width: 450px;
+		}
+	}
+	@media (min-width: 0px) and (max-width: 767px) {
+		.productImage {
+			height: 300px;
+		}
+		.description{
+			height: 100px;
+			overflow: hidden;
+		}
+		.imageSpacer{
+			display: none !important;
+		}
+		.sidetextsHolder {
+    		min-width: 100%;
+			min-height: 260px;
+			height: initial;
+		}
+		.productContent {
+			width: calc(100vw - 106px);
+		}
+		#info {
+			border-right: 0;
+			width: initial;
+			position: initial;
+		}
+	}
+</style>
+
+[%advert type:'text' template:'' limit:'10' ad_group:'mday21-slider' category:'0'%]
+    [%param *header%]
+	<div class="row accordionContainer">
+        <div id="accordionGift" class="accordionWrapper col-12">
+    [%/param%]
+    [%param *body%]
+            <div class="set">
+                <div class="content">
+					<div class="productImage productContent row" style="background-image: url([%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%])">
+						<div class="col-12">-
+						</div>
+					</div>
+					<div class="imageSpacer"></div>
+                </div>
+                <div class="title">
+					<div class="productImage productTitle" style="background-image: url([%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%])"></div>
+                </div>
+				<div class="info" hidden>
+					<span class="infoHeadline">[@headline@]</span>
+					<span class="infoDescription">[@description@]</span>
+					<span class="infoCount">
+						[%calc [@count@]+1 /%]/[@total@]
+					</span>
+				</div>
+            </div>
+    [%/param%]
+    [%param footer%]
+			<div id="info">
+				<div class="sidetextsHolder">
+					<div class="innerTextHolder">
+						<span class="headline fw-bold ff-montserrat letterSpacing2 fs18px"></span>
+						<div class="space20px"></div>
+						<p class="ff-montserrat description"><br/>
+					</div>
+					<div class="countHolder">
+						<span class="infoArrow leftArrow" id="infoLeftArrow">
+							<i class="fa fa-arrow-circle-left"></i>
+						</span>
+						<span class="count"></span>
+						<span class="infoArrow rightArrow" id="infoRightArrow">
+							<i class="fa fa-arrow-circle-right"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    [%/param%]
+[%/advert%]
+
+[%SITE_VALUE id:'footer_javascript'%]
+<script>
+;(function($){
+	$.fn.msAccordion = function(options) {
+		options = $.extend({
+			currentDiv:'1',
+			previousDiv:'',
+			defaultid:0,
+			currentcounter:0,
+			intervalid:0,
+			autodelay:0,
+			event:"click",
+			isMobile: false,
+			alldivs_array:new Array()
+		}, options);
+
+		$(this).addClass("accordionWrapper");
+
+		var elementid = $(this).attr("id");
+		var allDivs = this.children();
+		if(options.autodelay>0)  {
+			$("#"+ elementid +" > div").bind("mouseenter", function(){
+				pause();
+			});
+			$("#"+ elementid +" > div").bind("mouseleave", function(){
+				startPlay();
+			});
+		}
+		
+		var productTitleSize = (100/(Number(allDivs.length)-1))-1
+		if($(window).width() < 767) {
+			productTitleSize = (100/(Number(allDivs.length)-2))-1
+			$(elementid).find("div#info").css({width:`calc(100vw - ${productTitleSize*(Number(allDivs.length)-1)}px);`})
+		} else if($(window).width() < 1023){
+			productTitleSize = (70/(Number(allDivs.length)-1))-1
+			$(elementid).find("div#info").css({width:0})
+		} else {
+			$(elementid).find("div#info").css({width:0})
+		}
+		
+		//set ids
+		allDivs.each(function(current) {
+			var iCurrent = current;
+			var sTitleID = elementid+"_msTitle_"+(iCurrent);
+			var sInfoID = sTitleID+"_msInfo_"+(iCurrent);
+			var sContentID = sTitleID+"_msContent_"+(iCurrent);
+			var currentDiv = allDivs[iCurrent];
+			var totalChild = currentDiv.childNodes.length;
+			var titleDiv = $(currentDiv).find("div.title");
+			titleDiv.attr("id", sTitleID);
+			titleDiv.find("div.productTitle").css({width:`${productTitleSize}px`})
+			var contentDiv = $(currentDiv).find("div.content");
+			contentDiv.attr("id", sContentID);
+			var infoDiv = $(currentDiv).find("div.info");
+			infoDiv.attr("id", sInfoID);
+			options.alldivs_array.push(sTitleID);
+		});
+
+		$("#infoRightArrow").bind(options.event, () => {pause();nextProduct();});
+		$("#infoLeftArrow").bind(options.event, () => {pause();prevProduct();});
+
+		//open default
+		openMe(elementid+"_msTitle_"+options.defaultid);
+		if(options.autodelay>0) startPlay();
+
+		function nextProduct(){
+			let nextProductId = 0
+			if (options.currentcounter <= allDivs.length-3) nextProductId = Number(options.currentcounter) + 1
+			openMe(elementid+"_msTitle_"+nextProductId);
+		}
+		function prevProduct(){
+			let prevProductId = allDivs.length-2
+			if (options.currentcounter > 0) prevProductId = Number(options.currentcounter) - 1
+			openMe(elementid+"_msTitle_"+prevProductId);
+		}
+
+		function openMe(id) {
+			var sTitleID = id;
+			var iCurrent = sTitleID.split("_")[sTitleID.split("_").length-1];
+			options.currentcounter = iCurrent;
+			var sContentID = id+"_msContent_"+iCurrent;
+			var sInfoID = id+"_msInfo_"+iCurrent;
+			if($("#"+sContentID).css("display")=="none") {
+				if(options.previousDiv!="") closeMe(options)
+
+				$("#"+sContentID).animate({
+					width: "toggle"
+				})
+
+				var rightMultiplier = Number(allDivs.length) - (Number(iCurrent)+2)
+				if($(window).width() < 767) {
+					$("#"+sTitleID).hide()
+				} else {
+					$("#info").css({right:`${((rightMultiplier*productTitleSize)-(Number(iCurrent)+2))+289}px`});
+				}
+
+					console.log($(window).width())
+				$("#info .headline").html($("#"+sInfoID).find("span.infoHeadline").html()) 
+				$("#info .description").html($("#"+sInfoID).find("span.infoDescription").html())
+				$("#info .count").html($("#"+sInfoID).find("span.infoCount").html())
+				
+				options.currentDiv = sContentID;
+				options.currentTitleDiv = sTitleID;
+				options.previousDiv = options.currentDiv;
+				options.previousTitleDiv = options.currentTitleDiv;
+			};
+		};
+		function closeMe({previousDiv, previousTitleDiv}) {
+			$("#"+previousDiv).animate({
+				width: "toggle"
+			}); 
+			if($(window).width() < 767) {
+				$("#"+previousTitleDiv).show(); 
+			}
+		};
+		function startPlay() {
+			options.intervalid = window.setInterval(play, options.autodelay*1000);
+		};
+		function play() {
+			var sTitleId = options.alldivs_array[options.currentcounter];
+			openMe(sTitleId);
+			options.currentcounter++;
+			if(options.currentcounter==options.alldivs_array.length) options.currentcounter = 0;
+		};
+		function pause() {
+			window.clearInterval(options.intervalid);
+		};
+		}
+})(jQuery);
+
+$(window).on('resize', function(){
+	let defaultid = Number($(".countHolder .count").text().split("/")[0])-1
+	$("#accordionGift").msAccordion({defaultid});
+});
+
+$(document).ready(function() {
+	$("#accordionGift").msAccordion({defaultid:0});
+});
+
+</script>
+[%/SITE_VALUE%]
