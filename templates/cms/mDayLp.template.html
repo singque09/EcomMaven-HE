@@ -1,0 +1,159 @@
+<style>
+
+ main#main-content > .row {
+    background: url('[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]');background-repeat: no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.textHolder {
+    padding: 40px 50px;
+    /* margin-right: 20px; */
+    background: #fff;
+    /* border-radius: 20px; */
+    max-width: 644px;
+    /* margin-top: 50px; */
+    /* margin-bottom: 50px; */
+    /* margin-right: 50px; */
+    /* padding-bottom: 30px; */
+    position: relative;
+}
+
+span.vcpLpHeading {
+    display: block;
+    font-size: 72px;
+    line-height: 80px;
+    font-family: baskerville;
+}
+
+.vcpLpTopHolder span {
+    display: block;
+}
+
+.vcpLpTopHolder {
+    text-align: center;
+}
+
+span.vcpLpSubHeading {
+    font-size: 41px;
+    line-height: 1;
+    font-family: baskerville;
+    margin-top: 10px;
+}
+
+span.vcpLpDesc {
+    font-size: 18px;
+    margin-top: 30px;
+    font-family: montserrat;
+    /* margin-bottom: 40px; */
+    padding: 0 40px;
+}
+
+a.vcpLpButton {
+    background: #BFA774;
+    color: #fff;
+    padding: 10px 49px;
+    font-family: montserrat;
+    font-size: 18px;
+    display: block;
+    max-width: 240px;
+    margin: auto;
+}
+
+main#main-content {
+    margin-bottom: 0;
+}
+
+main#main-content p {
+    font-family: 'Montserrat' !important;
+    font-size: 24px;
+}
+@media (max-width: 767px){
+    main#main-content img {
+        width : 100%;
+    }
+    .textHolder {
+        width : 100%;
+        float: none;
+        border-radius: 0;
+        padding: 10px 45px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    span.vcpLpHeading {
+        font-size: 53px;
+    }
+
+    main#main-content > .row {
+        background: transparent;
+    }
+
+    .row.vcpLpRow .visible-xs {
+        padding: 0;
+        float: none;
+    }
+
+    span.vcpLpSubHeading {
+        font-size: 28px;
+    }
+
+    span.vcpLpDesc {
+        font-size: 13px;
+        font-family: montserrat;
+    }
+
+    a.vcpLpButton {
+        font-size: 13px;
+    }
+}
+
+.vcpLpRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span#convert {
+    display: contents;
+}
+
+.outerTextholder {
+    padding: 5px;
+    border: 2px solid #BFA774;
+}
+
+.outerTextholder {
+    margin: 15% auto;
+}
+
+.buttonHolder {
+    margin-top: -29px;
+    margin: auto;
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    left: 0;
+}
+</style> 
+
+<div class="vcpLp col-xs-12" id="vcpLp">
+	<div class="vcpLpTopHolder">
+		<div class="row vcpLpRow">
+			<div class="col-xs-12 visible-xs">
+				<img src="[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" alt="[@content_short_description1@]" />
+			</div>
+			<div class="col-sm col-xs outerTextholder ">
+				<div class="textHolder">
+					<div class="textHolderInner">
+					<span class="vcpLpHeading">[@content_short_description1@]</span>
+					<span class="vcpLpDesc">[@content_description1@]</span>	
+					<div class="buttonHolder">
+						<a href="[@CONTENT_EXTERNAL_REF2@]" class="vcpLpButton">[@CONTENT_EXTERNAL_REF1@]</a>	
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
