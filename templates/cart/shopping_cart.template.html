@@ -1,20 +1,20 @@
 <div class="padding-b-med padding-t-small">
-<div class="col-xs-12">
+<div class="col-12">
 	<div class="page-header small-custom-margin-b">
 		<div class="row">
-			<div class="col-xs-12 col-md-6">
+			<div class="col-12 col-md-6">
 				<h2 class="cart-page-title"><i class="fa fa-lock" aria-hidden="true"></i> Shopping Cart</h2>
 			</div>
-			<div class="col-xs-12 col-md-6 cart-page-btn-holder text-right">
-				<div class="col-xs-12">
+			<div class="col-12 col-md-6 cart-page-btn-holder text-right">
+				<div class="col-12">
 					<button class="btn btn-success btn-lg btn-block btn-checkout" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-lock icon-white"></i> Checkout Now</button>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					<a class="btn btn-default btn-lg gift-card-btn pull-right btn-checkout" href="[%url page:'checkout'%][%END url%]&fn=upsell" title="Edit Gift Message(s)" rel="no-follow"><i class="fa fa-tag"></i> Edit Card Message</a>
 				</div>
 			</div>
 			[%config id:'ALLOW_USER_QUOTE' if:'==' value:'1'%]
-				<div class="col-xs-12 col-md-3">
+				<div class="col-12 col-md-3">
 					<button class="btn btn-default btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create Quote From Cart </button>
 				</div>
 			[%/config%]
@@ -24,10 +24,10 @@
 	[%cart_items%]
 	[%param header%]
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<form method="post" name="checkout" action="[%url page:'checkout'/%]">
 				<input type="hidden" name="recal" value="1" />
-					<div class="hidden-xs row row-padded item-heading">
+					<div class="hidden row row-padded item-heading">
 						<div class="col-sm-6 col-md-8">
 						</div>
 						<div class="col-sm-2 col-md-1 quantity-label-cart">
@@ -42,10 +42,10 @@
 					[%/param%]
 					[%param *body%]
 					<div class="row item">
-						<div class="col-xs-12 col-sm-3 col-md-2 image">
+						<div class="col-12 col-sm-3 col-md-2 image">
 							<a href="[@url@]"><img class="img-responsive" src="[@thumb@]"/></a>
 						</div>
-						<div class="col-xs-12 col-sm-9 col-md-6 description-info">
+						<div class="col-12 col-sm-9 col-md-6 description-info">
 							<a href="[@url@]">
 								<h4>[@model@]</h4>
 								<p class="details">[@extra@]</p>
@@ -105,18 +105,18 @@
 							[%/if%]
 						</div>
 						<div class="col-md-4 pull-right qty-price-del-wrap">
-							<div class="col-md-4 col-xs-4 text-center padding-t-med quantity">
+							<div class="col-md-4 col-4 text-center padding-t-med quantity">
 								<input name="line[@count@]" type="hidden" value="[@counter@]" />
 								<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
 							</div>
-							<div class="col-md-4 col-xs-4 text-center padding-t-med cart-item-price">
+							<div class="col-md-4 col-4 text-center padding-t-med cart-item-price">
 								[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
 								[%if [@discount_percent@] > 0%]
 									<p><i>-[%format type:'percent'%][@discount_percent@][%/format%]</i></p>
 								[%/if%]
 								<h4>[%format type:'currency'%][@subtotal@][%/format%]</h4>
 							</div>
-							<div class="col-md-4 col-xs-4 text-center padding-t-med edit">
+							<div class="col-md-4 col-4 text-center padding-t-med edit">
 								<a class="remove-button" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
 							</div>
 						</div>
@@ -127,18 +127,18 @@
 		</div>
 	</div>
 	<div class="row row-padded padding-t-small padding-b-med btn-stack">
-		<div class="col-xs-12 col-md-3">
+		<div class="col-12 col-md-3">
 			<a class="btn btn-default gift-card-btn" href="[%url page:'checkout'%][%END url%]&fn=upsell" title="Edit Gift Message(s)" rel="no-follow"><i class="fa fa-tag"></i> Edit Card Message</a>
 		</div>
-		<div class="col-xs-12 col-md-3 col-md-offset-3">
+		<div class="col-12 col-md-3 col-md-offset-3">
 			<button type="button" onclick="window.location='[%last_visited default:'[$homeurl$]'%][%END last_visited%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class=" icon-chevron-left"></i> Continue Shopping</button>
 		</div>
-		<div class="col-xs-12 col-md-3">
+		<div class="col-12 col-md-3">
 			<button type="button" class="btn btn-default btn-block" onclick="javascript:document.checkout.submit();" title="Update Changes"><i class="fa fa-refresh"></i> Update My Changes</button>
 		</div>
 	</div>
 	<div class="row row-padded">
-		<div class="col-xs-12 col-md-5 discount-panel">
+		<div class="col-12 col-md-5 discount-panel">
 			<div id="shipbox" class="shipbox-delivery">
 				<div class="panel panel-shipbox">
 						<div class="panel-body row">
@@ -148,16 +148,16 @@
 						<form method="post" action="[%URL page:'checkout'%][%END URL%]">			
 							<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
 							<input type="hidden" id="ship_country" name="ship_country" value="AU" />
-							<div class="form-group col-xs-6 col-md-4 postcode-input">
+							<div class="form-group col-6 col-md-4 postcode-input">
 								<label class="postcode-strong">Postal Code</label>
 								<input type="text" class="form-control" size="5" id="ship_zip" name="ship_zip" value="[@ship_zip@]" />
 							</div>
-							<div class="form-group n-wrapper-form-control col-xs-6 col-md-4 suburb-input">
+							<div class="form-group n-wrapper-form-control col-6 col-md-4 suburb-input">
 								<label class="postcode-strong">Suburb</label>
 								<span id="ship_selector"></span>
 								<input type="text"  class="form-control" id="ship_city" name="ship_city"  value="[%session id:'ship_city'/%]" size="50" maxlength="50"/>
 							</div>
-							<div class="col-xs-12 col-md-4 submit-button">
+							<div class="col-12 col-md-4 submit-button">
 								<input type="submit" class="btn btn-outline-secondary btn-block" value="Check" />
 							</div>
 							[%site_value id:'footer_javascript'%]
@@ -241,7 +241,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-7">
+		<div class="col-12 col-md-7">
 			[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'CartCTA' /%][%/if%]
 			<table class="table">
 				<tr>
@@ -292,7 +292,7 @@
 					[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 							[%param *header%]
 							<div class="row">
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">Select your payment plan</h4>
@@ -315,7 +315,7 @@
 				[%/ payment_plans%]
 
 				<div class="row">
-					<div class="col-xs-12 col-md-5 cart-icons-holder">
+					<div class="col-12 col-md-5 cart-icons-holder">
 						[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
 							[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
 								<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
@@ -327,7 +327,7 @@
 							[%END IF%]
 						[%END IF%]
 					</div>
-					<div class="col-xs-12 col-md-7 text-center cart-page-btn-holder">
+					<div class="col-12 col-md-7 text-center cart-page-btn-holder">
 						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
 							<i class="fa fa-lock"></i> Checkout Now
 						</button>

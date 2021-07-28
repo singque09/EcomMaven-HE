@@ -1,7 +1,7 @@
 [%cart_addresses ship_mode:'[@ship_mode@]'%][%PARAM header%]
 [%END PARAM%][%PARAM *body%]
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<h4>Shipping options for [%NOHTML%][@ship_title@][%END NOHTML%]
 			[%NOHTML%][%TRIM%][@ship_state@] [@ship_zip@][%END TRIM%][%END NOHTML%] :</h4>
 			<hr>
@@ -57,28 +57,28 @@
 
 				<h4>Preferred delivery date:</h4>
 				<div class="row">
-					<div class="col-xs-4 preferred-date-sel">
+					<div class="col-4 preferred-date-sel">
 						<p>
 							<input type="radio" name="deliver" value="asap" class="deliver--asap" />ASAP* &nbsp;
 						</p>
 					</div>
-					<div class="col-xs-8 preferred-date-sel">
+					<div class="col-8 preferred-date-sel">
 						<p>
 							<input type="radio" name="deliver" value="later" class="deliver--later"/>On a later date^
 						</p>
 					</div>
-					<div class="col-xs-12">
+					<div class="col-12">
 						[%content_zone id:'deliverytimeinfo'%][%end content_zone%]
 					</div>
 				</div>
 
 				<!-- <div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<div>[%content_zone id:'deliverytimeinfo'/%]</div>
 					</div>
 				</div> -->
 				<div class="row theDeliveryPicker" style="display: none;">
-				<div class="col-xs-12">
+				<div class="col-12">
 				<div class="_delivery_select">
 						<label>Your selected date</label>
 						<input type="text" class="form-control" readonly id="delivery_date[@addr_id@]" name="delivery_date[@addr_id@]" value="[%FORMAT type:'date' format:'#D/#M/#Y' default:''%][@order_delivery_date@][%END FORMAT%]" placeholder="Select Date" />
@@ -94,7 +94,7 @@
 						</div>
 				</div>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="_delivery_picker">
 					<div id="delivery_picker[@addr_id@]"></div>
 					&nbsp; </div>

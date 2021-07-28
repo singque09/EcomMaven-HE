@@ -1,120 +1,147 @@
-<link rel="stylesheet" href="[%ntheme_asset%]plugins/swiper/css/swiper.min.css[%/ntheme_asset%]">
-<meta property="og:image" content="[@full_image@]"/>
-<div class="main-image col-sm-10 text-center pull-right hidden-xs">
-		<a href="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]" class=" fancybox" rel="product_images">
-			<div class="zoom">
-			    <meta itemprop="image" content="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]"/>
-				<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]" class="hidden" id="hidden-main-image">
-				<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]" rel="itmimg[@SKU@]" alt="[@name@]" border="0" id="main-image" itemprop="image">
-			</div>
-		</a>
+<link
+  rel="stylesheet"
+  href="[%ntheme_asset%]plugins/swiper/css/swiper.min.css[%/ntheme_asset%]"
+/>
+<meta property="og:image" content="[@full_image@]" />
+<div class="main-image col-sm-10 text-center pull-right hidden">
+  <a
+    href="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]"
+    class="fancybox"
+    rel="product_images"
+  >
+    <div class="zoom">
+      <meta
+        itemprop="image"
+        content="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]"
+      />
+      <img
+        src="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]"
+        class="hidden"
+        id="hidden-main-image"
+      />
+      <img
+        src="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'%][%END asset_url%]"
+        rel="itmimg[@SKU@]"
+        alt="[@name@]"
+        border="0"
+        id="main-image"
+        itemprop="image"
+      />
+    </div>
+  </a>
 </div>
 <!-- Swiper -->
-[%set [@has_alt@] %][%asset_url type:'product' id:'[@SKU@]' thumb:'alt_2' check_parent:'y'%][%END asset_url%][%/set%]
-<div id="swiper" class="thumb-images visible-xs">
-	<div id="swiperWrapper">
-		[%THUMBNAILS id:'[@SKU@]' check_parent:'y' %]
-			[%PARAM *body%]
-				[%if !([@full_image@] like 'alt_10')%]
-				<div class="swiper-slide thumb-image">
-					<img src="[@full_image@]" border="0" class="img-responsive product-image-small" title="Large View">
-				</div>
-				[%else%]
-					[%set [@^yt_thumbnail@]%][@full_image@][%/set%]
-				[%/if%]
-			[%END PARAM%]
-			[%param *footer%]
-				[%IF [@misc25@]%]
-				<div class="swiper-slide thumb-image">
-					<a class="productvidwrap fancybox.iframe" href="https://www.youtube.com/embed/[@misc25@]?rel=0&autoplay=1&mute=1">
-					</a>
-				</div>
-				[%/IF%]
-			[%END PARAM%]
-		[%END THUMBNAILS%]
-	</div>
+[%set [@has_alt@] %][%asset_url type:'product' id:'[@SKU@]' thumb:'alt_2'
+check_parent:'y'%][%END asset_url%][%/set%]
+<div id="swiper" class="thumb-images visible">
+  <div id="swiperWrapper">
+    [%THUMBNAILS id:'[@SKU@]' check_parent:'y' %] [%PARAM *body%] [%if
+    !([@full_image@] like 'alt_10')%]
+    <div class="swiper-slide thumb-image">
+      <img
+        src="[@full_image@]"
+        border="0"
+        class="img-responsive product-image-small"
+        title="Large View"
+      />
+    </div>
+    [%else%] [%set [@^yt_thumbnail@]%][@full_image@][%/set%] [%/if%] [%END
+    PARAM%] [%param *footer%] [%IF [@misc25@]%]
+    <div class="swiper-slide thumb-image">
+      <a
+        class="productvidwrap fancybox.iframe"
+        href="https://www.youtube.com/embed/[@misc25@]?rel=0&autoplay=1&mute=1"
+      >
+      </a>
+    </div>
+    [%/IF%] [%END PARAM%] [%END THUMBNAILS%]
+  </div>
 </div>
-[%if [@has_alt@] like '/assets/na.gif'%]
-[%else%]
-<div id="swiper" class="thumb-images hidden-xs col-sm-2">
-	<div id="swiperWrapper">
-		[%THUMBNAILS id:'[@SKU@]' check_parent:'y'%]
-			[%PARAM *body%]
-				[%if !([@full_image@] like 'alt_10')%]
-				<div class="swiper-slide thumb-image">
-					<img src="[@full_image@]" border="0" class="img-responsive product-image-small" title="Large View">
-				</div>
-				[%else%]
-					[%set [@^yt_thumbnail@]%][@full_image@][%/set%]
-				[%/if%]
-			[%END PARAM%]
-			[%param *footer%]
-				[%IF [@misc25@]%]
-				<div class="swiper-slide thumb-image">
-					<a class="productvidwrap fancybox.iframe"  href="https://www.youtube.com/embed/[@misc25@]?rel=0&autoplay=1&mute=1">
-					</a>
-				</div>
-				[%/IF%]
-			[%END PARAM%]
-		[%END THUMBNAILS%]
-	</div>
+[%if [@has_alt@] like '/assets/na.gif'%] [%else%]
+<div id="swiper" class="thumb-images hidden col-sm-2">
+  <div id="swiperWrapper">
+    [%THUMBNAILS id:'[@SKU@]' check_parent:'y'%] [%PARAM *body%] [%if
+    !([@full_image@] like 'alt_10')%]
+    <div class="swiper-slide thumb-image">
+      <img
+        src="[@full_image@]"
+        border="0"
+        class="img-responsive product-image-small"
+        title="Large View"
+      />
+    </div>
+    [%else%] [%set [@^yt_thumbnail@]%][@full_image@][%/set%] [%/if%] [%END
+    PARAM%] [%param *footer%] [%IF [@misc25@]%]
+    <div class="swiper-slide thumb-image">
+      <a
+        class="productvidwrap fancybox.iframe"
+        href="https://www.youtube.com/embed/[@misc25@]?rel=0&autoplay=1&mute=1"
+      >
+      </a>
+    </div>
+    [%/IF%] [%END PARAM%] [%END THUMBNAILS%]
+  </div>
 </div>
-<div class="swiper-button-next text-right visible-xs"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-<div class="swiper-button-prev text-left visible-xs"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+<div class="swiper-button-next text-right visible">
+  <i class="fa fa-angle-right" aria-hidden="true"></i>
+</div>
+<div class="swiper-button-prev text-left visible">
+  <i class="fa fa-angle-left" aria-hidden="true"></i>
+</div>
 [%/if%]
 
 <style>
-	.swiper-container {
-        width: 85%;
-        height: 85%;
-		padding: 0;
-		float: none;
-    }
-	.swiper-container-horizontal>.swiper-pagination-bullets, 
-	.swiper-pagination-custom, .swiper-pagination-fraction {
-		bottom: 0;
-	}
-	.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
-		margin: 0 12px;
-	}
-	.swiper-pagination-bullet {
-		width: 25px;
-		height: 25px;
-	}
-	.swiper-pagination-bullet-active {
-		background: #7bafd4;
-	}
-	.swiper-button-next,
-	.swiper-button-prev	{
-		background: none;
-		background: none;
-		font-size: 45px;
-		color: #c9a07f;
-		top: 65%;
-	}
-	.productvidwrap{
-		width: 85%;
-		margin-left: 7.5%;
-		padding-bottom: 75%;
-		display: block;
-		background-position: center;
-		[%if [@yt_thumbnail@] ne ''%]
-		background-image: url('[@yt_thumbnail@]');
-		background-size: cover;
-		[%else%]
-		background-image: url('https://img.youtube.com/vi/[@misc25@]/hqdefault.jpg');
-		[%/if%]
-	}
-	@media (min-width: 667px) {
-		.productvidwrap {
-			width: 100%;
-			background-size: cover;
-			[%if [@yt_thumbnail@] ne ''%]
-			background-image: url('[@yt_thumbnail@]');
-			[%else%]
-			background-image: url('https://img.youtube.com/vi/[@misc25@]/mqdefault.jpg');
-			[%/if%]
-			margin: 10px 0;
-		}
-	}
+  .swiper-container {
+         width: 85%;
+         height: 85%;
+  	padding: 0;
+  	float: none;
+     }
+  .swiper-container-horizontal>.swiper-pagination-bullets,
+  .swiper-pagination-custom, .swiper-pagination-fraction {
+  	bottom: 0;
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+  	margin: 0 12px;
+  }
+  .swiper-pagination-bullet {
+  	width: 25px;
+  	height: 25px;
+  }
+  .swiper-pagination-bullet-active {
+  	background: #7bafd4;
+  }
+  .swiper-button-next,
+  .swiper-button-prev	{
+  	background: none;
+  	background: none;
+  	font-size: 45px;
+  	color: #c9a07f;
+  	top: 65%;
+  }
+  .productvidwrap{
+  	width: 85%;
+  	margin-left: 7.5%;
+  	padding-bottom: 75%;
+  	display: block;
+  	background-position: center;
+  	[%if [@yt_thumbnail@] ne ''%]
+  	background-image: url('[@yt_thumbnail@]');
+  	background-size: cover;
+  	[%else%]
+  	background-image: url('https://img.youtube.com/vi/[@misc25@]/hqdefault.jpg');
+  	[%/if%]
+  }
+  @media (min-width: 667px) {
+  	.productvidwrap {
+  		width: 100%;
+  		background-size: cover;
+  		[%if [@yt_thumbnail@] ne ''%]
+  		background-image: url('[@yt_thumbnail@]');
+  		[%else%]
+  		background-image: url('https://img.youtube.com/vi/[@misc25@]/mqdefault.jpg');
+  		[%/if%]
+  		margin: 10px 0;
+  	}
+  }
 </style>

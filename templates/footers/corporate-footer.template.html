@@ -3,11 +3,11 @@
 <div class="row padding-tb-small wrapper-footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-7 padding-tb-small">
+			<div class="col-12 col-sm-7 padding-tb-small">
 				<div class="row">
 					[%menu id:'web_footer'%]
 						[%param *level_1%]
-							<div class="col-xs-12 col-sm-4">
+							<div class="col-12 col-sm-4">
 								<h4 class="footer-menu-title">[@name@]</h4>
 								<ul class="nav">
 									[@next_level@]
@@ -20,10 +20,10 @@
 					[%/menu%]
 				</div>
 			</div>
-			<div class="hidden-xs col-sm-3"></div>
-			<div class="col-xs-12 col-sm-5">
+			<div class="hidden col-sm-3"></div>
+			<div class="col-12 col-sm-5">
 				<div class="row padding-tb-small">
-					<div class="col-xs-12 col-sm-7 address-wrapper">
+					<div class="col-12 col-sm-7 address-wrapper">
 							<h4 class="footer-menu-title">Secure Payments</h4>
 							[%checkout_pay_icons show_icon:'1' ignore_balance:'1'%]
 							[%param header%]
@@ -43,10 +43,10 @@
 					</div>
 					<div class="col-sm-5">
 						<div class="row">
-							<div class="col-xs-12 col-sm-12  padding-tb-small text-right phone">
+							<div class="col-12 col-sm-12  padding-tb-small text-right phone">
 									<i class="fa fa-phone"></i> <a href="tel:1300459452"><span>1300 459 452</span></a>
 							</div>
-							<ul class="col-xs-12 col-sm-12 padding-tb-small list-inline list-social text-right">
+							<ul class="col-12 col-sm-12 padding-tb-small list-inline list-social text-right">
 								[%if [@config:facebook_account_id@]%]
 								<li><a href="[@config:facebook_account_id@]" target="_blank"><i class="fa fa-facebook"></i></a>
 								</li>
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		<div class="row">
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div
 						class="trustpilot-widget"
 						data-locale="en-AU"
@@ -93,7 +93,7 @@
 				</div>
 			</div>
 		<div class="row">
-			<div class="col-xs-12 padding-t-small">
+			<div class="col-12 padding-t-small">
 				<p class="footer-text">
 					[%content_zone id:'footer_address'%][%end content_zone%]
 				</p>

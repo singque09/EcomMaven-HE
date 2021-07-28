@@ -453,14 +453,14 @@ $(document).ready(function() {
 fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_name:'checkout',content_category:'page',content_ids:[[%cart_items%][%PARAM *body%]"[@SKU@]",[%END PARAM%][%END cart_items%]],num_items:'[%format type:"number" dp:"0"%][%CART id:"total_items"%][%/CART%][%/format%]'});
 </script>
 [%END SITE_VALUE%]
-<div class="col-xs-12">
+<div class="col-12">
 <div class="row padding-t-small">
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to checkout.</div>
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-6 text-left">
+		<div class="col-12 col-sm-6 col-md-6 text-left">
 			<h1 class="checkout-heading"><i class="fa fa-lock" aria-hidden="true"></i> Secure Checkout</h1>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-6 text-right pull-right">
+		<div class="col-12 col-sm-6 col-md-6 text-right pull-right">
 			<div class="payment-top-icons">
 				[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
 					[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
@@ -485,7 +485,7 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 	[%IF [@processor_account@] eq '' %]
 		[%USER id:'username' if:'eq' value:''%]
 		<div class="row padding-b-small">
-			<div class="col-xs-12 col-sm-6">
+			<div class="col-12 col-sm-6">
 				<strong>Returning Customer? <a id="_cpy_login_link" href="javascript:void(0);">Login for <i>Express</i> Checkout</a></strong>
 				<div id="_cpy_login_pl" style="[%FORM id:'login_username' if:'eq' value:''%]display:none;[%END FORM%]">
 				[%load_ajax_template id:'login' type:'cart' template:'login' preload:"1"%][%END load_ajax_template%]
@@ -513,94 +513,94 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 		
 			<input type="hidden" name="submited" id="submited" value="0" />
 			<input type="hidden" name="fn" value="finalize" />
-			<div class="col-xs-12 col-md-4 column column-1">
+			<div class="col-12 col-md-4 column column-1">
 				<div class="_step">
 					<div class="_step_no"><div class="step-label">Step</div> <span>1</span> </div>
 					<div class="_step_desc padding-l-small"> Enter Your Details </div>
 				</div>
 				[%USER id:'valid_email' if:'==' value:'0'%]
 				<div class="form-group">
-					<label class="control-label col-xs-12" for="bill_email">
+					<label class="control-label col-12" for="bill_email">
 						Email Address
 						<span class="small text-danger">*</span>
 					</label>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<input type="email" autocorrect="off" autocapitalize="off" class="form-control" name="bill_email" id="bill_email" maxlength="50" value="[@email@]"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-xs-12" for="confirm_email">
+					<label class="control-label col-12" for="confirm_email">
 						Confirm Email Address
 						<span class="small text-danger">*</span>
 					</label>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<input type="email" class="form-control" autocorrect="off" autocapitalize="off" name="confirm_email" id="confirm_email" maxlength="50" value="[%NOHTML%][%FORM id:'confirm_email'%][%END FORM%][%END NOHTML%]" />
 					</div>
 				</div>
 				[%END USER%]
 				<div class="row">
 					<div class="form-group half">
-						<label class="control-label col-xs-12" for="bill_first_name">
+						<label class="control-label col-12" for="bill_first_name">
 							Your First Name
 							<span class="small text-danger">*</span>
 						</label>
-						<div class="col-xs-12">
+						<div class="col-12">
 							<input type="text" class="form-control" name="bill_first_name" id="bill_first_name" maxlength="50" value="[@bill_first_name@]">
 						</div>
 					</div>
 					<div class="form-group half">
-						<label class="control-label col-xs-12" for="bill_last_name">
+						<label class="control-label col-12" for="bill_last_name">
 							Your Last Name
 							<span class="small text-danger">*</span>
 						</label>
-						<div class="col-xs-12">
+						<div class="col-12">
 							<input type="text" class="form-control" name="bill_last_name" id="bill_last_name" maxlength="50" value="[@bill_last_name@]">
 						</div>
 					</div>
 				</div>
 				<div class="form-group hidden">
-					<label class="control-label col-xs-12" for="bill_country">
+					<label class="control-label col-12" for="bill_country">
 						Country
 						<span class="small text-danger">*</span>
 					</label>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<select class="form-control" name="bill_country" id="bill_country">
 							<option value="AU" selected="">Australia</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group hidden">
-					<label class="control-label col-xs-12" for="bill_street1">
+					<label class="control-label col-12" for="bill_street1">
 						Address
 						<span class="small text-danger">*</span>
 					</label>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<input class="form-control" type="text" name="bill_street1" id="bill_street1" maxlength="50" value="NA" />
 					</div>
 				</div>
 				<div class="form-group hidden">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<input class="form-control" type="text" name="bill_street2" id="bill_street2" maxlength="50" value="NA" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-xs-12" for="bill_zip">
+					<label class="control-label col-12" for="bill_zip">
 						Your Postcode
 						<span class="small text-danger">*</span>
 					</label>
 					<div style="display:none;">
 						<div id="postal" style="width:600px;">An Australian postcode is made up of a <strong>4-digit number</strong> (without letters). Once you enter a valid postcode, you will be able to select from the drop-down list of suburbs.</div>
 					</div>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<input class="form-control input-small" type="text" name="bill_zip" id="bill_zip" value="[@bill_zip@]" maxlength="10" />
 					</div>
 				</div>
 				<div class="form-group hidden">
-					<label class="control-label col-xs-12" for="bill_city">
+					<label class="control-label col-12" for="bill_city">
 						Suburb / City
 						<span class="small text-danger">*</span>
 					</label>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<div class="n-wrapper-form-control">
 							<!--<span id="test-bill_selector"></span>-->
 							<input type="text" id="bill_selector" size="50" maxlength="50" autocomplete="off" class="form-control" />
@@ -609,30 +609,30 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 					</div>
 				</div>
 				<div class="form-group hidden">
-					<label class="control-label col-xs-12" for="bill_state">
+					<label class="control-label col-12" for="bill_state">
 						State
 						<span class="small text-danger">*</span>
 					</label>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<div class="n-wrapper-form-control"><span id="bill_state_pl" style="display:none;"></span></div>
 						<input class="form-control"  type="text" name="bill_state" id="bill_state" value="NSW" size="50" maxlength="50" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-xs-12" for="bill_phone">
+					<label class="control-label col-12" for="bill_phone">
 						Your Phone Number
 						[%IF [@CONFIG:CHECKOUT_IGNORE_SHIPPHONE@]%]
 						[%else%]
 						<span class="small text-danger">*</span>
 						[%end IF%]
 					</label>
-					<div class="col-xs-12">
+					<div class="col-12">
 						<input class="form-control" type="tel" name="bill_phone" id="bill_phone" maxlength="50" value="[@bill_phone@]" />
 					</div>
 				</div>
 				<div class="form-group subscription">
 					<input class="terms_box" name="regoptin" id="regoptin" type="checkbox" value="Y" checked data-message=""/>
-					<label class="control-label newsletter-label col-xs-12" for="regoptin">
+					<label class="control-label newsletter-label col-12" for="regoptin">
 						Subscribe for the latest news and offers
 					</label>
 				</div>
@@ -643,8 +643,8 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 				<div id="_macart_ovl">
 					<div class="_shipping_choice [%if [@total_items@] < 2 %] hidden [%/if%]">
 						<div class="form-group">
-							<label class="control-label col-xs-12">Ship Order To </label>
-							<div class="col-xs-12">
+							<label class="control-label col-12">Ship Order To </label>
+							<div class="col-12">
 								<div class="radio hidden">
 									<label>
 										<input name="ship_mode" value="b" type="radio" [%DATA id:'ship_mode' if:'eq' value:'b'%]checked[%END DATA%]/>
@@ -673,8 +673,8 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 					<div id="shladb_pl">
 						[%USER id:'username' if:'ne' value:''%]
 						<div class="form-group">
-							<label class="control-label col-xs-12" for="shladb_addr">Choose From Your Address Book</label>
-							<div class="col-xs-12">
+							<label class="control-label col-12" for="shladb_addr">Choose From Your Address Book</label>
+							<div class="col-12">
 								<select class="form-control" id="shladb_addr">
 									<option value=""></option>
 									[%address_book%]
@@ -688,68 +688,68 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 						[%END USER%]
 						<div class="row">
 							<div class="form-group half">
-								<label class="control-label col-xs-12" for="ship_first_name">Recipient First Name <span class="small text-danger">*</span></label>
-								<div class="col-xs-12">
+								<label class="control-label col-12" for="ship_first_name">Recipient First Name <span class="small text-danger">*</span></label>
+								<div class="col-12">
 									<input  class="form-control"  type="text" name="ship_first_name" id="ship_first_name" maxlength="50" value="[@ship_first_name@]">
 								</div>
 							</div>
 							<div class="form-group half">
-								<label class="control-label col-xs-12" for="ship_last_name">Recipient Last Name <span class="small text-danger">*</span></label>
-								<div class="col-xs-12">
+								<label class="control-label col-12" for="ship_last_name">Recipient Last Name <span class="small text-danger">*</span></label>
+								<div class="col-12">
 									<input  class="form-control"  type="text" name="ship_last_name" id="ship_last_name" maxlength="50" value="[@ship_last_name@]">
 								</div>
 							</div>
 						</div>
 						<div class="form-group hidden">
-							<label  class="control-label col-xs-12" for="ship_country">Country <span class="small text-danger">*</span></label>
-							<div class="col-xs-12">
+							<label  class="control-label col-12" for="ship_country">Country <span class="small text-danger">*</span></label>
+							<div class="col-12">
 								<select  class="form-control"  name="ship_country" id="ship_country">
 									<option value="AU" selected="">Australia</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label  class="control-label col-xs-12" for="ship_company">Company</label>
-							<div class="col-xs-12">
+							<label  class="control-label col-12" for="ship_company">Company</label>
+							<div class="col-12">
 								<input  class="form-control"  type="text" name="ship_company" id="ship_company" maxlength="50" value="[@ship_company@]">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-xs-12" for="ship_street1">Delivery Address <span class="small text-danger">*</span> <em><a href="#" class="small address-popup">Is my address correct?</a></em></label>
-							<div class="col-xs-12">
+							<label class="control-label col-12" for="ship_street1">Delivery Address <span class="small text-danger">*</span> <em><a href="#" class="small address-popup">Is my address correct?</a></em></label>
+							<div class="col-12">
 								<input  class="form-control"  type="text" name="ship_street1" id="ship_street1" maxlength="50" value="[@ship_street1@]" />
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-xs-12">
+							<div class="col-12">
 								<input  class="form-control"  type="text" name="ship_street2" id="ship_street2" maxlength="50" value="[@ship_street1@]" />
 							</div>
 						</div>
 						<div class="form-group postcode">
-							<label class="control-label col-xs-12" for="ship_zip">Postcode<span class="small text-danger">*</span> <span><em><a href="#" class="small ship-postal">What is this?</a></em></span></label>
-							<div class="col-xs-12">
+							<label class="control-label col-12" for="ship_zip">Postcode<span class="small text-danger">*</span> <span><em><a href="#" class="small ship-postal">What is this?</a></em></span></label>
+							<div class="col-12">
 								<input class="form-control" type="text" name="ship_zip" id="ship_zip" value="[@ship_zip@]" maxlength="10"/>
 							</div>
 						</div>
 						<div class="row">
 							<div class="form-group half">
-								<label class="control-label col-xs-12" for="ship_city">Suburb / City <span class="small text-danger">*</span></label>
-								<div class="col-xs-12"> <div class="n-wrapper-form-control">
+								<label class="control-label col-12" for="ship_city">Suburb / City <span class="small text-danger">*</span></label>
+								<div class="col-12"> <div class="n-wrapper-form-control">
 									<span id="ship_selector"></span>
 									<input class="form-control" type="text" name="ship_city" id="ship_city" value="[@ship_city@]" maxlength="50"/>
 								</div>
 								</div>
 							</div>
 							<div class="form-group half">
-								<label class="control-label col-xs-12" for="ship_state">State <span class="small text-danger">*</span></label>
-								<div class="col-xs-12"><div class="n-wrapper-form-control"><span id="ship_state_pl" style="display:none;"></span></div>
+								<label class="control-label col-12" for="ship_state">State <span class="small text-danger">*</span></label>
+								<div class="col-12"><div class="n-wrapper-form-control"><span id="ship_state_pl" style="display:none;"></span></div>
 								<input class="form-control" type="text" name="ship_state" id="ship_state" value="[@ship_state@]" size="50" maxlength="50" />
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-xs-12" for="ship_phone">Recipient Phone Number <span class="small text-danger">*</span></label>
-							<div class="col-xs-12">
+							<label class="control-label col-12" for="ship_phone">Recipient Phone Number <span class="small text-danger">*</span></label>
+							<div class="col-12">
 								<input class="form-control" type="tel" name="ship_phone" id="ship_phone" maxlength="50" value="[@ship_phone@]" />
 							</div>
 						</div>
@@ -760,7 +760,7 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 			</div>
 			<!-- End Billing Address -->
 			<!-- Start Shipping Address -->
-			<div class="col-xs-12 col-md-4 column column-2">
+			<div class="col-12 col-md-4 column column-2">
 				<div class="_step">
 					<div class="_step_no"><div class="step-label">Step</div> <span>2</span></div>
 					<div class="_step_desc padding-l-small"> Select Shipping Options </div>
@@ -778,8 +778,8 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 					[%DATA id:'order_type' if:'eq' value:'sales'%]
 					[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]
 					<div class="form-group">
-						<label class="control-label col-xs-12 col-sm-4" for="dropshipping"> Send invoice with goods?</label>
-						<div class="col-xs-12 col-sm-8">
+						<label class="control-label col-12 col-sm-4" for="dropshipping"> Send invoice with goods?</label>
+						<div class="col-12 col-sm-8">
 							<div class="radio">
 								<label>
 									<input type="radio" name="dropshipping" value="1" [%DATA id:'dropshipping' if:'=' value:'1'%]checked[%END DATA%] />
@@ -799,7 +799,7 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 			<!-- End Shipping Method -->
 			[%DATA id:'order_type' if:'ne' value:'quote'%]
 			<!-- Start Payment -->
-			<div class="col-xs-12 col-md-4 column secure-payment-wrapper">
+			<div class="col-12 col-md-4 column secure-payment-wrapper">
 				<div class="_step">
 					<div class="_step_no"><div class="step-label">Step</div> <span>3</span> </div>
 					<div class="_step_desc padding-l-small"> Secure Payment Details</div>
@@ -921,33 +921,33 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 			</div>
 			<div ref="card" class="_cpy_paydesc alert alert-info">
 				[%IF [@processor_type@] eq ''%]
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="form-group">
 						<label for="card_number">Card Number</label>
 						<input class="form-control"  type="text" name="card_number" id="card_number" maxlength="16" value="" />
 					</div>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="form-group">
 						<label>Card Holder's Name</label>
 						<input class="form-control"  type="text"  name="card_holder" maxlength="40" value="" />
 					</div>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="row">
 						<div class="form-group">
-							<div class="col-xs-12">
+							<div class="col-12">
 								<label>Card Expiration Date</label>
 							</div>
-							<div class="col-xs-6">
-								<select class="form-control col-xs-6"  id="card_exp_month" name="card_exp_month">
+							<div class="col-6">
+								<select class="form-control col-6"  id="card_exp_month" name="card_exp_month">
 									<option value=""></option>
 									[%months%][%PARAM *body%]
 									<option class="input-small" value="[@month@]">[@month@]</option>
 									[%END PARAM%][%END months%]
 								</select>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-6">
 								<select class="form-control"  name="card_exp_year">
 									<option value=""></option>
 									[%years from:'+0' to:'+10'%][%PARAM *body%]
@@ -958,7 +958,7 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="form-group">
 						<label>Card Security Code</label>
 						<input type="text" name="card_ccid" class="form-control" />
@@ -971,20 +971,20 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 				[%ELSE%]
 				[@processor_type@]
 				[%END IF%]
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="form-group">
 						<label>Card Type</label>
 						<p class="form-control-static">[@processor_card_brand@]</p>
 					</div>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="form-group">
 						<label>Card Number</label>
 						<p class="form-control-static">[@processor_card_number@] <a href="[%URL page:'checkout' fn:'3rdparty' qs:'payproc=&payclr=y'%][%END URL%]">(Change card)</a></p>
 					</div>
 				</div>
 				[%IF [@processor_require_cvv@] eq 'y'%]
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="form-group">
 						<label>Enter your [@processor_card_brand@] CCV</label>
 						<input type="text" name="card_ccid" class="form-control" />
@@ -1023,7 +1023,7 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 			</p>
 			</div>
 			
-			<div class="col-xs-12 col-md-4 secure-payment-wrapper padding-t-med">
+			<div class="col-12 col-md-4 secure-payment-wrapper padding-t-med">
 			[%load_ajax_template id:'cart_items' type:'cart' template:'cart_items' preload:"1"%][%END load_ajax_template%]
 			[%load_ajax_template id:'address' type:'cart' template:'address' preload:"0"%][%END load_ajax_template%]
 			<div class="checkout-btn-wrapper">
@@ -1075,14 +1075,14 @@ fbq('track','InitiateCheckout',{value:'[@grand_total@]',currency:'AUD',content_n
 			<div class="col-md-5 padding-b-tin">
 				<input id="fieldEmail" name="cm-djihhu-djihhu" class="form-control" type="email" placeholder="Email" required/>
 			</div>
-			<div class="col-md-2 col-xs-12 padding-b-tin submit-wrapper">
+			<div class="col-md-2 col-12 padding-b-tin submit-wrapper">
 				<button class="btn btn-default" type="submit">Connect</button>
 			</div>
 		</form>
 	</div>
 </div>
 </div>
-<div class="col-xs-12 col-md-4">
+<div class="col-12 col-md-4">
 <hr />
 </div>
 </div>

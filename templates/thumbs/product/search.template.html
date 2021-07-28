@@ -1,74 +1,133 @@
-<div class="wrapper-thumbnail col-xs-6 col-sm-3 [%IF [@misc16@] AND [@misc16@] eq 'y' %]hidden[%END IF%]">
-    <div class="thumbnail" itemscope itemtype="http://schema.org/Product">
-        [%IF [@store_quantity@] > 0 AND [@preorder@] %]
-            <span class="wfd free">
-                <span>
-                    Pre-order <br/>now!
-                </span>
-            </span>
-        [%ELSEIF [@store_quantity@] < 1 AND [@preorder@] %]
-            <span class="wfd free">
-                <span class="wfd__down">
-                    Coming <br/>Soon
-                </span>
-            </span>
-        [%ELSEIF [@store_quantity@] > 0 %]
-            <span class="wfd free">
-                <span class="wfd__up">
-                    Free <br/>Delivery
-                </span>
-            </span>
-        [%ELSE%]
-            <span class="wfd out">
-                <span>
-                    Sold <br/>Out
-                </span>
-            </span>
-        [%END IF%]
-		<a href="[@URL@]" class="thumbnail-image">
-			<img src="[%asset_url type:'product' thumb:'alt_1' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" class="product-image" alt="[@model@]" rel="itmimg[@SKU@]">
-		</a>
-		<div class="caption">
-			<h3 itemprop="name" class="wrapper-thumbnail__title"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'55' rmhtml:'1'%][@model@][%/FORMAT%]</a></h3>
-			<span class="wrapper-thumbnail__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-				<a href="[@URL@]" title="[@model@]">
-					[%if [@inpromo@]%]
-						<!-- Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%] -->
-						<span itemprop="price" class="amount">[%format type:'currency' dp:'0'%][@promo_price@][%/format%]</span>
-					[%else%]
-						<!-- [%if [@has_child@]%]From&nbsp;[%/if%] -->
-						<span itemprop="price" class="amount">[%format type:'currency' dp:'0'%][@store_price@][%/format%]</span>
-					[%/if%]
-					<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
-				</a>
-			</span>
-            <span class="wrapper-thumbnail__cart">
-                <form class="form-inline buying-options">
-    				<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
-    				<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
-    				<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
-    				<input type="hidden" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="1" class="input-tiny">
-                    [%if [@store_quantity@] > 0 AND [@preorder@] %]
-    					<button type="button" title="Pre-Order Now!" class="addtocart btn btn--black btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
-    				[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-    					<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn--black btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
-    				[%else%]
-    				[%/if%]
-    			</form>
-            </span>
-		</div>
+<div
+  class="
+    wrapper-thumbnail
+    col-6 col-sm-3
+    [%IF
+    [@misc16@]
+    AND
+    [@misc16@]
+    eq
+    'y'
+    %]hidden[%END
+    IF%]
+  "
+>
+  <div class="thumbnail" itemscope itemtype="http://schema.org/Product">
+    [%IF [@store_quantity@] > 0 AND [@preorder@] %]
+    <span class="wfd free">
+      <span> Pre-order <br />now! </span>
+    </span>
+    [%ELSEIF [@store_quantity@] < 1 AND [@preorder@] %]
+    <span class="wfd free">
+      <span class="wfd__down"> Coming <br />Soon </span>
+    </span>
+    [%ELSEIF [@store_quantity@] > 0 %]
+    <span class="wfd free">
+      <span class="wfd__up"> Free <br />Delivery </span>
+    </span>
+    [%ELSE%]
+    <span class="wfd out">
+      <span> Sold <br />Out </span>
+    </span>
+    [%END IF%]
+    <a href="[@URL@]" class="thumbnail-image">
+      <img
+        src="[%asset_url type:'product' thumb:'alt_1' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]"
+        class="product-image"
+        alt="[@model@]"
+        rel="itmimg[@SKU@]"
+      />
+    </a>
+    <div class="caption">
+      <h3 itemprop="name" class="wrapper-thumbnail__title">
+        <a href="[@URL@]" title="[@model@]"
+          >[%format type:'text' maxlength:'55'
+          rmhtml:'1'%][@model@][%/FORMAT%]</a
+        >
+      </h3>
+      <span
+        class="wrapper-thumbnail__price"
+        itemprop="offers"
+        itemscope
+        itemtype="http://schema.org/Offer"
+      >
+        <a href="[@URL@]" title="[@model@]">
+          [%if [@inpromo@]%]
+          <!-- Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%] -->
+          <span itemprop="price" class="amount"
+            >[%format type:'currency' dp:'0'%][@promo_price@][%/format%]</span
+          >
+          [%else%]
+          <!-- [%if [@has_child@]%]From&nbsp;[%/if%] -->
+          <span itemprop="price" class="amount"
+            >[%format type:'currency' dp:'0'%][@store_price@][%/format%]</span
+          >
+          [%/if%]
+          <meta itemprop="priceCurrency" content="[@config:defaultcurrency@]" />
+        </a>
+      </span>
+      <span class="wrapper-thumbnail__cart">
+        <form class="form-inline buying-options">
+          <input
+            type="hidden"
+            id="sku[@rndm@][@SKU@]"
+            name="sku[@rndm@][@SKU@]"
+            value="[@SKU@]"
+          />
+          <input
+            type="hidden"
+            id="model[@rndm@][@SKU@]"
+            name="model[@rndm@][@SKU@]"
+            value="[@model@]"
+          />
+          <input
+            type="hidden"
+            id="thumb[@rndm@][@SKU@]"
+            name="thumb[@rndm@][@SKU@]"
+            value="[@thumb@]"
+          />
+          <input
+            type="hidden"
+            id="qty[@rndm@][@SKU@]"
+            name="qty[@rndm@][@SKU@]"
+            value="1"
+            class="input-tiny"
+          />
+          [%if [@store_quantity@] > 0 AND [@preorder@] %]
+          <button
+            type="button"
+            title="Pre-Order Now!"
+            class="addtocart btn btn--black btn-warning btn-block btn-loads"
+            rel="[@rndm@][@SKU@]"
+            data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"
+          >
+            Add to Cart
+          </button>
+          [%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
+          <button
+            type="button"
+            title="Add to Cart"
+            class="addtocart btn-primary btn btn--black btn-block btn-loads"
+            rel="[@rndm@][@SKU@]"
+            data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"
+          >
+            Add to Cart
+          </button>
+          [%else%] [%/if%]
+        </form>
+      </span>
+    </div>
 
-		<div class="savings-container">
-			[%if [@misc19@] AND [@misc19@] eq 'y' AND [@misc20@] eq 'n'%]
-				<div class="thumb-sash selling-sash">
-					<span>Selling Fast</span>
-				</div>
-			[%/if%]
-			[%if [@misc20@] AND [@misc20@] eq 'y' %]
-				<div class="thumb-sash soldout-sash">
-					<span>Sold Out</span>
-				</div>
-			[%/if%]
-		</div>
-	</div>
+    <div class="savings-container">
+      [%if [@misc19@] AND [@misc19@] eq 'y' AND [@misc20@] eq 'n'%]
+      <div class="thumb-sash selling-sash">
+        <span>Selling Fast</span>
+      </div>
+      [%/if%] [%if [@misc20@] AND [@misc20@] eq 'y' %]
+      <div class="thumb-sash soldout-sash">
+        <span>Sold Out</span>
+      </div>
+      [%/if%]
+    </div>
+  </div>
 </div>

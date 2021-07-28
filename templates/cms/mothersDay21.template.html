@@ -161,8 +161,8 @@
   <div class="firstRowWrapper img1Bg">
     <div class="container firstRowHolder">
       <div class="row">
-        <div class="col-xs-12">
-          <div class="col-xs-12 col-sm-6 offset-sm-2 md21FormHolder box-shadow">
+        <div class="col-12">
+          <div class="col-12 col-sm-6 offset-sm-2 md21FormHolder box-shadow">
             <div class="formHolderInner">
               <div class="formHeaderHolder text-center line-height1-3">
                 <span class="ff-basker fs45px"
@@ -194,13 +194,12 @@
     </div>
   </div>
   <div class="space20px"></div>
-  <div class="col-xs-12 secondRowSliderHolder">
+  <div class="col-12 secondRowSliderHolder">
     <div class="innerHolder">
       <div class="textHeaderHolder text-center">
         <span class="ff-basker fs45px">[@content_short_description3@]</span>
       </div>
       <div class="md21sliderHolder">
-      
         [%load_template file:'cms/includes/accordion-slider.template.html' /%]
         <!-- <div class="home-page-slider">
 			 [%advert type:'text' template:'' limit:'10' ad_group:'mday21-slider' category:'0'%]
@@ -208,7 +207,7 @@
 					<div class="mday21slider">
 				[%/param%]
 				[%param *body%]					
-						<div class="col-xs-12">
+						<div class="col-12">
 							<div class="thumbnail">	
 								<div class="sliderImgHolder">
 									<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" >
@@ -233,13 +232,11 @@
 			[%/advert%]
 	
 		</div> -->
-    
       </div>
-      
     </div>
   </div>
   <div class="space20px"></div>
-  <div class="col-xs-12 thirdRowProductsHolder">
+  <div class="col-12 thirdRowProductsHolder">
     <div class="innerHolder">
       <div class="textHeaderHolder text-center line-height1-3">
         <span class="ff-basker fs45px">[@CONTENT_EXTERNAL_REF1@]</span>
@@ -247,12 +244,12 @@
 
       <div class="space20px"></div>
       <div class="space20px"></div>
-      <div class="col-xs-12 md21FeaturedProductsHolder">
+      <div class="col-12 md21FeaturedProductsHolder">
         [%advert type:'product' template:'' limit:'10'
         ad_group:'mday21-products' category:'0'%] [%param *header%]
         <div class="row flexProducts">
           [%/param%] [%param *body%]
-          <div class="wrapper-thumbnail col-xs-6 col-sm-4">
+          <div class="wrapper-thumbnail col-6 col-sm-4">
             <div
               class="thumbnail"
               itemscope
@@ -336,7 +333,11 @@
                     <button
                       type="button"
                       title="Pre-Order Now!"
-                      class="addtocart addtocartMday21Pre btn btn--black btn-warning btn-block btn-loads"
+                      class="
+                        addtocart
+                        addtocartMday21Pre
+                        btn btn--black btn-warning btn-block btn-loads
+                      "
                       rel="[@rndm@][@SKU@]"
                       data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"
                     >
@@ -430,7 +431,7 @@
         <div class="row">[%/param%] [%param *footer%]</div>
         [%/param%] [%/random_products%] [%/param%] [%/advert%]
       </div>
-      <div class="col-xs-12 textHolder text-center">
+      <div class="col-12 textHolder text-center">
         <a href="#" class="letterSpacing2">[@CONTENT_EXTERNAL_REF2@]</a>
       </div>
     </div>

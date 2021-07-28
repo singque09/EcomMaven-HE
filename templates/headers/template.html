@@ -16,41 +16,17 @@
 <!DOCTYPE html>
 <html [%if [@config:current_page_type@] eq 'category'%]itemscope itemtype="https://schema.org/CollectionPage"[%/if%] lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title [%if [@config:current_page_type@] eq 'category'%]itemprop="name"[%/if%] >[%url_info name:'page_title'/%]</title>
-<meta [%if [@config:current_page_type@] eq 'category'%]itemprop="description"[%/if%] name="description" content="[%url_info name:'meta_description'/%]"/>
-<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
-<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][@config:homeurl@][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%][@config:homeurl@]/assets/website_logo.png[%/if%]"/>
-<meta property="og:title" content="[%url_info name:'page_title'/%]"/>
-<meta property="og:site_name" content="[@config:website_name@]"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="[@config:canonical_url@]"/>
-<meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
-[%if [@config:current_page_type@] eq 'customer' or [@config:current_page_type@] eq 'checkout'%]
-<meta name="robots" content="noindex" />
-[%/if%]
-[@config:GOOGLE_VERIFICATION_CODE@]
-<link rel="canonical" href="[@config:canonical_url@]"/>
-<link rel="shortcut icon" href="/assets/favicon_logo.png"/>
+	[%load_template file:'headers/includes/head.template.html'/%]
 <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,300,300italic' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<!--<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/> -->
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.min.css?1234567890123456789012345678901234567890123456789012345678901234567890124[%/ntheme_asset%]" media="all"/>
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/product-thumbnail.css?12339[%/ntheme_asset%]" media="all"/>
-[%cdn_asset html:'1' type:'css' domain:'maxcdn.bootstrapcdn.com' library:'font-awesome' version:'4.4.0'%]css/font-awesome.min.css[%/cdn_asset%]
-[%cdn_asset html:'1' type:'css' library:'jquery_ui' version:'1.11.1'%]css/custom-theme/jquery-ui-1.8.18.custom.css[%/cdn_asset%]
 [%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<!--[if lte IE 8]>
-	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
-<![endif]-->
-[%tracking_code type:'Declaration'/%]
 
 <script src="//assets.findify.io/www.thehamperemporium.com.au.min.js" async defer></script>
-
 
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/fonts/fonts.css[%/ntheme_asset%]" media="all"/>
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]/css/customNeilCss.css[%/ntheme_asset%]" media="all"/>
@@ -104,62 +80,33 @@
 [%IF [@config:current_page_type@] == 'home' %] <meta name="facebook-domain-verification" content="ft9fc1ug9eti54u2nllstmfjokyu2d" /> [%/IF%]
 
 </head>
-<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@] col-xs-12 [%IF [@config:current_page_type@] != 'home' %] inner_pages [%/IF%]">
+<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@] col-12 [%IF [@config:current_page_type@] != 'home' %] inner_pages [%/IF%]">
 <div class="wrapper-header">
 	<div class="row top-header">
 		<div class="container">
-			<div class="visible-lg col-sm-4 text-left">
-				<!-- removed by Digitalgrowth
-				<div class="col-xs-3">
-					<ul class="list-inline list-social">
-						[%if [@config:facebook_account_id@]%]
-						<li><a href="[@config:facebook_account_id@]" target="_blank"><i class="fa fa-facebook"></i></a>
-						</li>
-						[%/if%]
-						[%if [@config:twitter_account_id@]%]
-						<li><a href="[@config:twitter_account_id@]" target="_blank"><i class="fa fa-twitter"></i></a></li>
-						[%/if%]
-						[%if [@config:googleplus_account_id@]%]
-						<li><a href="[@config:googleplus_account_id@]" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-						[%/if%]
-						[%if [@config:youtube_account_id@]%]
-						<li><a href="[@config:youtube_account_id@]" target="_blank"><i class="fa fa-youtube"></i></a></li>
-						[%/if%]
-						[%if [@config:instagram_account_id@]%]
-						<li><a href="[@config:instagram_account_id@]" target="_blank"><i class="fa fa-instagram"></i></a></li>
-						[%/if%]
-						[%if [@config:pinterest_account_id@]%]
-						<li><a href="[@config:pinterest_account_id@]" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-						[%/if%]
-						[%if [@config:tumblr_account_id@]%]
-						<li><a href="[@config:tumblr_account_id@]" target="_blank"><i class="fa fa-tumblr"></i></a></li>
-						[%/if%]
-						[%if [@config:linkedin_account_id@]%]
-						<li><a href="[@config:linkedin_account_id@]" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-						[%/if%]
-					</ul>
-				</div> removed by Digitalgrowth - end -->
-				<div class="col-xs-12">
+			<div class="visible-lg col-sm-6 text-left left-column">
+				<div class="col-12">
 					<strong>
+						<i class="fas fa-map-marker-alt"></i>
 						<a class="text-uppercase small" href="/sydney">Sydney</a> |
 						<a class="text-uppercase small" href="/melbourne">Melbourne</a> |
-						<a class="text-uppercase small" href="/brisbane">Brisbane</a>|
+						<a class="text-uppercase small" href="/brisbane">Brisbane</a> |
 						<a class="text-uppercase small" href="/Christmas-Hampers">Christmas Hampers</a>
 					</strong>
-					<form class="form-inline top-search-form" name="productsearch" method="get" action="/">
+					<!-- <form class="form-inline top-search-form" name="productsearch" method="get" action="/">
 						<input type="hidden" name="rf" value="kw"/>
 						<input class="form-control" placeholder="search our hampers..." value="[%nohtml%][%filter ID:'keywords'%][%end filter%][%end nohtml%]" id="name_search" autocomplete="off" name="kw" type="search"/>
 						<button type="submit" value="Search" class="btn btn-loads btn-search" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"><i class="fa fa-search"></i></button>
-					</form>
+					</form> -->
 				</div>
 			</div>
-			<div class="col-xs-12 col-lg-5 text-center padding-tb-thin">
+			<!-- <div class="col-12 col-lg-5 text-center padding-tb-thin">
 				[%content_zone id:'headertext' if_empty:''/%]
-			</div>
-			<div class="visible-lg col-sm-3 text-right padding-t-thin right-column">
-				<div class="row">
-					<div class="col-xs-12">
-						<div id="header-cart" class="col-xs-2 cart">
+			</div> -->
+			<div class="visible-lg col-sm-6 text-right right-column">
+				<!-- <div class="row">
+					<div class="col-12">
+						<div id="header-cart" class="col-2 cart">
 							<a id="cartcontentsheader" href="[%url page:'checkout' type:'cart'/%]"><i class="fa fa-shopping-cart"></i> <span rel="a2c_item_count" class="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span></a>
 							<ul class="dropdown-menu">
 								<li class="box" id="neto-dropdown">
@@ -168,7 +115,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="col-xs-3 sign-in">
+						<div class="col-3 sign-in">
 							[%if [@user:username@]%]
 								<ul class="list-unstyled">
 									<li class="dropdown dropdown-hover">
@@ -182,9 +129,15 @@
 							[%else%]
 								<a href="/_myacct">Login</a>
 							[%/if%]
-						</div>
-						<div class="col-xs-6 help-menu text-right">
-							<ul>
+						</div> -->
+						<!-- <div class="col-6 help-menu text-right"> -->
+							<strong>
+								<a class="text-uppercase small" href="/delivery">Delivery Calculator</a>
+								<a class="text-uppercase small" rel="nofollow" href="/help-centre">Help</a>
+								<a class="text-uppercase small" rel="nofollow" href="https://www.thehamperemporium.com.au/contact-us">Contact Us</a>
+							</strong>
+							
+							<!-- <ul>
 								<li class="dropdown dropdown-hover">
 									<span class="caret"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
 									<a href="/help-centre">Help</a>
@@ -199,10 +152,10 @@
 										<li><a rel="nofollow" href="https://www.thehamperemporium.com.au/contact-us">Contact Us</a></li>
 									</ul>
 								</li>
-							</ul>
-						</div>
+							</ul> -->
+						<!-- </div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -216,8 +169,11 @@
 			<div class="navbar navbar-default">
 				<div class="navbar-header">
 					<ul class="navigation-list list-inline hidden-lg nMobileNav">
-						<li><a href="#" class="nToggleMenu" data-target=".navbar-responsive-collapse"><span class="icon"><i class="fa fa-bars"></i></span>
-						Shop</a></li>
+						<li>
+							<a href="#" class="nToggleMenu" data-target=".navbar-responsive-collapse">
+								<span class="icon"><i class="fa fa-bars"></i></span>
+						Shop</a>
+						</li>
 						<li class="search">
 							<a href="#"><span class="icon"><i class="fa fa-search click"></i></span>
 								<span class="white-txt">Search</span>
@@ -245,78 +201,38 @@
 
 					</ul>
 				</div>
-				<div class="col-xs-12 col-lg-2 navbar-collapse-bg">
-					<div class="navbar-collapse collapse navbar-responsive-collapse">
-						<ul class="nav navbar-nav fixed-menu-wrapper">
-						[%cache type:'cmenu' id:'header_cat_menu'%]
-							[%categorymenu sortby:'sortorder,selected,name' show_empty:'1'%]
-							[%param header%]
-							<li class="dropdown dropdown-hover"><a href="#" class="dropdown-toggle">Shop Categories <span class="caret"><i class="fa fa-caret-down" aria-hidden="true"></i></span></a>
-								<ul class="dropdown-menu mobileNavWithChristmas">
-
-
-
-									[%/param%]
-									[%param *level_1%]
-										[%if [@name@] eq "All Gift Hampers"%]
-										<li class="">
-											<a href="https://www.thehamperemporium.com.au/gift-hampers">All Gift Hampers</a>
-										</li>
-										[%else%]
-										
-										<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%] mobileNavl1-[@count@]"><a href="[@url@]">[@name@]</a>
-											[%data id:'next_level' if:'ne' value:''%]
-												<ul class="dropdown-menu dropdown-menu-horizontal">
-													[@next_level@]
-												</ul>
-											[%/data%]
-										</li>
-
-										[%/if]
-										
-									[%/param%]
-									[%param *level_2%]
-										<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%]">
-											<a href="[@url@]">[@name@]</a>
-											[%data id:'next_level' if:'ne' value:''%]
-												<ul class="dropdown-menu dropdown-menu-horizontal">
-													[@next_level@]
-												</ul>
-											[%/data%]
-										</li>
-									[%/param%]
-									[%param *level_3%]
-										<li class="lv3-li">
-											<a href="[@url@]">[@name@]</a>
-										</li>
-									[%/param%]
-									[%param footer%]
-									<li class="visible-xs">
-										<a href="/gift-hampers">All Gift Hampers</a>
-									</li>
-									<li class="visible-xs">
-										<a href="/Corporate-Hampers">Corporate Hampers</a>
-									</li>
-									<li class="visible-xs corporate-menu-mobile">
-										<a href="/Corporate-Hampers">Help</a>
-										<div class="corporate-menu-expander"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
-										<ul class="corporate-list-mobile">
-											<li><a href="/delivery">Delivery Calculator</a></li>
-											<li><a href="/_myacct/nr_track_order">Track My Order</a></li>
-											<li><a rel="nofollow" href="/help-centre">FAQs</a></li>
-											<li><a rel="nofollow" href="/contact-us">Contact Us</a></li>
-										</ul>
+				<div class="col-12 col-lg-2 navbar-collapse-bg">
+					<div class="navbar-collapse collapse navbar-responsive-collapse pt-0">
+						<ul class="nav navbar-nav fixed-menu-wrapper d-flex flex-row">
+							<li class="dropdown dropdown-hover">
+								<a href="#" class="dropdown-toggle" data-target=".navbar-responsive-collapse">
+									<span class="icon"><i class="fa fa-bars"></i></span>
+								</a>
+								<ul class="dropdown-menu navbarMenu">
+									<li>
+										[%load_template file:'headers/includes/navbar-dropdown-menu.template.html'/%]
 									</li>
 								</ul>
 							</li>
-							[%/param%]
-							[%/categorymenu%]
-						[%/cache%]
+							<li class="dropdown dropdown-hover">
+								<a href="#" class="dropdown-toggle" data-target=".navbar-responsive-collapse">
+									<span class="icon"><i class="fas fa-search"></i></span>
+								</a>
+								<ul class="dropdown-menu mobileNavWithChristmas">
+									<li>
+										<form class="form-inline top-search-form" name="productsearch" method="get" action="/">
+											<input type="hidden" name="rf" value="kw"/>
+											<input class="form-control" placeholder="search our hampers..." value="[%nohtml%][%filter ID:'keywords'%][%end filter%][%end nohtml%]" id="name_search" autocomplete="off" name="kw" type="search"/>
+											<button type="submit" value="Search" class="btn btn-loads btn-search" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"><i class="fa fa-search"></i></button>
+										</form>
+									</li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="visible-lg col-sm-4 custom-nav">
-					<ul class="nav navbar-nav menu-nav-left">
+					<ul class="nav navbar-nav menu-nav-left d-flex flex-row justify-content-end flex-nowrap">
 						[%cache type:'menu' id:'new-header-menu'%]
 							[%menu id:'new-header-menu'%]
 								[%param *level_1%]
@@ -350,8 +266,8 @@
 						[%/ cache%]
 					</ul>
 				</div>
-				<div class="visible-lg col-sm-6 custom-nav">
-					<ul class="nav navbar-nav menu-nav-right">
+				<div class="visible-lg col-sm-4 custom-nav">
+					<ul class="nav navbar-nav menu-nav-right d-flex flex-row justify-content-end flex-nowrap">
 						[%cache type:'menu' id:'header-menu-rv2'%]
 							[%menu id:'header-menu-rv2'%]
 								[%param *level_1%]
@@ -384,6 +300,34 @@
 							[%/menu%]
 						[%/ cache%]
 					</ul>
+				</div>
+				<div class="col-12 col-lg-2 navbar-collapse-bg">
+					<div class="navbar-collapse collapse navbar-responsive-collapse">
+						<div id="header-cart" class="cart">
+							<a id="cartcontentsheader" href="[%url page:'checkout' type:'cart'/%]"><i class="fa fa-shopping-cart"></i> <span rel="a2c_item_count" class="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span></a>
+							<ul class="dropdown-menu">
+								<li class="box" id="neto-dropdown">
+									<div class="body padding" id="cartcontents"></div>
+									<div class="footer"></div>
+								</li>
+							</ul>
+						</div>
+						<div class="sign-in">
+							[%if [@user:username@]%]
+								<ul class="list-unstyled">
+									<li class="dropdown dropdown-hover">
+										<a href="/_myacct"><i class="fa fa-user" aria-hidden="true"></i> <span class="user-name-txt">[%if [@user:bill_first_name@]%][@user:bill_first_name@][%else%]My Account[%/if%]</span></a>
+										<ul class="dropdown-menu">
+											<li><a href="/_myacct">My Account</a></li>
+											<li><a href="/_myacct/logout">Logout</a></li>
+										</ul>
+									</li>
+								</ul>
+							[%else%]
+								<a href="/_myacct">Login</a>
+							[%/if%]
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

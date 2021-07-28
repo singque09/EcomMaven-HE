@@ -1,31 +1,42 @@
 <section class="corporate-interest">
-    <div class="jumbotron corporate-branding__header corporate-interest__banner">
-        <div class="black-overlay"></div>
-        <div class="container padding-tb-med">
-
-            <div class="row hidden-xs">
-                [%thumb_list type:'content' content_type:'corporate_interest' filter_category:'' limit:'4'%]
-                [%param *body%]
-                <div class="col-md-3">
-                    <div class="corporate-interest__icon [@content_label1@]"></div>
-                    <div class="corporate-interest__text">
-                        <h2>[@content_name@]</h2>
-                        <p>[@content_short_description1@]</p>
-                    </div>
-                </div>
-                [%/param%]
-                [%/thumb_list%]
-            </div>
-            <div class="row visible-xs">
-                <div class="col-xs-12">
-                    <div class="corporate-interest__text">
-                        <h2>Corporate Gifts<br/> For all occasions</h2>
-                    </div>
-                    <a href="/Corporate-Hampers/settlement" class="corporate-interest__button">Settlement Gifts</a>
-                    <a href="/Corporate-Hampers/staff" class="corporate-interest__button">Staff Gifts</a>
-                    <a href="/Corporate-Hampers/christmas" class="corporate-interest__button">Christmas Gifts</a>
-                </div>
-            </div>
+  <div class="jumbotron corporate-branding__header corporate-interest__banner">
+    <div class="black-overlay"></div>
+    <div class="container padding-tb-med">
+      <div class="row hidden">
+        [%thumb_list type:'content' content_type:'corporate_interest'
+        filter_category:'' limit:'4'%] [%param *body%]
+        <div class="col-md-3">
+          <div class="corporate-interest__icon [@content_label1@]"></div>
+          <div class="corporate-interest__text">
+            <h2>[@content_name@]</h2>
+            <p>[@content_short_description1@]</p>
+          </div>
         </div>
+        [%/param%] [%/thumb_list%]
+      </div>
+      <div class="row visible">
+        <div class="col-12">
+          <div class="corporate-interest__text">
+            <h2>
+              Corporate Gifts<br />
+              For all occasions
+            </h2>
+          </div>
+          <a
+            href="/Corporate-Hampers/settlement"
+            class="corporate-interest__button"
+            >Settlement Gifts</a
+          >
+          <a href="/Corporate-Hampers/staff" class="corporate-interest__button"
+            >Staff Gifts</a
+          >
+          <a
+            href="/Corporate-Hampers/christmas"
+            class="corporate-interest__button"
+            >Christmas Gifts</a
+          >
+        </div>
+      </div>
     </div>
+  </div>
 </section>

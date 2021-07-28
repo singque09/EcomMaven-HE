@@ -1,12 +1,13 @@
 <style>
- main#main-content > .row {
-    background: url('[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]');background-repeat: no-repeat;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
+  main#main-content > .row {
+    background: url("[%asset_url type:"content" id:"[@content_id@]"%][%param default%][%cdn_asset html:"0" library:"images"%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-.textHolder {
+  .textHolder {
     padding: 80px 35px;
     margin-right: 20px;
     background: #fff;
@@ -15,106 +16,110 @@
     margin-top: 50px;
     margin-bottom: 50px;
     margin-right: 50px;
-}
+  }
 
-span.vcpLpHeading {
+  span.vcpLpHeading {
     display: block;
     font-size: 78px;
     line-height: 1;
     font-family: baskerville;
-}
+  }
 
-.vcpLpTopHolder span {
+  .vcpLpTopHolder span {
     display: block;
-}
+  }
 
-.vcpLpTopHolder {
+  .vcpLpTopHolder {
     text-align: center;
-}
+  }
 
-span.vcpLpSubHeading {
+  span.vcpLpSubHeading {
     font-size: 41px;
     line-height: 1;
     font-family: baskerville;
     margin-top: 10px;
-}
+  }
 
-span.vcpLpDesc {
+  span.vcpLpDesc {
     font-size: 18px;
     margin-top: 30px;
     font-family: montserrat;
     margin-bottom: 40px;
-}
+  }
 
-a.vcpLpButton {
-    background: #BFA774;
+  a.vcpLpButton {
+    background: #bfa774;
     color: #fff;
     padding: 10px 49px;
     font-family: montserrat;
     font-size: 18px;
-}
+  }
 
-main#main-content {
+  main#main-content {
     margin-bottom: 0;
-}
+  }
 
-main#main-content p {
-    font-family: 'Montserrat' !important;
+  main#main-content p {
+    font-family: "Montserrat" !important;
     font-size: 18px;
-}
-@media (max-width: 767px){
+  }
+  @media (max-width: 767px) {
     main#main-content img {
-        width : 100%;
+      width: 100%;
     }
     .textHolder {
-        width : 100%;
-        float: none;
-        border-radius: 0;
-        padding: 10px 45px;
-        margin-left: auto;
-        margin-right: auto;
+      width: 100%;
+      float: none;
+      border-radius: 0;
+      padding: 10px 45px;
+      margin-left: auto;
+      margin-right: auto;
     }
     span.vcpLpHeading {
-        font-size: 53px;
+      font-size: 53px;
     }
 
     main#main-content > .row {
-        background: transparent;
+      background: transparent;
     }
 
-    .row.vcpLpRow .visible-xs {
-        padding: 0;
-        float: none;
+    .row.vcpLpRow .visible {
+      padding: 0;
+      float: none;
     }
 
     span.vcpLpSubHeading {
-        font-size: 28px;
+      font-size: 28px;
     }
 
     span.vcpLpDesc {
-        font-size: 13px;
-        font-family: montserrat;
+      font-size: 13px;
+      font-family: montserrat;
     }
 
     a.vcpLpButton {
-        font-size: 13px;
+      font-size: 13px;
     }
-}
-</style> 
+  }
+</style>
 
-<div class="vcpLp col-xs-12" id="vcpLp">
-	<div class="vcpLpTopHolder">
-		<div class="row vcpLpRow">
-			<div class="col-xs-12 visible-xs">
-				<img src="[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" alt="[@content_short_description1@]" />
-			</div>
-			<div class="col-sm-6 textHolder col-xs-12 col-sm-offset-6">
-				<span class="vcpLpHeading">[@content_short_description1@]</span>
-				<span class="vcpLpSubHeading">[@CONTENT_EXTERNAL_REF1@]</span>	
-				<span class="vcpLpDesc">[@content_description1@]</span>	
-				<a href="[@CONTENT_EXTERNAL_REF3@]" class="vcpLpButton">[@CONTENT_EXTERNAL_REF2@]</a>	
-				
-			</div>
-		</div>
-	</div>
+<div class="vcpLp col-12" id="vcpLp">
+  <div class="vcpLpTopHolder">
+    <div class="row vcpLpRow">
+      <div class="col-12 visible">
+        <img
+          src="[%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]"
+          alt="[@content_short_description1@]"
+        />
+      </div>
+      <div class="col-sm-6 textHolder col-12 col-sm-offset-6">
+        <span class="vcpLpHeading">[@content_short_description1@]</span>
+        <span class="vcpLpSubHeading">[@CONTENT_EXTERNAL_REF1@]</span>
+        <span class="vcpLpDesc">[@content_description1@]</span>
+        <a href="[@CONTENT_EXTERNAL_REF3@]" class="vcpLpButton"
+          >[@CONTENT_EXTERNAL_REF2@]</a
+        >
+      </div>
+    </div>
+  </div>
 </div>

@@ -468,7 +468,7 @@ $(document).ready(function() {
 		<input class="submit_btn btn btn-success" type="button" value="Continue To Checkout &gt;" style="font-size:18px;" />
 	</div>
 </div>
-<div class="col-xs-12 wrapper-productupsell">
+<div class="col-12 wrapper-productupsell">
   <form method="post" enctype="multipart/form-data" action="[%URL page:'checkout'%][%/URL%]" id="upsellcartform">
     <input type="hidden" name="fn" id="fn" value="payment" />
     <input type="hidden" name="upsell" value="y" />
@@ -484,17 +484,17 @@ $(document).ready(function() {
         [%PARAM *body%]
         <div class="clearfix hamper-options-container panel-body">
           <div class="row">
-            <div class="col-xs-12 padding-0">
+            <div class="col-12 padding-0">
               <div class="hampercardhead product-name">#[@item_count@] &nbsp; [@model@]</div>
             </div>
           </div>
           <div class="row">
-            <div class="options-img-container col-xs-12 col-sm-4 col-md-4">
+            <div class="options-img-container col-12 col-sm-4 col-md-4">
 				<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'alt_1' check_parent:'y'/%]" align="left" alt="[@model@]" border="0">
 				<input type="hidden" name="line[@line@]" id="line[@line@]" value="[@counter@]" />
               <br />
             </div>
-            <div class="options-form-container card-message-row col-xs-12 col-sm-8 col-md-8"> [%extra_options id:'[@SKU@]' currentextra:'[@currentextras@]'%]
+            <div class="options-form-container card-message-row col-12 col-sm-8 col-md-8"> [%extra_options id:'[@SKU@]' currentextra:'[@currentextras@]'%]
               [%PARAM *header%]
               <table class="productoptions table table-striped" border="0" cellspacing="0" cellpadding="4">
                 [%/PARAM%]
@@ -529,14 +529,14 @@ $(document).ready(function() {
 						<td colspan="2">
 							<div class="row" [%if ![@CONFIG:enable_corporate_branding@]%]style="display: none;"[%/if%]>
 								<!-- TODO: Designer - Corporate Branding section -->
-								<div class="col-xs-12 col-sm-3 custom-left-padding">
+								<div class="col-12 col-sm-3 custom-left-padding">
 									Would You like Corporate Branded ribbon or gift card?
 								</div>
-								<div class="col-xs-12 col-sm-3 text-center wrapper-branding-button">
+								<div class="col-12 col-sm-3 text-center wrapper-branding-button">
 									<label><input class="brandingbutton" item-count="[@item_count@]" line-count="[@line@]" type="radio" name="cb[@item_count@]" value="no"> No</label>
 									<label><input class="brandingbutton" item-count="[@item_count@]" line-count="[@line@]" type="radio" name="cb[@item_count@]" value="yes"> Yes</label>
 								</div>
-								 <div class="col-xs-12 col-sm-6 text-right three-images">
+								 <div class="col-12 col-sm-6 text-right three-images">
 									<img width="110" src="/assets/images/ribbons/mar2020/05-navy-and-silver.jpg">
 									<img width="110" src="/assets/images/ribbons/mar2020/03-green-and-gold.jpg">
 									<img width="110" src="/assets/images/ribbons/mar2020/07-red-and-gold.jpg">
@@ -619,12 +619,12 @@ $(document).ready(function() {
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-12">
               <div class="hampercardhead"> Click images to enlarge... </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-1" required></td>
@@ -632,7 +632,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-2"></td>
@@ -640,7 +640,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-3"></td>
@@ -648,7 +648,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-4"></td>
@@ -656,7 +656,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-5"></td>
@@ -664,7 +664,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-6"></td>
@@ -672,7 +672,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-7"></td>
@@ -680,7 +680,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-8"></td>
@@ -688,7 +688,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-9"></td>
@@ -696,7 +696,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-11"></td>
@@ -704,7 +704,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+            <div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-12"></td>
@@ -712,7 +712,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-			<div class="col-xs-6 col-sm-4 col-md-2 wrapper-card-design">
+			<div class="col-6 col-sm-4 col-md-2 wrapper-card-design">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref1" value="gift-tag-10"></td>
@@ -733,12 +733,12 @@ $(document).ready(function() {
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-12">
               <div class="hampercardhead"> Click images to enlarge... </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-1" required></td>
@@ -746,7 +746,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-2"></td>
@@ -754,7 +754,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-3"></td>
@@ -762,7 +762,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-4"></td>
@@ -770,7 +770,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-5"></td>
@@ -778,7 +778,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-6"></td>
@@ -786,7 +786,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-7"></td>
@@ -794,7 +794,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-8"></td>
@@ -802,7 +802,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-9"></td>
@@ -810,7 +810,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-10"></td>
@@ -818,7 +818,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-11"></td>
@@ -826,7 +826,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-12"></td>
@@ -834,7 +834,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-13"></td>
@@ -842,7 +842,7 @@ $(document).ready(function() {
                 </tr>
               </table>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
+            <div class="col-6 col-sm-4 col-md-3 wrapper-card-design walandioRibbons">
               <table border="0" cellpadding="4" cellspacing="0">
                 <tr>
                   <td><input type="radio" name="cusref2" value="gift-ribbon-14"></td>
@@ -861,23 +861,23 @@ $(document).ready(function() {
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-xs-12 col-sm-4 hidden">
+            <div class="col-12 col-sm-4 hidden">
 <!-- TODO: Designer - example images -->
 
               <div class="selcardpl"> <img id="cusref1example" src="[$imageurl$]/template/images/example.png" title="Example" width="250px"/> </div>
               <div class="selribbonpl"> <img id="cusref2example" src="[$imageurl$]/template/images/example.png" title="Example" width="250px"/> </div>
             </div>
-            <div class="col-xs-12 col-sm-12 logo-block">
+            <div class="col-12 col-sm-12 logo-block">
               <div class="hampercardhead hidden">Upload your logo file here or choose your existing logo.</div>
               <div class="row">
-                <div class="col-xs-12 col-sm-3">
+                <div class="col-12 col-sm-3">
                   <table cellpadding="0" cellspacing="2" border="0">
                     <tr>
                       <td align="center"><img id="upld_logo_img" width="100px" src="[%asset_url type:'cart' default:'[$imageurl$]/nologo.gif'%][%/asset_url%]?[%RANDOM_NUMBER timestamp:'1'%][%/RANDOM_NUMBER%]" /></td>
                     </tr>
                   </table>
                 </div>
-                <div class="col-xs-12 col-sm-9 choose-file">
+                <div class="col-12 col-sm-9 choose-file">
                   <input type="file" name="upld_logo" id="upld_logo" />
 
                   <input class="upload_btn btn btn-success" type="button" value="Upload Logo" />
@@ -887,7 +887,7 @@ $(document).ready(function() {
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-12">
+                <div class="col-12">
                   <input type="hidden" name="upld_logo_sku" value="COMPANY_LOGO">
                   <input type="hidden" id="upld_logo_qty" name="upld_logo_qty" value="0">
 <!-- TODO: Designer - use existing logo -->

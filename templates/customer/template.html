@@ -1,4 +1,4 @@
-<div class="col-xs-12">
+<div class="col-12">
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
@@ -20,20 +20,20 @@
 </div>
 
 <!--##[%user id:'email' if:'eq' value:'0'%]##-->
-<div class="col-xs-12">
+<div class="col-12">
 <div class="alert alert-danger"> <a class="close" data-dismiss="alert">×</a> You are required to enter My email address in order to order from our web site and receive our email notifications. <br />
 	<a href="[%URL page:'account' type:'edit_account'%][%END URL%]">Click here</a> to enter My email address. </div>
 	</div>
 <!--##[%END user%]##-->
 <!--##[%data id:'unresolve_dispute' if:'>' value:'0'%]##-->
-<div class="col-xs-12">
+<div class="col-12">
 <div class="alert alert-warning"> <a class="close" data-dismiss="alert">×</a> You have [@unresolve_dispute@] unresolved dispute(s) your resolution centre.<br />
 	<a href="[%URL page:'account' type:'warranty'%][%END URL%]">Click here</a> to view  or close your unresolved disputes. </div>
 	</div>
 <!--##[%END data%]##-->
 
 <!--##[%CONFIG id:'ALLOW_QUOTE_APPROVAL' if:'=' value:'1'%]##-->
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'approve_quote'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'approve_quote'%][%END URL%]">
 	<p><i class="fa fa-thumbs-up"></i> Approve Quotes </p>
 	<p class="text-muted small">Manage and approve quotes on account</p>
 	</a> <br>
@@ -41,61 +41,61 @@
 <!--##[%END CONFIG%]##-->
 
 <!--##[%CONFIG id:'CUSTOMER_VIEW_DOCS' if:'=' value:'1'%]##-->
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'documents'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'documents'%][%END URL%]">
 	<p><i class="fa fa-folder-open"></i> My Files</p>
 	<p class="text-muted small">View and download your files</p>
 	</a><br>
 </div>
 <!--##[%END CONFIG%]##-->
 
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'edit_account'%][%END URL%]#contact">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'edit_account'%][%END URL%]#contact">
 	<p><i class="fa fa-pencil"></i> Edit My Contact Details</p>
 	<p class="text-muted small">Change your name, phone number and more</p>
 	</a><br>
 </div>
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'edit_address'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'edit_address'%][%END URL%]">
 	<p><i class="fa fa-book"></i> Edit My Address Book</p>
 	<p class="text-muted small">Change or add your shipping address</p>
 	</a><br>
 </div>
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'edit_pwd'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'edit_pwd'%][%END URL%]">
 	<p><i class="fa fa-lock"></i> Change My Password</p>
 	<p class="text-muted small">Set something you'll remember!</p>
 	</a><br>
 </div>
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'payrec'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'payrec'%][%END URL%]">
 	<p><i class="fa fa-credit-card"></i> Pay Invoices Online </p>
 	<p class="text-muted small">Pay your outstanding balance</p>
 	</a><br>
 </div>
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account'%][%END URL%]#orders">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account'%][%END URL%]#orders">
 	<p><i class="fa fa-folder"></i> My Orders</p>
 	<p class="text-muted small">View, print and track orders you have placed.</p>
 	</a> <br>
 </div>
-<div class="hidden col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block"  href="[%URL page:'account' type:'standing_orders'%][%END URL%]">
+<div class="hidden col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block"  href="[%URL page:'account' type:'standing_orders'%][%END URL%]">
 	<p><i class="fa fa-refresh"></i> My Standing Orders</p>
 	<p class="text-muted small">View or edit your recurring orders.</p>
 	</a> <br>
 </div>
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account'%][%END URL%]#quotes">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account'%][%END URL%]#quotes">
 	<p><i class="fa fa-folder-o"></i> My Quotes </p>
 	<p class="text-muted small">View or print any outstanding quotes.</p>
 	</a> <br>
 </div>
 [%if [@config:show_wishlist@]%]
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block"  href="[%URL page:'account' type:'wishlist'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block"  href="[%URL page:'account' type:'wishlist'%][%END URL%]">
 	<p><i class="fa fa-star"></i> My Wishlists</p>
 	<p class="text-muted small">View, create or edit your wishlist(s)</p>
 	</a> <br>
 </div>
 [%/if%]
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'warranty'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'warranty'%][%END URL%]">
 	<p><i class="fa fa-info-circle"></i> Resolution Centre</b></p>
 	<p class="text-muted small">Problems with a product or order?</p>
 	</a> <br>
 </div>
-<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'favourites'%][%END URL%]">
+<div class="col-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'favourites'%][%END URL%]">
 	<p><i class="fa fa-truck"></i> Reorder Items</p>
 	<p class="text-muted small">Reorder from a list of past purchases.</p>
 	</a> <br>
@@ -105,7 +105,7 @@
 <!--##[%active_vouchers%]
 [%PARAM *header%]##-->
 <hr>
-<div class="col-xs-12">
+<div class="col-12">
 	<h3>Vouchers / Rewards</h3>
 	<table class="table table-bordered table-striped" cellpadding="2" cellspacing="0" width="100%" border="0">
 		<thead>
@@ -135,7 +135,7 @@
 
 
 
-<div class="col-xs-12">
+<div class="col-12">
 	<hr />
 	<h3 id="orders">My Orders</h3>
 	<!--##[%thumb_list type:'orders' limit:'10'%]##-->
@@ -146,7 +146,7 @@
 			<!--##[%END PARAM%]##-->
 			<!--##[%PARAM *body%]##-->
 
-			<div class="col-xs-12 col-md-4">
+			<div class="col-12 col-md-4">
 			<div class="well">
 
 			<p>
@@ -176,18 +176,18 @@
 				</div>
 				<div class="row btn-stack">
 
-				<div class="col-xs-12 col-md-4">
+				<div class="col-12 col-md-4">
 				<button type="button" class="btn btn-block btn-success" onclick="window.location='[%URL page:'account' type:'track_order' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-road icon-white"></i> Track</button>
 				</div>
 
 				[%if [@amount_owed@] > 0 and [@order_status@] ne 'Cancelled'%]
-					<div class="col-xs-12 col-md-4">
+					<div class="col-12 col-md-4">
 						<button class="btn btn-block btn-success" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay</button>
 					</div>
 				[%/if%]
 
 
-					<div class="col-xs-12 col-md-4">
+					<div class="col-12 col-md-4">
 						<button type="button" class="btn btn-default btn-block" onclick="window.location='[%URL page:'account' type:'print'%][%END URL%]/invoice/[@order_id@]'"><i class="fa fa-print"></i> Print</button>
 					</div>
 					</div>
@@ -232,7 +232,7 @@
 </div>
 
 
-<div class="col-xs-12">
+<div class="col-12">
 <hr />
 <h3 id="quotes">My Quotes</h3>
 
@@ -302,7 +302,7 @@
 
 <!--##[%END PARAM%][%END thumb_list%]##-->
 </div>
-<div class="col-xs-12 hidden">
+<div class="col-12 hidden">
 <hr />
 <h3>My Standing Orders</h3>
 <!--##[%thumb_list type:'standing_orders' limit:'10'%]##-->
@@ -376,7 +376,7 @@
 <!--##[%END PARAM%][%END thumb_list%]##-->
 </div>
 [%if [@config:show_wishlist@]%]
-<div class="col-xs-12">
+<div class="col-12">
 <hr />
 <h3>My Wishlists</h3>
 
@@ -432,14 +432,14 @@
 	<form class="form-inline" method="POST" action="[%URL page:'account' type:'wishlist'%][%END URL%]">
 		<input type="hidden" name="proc" value="addlist"/>
 		<div class="row">
-			<div class="col-xs-12 col-md-3">
+			<div class="col-12 col-md-3">
 				<label for="inputEmail1" class="control-label">Wishlist Name</label><br/>
 				<input class="form-control full-width-input" type="text" name="wh_name" value=""/>
 				<br/>
 			</div>
 		</div>
 		<div class="row padding-t-small">
-			<div class="col-xs-12 col-md-3">
+			<div class="col-12 col-md-3">
 				<input class="btn btn-block btn-success" type="submit" name="submit" value="Add New Wishlist" />
 			</div>
 		</div>

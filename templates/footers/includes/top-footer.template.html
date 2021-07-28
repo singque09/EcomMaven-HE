@@ -1,0 +1,55 @@
+<style>
+  .subscribe-footer {
+    padding: 10px 0;
+  }
+  .subscribe-footer span,
+  .subscribe-footer button {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-right: 50px;
+  }
+  .subscribe-footer input {
+    border-radius: 30px;
+    height: 30px;
+    min-width: 220px;
+    padding: 0 15px;
+    margin: 0 5px;
+    border: none;
+    font-size: 13px;
+  }
+  .subscribe-footer input:focus-visible {
+    outline: none;
+    border: 1px solid #000;
+  }
+  .subscribe-footer button {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+</style>
+
+<div class="row wrapper-footer subscribe-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex flex-row justify-content-between">
+        <span>Subscribe for news and offers</span>
+        <form action="post">
+          <input
+            type="text"
+            name="name"
+            id="subscribe-name"
+            placeholder="Name"
+          />
+          <input
+            type="email"
+            name="email"
+            id="subscribe-email"
+            placeholder="Email"
+          />
+          <button type="submit">subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

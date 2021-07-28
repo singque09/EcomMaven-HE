@@ -1,47 +1,55 @@
-<section class="corporate-main-banner"
-style="background-image: url([%asset_url type:'content' id:'[@content_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%])">
-	<div class="container">
-		<div class="row">
-            <div class="col-md-8 hidden-xs">
-            </div>
-			<div class="col-sm-12 col-md-4">
-                <div class="panel corporate-main-banner__panel">
-                    <div class="panel-body">
-                        <p class="corporate-main-banner__text">[@content_short_description1@]</p>
-    					<a class="btn corporate-main-banner__btn" href="[@CONFIG:bulk_upload_link@]">
-    						<span>Bulk Order Form</span>
-    					</a>
-                        <p><a class="corporate__helplink" href="#faqs">What is a bulk order?</a></p>
-                    </div>
-                </div>
-			</div>
-		</div>
-	</div>
+<section
+  class="corporate-main-banner"
+  style="
+    background-image: url([%asset_urltype:'content'id:'[@content_id@]'%][%paramdefault%][%cdn_assethtml:'0'library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]);
+  "
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 hidden"></div>
+      <div class="col-sm-12 col-md-4">
+        <div class="panel corporate-main-banner__panel">
+          <div class="panel-body">
+            <p class="corporate-main-banner__text">
+              [@content_short_description1@]
+            </p>
+            <a
+              class="btn corporate-main-banner__btn"
+              href="[@CONFIG:bulk_upload_link@]"
+            >
+              <span>Bulk Order Form</span>
+            </a>
+            <p>
+              <a class="corporate__helplink" href="#faqs"
+                >What is a bulk order?</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                [%breadcrumb%]
-                	[%PARAM *header%]
-                		<ul class="breadcrumb">
-                			<li>
-                				<a href="[@config:home_url@]">Home</a>
-                			</li>
-                            <li>
-                                <a href="/Corporate-Hampers">Corporate Hampers</a>
-                            </li>
-                	[%/PARAM%]
-                	[%PARAM *body%]
-                		<li>
-                			<a href="[@url@]">[@name@]</a>
-                		</li>
-                	[%/PARAM%]
-                	[%PARAM *footer%]
-                		</ul>
-                	[%/PARAM%]
-                [%/breadcrumb%]
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        [%breadcrumb%] [%PARAM *header%]
+        <ul class="breadcrumb">
+          <li>
+            <a href="[@config:home_url@]">Home</a>
+          </li>
+          <li>
+            <a href="/Corporate-Hampers">Corporate Hampers</a>
+          </li>
+          [%/PARAM%] [%PARAM *body%]
+          <li>
+            <a href="[@url@]">[@name@]</a>
+          </li>
+          [%/PARAM%] [%PARAM *footer%]
+        </ul>
+        [%/PARAM%] [%/breadcrumb%]
+      </div>
     </div>
+  </div>
 </section>

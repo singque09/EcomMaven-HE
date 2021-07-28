@@ -1,35 +1,70 @@
-<div class="wrapper-thumbnail col-xs-12 col-sm-6 col-md-4 col-lg-3">
-	<div class="thumbnail">
-    	<div class="row">
-        	<div class="col-xs-3 col-sm-5 col-md-4 hampercontent-image">
-                <div class="thumbnail-image">
-                    <img src="[%asset_url type:'content' id:'[@content_id@]'%] default:'[$imageurl$]/pixel.gif'%][%/asset_url%]" alt="[@name@]">
-                </div>
-            </div>
-            <div class="col-xs-9 col-sm-7 col-md-8 hampercontent-desc">
-                <h3>[%format type:'text' maxlength:'60' rmhtml:'1'%][@name@][%END FORMAT%]</h3>
-                [%if [@^misc12@] eq 'Short Description 1'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_short_description1@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Description 1'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_description1@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Short Description 2'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_short_description2@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Description 2'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_description2@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Short Description 3'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_short_description3@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Description 3'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_description3@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Label 1'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_label1@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Label 2'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_label2@][%END format%]</p>
-				[%elseif [@^misc12@] eq 'Label 3'%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_label3@][%END format%]</p>
-				[%else%]
-					<p>[%format type:'text' maxlength:'150' RMHTML:'1'%][@content_short_description1@][%END format%]</p>
-				[%/if%]
-            </div>
+<div class="wrapper-thumbnail col-12 col-sm-6 col-md-4 col-lg-3">
+  <div class="thumbnail">
+    <div class="row">
+      <div class="col-3 col-sm-5 col-md-4 hampercontent-image">
+        <div class="thumbnail-image">
+          <img
+            src="[%asset_url type:'content' id:'[@content_id@]'%] default:'[$imageurl$]/pixel.gif'%][%/asset_url%]"
+            alt="[@name@]"
+          />
         </div>
-	</div>
+      </div>
+      <div class="col-9 col-sm-7 col-md-8 hampercontent-desc">
+        <h3>
+          [%format type:'text' maxlength:'60' rmhtml:'1'%][@name@][%END FORMAT%]
+        </h3>
+        [%if [@^misc12@] eq 'Short Description 1'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_short_description1@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Description 1'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_description1@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Short Description 2'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_short_description2@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Description 2'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_description2@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Short Description 3'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_short_description3@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Description 3'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_description3@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Label 1'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_label1@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Label 2'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_label2@][%END format%]
+        </p>
+        [%elseif [@^misc12@] eq 'Label 3'%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_label3@][%END format%]
+        </p>
+        [%else%]
+        <p>
+          [%format type:'text' maxlength:'150'
+          RMHTML:'1'%][@content_short_description1@][%END format%]
+        </p>
+        [%/if%]
+      </div>
+    </div>
+  </div>
 </div>

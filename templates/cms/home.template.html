@@ -54,7 +54,7 @@ span.competitionHeading {
 </style>
 
 <div class="home-page-slider">
-		[%load_ajax_template id:'_slider' type:'content' template:'slider' preload:'0'/%]
+	[%load_ajax_template id:'_slider' type:'content' template:'slider' preload:'0'/%]
 	<!--UPS INFORMATIONS-->
 
 	[%site_value id:'footer_javascript'%]
@@ -70,125 +70,45 @@ span.competitionHeading {
 		</script>
 	[%/site_value%]
 
-	<div class="important-points">
-		<div class="col-xs-6 col-sm-3 point">
-			<div class="point-content">
-				<a href="https://www.thehamperemporium.com.au/delivery">
-					<img src="/assets/images/Icons/HE_USPIcon_SameDayOptions_White@4x.png" alt="Same day"/>
-					<span class="first-line">Same Day Delivery Options</span>
-					<span class="second-line">View Detailed Delivery Options</span>
-				</a>
-			</div>
-		</div>
-		<div class="col-xs-6 col-sm-3 point">
-			<div class="point-content">
-				<a href="https://www.thehamperemporium.com.au/delivery">
-					<img src="/assets/images/Icons/HE_USPIcon_FreeDelivery_White@4x.png" alt="Free Delivery"/>
-					<span class="first-line">Free Standard Delivery</span>
-					<span class="second-line">Australia-wide</span>
-				</a>
-			</div>
-		</div>
-		<div class="col-sm-3 hidden-xs point">
-			<div class="point-content">
-				<a href="/returns-policy">
-					<img src="/assets/images/Icons/HE_USPIcon_BeautifulHampers_White@4x.png" alt="Smiles Guarantee"/>
-					<span class="first-line">Beautiful Hampers</span>
-					<span class="second-line">World Class Products</span>
-				</a>
-			</div>
-		</div>
-		<div class="col-sm-3 hidden-xs point">
-			<div class="point-content icon">
-				<a href="[@CONFIG:bulk_upload_link@]">
-					<i class="fa fa-file-text-o"></i>
-					<span class="first-line">Download Bulk</span>
-					<span class="second-line">Order Form</span>
-				</a>
-			</div>
-		</div>
-	</div>
+	
 	<!--UPS INFORMATIONS ENDS-->
 </div>
 
-	<div class="container">
-		<div class="padding-tb-med corporate-customers">
-			<p class="corporate-title">Some of Our Corporate <strong>Customers</strong></p>
-			<div class="corporate-img">
-				<img class="lazy_load"  data-src="[%ntheme_asset%]img/westpac.jpg[%/ntheme_asset%]" alt="westpac"/>
-			</div>
-			<div class="corporate-img">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="[%ntheme_asset%]img/allianz.jpg[%/ntheme_asset%]" alt="allianz"/>
-			</div>
-			<div class="corporate-img">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="  data-src="[%ntheme_asset%]img/hbo.jpg[%/ntheme_asset%]" alt="hbo"/>
-			</div>
-			<div class="corporate-img">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="  data-src="[%ntheme_asset%]img/qantas.jpg[%/ntheme_asset%]" alt="qantas"/>
-			</div>
-			<div class="corporate-img">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="  data-src="[%ntheme_asset%]img/selleys.jpg[%/ntheme_asset%]" alt="selleys"/>
-			</div>
-			<div class="corporate-img">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="  data-src="[%ntheme_asset%]img/american-express.jpg[%/ntheme_asset%]" alt="american express"/>
-			</div>
-			<div class="corporate-img">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="  data-src="[%ntheme_asset%]img/citibank.jpg[%/ntheme_asset%]" alt="citibank"/>
-			</div>
-			<div class="corporate-img">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="  data-src="[%ntheme_asset%]img/samsung.jpg[%/ntheme_asset%]" alt="samsung"/>
-			</div>
-		</div><!-- close row -->
+[%load_template file:'cms/includes/product-points.template.html'/%]
+
+<div class="container">
+
+	[%load_template file:'cms/includes/homepage-hamper-finder.template.html'/%]
 		
-		<div class="homeTopBannersHolder">
-			<div class="homeTopBannersDesktopHolder hidden-xs">
-				<div class="homeTopBanners1stRow">
-					[%advert type:'text' ad_group:'home-topBanners-1stRow-D' template:'' category:'0' limit:'6'%]
-					[%param *header%]
-					<div class="row">
-						<div class="col-xs-12 homeTopBannerHolderInner">
-					[%/param%]
-					[%param *body%]
-							<div class="col-xs-6 holder1stRow">
-								<a href="[@url@]">
-								<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
-								<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
-							</div>
-					[%/param%]
-					[%param footer%]
-						</div>
-					</div>
-					[%/param%]
-					[%/advert%]
-				</div>
-				<div class="homeTopBanners2ndRow">
-					[%advert type:'text' ad_group:'home-topBanners-2ndRow-D' template:'' category:'0' limit:'6'%]
-					[%param *header%]
-					<div class="row">
-						<div class="col-xs-12 homeTopBannerHolderInner">
-					[%/param%]
-					[%param *body%]
-							<div class="col-xs-3 holder2ndRow">
-								<a href="[@url@]">
-								<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
-								<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
-							</div>
-					[%/param%]
-					[%param footer%]
-						</div>
-					</div>
-					[%/param%]
-					[%/advert%]
-				</div>
-			</div>
-			<div class="homeTopBannersMobileHolder visible-xs">
-				[%advert type:'text' ad_group:'home-topBanners-Mobile' template:'' category:'0' limit:'6'%]
+	<!-- <div class="homeTopBannersHolder">
+		<div class="homeTopBannersDesktopHolder hidden">
+			<div class="homeTopBanners1stRow">
+				[%advert type:'text' ad_group:'home-topBanners-1stRow-D' template:'' category:'0' limit:'6'%]
 				[%param *header%]
 				<div class="row">
-					<div class="col-xs-12 homeTopBannerMobileInner">
+					<div class="col-12 homeTopBannerHolderInner">
 				[%/param%]
 				[%param *body%]
-						<div class="col-xs-6 mobile2ColHolder">
+						<div class="col-6 holder1stRow">
+							<a href="[@url@]">
+							<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
+							<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
+						</div>
+				[%/param%]
+				[%param footer%]
+					</div>
+				</div>
+				[%/param%]
+				[%/advert%]
+			</div>
+			<div class="homeTopBanners2ndRow">
+				[%advert type:'text' ad_group:'home-topBanners-2ndRow-D' template:'' category:'0' limit:'6'%]
+				[%param *header%]
+				<div class="row">
+					<div class="col-12 homeTopBannerHolderInner">
+				[%/param%]
+				[%param *body%]
+						<div class="col-3 holder2ndRow">
 							<a href="[@url@]">
 							<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
 							<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
@@ -201,94 +121,89 @@ span.competitionHeading {
 				[%/advert%]
 			</div>
 		</div>
-		<div class="homeCompetitionHolder">
-			<div class="homeTopBanners2ndRow">
-				[%advert type:'text' ad_group:'home-contests' template:'' category:'0' limit:'3'%]
-				[%param *header%]
-				<div class="row">
-					<div class="col-xs-12 homeTopBannerHolderInner">
-						<span class="competitionHeading">Current Competitions & Specials</span>
-				[%/param%]
-				[%param *body%]
-						<div class="col-sm-4 col-xs-12 holder2ndRow">
-							<a href="[@url@]">
-							<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
-							<div class="topBannerHeadingHolder">
-								<a href="[@url@]" class="topBannerHeading">
-									[%url_decode%]
-										[%url_encode%]
-											[@description@]
-										[%/url_encode%]
-									[%/url_decode%]
-								</a>
-							</div>
-						</div>
-				[%/param%]
-				[%param footer%]
+		<div class="homeTopBannersMobileHolder visible">
+			[%advert type:'text' ad_group:'home-topBanners-Mobile' template:'' category:'0' limit:'6'%]
+			[%param *header%]
+			<div class="row">
+				<div class="col-12 homeTopBannerMobileInner">
+			[%/param%]
+			[%param *body%]
+					<div class="col-6 mobile2ColHolder">
+						<a href="[@url@]">
+						<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
+						<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
 					</div>
-				</div>
-				[%/param%]
-				[%/advert%]
-			</div>
-		</div>
-			
-		<div class="padding-tb-med noSchema">
-			<div class="findify-element" id="home-findify-rec-2"></div>
-		</div><!-- close row -->
-		<div class="clearfix"></div>
-		<!-- TrustBox widget - Carousel -->
-		<!-- digitalworth removed /* <div class="row">
-			<div class="col-xs-12">
-				<div
-					class="trustpilot-widget trustpilot-widget-large"
-					data-locale="en-AU"
-					data-template-id="53aa8912dec7e10d38f59f36"
-					data-businessunit-id="559cc61a0000ff000580d967"
-					data-style-height="130px"
-					data-style-width="100%"
-					data-theme="light"
-					data-stars="5">
-					<a href="https://au.trustpilot.com/review/www.thehamperemporium.com.au" target="_blank">Trustpilot</a>
+			[%/param%]
+			[%param footer%]
 				</div>
 			</div>
-
+			[%/param%]
+			[%/advert%]
 		</div>
-		*/-->
-		[%site_value id:'footer_javascript'%]
-		<!-- /* <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-		*/ -->
-		[%/site_value%]
-		<!-- End TrustBox widget -->
-
-
-
-		<div class="homeVidHolder">
-			<h2 class="section-title padding-tb-med">[@CONTENT_EXTERNAL_REF3@]</h2>
-			<div class="homeVidIframeHolder">	
-				<iframe src="[@CONTENT_EXTERNAL_REF1@]" frameborder="0" allow="fullscreen;" allowfullscreen></iframe>
+	</div> -->
+	<!-- <div class="homeCompetitionHolder">
+		<div class="homeTopBanners2ndRow">
+			[%advert type:'text' ad_group:'home-contests' template:'' category:'0' limit:'3'%]
+			[%param *header%]
+			<div class="row">
+				<div class="col-12 homeTopBannerHolderInner">
+					<span class="competitionHeading">Current Competitions & Specials</span>
+			[%/param%]
+			[%param *body%]
+					<div class="col-sm-4 col-12 holder2ndRow">
+						<a href="[@url@]">
+						<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
+						<div class="topBannerHeadingHolder">
+							<a href="[@url@]" class="topBannerHeading">
+								[%url_decode%]
+									[%url_encode%]
+										[@description@]
+									[%/url_encode%]
+								[%/url_decode%]
+							</a>
+						</div>
+					</div>
+			[%/param%]
+			[%param footer%]
+				</div>
 			</div>
+			[%/param%]
+			[%/advert%]
 		</div>
+	</div> -->
 		
-		<div class="row padding-tb-med popular-hamper-categories">
-			<h2 class="section-title padding-b-med">Popular Hamper Categories</h2>
-				[%advert type:'text' template:'homeCircleSlide' limit:'4' ad_group:'homeCircleSlide'%]
-					[%param *header%]
-					<div class="jcarousel-wrapper">
-						<div class="jcarousel jcarousel-featured2">
-							<div class="slider">
-								[%/param%]
-								[%param footer%]
-								
-								[%/param%]
-							</div>
-						</div><!--jcarousel-featured2-->
-					</div><!--jcarousel-wrapper-->
-					[%/param%]
-				[%/advert%]
-			</div>
-			</div>
-			</div>
-		</div><!-- close row -->
+	<div class="padding-tb-med noSchema">
+		<div class="findify-element" id="home-findify-rec-2"></div>
+	</div>
+
+	[%load_template file:'cms/includes/homepage-testimonials.template.html'/%]
+	[%load_template file:'cms/includes/homepage-alt-adverts.template.html'/%]
+	[%load_template file:'cms/includes/homepage-delivery-estimates.template.html'/%]
+
+	<!-- <div class="homeVidHolder">
+		<h2 class="section-title padding-tb-med">[@CONTENT_EXTERNAL_REF3@]</h2>
+		<div class="homeVidIframeHolder">	
+			<iframe src="[@CONTENT_EXTERNAL_REF1@]" frameborder="0" allow="fullscreen;" allowfullscreen></iframe>
+		</div>
+	</div> -->
+	
+	<div class="row padding-tb-med popular-hamper-categories">
+		<h2 class="section-title padding-b-med">Popular Hamper Categories</h2>
+		[%advert type:'text' template:'homeCircleSlide' limit:'4' ad_group:'homeCircleSlide'%]
+		[%param *header%]
+		<div class="jcarousel-wrapper">
+			<div class="jcarousel jcarousel-featured2">
+				<div class="slider">
+		[%/param%]
+		[%param footer%]
+		
+		[%/param%]
+				</div>
+			</div><!--jcarousel-featured2-->
+		</div><!--jcarousel-wrapper-->
+		[%/param%]
+		[%/advert%]
+	</div><!-- close row -->
 
 
 		[%advert type:'text' ad_group:'home_bottom' template:'' sortby:'sortorder' limit:'6'%]
@@ -344,7 +259,7 @@ span.competitionHeading {
 			[%/advert%]
 	</div>
 
-	<div class="col-xs-12 padding-tb-med sign-up-homepage">
+	<div class="col-12 padding-tb-med sign-up-homepage">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
@@ -370,7 +285,7 @@ span.competitionHeading {
 							</div>
 							
 	
-							<div class="col-md-2 col-xs-12 padding-b-tin submit-wrapper">
+							<div class="col-md-2 col-12 padding-b-tin submit-wrapper">
 							<input type="submit" value="Connect" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-default" style="margin-top : 0;" >
 								<!-- <button class="btn btn-default" type="submit">Connect</button> -->								
 							</div>
@@ -386,7 +301,7 @@ span.competitionHeading {
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 padding-tb-med content-homepage">
+	<div class="col-12 padding-tb-med content-homepage">
 		<div class="container">
 			<div class="row">
 				<div id="homepage-content" class="n-responsive-content">[@page_content@]</div>

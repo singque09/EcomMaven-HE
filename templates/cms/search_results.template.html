@@ -54,17 +54,17 @@
 					<hr/>
 					<div class="row padding-b-med sort_container">
 						
-						<div class="col-md-9 hidden-xs hidden-sm text-left">
+						<div class="col-md-9 hidden hidden-sm text-left">
 							<div class="btn-text">
 								<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-5 col-md-3">
+						<div class="col-12 col-sm-5 col-md-3">
 							<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 								<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
 								<div class="form-group">
-									<label class="control-label col-xs-4">Sort</label>
-									<div class="col-xs-8">
+									<label class="control-label col-4">Sort</label>
+									<div class="col-8">
 										<select name="sortby" onChange="return this.form.submit();" class="form-control">
 											<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
 												Most Popular
@@ -93,7 +93,7 @@
 					</div>
 					[%IF [@total_results@] > [@config:thumb_limit@]%]
 						<div class="row">
-							<div class="col-xs-12">
+							<div class="col-12">
 								<hr />
 								<div class="text-center">
 									<ul class="pagination">
@@ -112,7 +112,7 @@
 				[%/PARAM%]
 				[%PARAM *ifempty%]
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-12">
 							[%FILTER ID:'keywords' if:'ne' value:''%]
 								<p>Search was unable to find any product results for '[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
 							[%/FILTER%]

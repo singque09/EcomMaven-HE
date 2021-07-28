@@ -4,10 +4,10 @@
 			  <div class="panel-body">
 					
 					  <div class="row btn-stack">
-						  <div class="col-xs-12 col-md-3 hidden">
+						  <div class="col-12 col-md-3 hidden">
 							  <input type="number" name="input" id="n_qty" value="1" size="2" class="form-control" placeholder="Qty">
 						  </div>
-						  <div class="col-xs-12 col-md-3 hidden">
+						  <div class="col-12 col-md-3 hidden">
 							  <select id="country" class="form-control">
 								  [%countries%]
 									  [%PARAM *body%]
@@ -16,18 +16,18 @@
 								  [%END countries%]
 							  </select>
 						  </div>
-						  <div class="col-xs-6 col-md-4 postcode-input">
+						  <div class="col-6 col-md-4 postcode-input">
 							<strong class="postcode-strong">Postcode</strong>
 							<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
 							<input type="hidden" id="ship_country" value="AU"/>
 							<input type="text" id="ship_zip" name="ship_zip" value="[@ship_zip@]" class="form-control" placeholder="Post Code">	
 						</div>
-						  <div class="col-xs-6 col-md-4 suburb-input">
+						  <div class="col-6 col-md-4 suburb-input">
 							<strong class="postcode-strong">Suburb/City</strong>
 							<span id="ship_selector"></span>
 							<input type="text" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]" class="form-control" size="50" maxlength="50"/>
 						  </div>
-						  <div class="col-xs-12 col-md-4 submit-button">
+						  <div class="col-12 col-md-4 submit-button">
 							  <button type="button" class="btn btn-block btn-success btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.suburbSelectorInit })" title="Calculate"><i class="fa fa-refresh"></i> Check</button>
 						  </div>
 					  </div>
@@ -73,10 +73,10 @@
 											<p class="text-center" style="font-size:12px;">Orders placed by 1pm Sydney time weekdays are dispatched on the same day</p>
 											<hr>
 												<div class="row btn-stack">
-													<div class="col-xs-12 col-md-3 hidden">
+													<div class="col-12 col-md-3 hidden">
 														<input type="number" name="input" id="n_qty" value="1" size="2" class="form-control" placeholder="Qty">
 													</div>
-													<div class="col-xs-12 col-md-3 hidden">
+													<div class="col-12 col-md-3 hidden">
 														<select id="country" class="form-control">
 															[%countries%]
 																[%PARAM *body%]
@@ -85,18 +85,18 @@
 															[%END countries%]
 														</select>
 													</div>
-													<div class="col-xs-6 col-md-4 postcode-input">
+													<div class="col-6 col-md-4 postcode-input">
 													<strong class="postcode-strong">Postcode</strong>
 													<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
 													<input type="hidden" id="ship_country" value="AU"/>
 													<input type="text" id="ship_zip" name="ship_zip" value="[%session id:'ship_zip'/%]" class="form-control" placeholder="Post Code">	
 												</div>
-													<div class="col-xs-6 col-md-4 suburb-input">
+													<div class="col-6 col-md-4 suburb-input">
 													<strong class="postcode-strong">Suburb/City</strong>
 													<span id="ship_selector"></span>
 													<input type="text" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]" class="form-control" size="50" maxlength="50"/>
 													</div>
-													<div class="col-xs-12 col-md-4 submit-button">
+													<div class="col-12 col-md-4 submit-button">
 														<button type="button" class="btn btn-block btn-success btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.suburbSelectorInit })" title="Calculate"><i class="fa fa-refresh"></i> Check</button>
 													</div>
 												</div>

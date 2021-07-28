@@ -218,12 +218,12 @@
     padding-left : 25px;
     padding-right : 15px;
 }
-.popupImgHolder .col-xs-12 {
+.popupImgHolder .col-12 {
     padding-left : 0;
     padding-right : 0;
     margin-bottom: 3px;
 }
-.popupImgHolder .col-xs-6 {
+.popupImgHolder .col-6 {
     padding-left : 0;
     padding-right : 0;
 }
@@ -350,7 +350,7 @@ span.learnMoreVP button:focus {
 </style>
 [%cache type:'display' id:'[@inventory_id@]'%]
 <div class="container">
-<div class="col-xs-12">
+<div class="col-12">
 	<div class="row">
 		<ul class="breadcrumb">
 			<li><a href="[@config:home_url@]">Home</a></li>
@@ -373,7 +373,7 @@ span.learnMoreVP button:focus {
 					<div class="row">
 					[%/param%]
 					[%param *variation_header%]
-							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]">
+							<div class="_itmspec_listopt col-12 col-md-6" ref="[@specific_id@]">
 								<div class="variation-name">
 									<strong>[@specific_name@]</strong>
 								</div>
@@ -416,7 +416,7 @@ span.learnMoreVP button:focus {
 							</div>
 				[%/param%]
 				[%param *variation_header_select%]
-							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]">
+							<div class="_itmspec_listopt col-12 col-md-6" ref="[@specific_id@]">
 								<div class="variation-name">
 									<strong>[@specific_name@]</strong>
 								</div>
@@ -498,13 +498,13 @@ var vgContent =  $("#popUpHolderWrapper").html();
 		[%param *body%]
 		<div class="popupHolderPP">
 			<div class="row">
-				<div class="col-xs-5 popupImgHolder">
+				<div class="col-5 popupImgHolder">
 					<div class="row">
-						<div class="col-xs-12"><img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%]">
+						<div class="col-12"><img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%]">
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-7 popuptxtHolder">
+				<div class="col-7 popuptxtHolder">
 					<div class="popuptxtInner">
 						<span class="popupHeading">[@headline@]</span>
 						<span class="popupP">[@description@]</span>
@@ -623,7 +623,7 @@ var vgContent =  $("#popUpHolderWrapper").html();
 		</div>
 	</div>
 	<div class="row padding-t-small padding-b-med">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<div class="">
 				<div class="panel panel-default hamper-panel">
 					<div class="panel-heading hamper-cont-head">
@@ -754,10 +754,10 @@ var vgContent =  $("#popUpHolderWrapper").html();
     </div>
 
 			</div>
-		</div><!--/.col-xs-12-->
+		</div><!--/.col-12-->
 		<div class="findify-element" id="product-findify-rec-1"></div>
 	</div><!--/.row-->
-</div><!--/.col-xs-12-->
+</div><!--/.col-12-->
 </div><!--/.container-->
 [%/CACHE%]
 </div><!--/.row-->

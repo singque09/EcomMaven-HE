@@ -41,7 +41,7 @@
 			[%/param%]
 			[%param *body%]
 			[%if [@count@] == 0%]
-				<div class="col-xs-12 col-sm-6 col-md-4 testimonials [@count@]">
+				<div class="col-12 col-sm-6 col-md-4 testimonials [@count@]">
 					<span class="footerH2">[@headline@]</span>
 					<div id="testim_carousel" class="carousel slide footer-testi">
 						<div class="carousel-inner">
@@ -62,7 +62,7 @@
 			
 			[%elseif [@count@] == 1%]
 			
-				<div class="col-xs-12 col-sm-6 col-md-4 about-us [@count@]">
+				<div class="col-12 col-sm-6 col-md-4 about-us [@count@]">
 					<span class="footerH2">[@headline@]</span>
 					<p>
 					[%url_decode%]
@@ -76,7 +76,7 @@
 			
 			[%elseif [@count@] == 2%]
 			
-				<div class="col-xs-12 col-sm-12 col-md-4 gift-boxes [@count@]">
+				<div class="col-12 col-sm-12 col-md-4 gift-boxes [@count@]">
 					<span class="footerH2">[@headline@]</span>
 					<p>
 					[%url_decode%]
@@ -100,14 +100,14 @@
 <div class="row padding-tb-small wrapper-footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
-				<div class="col-xs-12 padding-tb-small text-center phone">
+			<div class="col-12">
+				<div class="col-12 padding-tb-small text-center phone">
 					<i class="fa fa-phone"></i> <span>1300 459 452</span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12 padding-t-small">
+			<div class="col-12 padding-t-small">
 				<p class="footer-text">
 					Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]<br/>
 					[%if [@config:company_abn@]%]ABN: [@config:company_abn@][%/ if%]

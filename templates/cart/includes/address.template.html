@@ -1,8 +1,8 @@
 <div id="ladb_pl">
 	[%USER id:'username' if:'ne' value:''%]
 	<div class="form-group row modal-row">
-		<label class="control-label col-xs-12">Choose From Your Address Book</label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">Choose From Your Address Book</label>
+		<div class="col-12">
 			<select id="ladb_addr" class="form-control">
 				<option value=""></option>
 				[%address_book%]
@@ -15,24 +15,24 @@
 	</div>
 	[%END USER%]
 	<div class="form-group half row modal-row">
-		<label class="control-label col-xs-12">First Name <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">First Name <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<input type="text" id="_addr_first_name" class="form-control" maxlength="50" value="[@ship_first_name@]">
 		</div>
 	</div>
 	<div class="form-group half row modal-row">
-		<label class="control-label col-xs-12">Last Name <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">Last Name <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<input type="text" id="_addr_last_name" class="form-control" maxlength="50" value="[@ship_last_name@]">
 		</div>
 	</div>
 	<div class="form-group row modal-row">
-		<label class="control-label col-xs-12">Company</label>
-		<div class="col-xs-12"><input type="text" id="_addr_company" class="form-control" maxlength="50" value="[@ship_company@]"></div>
+		<label class="control-label col-12">Company</label>
+		<div class="col-12"><input type="text" id="_addr_company" class="form-control" maxlength="50" value="[@ship_company@]"></div>
 	</div>
 	<div class="form-group row modal-row">
-		<label class="control-label col-xs-12">Country <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">Country <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<select id="_addr_country" class="form-control">
 				[%countries%]
 					[%PARAM *body%]
@@ -43,25 +43,25 @@
 		</div>
 	</div>
 	<div class="form-group row modal-row">
-		<label class="control-label col-xs-12">Address <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">Address <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<input type="text" id="_addr_street1" class="form-control" maxlength="50" value="[@ship_street1@]" />
 		</div>
 	</div>
 	<div class="form-group row modal-row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<input type="text" id="_addr_street2" class="form-control" maxlength="50" value="[@ship_street2@]" />
 		</div>
 	</div>
 	<div class="form-group postcode row modal-row">
-		<label class="control-label col-xs-12">Postal Code <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">Postal Code <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<input type="text" id="_addr_zip" class="form-control" value="[@ship_zip@]" maxlength="10" />
 		</div>
 	</div>
 	<div class="form-group half row modal-row">
-		<label class="control-label col-xs-12">Suburb / City <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">Suburb / City <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<div class="n-wrapper-form-control">
 				<span id="_addr_selector"></span>
 			</div>
@@ -69,8 +69,8 @@
 		</div>
 	</div>
 	<div class="form-group half row modal-row">
-		<label class="control-label col-xs-12">State <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">State <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<div class="n-wrapper-form-control">
 				<div id="_addr_state_pl" style="display:none;"></div>
 			</div>
@@ -78,13 +78,13 @@
 		</div>
 	</div>
 	<div class="form-group row modal-row">
-		<label class="control-label col-xs-12">Phone Number <span class="small text-danger">*</span></label>
-		<div class="col-xs-12">
+		<label class="control-label col-12">Phone Number <span class="small text-danger">*</span></label>
+		<div class="col-12">
 			<input type="tel" id="_addr_phone" class="form-control" maxlength="50" value="[@ship_phone@]" />
 		</div>
 	</div>
 	<div class="form-group row modal-row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<input id="_addr_save" class="btn btn-success btn-block" type="button" value="Save Address"/>
 		</div>
 	</div>

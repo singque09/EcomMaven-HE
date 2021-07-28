@@ -80,18 +80,18 @@
 	[%/param%]
 [%/advert%]
 <div class="row">
-  <div class="col-xs-12 col-sm-5">
+  <div class="col-12 col-sm-5">
     [%product sku:'14218'%]
       [%param *body%]
         [%load_ajax_template id:'_buying_options' type:'item' template:'buying_options_calcu' preload:'1' tmpl_sku:'[@sku@]' tmpl_preview:'y'/%]
       [%/param%]
     [%/product%]
   </div>
-  <div class="col-xs-12 col-sm-7">
+  <div class="col-12 col-sm-7">
 	[%advert type:'text' ad_group:'delivery-page-adverts' limit:'3' category:'0'%]
 		[%param *header%]
 		<div class="row">
-			<div class="col-xs-12 delivery-adverts">
+			<div class="col-12 delivery-adverts">
 		[%/param%]
 		[%param *body%]
 			<a href="[@url@]"><img src="[%asset_url type:'adw' id:'[@ad_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END asset_url%]" width="100%" alt="[@headline@]"></a>
@@ -102,7 +102,7 @@
 		[%/param%]
 	[%/advert%]
   </div>
-  <div class="col-xs-12">
+  <div class="col-12">
     [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
     	<p>
     		[@content_short_description1@]
@@ -142,7 +142,7 @@
 [%/thumb_list%]
 [%IF [@content_allow_reviews@]%]
 <div class="dropdown">
-	<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+	<button class="btn btn-default btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 		Share: <i class="fa fa-facebook-square text-facebook"></i>
 		<i class="fa fa-twitter-square text-twitter"></i>
 		<i class="fa fa-pinterest-square text-pinterest"></i>

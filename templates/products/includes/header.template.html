@@ -1,144 +1,296 @@
 <div itemscope itemtype="http://schema.org/Product" class="row">
-            <meta itemprop="url mainEntityOfPage" content="[@URL@]" />
-    	    <meta itemprop="brand" content="The Hamper Emporium"/>
-	    	<meta itemprop="mpn" content="[@SKU@]"/>
-	    	<meta itemprop="sku" content="[@SKU@]"/>
-	    	<meta itemprop="description" content="[%format type:'text' truemaxlength:'150' nohtml:'1' rmhtml:'1'%][@description@][%/FORMAT%]..."/>
-	    	<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]"/>
-            <meta itemprop="name" content="[@name@]"/>
+  <meta itemprop="url mainEntityOfPage" content="[@URL@]" />
+  <meta itemprop="brand" content="The Hamper Emporium" />
+  <meta itemprop="mpn" content="[@SKU@]" />
+  <meta itemprop="sku" content="[@SKU@]" />
+  <meta
+    itemprop="description"
+    content="[%format type:'text' truemaxlength:'150' nohtml:'1' rmhtml:'1'%][@description@][%/FORMAT%]..."
+  />
+  <meta
+    itemprop="image"
+    content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]"
+  />
+  <meta itemprop="name" content="[@name@]" />
 
-	<div class="wrapper-product-title col-sm-12">
-		<div class="col-xs-12 col-md-4 product-wishlist-wrapper">
-			[%if [@config:show_wishlist@]%]
-				<div class="product-wishlist">
-					[%IN_WISHLIST id:'[@SKU@]' %]
-					[%PARAM if_true%]
-						<a class="wishlist_toggle btn btn-lg btn-block btn-warning" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fa fa-star" title="Remove from wishlist"></i></span></a>
-					[%END PARAM%]
-					[%PARAM if_false%]
-						<a class="wishlist_toggle btn btn-default btn-lg btn-block" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="fa fa-star-o" title="Add to wishlist"></i></span></a>
-					[%END PARAM%]
-					[%END IN_WISHLIST%]
-				</div>
-			[%/if%]
-		</div>
-		<h1>[@name@]</h1>
-		[%if [@subtitle@]%]
-		<h3 class="text-muted">[@subtitle@]</h3>
-		[%/if%]
-		[%if [@reviews@] > 0%]
-			<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-				[%set [@data:ratings-count@] = 1 /%]
-				[%while [@data:ratings-count@] <= [@data:rating@]%]
-					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fa fa-star"></i>
-				[%/ while%]
-				[%while [@data:ratings-count@] <= 5%]
-					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fa fa-star-o"></i>
-				[%/while%]
-				Rated <span itemprop="ratingValue" content="[@rating@]">[@rating@]</span>/<span itemprop="bestRating" content="5">5</span> based on <span itemprop="ratingCount" content="[@reviews@]">[@reviews@]</span> reviews.
-			</span>
-		[%/if%]
-		<div class="dropdown share-block hidden-xs">
-			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-				<i class="fa fa-facebook-square"></i>
-				<i class="fa fa-twitter-square"></i>
-				<i class="fa fa-pinterest-square"></i>
-				<!--<i class="fa fa-google-plus-square"></i>-->
-				<span class="caret"><img src="/assets/arrow.png" /></span>
-			</button>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook"></i> Facebook</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter"></i> Twitter</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a></li>
-				<!--<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>-->
-			</ul>
-		</div>
-	</div>
-	[%if ![@has_child@] || [@has_variation@]%]
-		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="wrapper-pricing padding-t-small col-sm-5">
-		     <meta itemprop="url" content="[@URL@]"/>
-		    	[%if ![@inpromo@]%]
-		    	<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%]2020-12-30[%END format%]"/>
-		    	[%else%]
-		    	 	<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
-		    	[%/if%]
-			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
-			[%if [@store_quantity@] < 1 AND  [@preorder@] AND [@brand@] like 'christmas'  %]
-				<span itemprop="availability" content="http://schema.org/OutOfStock" class="label label-danger">Available for pre-order from [%format type:'date' format:'#d #K #Y'%][@misc26@][%/format%]</span>
-			[%elseif [@store_quantity@] > 0 AND [@preorder@] %]
-				<span itemprop="availability" content="http://schema.org/PreOrder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
-			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-			
-				<span itemprop="availability" content="http://schema.org/InStock" class="label label-success">In stock | <i class="fa fa-truck" aria-hidden="true"></i> Ships now</span>
-			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<span itemprop="availability" content="http://schema.org/OutOfStock" class="label label-danger">Sold out -  Backorder available</span>
-			[%else%]
-				<span itemprop="availability" content="http://schema.org/OutOfStock" class="label label-danger">Sold out </span>
-			[%/if%]
-			[%if [@availability_description@]%]
-				<div class="availability_description">
-					[@availability_description@]
-				</div>
-			[%/if%]
-			[%if ![@inpromo@]%]
-			
-				<div class="productprice productpricetext" itemprop="price" content="[@store_price@]">
-					[%FORMAT type:'currency' dp:'0'%][@store_price@][%/FORMAT%]
-				</div>
-				[%if [@save@] > 0%]
-					<div class="productrrp text-muted">
-						RRP [%FORMAT type:'currency' dp:'0'%][@retail@][%/FORMAT%]
-					</div>
-					<div class="productsave">
-					    	<div class="productprice productpricetext" itemprop="price" content="[@save_price@]">
-						SAVE [%format type:'currency' dp:'0'%] [@save_price@] [%/format%]  ([%format type:'percent'%][@save@][%/format%])
-					</div>
-				[%/if%]
-			[%else%]
-					   
-				<div class="productwasprice">
-					WAS [%FORMAT type:'currency' dp:'0'%][@store_price@][%/FORMAT%]
-				</div>
-				[%if [@save@] > 0%]
-					<div class="productrrp muted">
-						RRP [%FORMAT type:'currency' dp:'0'%][@retail@][%/FORMAT%]
-					</div>
-				[%/if%]
-				
-				<div class="productpromo" itemprop="price" content="[@promo_price@]">
-					NOW [%FORMAT type:'currency' dp:'0'%][@promo_price@][%/FORMAT%]
-				</div>
-				[%if [@save@] > 0%]
-					<div class="productsave">
-						SAVE [%format type:'percent'%][@save@][%/format%]!
-					</div>
-				[%/if%]
-				<div class="productsavetext">
-					Sale Ends in <span id="sale-end" class="time"></span>
-				</div>
-				<div class="time-text" itemprop="price" content="[@promo_end@]">
-		
-					[%format type:'date' format:' #H:#I #a, #d #K #Y'%][@promo_end@][%/format%]
-				</div>
-			[%/if%]
-			<div class="">
-				<div class="currency-converter">
-					<button type="button" class="cconvert_toggle drop-down-toggle convert-button" data-toggle="dropdown">Currency <i class="fa fa-angle-down"></i></button>
-					<ul class="dropdown-menu" role="menu">
-							<li> <a href="#" onclick="dc_select_currency('AUD');"><img src="[$imageurl$]/themes/redesign/img/aus-flag.gif" Alt="View prices in Australian Dollars" title="View prices in Australian Dollars" style="cursor: hand; cursor:pointer;" /> Australia</a> </li>
-							<li> <a href="#" onclick="dc_select_currency('NZD');"><img src="[$imageurl$]/themes/redesign/img/nz-flag.gif" Alt="View prices in NZ Dollars" title="View prices in NZ Dollars" style="cursor: hand; cursor:pointer;" /> New Zealand</a> </li>
-							<li> <a href="#" onclick="dc_select_currency('USD');"><img src="[$imageurl$]/themes/redesign/img/us-flag.gif" Alt="View prices in US Dollars" title="View prices in US Dollars" style="cursor: hand; cursor:pointer;" /> United States</a> </li>
-							<li> <a href="#" onclick="dc_select_currency('GBP');"><img src="[$imageurl$]/themes/redesign/img/uk-flag.gif" Alt="View prices in Pounds" title="View prices in Pounds" style="cursor: hand; cursor:pointer;" /> Great British Pound</a> </li>
-							<li> <a href="#" onclick="dc_select_currency('EUR');"><img src="[$imageurl$]/themes/redesign/img/euro-flag.gif" Alt="View prices in Euros" title="View prices in Euors" style="cursor: hand; cursor:pointer;" /> Euro</a> </li>
-						</ul>
-				</div>
-			</div>
-		    
-			<!-- hidden by DG -->
-			<!-- /*
-			<div class="hidden-xs hidden-sm hidden-md hidden-lg">
+  <div class="wrapper-product-title col-sm-12">
+    <div class="col-12 col-md-4 product-wishlist-wrapper">
+      [%if [@config:show_wishlist@]%]
+      <div class="product-wishlist">
+        [%IN_WISHLIST id:'[@SKU@]' %] [%PARAM if_true%]
+        <a
+          class="wishlist_toggle btn btn-lg btn-block btn-warning"
+          rel="[@SKU@]"
+          ><span class="remove" rel="wishlist_text[@SKU@]"
+            ><i class="fa fa-star" title="Remove from wishlist"></i></span
+        ></a>
+        [%END PARAM%] [%PARAM if_false%]
+        <a
+          class="wishlist_toggle btn btn-default btn-lg btn-block"
+          rel="[@SKU@]"
+          ><span class="add" rel="wishlist_text[@SKU@]"
+            ><i class="fa fa-star-o" title="Add to wishlist"></i></span
+        ></a>
+        [%END PARAM%] [%END IN_WISHLIST%]
+      </div>
+      [%/if%]
+    </div>
+    <h1>[@name@]</h1>
+    [%if [@subtitle@]%]
+    <h3 class="text-muted">[@subtitle@]</h3>
+    [%/if%] [%if [@reviews@] > 0%]
+    <span
+      class="small"
+      itemprop="aggregateRating"
+      itemscope
+      itemtype="http://schema.org/AggregateRating"
+    >
+      [%set [@data:ratings-count@] = 1 /%] [%while [@data:ratings-count@] <=
+      [@data:rating@]%] [%set [@data:ratings-count@] = [@data:ratings-count@]+1
+      /%]
+      <i class="fa fa-star"></i>
+      [%/ while%] [%while [@data:ratings-count@] <= 5%] [%set
+      [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+      <i class="fa fa-star-o"></i>
+      [%/while%] Rated
+      <span itemprop="ratingValue" content="[@rating@]">[@rating@]</span>/<span
+        itemprop="bestRating"
+        content="5"
+        >5</span
+      >
+      based on
+      <span itemprop="ratingCount" content="[@reviews@]">[@reviews@]</span>
+      reviews.
+    </span>
+    [%/if%]
+    <div class="dropdown share-block hidden">
+      <button
+        class="btn btn-default btn dropdown-toggle"
+        type="button"
+        id="dropdownMenu1"
+        data-toggle="dropdown"
+        aria-expanded="true"
+      >
+        <i class="fa fa-facebook-square"></i>
+        <i class="fa fa-twitter-square"></i>
+        <i class="fa fa-pinterest-square"></i>
+        <!--<i class="fa fa-google-plus-square"></i>-->
+        <span class="caret"><img src="/assets/arrow.png" /></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+          <a
+            class="js-social-share"
+            role="menuitem"
+            tabindex="-1"
+            href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"
+            ><i class="fa fa-facebook-square text-facebook"></i> Facebook</a
+          >
+        </li>
+        <li role="presentation">
+          <a
+            class="js-social-share"
+            role="menuitem"
+            tabindex="-1"
+            href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"
+            ><i class="fa fa-twitter-square text-twitter"></i> Twitter</a
+          >
+        </li>
+        <li role="presentation">
+          <a
+            class="js-social-share"
+            role="menuitem"
+            tabindex="-1"
+            href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"
+            ><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a
+          >
+        </li>
+        <!--<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>-->
+      </ul>
+    </div>
+  </div>
+  [%if ![@has_child@] || [@has_variation@]%]
+  <div
+    itemprop="offers"
+    itemscope
+    itemtype="http://schema.org/Offer"
+    class="wrapper-pricing padding-t-small col-sm-5"
+  >
+    <meta itemprop="url" content="[@URL@]" />
+    [%if ![@inpromo@]%]
+    <meta
+      itemprop="priceValidUntil"
+      content="[%format type:'date' format:'#Y-#M-#d'%]2020-12-30[%END format%]"
+    />
+    [%else%]
+    <meta
+      itemprop="priceValidUntil"
+      content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"
+    />
+    [%/if%]
+    <meta itemprop="priceCurrency" content="[@config:defaultcurrency@]" />
+    [%if [@store_quantity@] < 1 AND [@preorder@] AND [@brand@] like 'christmas'
+    %]
+    <span
+      itemprop="availability"
+      content="http://schema.org/OutOfStock"
+      class="label label-danger"
+      >Available for pre-order from [%format type:'date' format:'#d #K
+      #Y'%][@misc26@][%/format%]</span
+    >
+    [%elseif [@store_quantity@] > 0 AND [@preorder@] %]
+    <span
+      itemprop="availability"
+      content="http://schema.org/PreOrder"
+      class="label label-warning"
+      >Pre-order - Released [%format
+      type:'date'%][@arrival_date@][%/format%]</span
+    >
+    [%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
+
+    <span
+      itemprop="availability"
+      content="http://schema.org/InStock"
+      class="label label-success"
+      >In stock | <i class="fa fa-truck" aria-hidden="true"></i> Ships now</span
+    >
+    [%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+    <span
+      itemprop="availability"
+      content="http://schema.org/OutOfStock"
+      class="label label-danger"
+      >Sold out - Backorder available</span
+    >
+    [%else%]
+    <span
+      itemprop="availability"
+      content="http://schema.org/OutOfStock"
+      class="label label-danger"
+      >Sold out
+    </span>
+    [%/if%] [%if [@availability_description@]%]
+    <div class="availability_description">[@availability_description@]</div>
+    [%/if%] [%if ![@inpromo@]%]
+
+    <div
+      class="productprice productpricetext"
+      itemprop="price"
+      content="[@store_price@]"
+    >
+      [%FORMAT type:'currency' dp:'0'%][@store_price@][%/FORMAT%]
+    </div>
+    [%if [@save@] > 0%]
+    <div class="productrrp text-muted">
+      RRP [%FORMAT type:'currency' dp:'0'%][@retail@][%/FORMAT%]
+    </div>
+    <div class="productsave">
+      <div
+        class="productprice productpricetext"
+        itemprop="price"
+        content="[@save_price@]"
+      >
+        SAVE [%format type:'currency' dp:'0'%] [@save_price@] [%/format%]
+        ([%format type:'percent'%][@save@][%/format%])
+      </div>
+      [%/if%] [%else%]
+
+      <div class="productwasprice">
+        WAS [%FORMAT type:'currency' dp:'0'%][@store_price@][%/FORMAT%]
+      </div>
+      [%if [@save@] > 0%]
+      <div class="productrrp muted">
+        RRP [%FORMAT type:'currency' dp:'0'%][@retail@][%/FORMAT%]
+      </div>
+      [%/if%]
+
+      <div class="productpromo" itemprop="price" content="[@promo_price@]">
+        NOW [%FORMAT type:'currency' dp:'0'%][@promo_price@][%/FORMAT%]
+      </div>
+      [%if [@save@] > 0%]
+      <div class="productsave">
+        SAVE [%format type:'percent'%][@save@][%/format%]!
+      </div>
+      [%/if%]
+      <div class="productsavetext">
+        Sale Ends in <span id="sale-end" class="time"></span>
+      </div>
+      <div class="time-text" itemprop="price" content="[@promo_end@]">
+        [%format type:'date' format:' #H:#I #a, #d #K
+        #Y'%][@promo_end@][%/format%]
+      </div>
+      [%/if%]
+      <div class="">
+        <div class="currency-converter">
+          <button
+            type="button"
+            class="cconvert_toggle drop-down-toggle convert-button"
+            data-toggle="dropdown"
+          >
+            Currency <i class="fa fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="#" onclick="dc_select_currency('AUD');"
+                ><img
+                  src="[$imageurl$]/themes/redesign/img/aus-flag.gif"
+                  alt="View prices in Australian Dollars"
+                  title="View prices in Australian Dollars"
+                  style="cursor: hand; cursor: pointer"
+                />
+                Australia</a
+              >
+            </li>
+            <li>
+              <a href="#" onclick="dc_select_currency('NZD');"
+                ><img
+                  src="[$imageurl$]/themes/redesign/img/nz-flag.gif"
+                  alt="View prices in NZ Dollars"
+                  title="View prices in NZ Dollars"
+                  style="cursor: hand; cursor: pointer"
+                />
+                New Zealand</a
+              >
+            </li>
+            <li>
+              <a href="#" onclick="dc_select_currency('USD');"
+                ><img
+                  src="[$imageurl$]/themes/redesign/img/us-flag.gif"
+                  alt="View prices in US Dollars"
+                  title="View prices in US Dollars"
+                  style="cursor: hand; cursor: pointer"
+                />
+                United States</a
+              >
+            </li>
+            <li>
+              <a href="#" onclick="dc_select_currency('GBP');"
+                ><img
+                  src="[$imageurl$]/themes/redesign/img/uk-flag.gif"
+                  alt="View prices in Pounds"
+                  title="View prices in Pounds"
+                  style="cursor: hand; cursor: pointer"
+                />
+                Great British Pound</a
+              >
+            </li>
+            <li>
+              <a href="#" onclick="dc_select_currency('EUR');"
+                ><img
+                  src="[$imageurl$]/themes/redesign/img/euro-flag.gif"
+                  alt="View prices in Euros"
+                  title="View prices in Euors"
+                  style="cursor: hand; cursor: pointer"
+                />
+                Euro</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- hidden by DG -->
+      <!-- /*
+			<div class="hidden hidden-sm hidden-md hidden-lg">
 				 <button type="button" class="cconvert_toggle btn-block" data-toggle="collapse" data-target="#currency">
 					View other currency
 				</button>
@@ -155,18 +307,23 @@
 				</div>
 			</div>
 			*/ -->
-			<!-- hidden by DG -->
-		</div>
-		<!-- 
+      <!-- hidden by DG -->
+    </div>
+    <!-- 
 		<div class="col-sm-7 farmers-info-wrapper padding-t-med">
 			<p><strong>10% of all profits go to Aussie farmers until Father's Day</strong></p>
 		</div>
 		-->
-	[%else%]
-		[%if ![@inpromo@]%]
-		    	<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%]2020-12-30[%END format%]"/>
-		    	[%else%]
-		    	 	<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
-		    	[%/if%]
-	[%/if%]
-
+    [%else%] [%if ![@inpromo@]%]
+    <meta
+      itemprop="priceValidUntil"
+      content="[%format type:'date' format:'#Y-#M-#d'%]2020-12-30[%END format%]"
+    />
+    [%else%]
+    <meta
+      itemprop="priceValidUntil"
+      content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"
+    />
+    [%/if%] [%/if%]
+  </div>
+</div>

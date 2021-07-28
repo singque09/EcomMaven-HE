@@ -134,12 +134,12 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
 			[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
 			[%PARAM *header%]
 			<div class="row padding-b-med sort_container">
-				<div class="col-md-3 hidden-xs hidden-sm text-left">
+				<div class="col-md-3 hidden hidden-sm text-left">
 					<div class="btn-text">
 						<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
 					</div>
 				</div>
-				<div class="col-xs-12 col-md-6 category-boxes-holder">
+				<div class="col-12 col-md-6 category-boxes-holder">
 				[%if [@content_id@] eq '39' or [@content_name@] eq 'New Baby' or [@content_id@] eq '33'%]
 					[%ADVERT type:'text' template:'sidebar-christmas' limit:'6' ad_group:'mini-category-banner'%]
 						[%PARAM *header%]
@@ -151,12 +151,12 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
 					[%END ADVERT%]
 				[%/if%]
 				</div>
-				<div class="col-xs-12 col-sm-5 col-md-3 sort-form-wrapper">
+				<div class="col-12 col-sm-5 col-md-3 sort-form-wrapper">
 					<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 						<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
 						<div class="form-group">
-							<label class="control-label col-xs-4 sort-label">Sort</label>
-							<div class="col-xs-8 sort-drop-wrapper">
+							<label class="control-label col-4 sort-label">Sort</label>
+							<div class="col-8 sort-drop-wrapper">
 								<select name="sortby" onChange="return this.form.submit();" class="form-control">
 									<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
 										Most Popular
@@ -184,7 +184,7 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
 			</div>
 			[%IF [@total_results@] > [@config:thumb_limit@]%]
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<hr />
 						<div class="text-center">
 							<ul class="pagination">
@@ -203,7 +203,7 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
 			[%/PARAM%]
 			[%PARAM *ifempty%]
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
 					</div>
 				</div>
@@ -226,10 +226,10 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
             [%param *body%]
 
                 <div class="row">
-                     <div class="col-xs-12 col-sm-4">
+                     <div class="col-12 col-sm-4">
                         <a href="[@url@]"><img class="img-responsive" src="[%asset_url type:'content' id:'[@content_id@]' default:'//cdn.neto.com.au/assets/neto-cdn/images/default_product.gif'/%]"></a>
                     </div>
-                    <div align="center" class="col-xs-12 col-sm-8">
+                    <div align="center" class="col-12 col-sm-8">
                         <h4>[@content_name@]</h4>
                         <center>[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]</center>
 
@@ -307,7 +307,7 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
 <!-- TrustBox widget - Carousel -->
 		<!-- digitalworth removed /*
 <div class="row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<div
 				class="trustpilot-widget trustpilot-widget-large"
 				data-locale="en-AU"
@@ -328,17 +328,17 @@ var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s
 	<!-- End TrustBox widget -->
 [%if [@content_label2@] ne ''%]
 	<div class="row author-row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			[%if [@content_short_description2@] %]<h2>[@content_short_description2@]</h2>[%else%]<hr>[%/if%]
 		</div>
-		<div class="col-xs-4 col-sm-2 col-md-2 col-lg-1 author-image-wrapper">
+		<div class="col-4 col-sm-2 col-md-2 col-lg-1 author-image-wrapper">
 			[%if [@content_label2@] like 'Amy'%]
 				<img class="img-circle img-responsive" src="[%ntheme_asset%]img/Amy-200x200.jpg[%/ntheme_asset%]" alt="[@content_label2@]">
 			[%else%]
 				<img class="img-circle img-responsive" src="[%ntheme_asset%]img/Emily-200x200.jpg[%/ntheme_asset%]" alt="[@content_label2@]">
 			[%/if%]
 		</div>
-		<div class="col-xs-8 col-sm-4 col-md-4">
+		<div class="col-8 col-sm-4 col-md-4">
 			<blockquote>
 				<p><strong>Published by <a href="[%if [@content_label2@] like 'Amy'%]/about-us/amy-mcwaters[%else%]/about-us/emily-mcwaters[%/if%]">[@content_label2@]</a></strong></p>
 				<footer>Updated on [@content_label3@]</footer>

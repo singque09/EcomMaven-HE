@@ -61,13 +61,13 @@
 
 
 </head>
-<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@] col-xs-12 [%IF [@config:current_page_type@] != 'home' %] inner_pages [%/IF%]">
+<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@] col-12 [%IF [@config:current_page_type@] != 'home' %] inner_pages [%/IF%]">
 <div class="wrapper-header">
 	<div class="row top-header">
 		<div class="container">
 			<div class="visible-lg col-sm-4 text-left">
 				<!-- removed by Digitalgrowth
-				<div class="col-xs-3">
+				<div class="col-3">
 					<ul class="list-inline list-social">
 						[%if [@config:facebook_account_id@]%]
 						<li><a href="[@config:facebook_account_id@]" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -96,7 +96,7 @@
 						[%/if%]
 					</ul>
 				</div> removed by Digitalgrowth - end -->
-				<div class="col-xs-12">
+				<div class="col-12">
 					<strong>
 						<a class="text-uppercase small" href="/sydney">Sydney</a> |
 						<a class="text-uppercase small" href="/melbourne">Melbourne</a> |
@@ -110,13 +110,13 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-xs-12 col-lg-5 text-center padding-tb-thin">
+			<div class="col-12 col-lg-5 text-center padding-tb-thin">
 				[%content_zone id:'headertext' if_empty:''/%]
 			</div>
 			<div class="visible-lg col-sm-3 text-right padding-t-thin right-column">
 				<div class="row">
-					<div class="col-xs-12">
-						<div id="header-cart" class="col-xs-2 cart">
+					<div class="col-12">
+						<div id="header-cart" class="col-2 cart">
 							<a id="cartcontentsheader" href="[%url page:'checkout' type:'cart'/%]"><i class="fa fa-shopping-cart"></i> <span rel="a2c_item_count" class="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span></a>
 							<ul class="dropdown-menu">
 								<li class="box" id="neto-dropdown">
@@ -125,7 +125,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="col-xs-3 sign-in">
+						<div class="col-3 sign-in">
 							[%if [@user:username@]%]
 								<ul class="list-unstyled">
 									<li class="dropdown dropdown-hover">
@@ -140,7 +140,7 @@
 								<a href="/_myacct">Login</a>
 							[%/if%]
 						</div>
-						<div class="col-xs-6 help-menu text-right">
+						<div class="col-6 help-menu text-right">
 							<ul>
 								<li class="dropdown dropdown-hover">
 									<span class="caret"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
@@ -202,7 +202,7 @@
 
 					</ul>
 				</div>
-				<div class="col-xs-12 col-lg-2 navbar-collapse-bg">
+				<div class="col-12 col-lg-2 navbar-collapse-bg">
 					<div class="navbar-collapse collapse navbar-responsive-collapse">
 						<ul class="nav navbar-nav fixed-menu-wrapper">
 						[%cache type:'cmenu' id:'header_cat_menu'%]
@@ -238,13 +238,13 @@
 										</li>
 									[%/param%]
 									[%param footer%]
-									<li class="visible-xs">
+									<li class="visible">
 										<a href="/gift-hampers">All Gift Hampers</a>
 									</li>
-									<li class="visible-xs">
+									<li class="visible">
 										<a href="/Corporate-Hampers">Corporate Hampers</a>
 									</li>
-									<li class="visible-xs corporate-menu-mobile">
+									<li class="visible corporate-menu-mobile">
 										<a href="/Corporate-Hampers">Help</a>
 										<div class="corporate-menu-expander"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
 										<ul class="corporate-list-mobile">

@@ -11,7 +11,7 @@
 			[%/param%]
 			[%param *body%]
 			[%if [@count@] == 0%]
-				<div class="col-xs-12 col-sm-6 col-md-4 testimonials [@count@]">
+				<div class="col-12 col-sm-6 col-md-4 testimonials [@count@]">
 					<span class="footerH2">[@headline@]</span>
 					<div id="testim_carousel" class="carousel slide footer-testi">
 						<div class="carousel-inner">
@@ -32,7 +32,7 @@
 			
 			[%elseif [@count@] == 1%]
 			
-				<div class="col-xs-12 col-sm-6 col-md-4 about-us [@count@]">
+				<div class="col-12 col-sm-6 col-md-4 about-us [@count@]">
 					<span class="footerH2">[@headline@]</span>
 					<p>
 					[%url_decode%]
@@ -46,7 +46,7 @@
 			
 			[%elseif [@count@] == 2%]
 			
-				<div class="col-xs-12 col-sm-12 col-md-4 gift-boxes [@count@]">
+				<div class="col-12 col-sm-12 col-md-4 gift-boxes [@count@]">
 					<span class="footerH2">[@headline@]</span>
 					<p>
 					[%url_decode%]
@@ -70,7 +70,7 @@
 <div class="row padding-tb-small wrapper-footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-7 padding-tb-small">
+			<div class="col-12 col-sm-7 padding-tb-small">
 				<div class="row footer-menu-holder">
 					[%if [@user:username@]%]
 						<div class="user-is-logged"></div>
@@ -80,7 +80,7 @@
 					[%cache type:'cmenu' id:'web_footer'%]
 						[%menu id:'web_footer'%]
 							[%param *level_1%]
-								<div class="col-xs-12 col-sm-4 footer-menu">
+								<div class="col-12 col-sm-4 footer-menu">
 									<h4 class="footer-menu-title">[@name@]</h4>
 									<ul class="nav">
 										[@next_level@]
@@ -94,12 +94,12 @@
 					[%/cache%]
 				</div>
 			</div>
-			<div class="hidden-xs col-sm-3"></div>
-			<div class="col-xs-12 col-sm-5">
+			<div class="hidden col-sm-3"></div>
+			<div class="col-12 col-sm-5">
 				<div class="row padding-tb-small">					
 					<div class="col-sm-12">	
 						<div class="row">
-							<div class="col-xs-12 col-sm-7">
+							<div class="col-12 col-sm-7">
 											<h4 class="footer-menu-title">Secure Payments</h4>
 											[%checkout_pay_icons show_icon:'1' ignore_balance:'1'%]
 												[%param header%]
@@ -119,10 +119,10 @@
 							</div>
 							<div class="col-sm-5">	
 								<div class="row">
-									<div class="col-xs-12 col-sm-12  padding-tb-small text-right phone">
+									<div class="col-12 col-sm-12  padding-tb-small text-right phone">
 										<i class="fa fa-phone"></i> <a href="tel:1300459452"><span>1300 459 452</span></a>
 									</div>
-									<ul class="col-xs-12 col-sm-12 padding-tb-small list-inline list-social text-right">
+									<ul class="col-12 col-sm-12 padding-tb-small list-inline list-social text-right">
 										[%if [@config:facebook_account_id@]%]
 										<li><a href="[@config:facebook_account_id@]" target="_blank"><i class="fa fa-facebook"></i></a>
 										</li>
@@ -164,7 +164,7 @@
             		</div> -->
 <!-- TrustBox widget -->
 	<div class="row">
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div
 					class="trustpilot-widget"
 					data-locale="en-US"
@@ -181,7 +181,7 @@
 		
 			<!-- End TrustBox widget -->
 		<div class="row">
-			<div class="col-xs-12 padding-t-small">
+			<div class="col-12 padding-t-small">
 				<p class="footer-text">
 					[%content_zone id:'footer_address'%][%end content_zone%]
 				</p>
@@ -352,7 +352,7 @@
 		</style>
         <!-- Mock Button-->
 		<div class="floatIcon" id="mock-button2">
-			<div class="contacUsIconInner col-xs-2">
+			<div class="contacUsIconInner col-2">
 				<i class="fa fa-spinner fa-spin zenHide" style="line-height: 1.6; display: none;"></i>
 				<i class="fa fa-comment zenShow"></i>
 			</div>
