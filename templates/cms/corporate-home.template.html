@@ -1,11 +1,68 @@
-[%load_template file:'cms/includes/corporate-banner-3-boxes-neil.template.html' /%]
-[%load_template file:'cms/includes/corporate-product-tabs.template.html' /%]
-[%load_template file:'cms/includes/corporate-gifts-section.template.html' /%]
-[%load_template file:'cms/includes/corporate-branding-tabs.template.html' /%]
-[%load_template file:'cms/includes/faqs-accordion.template.html' /%]
-[%load_template file:'cms/includes/corporate-interests.template.html' /%]
-[%load_template file:'cms/includes/corporate-customers-carousel.template.html' /%]
-[%load_template file:'cms/includes/mailchimp-popup-exit-intent-neil.template.html' /%]
+<style>
+  .dark-corporate {
+    background-color: #000000;
+    padding-top: 56px;
+    color: #fff;
+  }
+  .dark-corporate .dark-corporate-contact {
+    background-color: #2b2b2b;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dark-corporate .dark-corporate-contact span {
+    font-size: 15px;
+    line-height: 19px;
+    text-transform: uppercase;
+  }
+  .dark-corporate .dark-corporate-contact a {
+    margin-left: 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 5px 40px;
+    color: #fff;
+  }
+  .dark-corporate .dark-corporate-contact a:hover {
+    text-decoration: none;
+  }
+  .dark-corporate .dark-corporate-content {
+    background-color: #121212;
+    padding: 0 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
 
+[%load_template file:'cms/includes/corporate-dark-slider.template.html' /%]
 
-
+<div class="row dark-corporate">
+  <div class="col-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 dark-corporate-contact">
+          <span
+            >Need help with something? Talk To our corporate service team</span
+          ><a href="#">Contact us</a>
+        </div>
+        <div class="col-12 dark-corporate-content">
+          <div class="row">
+            [%load_template
+            file:'cms/includes/corporate-dark-columns.template.html' /%]
+            [%load_template
+            file:'cms/includes/corporate-dark-text-box.template.html' /%]
+            [%load_template
+            file:'cms/includes/corporate-dark-faqs.template.html' /%]
+            [%load_template
+            file:'cms/includes/corporate-dark-trusted-company.template.html' /%]
+            [%load_template
+            file:'cms/includes/corporate-dark-testimonials.template.html' /%]
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

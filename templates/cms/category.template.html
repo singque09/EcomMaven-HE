@@ -30,10 +30,14 @@ $(document).ready(function() {
 		})
 	</script>
 [%/site_value%]
+
+[%load_template file:'cms/includes/category-header-banner.template.html'/%]
 <div class="container category-section-wrapper">
 [%SET [@page_type@]='category'/%]
 
-[%breadcrumb%]
+[%load_template file:'cms/includes/category-heading.template.html'/%]
+
+<!-- [%breadcrumb%]
 	[%PARAM *header%]
 		<ul class="breadcrumb">
 			<li>
@@ -48,8 +52,8 @@ $(document).ready(function() {
 	[%PARAM *footer%]
 		</ul>
 	[%/PARAM%]
-[%/breadcrumb%]
-<h1 itemprop="name" class="page-header">
+[%/breadcrumb%] -->
+<!-- <h1 itemprop="name" class="page-header">
 	[%url_info name:'page_heading' if:'eq' value:''%]
 		[%PARAM if_true%]
 			[@content_name@]
@@ -61,8 +65,8 @@ $(document).ready(function() {
 	[%IF [@keywords@] == ''%]
 		[%FILTER ID:'keywords' if:'ne' value:''%][%NOHTML%][%FILTER ID:'keywords'%][%/FILTER%][%/NOHTML%][%/FILTER%]
 	[%/IF%]
-</h1>
-[%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
+</h1> -->
+<!-- [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
 	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
 		[%param *header%]
 			<div id="homepageCarousel" class="carousel slide">
@@ -124,7 +128,7 @@ $(document).ready(function() {
 
 		<hr>
 	[%/if%]
-[%/if%]
+[%/if%] -->
 
 <style>.findify-component-spinner,.findify-component-spinner:after{border-radius:50%;width:60px;height:60px}.findify-component-spinner{margin:60px auto 0!important;position:relative;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:findify-component-spinner-animation .7s infinite cubic-bezier(.67,.35,.7,.8);animation:findify-component-spinner-animation .7s infinite cubic-bezier(.67,.35,.7,.8);-ms-transform-origin:50% 50%;-webkit-transform-origin:50% 50%;transform-origin:50% 50%;border-top:3px solid #eaeaea;border-right:3px solid #eaeaea;border-bottom:3px solid #eaeaea;border-left:3px solid #c6c6c6}@-webkit-keyframes findify-component-spinner-animation{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}100%{-webkit-transform:rotate(450deg);transform:rotate(450deg)}}@keyframes findify-component-spinner-animation{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}100%{-webkit-transform:rotate(450deg);transform:rotate(450deg)}}
 </style>
@@ -215,9 +219,8 @@ $(document).ready(function() {
 	</div>
 </div>
 	<!--  DG EDIT BLOG list-->
-<div class="col-12-lg">
+<!-- <div class="col-12-lg">
     <div class="blog-section col-sm-6" id="blogCatDG">
-        <!-- related content blog-->
         <div id="blog-list">
         [%list type:'content' filter:'related_content=[@content_id@]' limit:'2'%]
 		[%param *header%]
@@ -260,7 +263,6 @@ $(document).ready(function() {
                 </section>
             [%/param%]
         [%/list%]
-        <!-- End related content blog-->
         </div>
     </div>
     <div class="YT-section col-sm-6">
@@ -274,77 +276,56 @@ $(document).ready(function() {
                 [%/param%]
             [%/advert%]
 
-
-           <!-- [%if [@content_id@] eq '40' %]
-                <div id="vid-src" style="display:none;">[%content_zone id:'new-baby-category-video'%][%end content_zone%]</div>
-            [%elseif [@content_id@] eq '91' %]
-                <div id="vid-src" style="display:none;">[%content_zone id:'pamper-category-video'%][%end content_zone%]</div>
-            [%elseif [@content_id@] eq '45' %]
-               <div id="vid-src" style="display:none;">[%content_zone id:'hers-category-video'%][%end content_zone%]</div>
-            [%elseif [@content_id@] eq '34' %]
-            <div id="vid-src" style="display:none;">[%content_zone id:'champagne-hampers-video'%][%end content_zone%]</div>
-            [%else%]
-                <div id="vid-src" style="display:none;">[%content_zone id:'category-video'%][%end content_zone%]</div>
-            [%/if%]-->
-                <div class="video" id="yt-img-container">
-                    <div class="playbutton ytPlayVid"></div>
-                    <img id="yt-video" class="ytPlayVid" src=""  />
-                </div>
-                  <div id="close">Close X</div>
+			<div class="video" id="yt-img-container">
+				<div class="playbutton ytPlayVid"></div>
+				<img id="yt-video" class="ytPlayVid" src=""  />
+			</div>
+				<div id="close">Close X</div>
 
             <div class="tube" id="yt-vid-container">&nbsp;</div>
-             <!--  digitalgrowth added yt
-                                <div class='onq-youtube-player' style='width: 100%; display: block; cursor: pointer; overflow: hidden;' data-id='m5VExMOdEDU' data-ssv='false' data-spc='false' data-sta='false' data-afs='false' data-dkc='false' data-ecc='false' data-eap='false'>
-                                    <img class="lazy_load" data-src='//i.ytimg.com/vi/m5VExMOdEDU/hqdefault.jpg' style='display: block; left: 0; margin: auto; max-width: 100%; max-height: 100%; position: absolute; right: 0;'>
-                                    <div style='height: 72px; width: 72px; left: 50%; top: 50%; margin-left: -36px; margin-top: -36px; position: absolute; background: url("https://www.thehamperemporium.com.au/assets/image/play_button.png") no-repeat; background-size: 72px;'></div>
-                                </div>
-                                <script async>!function(){for(var t=document.getElementsByClassName("onq-youtube-player"),e=0;e<t.length;e++)t[e].onclick=function(){var t=document.createElement("iframe"),e="true"==this.dataset.ssv?"1":"0",s="true"==this.dataset.spc?"1":"0",i="true"==this.dataset.sta?"1":"0",a="true"==this.dataset.dkc?"1":"0",r="true"==this.dataset.ecc?"1":"0",o="true"==this.dataset.eap?"1":"0";for(t.setAttribute("src","//www.youtube.com/embed/"+this.dataset.id+"?rel="+e+"&controls="+s+"&showinfo="+i+"&disablekb="+a+"&cc_load_policy="+r+"&autoplay="+o),t.setAttribute("frameborder","0"),t.setAttribute("id","youtube-iframe"),t.setAttribute("style","min-width: 600px; min-height: 310px; /*position: absolute;*/ padding:70px 70px 20px 20px; top: 0; left: 0;"),"true"==this.dataset.afs&&t.setAttribute("allowfullscreen","");this.firstChild;)this.removeChild(this.firstChild);this.appendChild(t)}}();</script>
-             -->
-
-<!-- hidden digitalgrowth /* <iframe data-src="[@url@]" frameborder='0' allowfullscreen></iframe> */ -->
 		</div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-  <script async>
-             $(document).ready(function(){
+</div> -->
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+	<script async>
+		$(document).ready(function(){
 
-            
-                 if(!document.querySelector("#content-count")){
-                     $('#related-blog').hide();
-                     $('#blog-list').show();
-                 }else{
-                     $('#related-blog').show();
-                     $('#blog-list').hide();
-                 }
-                 if(document.querySelector("#vid-src")){
-                      var preloadImage = document.querySelector("#vid-src").innerHTML.split("=").pop();
-                 }else{
-                      var preloadImage = "m5VExMOdEDU";
-                 }
-                document.querySelector("#yt-video").src = 'https://img.youtube.com/vi/'+preloadImage+'/maxresdefault.jpg';
 
-                 $('#yt-img-container').show();
-                 $('#close').hide();
-                  $(".ytPlayVid").click(function(){
-                        console.log('play button clicked!');
-                            var videoSrc = document.querySelector("#vid-src").innerHTML.split("=").pop();
-                            var video = '<div class="video-container"><iframe src="https://www.youtube.com/embed/'+ videoSrc +'?&amp;autoplay=1&amp;rel=0&amp;fs=0&amp;showinfo=0&amp;autohide=3&amp;modestbranding=1"></iframe></div>';
-                           $('#yt-img-container').hide();
-                            $("#yt-vid-container").html(video);
-                            $('#close').show();
-                             $(".ytPlayVid").hide();
-                  });
-                   $('#close').click(function(){
-                         $('#yt-img-container').show();
-                         $('#yt-vid-container').empty();
-                         $('#close').hide();
-                     });
-                
+			if(!document.querySelector("#content-count")){
+				$('#related-blog').hide();
+				$('#blog-list').show();
+			}else{
+				$('#related-blog').show();
+				$('#blog-list').hide();
+			}
+			if(document.querySelector("#vid-src")){
+				var preloadImage = document.querySelector("#vid-src").innerHTML.split("=").pop();
+			}else{
+				var preloadImage = "m5VExMOdEDU";
+			}
+		document.querySelector("#yt-video").src = 'https://img.youtube.com/vi/'+preloadImage+'/maxresdefault.jpg';
 
-			 });
-			 
-         </script>
+			$('#yt-img-container').show();
+			$('#close').hide();
+			$(".ytPlayVid").click(function(){
+				console.log('play button clicked!');
+					var videoSrc = document.querySelector("#vid-src").innerHTML.split("=").pop();
+					var video = '<div class="video-container"><iframe src="https://www.youtube.com/embed/'+ videoSrc +'?&amp;autoplay=1&amp;rel=0&amp;fs=0&amp;showinfo=0&amp;autohide=3&amp;modestbranding=1"></iframe></div>';
+					$('#yt-img-container').hide();
+					$("#yt-vid-container").html(video);
+					$('#close').show();
+						$(".ytPlayVid").hide();
+			});
+			$('#close').click(function(){
+					$('#yt-img-container').show();
+					$('#yt-vid-container').empty();
+					$('#close').hide();
+				});
+		
+
+		});
+		
+	</script>
 <!--  DG EDIT BLOG list-->
 
 <!-- TrustBox widget - Carousel -->
@@ -370,7 +351,7 @@ $(document).ready(function() {
 	[%/site_value%]
 	*/ -->
 	<!-- End TrustBox widget -->
-[%if [@content_label2@] ne ''%]
+<!-- [%if [@content_label2@] ne ''%]
     <section>
 	<div class="row author-row">
 		<div class="col-12">
@@ -391,11 +372,11 @@ $(document).ready(function() {
 		</div>
 	</div>
 	</section>
-[%/if%]
+[%/if%] -->
 
-<div class="category-description bottom">
+<!-- <div class="category-description bottom">
 	[@content_description2@]
-</div>
+</div> -->
 
 </div>
 </div>
