@@ -1,0 +1,82 @@
+<style>
+  .footer-right-side .footer-payment-logos h5 {
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .footer-right-side .footer-payment-logos .footer-payment-logo {
+    height: 30px;
+    margin: 10px;
+  }
+  .footer-right-side .footer-social-media {
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-right-side .footer-social-media a {
+    font-size: 30px;
+    color: #fff;
+  }
+</style>
+<div class="col-4 footer-right-side d-flex">
+  <div class="row px-0">
+    <div class="col-12 footer-payment-logos">
+      <h5>Secure Payments</h5>
+      <div class="row m-0">
+        [%checkout_pay_icons show_icon:'1' ignore_balance:'1'%] [%param *body%]
+        <div class="col-3 payment-icon-container">
+          <div
+            class="payment-icon"
+            style="
+              background-image: url([@processor_icon_url@]);
+              height: 30px;
+              filter: grayscale(1) [%if [ @name @] ne 'MasterCard'
+                %]brightness(1.25) [%/if%] [%if [ @name @] eq 'Web Payments' or
+                [ @name @] eq 'Afterpay' or [ @name @] eq 'PayPal Express' or [
+                @name @] eq 'zipPay' %]invert(0.8) [%/if%];
+            "
+          >
+            <span class="sr-only">[@name@]</span>
+          </div>
+        </div>
+        [%/param%] [%/checkout_pay_icons%]
+      </div>
+    </div>
+    <div class="col-12 footer-social-media">
+      [%if [@config:facebook_account_id@]%]
+      <a href="[@config:facebook_account_id@]" target="_blank"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      [%/if%] [%if [@config:twitter_account_id@]%]
+      <a href="[@config:twitter_account_id@]" target="_blank"
+        ><i class="fab fa-twitter"></i
+      ></a>
+      [%/if%] [%if [@config:googleplus_account_id@]%]
+      <a href="[@config:googleplus_account_id@]" target="_blank"
+        ><i class="fab fa-google-plus"></i
+      ></a>
+      [%/if%] [%if [@config:youtube_account_id@]%]
+      <a href="[@config:youtube_account_id@]" target="_blank"
+        ><i class="fab fa-youtube"></i
+      ></a>
+      [%/if%] [%if [@config:instagram_account_id@]%]
+      <a href="[@config:instagram_account_id@]" target="_blank"
+        ><i class="fab fa-instagram"></i
+      ></a>
+      [%/if%] [%if [@config:pinterest_account_id@]%]
+      <a href="[@config:pinterest_account_id@]" target="_blank"
+        ><i class="fab fa-pinterest"></i
+      ></a>
+      [%/if%] [%if [@config:tumblr_account_id@]%]
+      <a href="[@config:tumblr_account_id@]" target="_blank"
+        ><i class="fab fa-tumblr"></i
+      ></a>
+      [%/if%] [%if [@config:linkedin_account_id@]%]
+      <a href="[@config:linkedin_account_id@]" target="_blank"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+    </div>
+  </div>
+</div>

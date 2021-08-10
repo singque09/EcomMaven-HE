@@ -67,28 +67,7 @@ span.competitionHeading {
 }
 </style>
 
-<div class="home-page-slider">
-	[%load_ajax_template id:'_slider' type:'content' template:'slider' preload:'0'/%]
-	<!--UPS INFORMATIONS-->
-
-	[%site_value id:'footer_javascript'%]
-		<script type="text/javascript" language="javascript" async>
-			$.load_ajax_template('_slider', {}, {
-				onLoad: function () {
-					$(".carousel").on('slide.bs.carousel', function(props) {
-						var img = props.relatedTarget.querySelector('img')
-						loadImage(img)
-					})
-				}
-			});
-		</script>
-	[%/site_value%]
-
-	
-	<!--UPS INFORMATIONS ENDS-->
-</div>
-
-[%load_template file:'cms/includes/product-points.template.html'/%]
+[%load_template file:'cms/includes/homepage-slider.template.html' /%]
 
 <div class="container">
 
