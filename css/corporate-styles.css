@@ -51,7 +51,7 @@
 }
 
 p {
-    font-family: 'Roboto Slab',serif
+    font-family: 'Montserrat',serif
 }
 .back-button {
     text-align: center;
@@ -235,7 +235,7 @@ p {
 .free-delivery-section ul {
     float: left;
     list-style: none;
-    font-family: 'Roboto Slab',serif;
+    font-family: 'Montserrat',serif;
     color: #fff;
     clear: both;
     display: inline-block;
@@ -369,7 +369,7 @@ p {
 }
 
 .corporate-contact-section .text-wrapper {
-    font-family: 'Roboto Slab',serif;
+    font-family: 'Montserrat',serif;
     color: #fff;
     font-size: 31px;
     text-align: center;
@@ -533,7 +533,7 @@ p {
 .ideal-gifts-section ul {
     float: right;
     list-style: none;
-    font-family: 'Roboto Slab',serif;
+    font-family: 'Montserrat',serif;
     color: #fff;
     clear: both;
     display: inline-block;
@@ -597,7 +597,7 @@ p {
     padding: 45px 90px;
     color: #fff;
     text-align: center;
-    font-family: 'Roboto Slab',serif;
+    font-family: 'Montserrat',serif;
     font-size: 25px;
     font-weight: 300;
     height: 500px;
@@ -635,7 +635,7 @@ p {
     .engraved-gifts {
         color:#fff;
         text-align: center;
-        font-family: 'Roboto Slab',serif;
+        font-family: 'Montserrat',serif;
         font-size: 16px;
         background-position: left center;
         font-weight: 300;
@@ -671,7 +671,7 @@ p {
     image-rendering: -webkit-optimize-contrast;
     padding: 46px 60px;
     color: #fff;
-    font-family: 'Roboto Slab',serif;
+    font-family: 'Montserrat',serif;
     font-size: 25px;
     font-weight: 300;
     background-repeat: no-repeat;
@@ -754,7 +754,7 @@ p {
     padding: 45px 90px;
     color: #fff;
     text-align: center;
-    font-family: 'Roboto Slab',serif;
+    font-family: 'Montserrat',serif;
     font-size: 25px;
     font-weight: 300;
     height: 500px;

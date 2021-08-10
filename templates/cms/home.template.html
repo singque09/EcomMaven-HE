@@ -47,7 +47,7 @@ span.competitionHeading {
     margin: auto;
     display: block;
     font-size: 26px;
-    font-family: 'Roboto Slab';
+    font-family: 'Montserrat';
     margin-bottom: 20px;
     font-weight: 400;
 }
@@ -67,22 +67,30 @@ span.competitionHeading {
 }
 </style>
 
-<div class="home-page-slider">
-	[%load_ajax_template id:'_slider' type:'content' template:'slider' preload:'0'/%]
-	<!--UPS INFORMATIONS-->
+<div class="home-page-sliderr container-fluid">
 
-	[%site_value id:'footer_javascript'%]
-		<script type="text/javascript" language="javascript" async>
-			$.load_ajax_template('_slider', {}, {
-				onLoad: function () {
-					$(".carousel").on('slide.bs.carousel', function(props) {
-						var img = props.relatedTarget.querySelector('img')
-						loadImage(img)
-					})
-				}
-			});
-		</script>
-	[%/site_value%]
+
+				[%advert type:'text' template:'carousel' limit:'5' ad_group:'new-homepage-main-slider'%]
+					[%param *header%]
+						<div id="homepageCarousel" class="carousel slide homepage-banner row" data-ride="carousel">
+							<div class="carousel-inner">
+					[%/param%]
+					[%param *footer%]
+							</div>
+							[%if [@total_showing@] > 1%]
+								<a class="carousel-control-prev" href="#homepageCarousel" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#homepageCarousel" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
+							[%/if%]
+						</div>
+					[%/param%]
+				[%/advert%]
+				
 
 	
 	<!--UPS INFORMATIONS ENDS-->
@@ -94,98 +102,6 @@ span.competitionHeading {
 
 	[%load_template file:'cms/includes/homepage-hamper-finder.template.html'/%]
 		
-	<!-- <div class="homeTopBannersHolder">
-		<div class="homeTopBannersDesktopHolder hidden">
-			<div class="homeTopBanners1stRow">
-				[%advert type:'text' ad_group:'home-topBanners-1stRow-D' template:'' category:'0' limit:'6'%]
-				[%param *header%]
-				<div class="row">
-					<div class="col-12 homeTopBannerHolderInner">
-				[%/param%]
-				[%param *body%]
-						<div class="col-6 holder1stRow">
-							<a href="[@url@]">
-							<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
-							<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
-						</div>
-				[%/param%]
-				[%param footer%]
-					</div>
-				</div>
-				[%/param%]
-				[%/advert%]
-			</div>
-			<div class="homeTopBanners2ndRow">
-				[%advert type:'text' ad_group:'home-topBanners-2ndRow-D' template:'' category:'0' limit:'6'%]
-				[%param *header%]
-				<div class="row">
-					<div class="col-12 homeTopBannerHolderInner">
-				[%/param%]
-				[%param *body%]
-						<div class="col-3 holder2ndRow">
-							<a href="[@url@]">
-							<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
-							<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
-						</div>
-				[%/param%]
-				[%param footer%]
-					</div>
-				</div>
-				[%/param%]
-				[%/advert%]
-			</div>
-		</div>
-		<div class="homeTopBannersMobileHolder visible">
-			[%advert type:'text' ad_group:'home-topBanners-Mobile' template:'' category:'0' limit:'6'%]
-			[%param *header%]
-			<div class="row">
-				<div class="col-12 homeTopBannerMobileInner">
-			[%/param%]
-			[%param *body%]
-					<div class="col-6 mobile2ColHolder">
-						<a href="[@url@]">
-						<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
-						<a href="[@url@]" class="topBannerHeading">[@headline@]</a>
-					</div>
-			[%/param%]
-			[%param footer%]
-				</div>
-			</div>
-			[%/param%]
-			[%/advert%]
-		</div>
-	</div> -->
-	<!-- <div class="homeCompetitionHolder">
-		<div class="homeTopBanners2ndRow">
-			[%advert type:'text' ad_group:'home-contests' template:'' category:'0' limit:'3'%]
-			[%param *header%]
-			<div class="row">
-				<div class="col-12 homeTopBannerHolderInner">
-					<span class="competitionHeading">Current Competitions & Specials</span>
-			[%/param%]
-			[%param *body%]
-					<div class="col-sm-4 col-12 holder2ndRow">
-						<a href="[@url@]">
-						<img class="" alt="[@headline@]" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
-						<div class="topBannerHeadingHolder">
-							<a href="[@url@]" class="topBannerHeading">
-								[%url_decode%]
-									[%url_encode%]
-										[@description@]
-									[%/url_encode%]
-								[%/url_decode%]
-							</a>
-						</div>
-					</div>
-			[%/param%]
-			[%param footer%]
-				</div>
-			</div>
-			[%/param%]
-			[%/advert%]
-		</div>
-	</div> -->
-		
 	<div class="padding-tb-med noSchema">
 		<div class="findify-element" id="home-findify-rec-2"></div>
 	</div>
@@ -194,128 +110,7 @@ span.competitionHeading {
 	[%load_template file:'cms/includes/homepage-alt-adverts.template.html'/%]
 	[%load_template file:'cms/includes/homepage-delivery-estimates.template.html'/%]
 
-	<!-- <div class="homeVidHolder">
-		<h2 class="section-title padding-tb-med">[@CONTENT_EXTERNAL_REF3@]</h2>
-		<div class="homeVidIframeHolder">	
-			<iframe src="[@CONTENT_EXTERNAL_REF1@]" frameborder="0" allow="fullscreen;" allowfullscreen></iframe>
-		</div>
-	</div> -->
-	
-	<!-- <div class="row padding-tb-med popular-hamper-categories">
-		<h2 class="section-title padding-b-med">Popular Hamper Categories</h2>
-		[%advert type:'text' template:'homeCircleSlide' limit:'4' ad_group:'homeCircleSlide'%]
-		[%param *header%]
-		<div class="jcarousel-wrapper">
-			<div class="jcarousel jcarousel-featured2">
-				<div class="slider">
-		[%/param%]
-		[%param footer%]
-		
-		[%/param%]
-				</div>
-			</div>
-		</div>
-		[%/param%]
-		[%/advert%]
-	</div> -->
-
-
-	<!-- [%advert type:'text' ad_group:'home_bottom' template:'' sortby:'sortorder' limit:'6'%]
-		[%param *header%]
-		<div class="row padding-b-med bottom-featured-categories">
-		[%/param%]
-		[%param *body%]
-			[%set [@ads@] %]
-				[%calc [@count@] + 1 /%]
-			[%/set%]
-			<div class="ad-[@ads@] [% if  [@ads@] % 2 == 0%]  right-block  [%else%] left-block [%/if%]bottom-banners-home">
-
-				[%if [@url@] LIKE 'youtube.com'%]
-					[%split delimiter:'www.youtube.com/embed/'%]
-						[%param data1%][@url@][%/param%]
-						[%param *body%]
-							[%if [@count@] > 0 %]
-								[%set [@^yt_id@] %][@data1@][%/set%]
-							[%/if%]
-						[%/param%]
-					[%/split%]
-
-					<div class='embed-container'>
-						<div class='onq-youtube-player' style='width: 100%; display: block; cursor: pointer; overflow: hidden;' data-id='[@yt_id@]' data-ssv='false' data-spc='false' data-sta='false' data-afs='false' data-dkc='false' data-ecc='false' data-eap='false'>
-							<img class="" data-src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" src='//i.ytimg.com/vi/[@yt_id@]/sddefault.jpg' style='display: block;left: 0;margin: auto;width: 100%; position: absolute;right: 0;top: 50%;bottom: 50%;'>
-							<div style='height: 72px; width: 72px; left: 50%; top: 50%; margin-left: -36px; margin-top: -36px; position: absolute; background: url("https://www.thehamperemporium.com.au/assets/image/play_button.png") no-repeat; background-size: 72px;'></div>
-						</div>
-						<script async>!function(){for(var t=document.getElementsByClassName("onq-youtube-player"),e=0;e<t.length;e++)t[e].onclick=function(){var t=document.createElement("iframe"),e="true"==this.dataset.ssv?"1":"0",s="true"==this.dataset.spc?"1":"0",i="true"==this.dataset.sta?"1":"0",a="true"==this.dataset.dkc?"1":"0",r="true"==this.dataset.ecc?"1":"0",o="true"==this.dataset.eap?"1":"0";for(t.setAttribute("src","//www.youtube.com/embed/"+this.dataset.id+"?rel="+e+"&controls="+s+"&showinfo="+i+"&disablekb="+a+"&cc_load_policy="+r+"&autoplay="+o),t.setAttribute("frameborder","0"),t.setAttribute("id","youtube-iframe"),t.setAttribute("style","width: 100%; height: 100%; position: absolute; top: 0; left: 0;"),"true"==this.dataset.afs&&t.setAttribute("allowfullscreen","");this.firstChild;)this.removeChild(this.firstChild);this.appendChild(t)}}();</script>
-
-					</div>
-				[%else%]
-				<a class="advert[@ad_id@] image pull-left" href="[@url@]" target="[@target@]">
-				<img class="lazy_load" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" >
-				[%if [@headline@] or [@description@] or [@linktext@]%]
-							<div class="carousel-caption">
-								[%if [@headline@]%]<h3>[@headline@]</h3>[%/if%]
-								[%if [@description@]%]<p>[@description@]</p>[%/if%]
-								[%if [@linktext@]%]<p><span class="btn btn-primary btn-lg">[@linktext@]</span></p>[%/if%]
-							</div>
-				[%/if%]
-				</a>
-				[%/if%]
-			</div>
-		[%/param%]
-		[%param footer%]
-
-		</div>
-		[%/param%]
-	[%/advert%] -->
 </div>
-	<!-- <div class="col-12 padding-tb-med sign-up-homepage">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="section-title text-right">
-						BECOME A VIP
-					</div>
-				</div>
-				<div class="col-md-6 section-subtitle text-left">
-					<p class="paragraph-top">FOR THE LATEST</p>
-					<p class="paragraph-bottom">HAMPER NEWS</p>
-				</div>
-				<div class="under-subtitle text-center padding-t-small">
-					<p>Join our inner circle and be the first to know about our latest products and seasonal gift ideas.</p>
-					<p>Want in? Add your details below to stay in the loop.</p>
-					<div class="row padding-t-small">
-						<form action="https://thehamperemporium.us4.list-manage.com/subscribe/post?u=3cedafdc7f0554b60ebfb02c0&amp;id=fb096788b1" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-							<div class="col-md-5 padding-b-tin">
-								<input id="mce-FNAME" name="FNAME" class="form-control required" type="text" placeholder="Name" required/>
-
-							</div>
-							<div class="col-md-5 padding-b-tin">
-								<input id="mce-EMAIL" name="EMAIL" class="form-control required email" type="email" placeholder="Email" required/>
-							</div>
-							
-	
-							<div class="col-md-2 col-12 padding-b-tin submit-wrapper">
-								<input type="submit" value="Connect" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-default" style="margin-top : 0;" >
-							</div>
-							
-							<div id="mce-responses" class="clear">
-								<div class="response" id="mce-error-response" style="display:none"></div>
-								<div class="response" id="mce-success-response" style="display:none"></div>
-							</div>
-							<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3cedafdc7f0554b60ebfb02c0_fb096788b1" tabindex="-1" value=""></div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- <div class="col-12 padding-tb-med content-homepage">
-		<div class="container">
-			<div class="row">
-				<div id="homepage-content" class="n-responsive-content">[@page_content@]</div>
-			</div>
-		</div>
-	</div> -->
 </div>
 
 [%load_template file:'cms/includes/corporate-dark-heading-advert.template.html'/%]

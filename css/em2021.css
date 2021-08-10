@@ -1,0 +1,111 @@
+body {
+    font-family: 'Montserrat';
+}
+/* fonts */
+.smalltexts {
+    font-family: 'Montserrat', sans-serif;
+    font-size : 15px;
+    font-weight : 500;
+}
+.subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-size : 17px;
+    font-weight : 500;    
+    letter-spacing: 3.4px;
+}
+a {
+    font-family: 'Montserrat', sans-serif;
+    font-size : 14px;
+    font-weight : 500;      
+    letter-spacing: 2.8px;
+    text-decoration : underline;
+}
+p, span, .normaltexts{
+    font-family: 'Montserrat', sans-serif;
+    font-size : 16px;    
+}
+strong, b, .strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size : 16px;
+    font-weight : 600;         
+}
+h1, .h1, .product-titles {
+    font-family: 'Montserrat', sans-serif;
+    font-size : 24px;      
+    letter-spacing: 4.8px;
+}
+/* fonts - end */
+.row.top-header .container {
+    padding-top : 2px;
+}
+.row.top-header .left-column strong a {
+    border-right: 1px solid;
+    padding: 0 10px;
+}
+.row.top-header .left-column strong a:nth-last-child(1) {
+    border-right: transparent;
+}
+
+.navbar-nav li a {
+    text-transform: uppercase;
+    font-size: 12px !important;
+}
+
+.top-menu-left {
+    padding-right: 10px;
+}
+
+/* home banners */
+
+  .homepage-hampers {
+    margin-top: 30px;
+  }
+  .homepage-hampers .hamper-image {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 30px;
+    border-radius: 10px;
+  }
+  .homepage-hampers .hamper-title {
+    color: #fff;
+    background: #bfa774;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 0 0 10px 10px;
+  }
+  .homepage-hampers a:hover {
+    text-decoration: none;
+  }
+  .homepage-hampers .hamper-finder-description {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    top: 35px;
+    background: #fff;
+    color: #bfa774;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    line-height: 20px;
+  }
+  .homepage-hampers .hamper-finder-button {
+    color: #fff;
+    background: #bfa774;
+    padding: 5px 20px;
+    border-radius: 20px;
+    margin: 0 10px;
+  }
+  .homepage-hampers .hamper-finder-divider {
+    border-color: #bfa774;
+  }
+  
+/* home banners - end */

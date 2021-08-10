@@ -1,0 +1,45 @@
+[%set [@oddeven@] %]
+    [%calc [@count@]%2 /%]
+[%/set%]
+[%if [@oddeven@] == 0 %]
+<div class="row">
+    <div class="col-7">
+      <div class="alt-advert-image-wrapper">
+        <div class="alt-advert-image" style="background-image: url('[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%]')">
+          <div class="alt-advert-border left-advert-border"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="alt-advert-text right-advert-text">
+        <div class="alt-advert-header">[@headline@]</div>
+        <div class="alt-advert-subtitle">[@linktext@]</div>
+        <div class="alt-advert-description">
+          [@description@]
+        </div>
+        <a href="[@url@]" class="alt-advert-link">Shop [@headline@]</a>
+      </div>
+    </div>
+  </div>
+[%else%]
+  
+  <div class="row">
+    <div class="col-5">
+      <div class="alt-advert-text left-advert-text">
+        <div class="alt-advert-header">[@headline@]</div>
+        <div class="alt-advert-subtitle">[@linktext@]</div>
+        <div class="alt-advert-description">
+          [@description@]
+        </div>
+        <a href="#" class="alt-advert-link">Shop [@headline@]</a>
+      </div>
+    </div>
+    <div class="col-7">
+      <div class="alt-advert-image-wrapper">
+        <div class="alt-advert-image" style="background-image: url('[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%ntheme_asset%]img/default_product.gif[%/ntheme_asset%][%end param%][%/asset_url%]')">
+          <div class="alt-advert-border right-advert-border"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+[%/if%]

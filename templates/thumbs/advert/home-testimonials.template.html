@@ -1,0 +1,35 @@
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="carousel-null-image-wrapper">
+        <div class="star-rating">
+		[%if [@linktext@] == 5 %]
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+		[%elseif [@linktext@] == 4  %]
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+		[%elseif [@linktext@] == 3 %]
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+		[%elseif [@linktext@] == 2 %]
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+		[%elseif [@linktext@] == 1 %]
+          <i class="fas fa-star"></i>
+		[%else%]
+		[%/if%]
+        </div>
+        <div class="testimonial">
+          “[@description@]”
+        </div>
+        <div class="testimonial-author">[@headline@]</div>
+      </div>
+    </div>
+  </div>

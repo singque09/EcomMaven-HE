@@ -8604,7 +8604,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   color: #333;
 }
 .carousel-caption {
@@ -8620,7 +8620,7 @@ h6 {
   margin-bottom: 0;
   font-size: 24px !important;
   margin: 0 !important;
-  font-family: Roboto Slab, serif !important;
+  font-family: "Montserrat", serif !important;
   font-weight: 400;
 }
 .h1,
@@ -9216,7 +9216,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-top: 2px;
 }
 .top-header .happy-customers {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   padding-top: 5px;
   font-size: 20px;
   line-height: 22px;
@@ -9227,7 +9227,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #fff;
 }
 .top-header .happy-customers-small {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 14px;
   line-height: 22px;
   color: #fff;
@@ -9730,7 +9730,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 .bottom-header .nav.navbar-nav li a {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 14px;
   color: #fff;
   padding-left: 9px;
@@ -9832,7 +9832,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: auto;
   display: inline-block;
   padding: 22px 52px;
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   font-weight: 300;
   font-size: 38px;
 }
@@ -9846,7 +9846,7 @@ input[type="number"]::-webkit-outer-spin-button {
     width: auto;
     display: inline-block;
     padding: 12px 24px;
-    font-family: Roboto Slab, serif;
+    font-family: "Montserrat", serif;
     font-weight: 300;
     font-size: 32px;
   }
@@ -9861,7 +9861,7 @@ input[type="number"]::-webkit-outer-spin-button {
     width: auto;
     display: inline-block;
     padding: 12px 24px;
-    font-family: Roboto Slab, serif;
+    font-family: "Montserrat", serif;
     font-weight: 300;
     font-size: 20px;
   }
@@ -10036,7 +10036,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 22px;
   font-weight: 300;
   text-align: center;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
 }
 .corporate-img {
   float: left;
@@ -10099,7 +10099,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .top-featured-categories .carousel-caption {
   position: absolute;
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   font-weight: 300;
   background: rgba(25, 46, 59, 0);
   text-align: center;
@@ -10108,7 +10108,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .top-featured-categories .ad-1 .carousel-caption,
 .top-featured-categories .ad-2 .carousel-caption {
   position: absolute;
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   font-weight: 400;
   background: rgba(25, 46, 59, 0.82);
   border-radius: 50%;
@@ -10193,7 +10193,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: 8px;
 }
 #n_home .top-featured-categories h3 {
-  font-family: Roboto Slab, serif !important;
+  font-family: "Montserrat", serif !important;
   text-shadow: none;
   font-weight: 400 !important;
   font-size: 30px !important;
@@ -10639,7 +10639,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-right: 10px;
 }
 .section-title {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 26px;
   font-weight: 300;
   text-align: center;
@@ -10706,7 +10706,7 @@ input[type="number"]::-webkit-outer-spin-button {
   top: inherit;
 }
 .bottom-featured-categories .carousel-caption h3 {
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   font-weight: 300;
   font-size: 32px;
   margin-bottom: 0;
@@ -10716,7 +10716,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #1c85ad;
 }
 .bottom-featured-categories .carousel-caption p {
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   font-weight: 300;
   font-size: 24px;
 }
@@ -10936,7 +10936,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 10px;
 }
 .jcarousel h3 a {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 24px;
   color: #364f56;
   padding-top: 10px;
@@ -11146,7 +11146,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .wrapper-footer-top h2 {
   color: #fff;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 24px;
   font-weight: 400;
 }
@@ -11263,7 +11263,7 @@ input[type="number"]::-webkit-outer-spin-button {
   float: left;
   width: 100%;
   font-weight: 400;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   text-align: center;
   border: 0;
   text-transform: capitalize;
@@ -11724,7 +11724,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #bb8c6a;
 }
 .wrapper-product-title h1 {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 24px;
   font-weight: 400;
   color: #383838;
@@ -11814,7 +11814,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 15px;
 }
 .panel-default .hamper-cont-head .panel-title {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-weight: 400;
   font-size: 18px;
 }
@@ -11878,7 +11878,7 @@ input[type="number"]::-webkit-outer-spin-button {
   line-height: 11px !important;
   color: #000;
   font-size: 11px !important;
-  font-family: "Roboto Slab", serif !important;
+  font-family: "Montserrat", serif !important;
 }
 .hampercontent-desc p,
 .inner_pages .n_customer-padding-top .hampercontent-desc p {
@@ -11900,7 +11900,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid #ddd;
 }
 .productinfocollapse h4 a {
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   color: #000;
   font-size: 16px;
   font-weight: 400;
@@ -11984,7 +11984,7 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 98%;
     position: absolute;
     top: 0;
-    font-family: "Roboto Slab", serif !important;
+    font-family: "Montserrat", serif !important;
     font-size: 24px;
     text-align: center;
     font-weight: 400;
@@ -12067,7 +12067,7 @@ input[type="number"]::-webkit-outer-spin-button {
   float: left;
   width: 100%;
   text-align: center;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 400;
@@ -12076,7 +12076,7 @@ input[type="number"]::-webkit-outer-spin-button {
   float: left;
   width: 100%;
   text-align: center;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-weight: 400;
   font-size: 24x;
 }
@@ -12214,7 +12214,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 #n_checkout .small {
-  font-family: "Roboto Slab", serif !important;
+  font-family: "Montserrat", serif !important;
 }
 #ladb_pl .modal-row .control-label,
 #n_checkout .form-horizontal .control-label {
@@ -12223,7 +12223,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 400;
 }
 #n_checkout .form-horizontal .control-label {
-  font-family: "Roboto Slab", serif !important;
+  font-family: "Montserrat", serif !important;
 }
 #n_checkout .form-group {
   margin-bottom: 8px;
@@ -12313,7 +12313,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 #n_checkout h1 {
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   text-align: left;
   margin-top: 0;
   font-weight: 400;
@@ -12354,7 +12354,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 #n_checkout .cart-page-title {
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   text-align: left;
   margin-top: 0;
   font-weight: 400;
@@ -12798,7 +12798,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 600;
 }
 #ship-leave-parcel .authority {
-  font-family: "Roboto Slab", serif !important;
+  font-family: "Montserrat", serif !important;
 }
 @media (max-width: 1200px) {
   #n_checkout .checkout-heading {
@@ -13182,7 +13182,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .ch-section-2 .black-box {
   background: #001223;
   color: #fff;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 14px;
   font-weight: 300;
   border-radius: 50%;
@@ -13403,7 +13403,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .ch-section-7 .section-text {
   color: #34526e;
   font-size: 14px;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   padding: 0 12% 16px 12%;
   letter-spacing: 2px;
 }
@@ -13462,7 +13462,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #172b36;
   text-align: center;
   font-style: italic;
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
 }
 .ch-section-9 .section-title {
   color: #c2a384;
@@ -13612,7 +13612,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #fff;
   border-radius: 50%;
   font-size: 16px;
-  font-family: Roboto Slab, serif;
+  font-family: "Montserrat", serif;
   width: 410px;
   height: 410px;
   font-weight: 300;
@@ -14071,7 +14071,7 @@ input[type="number"]::-webkit-outer-spin-button {
   float: left;
   width: 100%;
   text-align: center;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 22px;
   font-weight: 300;
 }

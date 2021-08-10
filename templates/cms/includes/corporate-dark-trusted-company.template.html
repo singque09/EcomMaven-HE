@@ -19,43 +19,25 @@
     height: 50px;
     width: calc((100% / 7) - 30px);
   }
+  .col-12.corporate-dark-trusted-company-logos div {
+    background-size: cover;
+}
 </style>
-<div class="col-12 corporate-dark-trusted-company">
-  <div class="row">
-    <div class="col-12">
-      <div class="corporate-dark-trusted-company-description">
-        Trusted by over XXXX businesses including:
-      </div>
-    </div>
-    <div class="col-12 corporate-dark-trusted-company-logos">
-      <div
-        class="corporate-dark-trusted-company-logo"
-        style="background-image: url('https://picsum.photos/300/200')"
-      ></div>
-      <div
-        class="corporate-dark-trusted-company-logo"
-        style="background-image: url('https://picsum.photos/300/200')"
-      ></div>
-      <div
-        class="corporate-dark-trusted-company-logo"
-        style="background-image: url('https://picsum.photos/300/200')"
-      ></div>
-      <div
-        class="corporate-dark-trusted-company-logo"
-        style="background-image: url('https://picsum.photos/300/200')"
-      ></div>
-      <div
-        class="corporate-dark-trusted-company-logo"
-        style="background-image: url('https://picsum.photos/300/200')"
-      ></div>
-      <div
-        class="corporate-dark-trusted-company-logo"
-        style="background-image: url('https://picsum.photos/300/200')"
-      ></div>
-      <div
-        class="corporate-dark-trusted-company-logo"
-        style="background-image: url('https://picsum.photos/300/200')"
-      ></div>
-    </div>
-  </div>
-</div>
+
+
+[%advert type:'text' ad_group:'corp-dark-brands-logo' template:'corp-dark-brand-logo' category:'0' limit:'8'%]
+	[%param *header%]
+		<div class="col-12 corporate-dark-trusted-company">
+		  <div class="row">
+			<div class="col-12">
+			  <div class="corporate-dark-trusted-company-description">
+				Trusted by over XXXX businesses including:
+			  </div>
+			</div>
+			<div class="col-12 corporate-dark-trusted-company-logos">
+	[%/param%]
+	[%param footer%]
+		  </div>
+		</div>
+	[%/param%]
+[%/advert%]

@@ -1,3 +1,7 @@
+body {
+    font-family: 'Montserrat', sans-serif;';
+}
+
 /* corporate forms */
 .form-group input[type="radio"] {
   -webkit-appearance: none;
@@ -949,7 +953,7 @@ table.productoptions.table.table-striped .row > div.smallinfo {
 /* footer */
 span.footerH2 {
   color: #fff;
-  font-family: "Roboto Slab", serif;
+  font-family: "Montserrat", serif;
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 10px;

@@ -30,6 +30,7 @@
 
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/fonts/fonts.css[%/ntheme_asset%]" media="all"/>
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]/css/customNeilCss.css[%/ntheme_asset%]" media="all"/>
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]/css/em2021.css[%/ntheme_asset%]" media="all"/>
 
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 
@@ -86,11 +87,11 @@
 		<div class="container">
 			<div class="visible-lg col-sm-6 text-left left-column">
 				<div class="col-12">
-					<strong>
+					<strong> 
 						<i class="fas fa-map-marker-alt"></i>
-						<a class="text-uppercase small" href="/sydney">Sydney</a> |
-						<a class="text-uppercase small" href="/melbourne">Melbourne</a> |
-						<a class="text-uppercase small" href="/brisbane">Brisbane</a> |
+						<a class="text-uppercase small" href="/sydney">Sydney</a> 
+						<a class="text-uppercase small" href="/melbourne">Melbourne</a> 
+						<a class="text-uppercase small" href="/brisbane">Brisbane</a> 
 						<a class="text-uppercase small" href="/Christmas-Hampers">Christmas Hampers</a>
 					</strong>
 					<!-- <form class="form-inline top-search-form" name="productsearch" method="get" action="/">
@@ -202,7 +203,7 @@
 					</ul>
 				</div>
 				<div class="col-12 col-lg-2 navbar-collapse-bg">
-					<div class="navbar-collapse collapse navbar-responsive-collapse pt-0">
+					<div class="navbar-collapse navbar-responsive-collapse pt-0">
 						<ul class="nav navbar-nav fixed-menu-wrapper d-flex flex-row">
 							<li class="dropdown dropdown-hover">
 								<a href="#" class="dropdown-toggle" data-target=".navbar-responsive-collapse">
@@ -231,7 +232,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="visible-lg col-sm-4 custom-nav">
+				<div class="visible-lg col-sm-4 custom-nav top-menu-left">
 					<ul class="nav navbar-nav menu-nav-left d-flex flex-row justify-content-end flex-nowrap">
 						[%cache type:'menu' id:'new-header-menu'%]
 							[%menu id:'new-header-menu'%]
@@ -302,7 +303,7 @@
 					</ul>
 				</div>
 				<div class="col-12 col-lg-2 navbar-collapse-bg">
-					<div class="navbar-collapse collapse navbar-responsive-collapse">
+					<div class="navbar-collapse navbar-responsive-collapse">
 						<div id="header-cart" class="cart">
 							<a id="cartcontentsheader" href="[%url page:'checkout' type:'cart'/%]"><i class="fa fa-shopping-cart"></i> <span rel="a2c_item_count" class="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span></a>
 							<ul class="dropdown-menu">
