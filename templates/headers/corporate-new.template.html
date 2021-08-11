@@ -1,87 +1,136 @@
 [%site_value id:'footer_javascript'%]
-	<script>
-		$('.search i.click').click(function() {
-			$('.search form').toggle();
-		});
-		$('.corporate-menu-expander').click(function() {
-			$(this).next('.corporate-list-mobile').toggleClass('corporate-list-mobile-expanded');
-			$(this).find('.fa-angle-down').toggleClass('fa-angle-up');
-		});
-		/* change track order anchor in footer if user logged */
-		if ($(".track-order-user")[0]){
-			$('.footer-menu-holder .footer-menu:first-child ul li:nth-child(3) a').attr('href', 'https://www.thehamperemporium.com.au/_myacct#orders');
-		}
-	</script>
+<script>
+  $(".search i.click").click(function () {
+    $(".search form").toggle();
+  });
+  $(".corporate-menu-expander").click(function () {
+    $(this)
+      .next(".corporate-list-mobile")
+      .toggleClass("corporate-list-mobile-expanded");
+    $(this).find(".fa-angle-down").toggleClass("fa-angle-up");
+  });
+  /* change track order anchor in footer if user logged */
+  if ($(".track-order-user")[0]) {
+    $(".footer-menu-holder .footer-menu:first-child ul li:nth-child(3) a").attr(
+      "href",
+      "https://www.thehamperemporium.com.au/_myacct#orders"
+    );
+  }
+</script>
 [%/site_value%]
 <!DOCTYPE html>
-<html [%if [@config:current_page_type@] eq 'category'%]itemscope itemtype="https://schema.org/CollectionPage"[%/if%] lang="en">
+<html [%if [@config:current_page_type@] eq 'category'%]itemscope
+itemtype="https://schema.org/CollectionPage"[%/if%] lang="en">
 <head>
-	[%load_template file:'headers/includes/head.template.html'/%]
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,300,300italic' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.min.css?1234567890123456789012345678901234567890123456789012345678901234567890124[%/ntheme_asset%]" media="all"/>
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/product-thumbnail.css?12339[%/ntheme_asset%]" media="all"/>
-[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  [%load_template file:'headers/includes/head.template.html'/%]
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,300,300italic"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]"
+    media="all"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="[%ntheme_asset%]css/product-thumbnail.css?12339[%/ntheme_asset%]"
+    media="all"
+  />
+  [%cdn_asset html:'1' type:'css' library:'fancybox'
+  version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+  />
 
-<script src="//assets.findify.io/www.thehamperemporium.com.au.min.js" async defer></script>
+  <script
+    src="//assets.findify.io/www.thehamperemporium.com.au.min.js"
+    async
+    defer
+  ></script>
 
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/fonts/fonts.css[%/ntheme_asset%]" media="all"/>
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]/css/customNeilCss.css[%/ntheme_asset%]" media="all"/>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="[%ntheme_asset%]css/fonts/fonts.css[%/ntheme_asset%]"
+    media="all"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="[%ntheme_asset%]/css/customNeilCss.css[%/ntheme_asset%]"
+    media="all"
+  />
 
-<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+  <script
+    type="text/javascript"
+    src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+    async
+  ></script>
+
+  [%advert type:'text' template:'schema' limit:'1' ad_group:'schema-category'%]
+  [%param *ifempty%] [%advert type:'text' template:'schema' limit:'5'
+  category:'0' ad_group:'schema-sitewide'%] [%/advert%] [%/param%] [%/advert%]
+  [%breadcrumb%] [%PARAM *header%]
+
+  <script type="application/ld+json">
+       {
 
 
-
-
-
-[%advert type:'text' template:'schema' limit:'1' ad_group:'schema-category'%]
-    [%param *ifempty%]
-        [%advert type:'text' template:'schema' limit:'5' category:'0' ad_group:'schema-sitewide'%]
-        [%/advert%]
-    [%/param%]
-[%/advert%]
-
-
-[%breadcrumb%]
-	[%PARAM *header%]	
-	
-<script type='application/ld+json'>
-    {
-	
-	
-      "@context": "http://www.schema.org",
-	  "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
+         "@context": "http://www.schema.org",
+      "@type": "BreadcrumbList",
+         "itemListElement": [
+           {
+               "@type": "ListItem",
+               "position": 1,
+               "name": "Home",
+               "item": "https://www.thehamperemporium.com.au/"
+           }
+    [%/PARAM%]
+    [%PARAM *body%]
+           ,{
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.thehamperemporium.com.au/"
-        }
-	[%/PARAM%]
-	[%PARAM *body%]
-        ,{
-         "@type": "ListItem",
-         "position": [%calc [@count@] + 2 /%]	,
-            "name": "[@name@]",
-            "item": "https://www.thehamperemporium.com.au[@url@]"
-         }
-	[%/PARAM%]
-	[%PARAM *footer%]
-		  ]
-		 }
-	  </script>
+            "position": [%calc [@count@] + 2 /%]	,
+               "name": "[@name@]",
+               "item": "https://www.thehamperemporium.com.au[@url@]"
+            }
+    [%/PARAM%]
+    [%PARAM *footer%]
+    	  ]
+    	 }
+  </script>
 
-	[%/PARAM%]
-[%/breadcrumb%]
-[%IF [@config:current_page_type@] == 'home' %] <meta name="facebook-domain-verification" content="ft9fc1ug9eti54u2nllstmfjokyu2d" /> [%/IF%]
-
+  [%/PARAM%] [%/breadcrumb%] [%IF [@config:current_page_type@] == 'home' %]
+  <meta
+    name="facebook-domain-verification"
+    content="ft9fc1ug9eti54u2nllstmfjokyu2d"
+  />
+  [%/IF%]
 </head>
-<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@] col-12 [%IF [@config:current_page_type@] != 'home' %] inner_pages [%/IF%]">
-<div class="wrapper-header">
+<body
+  id="n_[@config:current_page_type@]"
+  class="
+    n_[@CONFIG:TEMPLATELANG@]
+    [%IF [@config:current_page_type@] != 'home'%]
+    inner_pages
+    [%/IF%]
+  "
+>
+  <!-- <div class="wrapper-header">
 	<div class="row top-header">
 		<div class="container">
 			<div class="visible-lg col-sm-6 text-left left-column">
@@ -93,18 +142,18 @@
 						<a class="text-uppercase small" href="/brisbane">Brisbane</a> |
 						<a class="text-uppercase small" href="/Christmas-Hampers">Christmas Hampers</a>
 					</strong>
-					<!-- <form class="form-inline top-search-form" name="productsearch" method="get" action="/">
+					<form class="form-inline top-search-form" name="productsearch" method="get" action="/">
 						<input type="hidden" name="rf" value="kw"/>
 						<input class="form-control" placeholder="search our hampers..." value="[%nohtml%][%filter ID:'keywords'%][%end filter%][%end nohtml%]" id="name_search" autocomplete="off" name="kw" type="search"/>
 						<button type="submit" value="Search" class="btn btn-loads btn-search" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"><i class="fa fa-search"></i></button>
-					</form> -->
+					</form>
 				</div>
 			</div>
-			<!-- <div class="col-12 col-lg-5 text-center padding-tb-thin">
+			<div class="col-12 col-lg-5 text-center padding-tb-thin">
 				[%content_zone id:'headertext' if_empty:''/%]
-			</div> -->
+			</div>
 			<div class="visible-lg col-sm-6 text-right right-column">
-				<!-- <div class="row">
+				<div class="row">
 					<div class="col-12">
 						<div id="header-cart" class="col-2 cart">
 							<a id="cartcontentsheader" href="[%url page:'checkout' type:'cart'/%]"><i class="fa fa-shopping-cart"></i> <span rel="a2c_item_count" class="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span></a>
@@ -129,15 +178,15 @@
 							[%else%]
 								<a href="/_myacct">Login</a>
 							[%/if%]
-						</div> -->
-						<!-- <div class="col-6 help-menu text-right"> -->
+						</div>
+						<div class="col-6 help-menu text-right">
 							<strong>
 								<a class="text-uppercase small" href="/delivery">Delivery Calculator</a>
 								<a class="text-uppercase small" rel="nofollow" href="/help-centre">Help</a>
 								<a class="text-uppercase small" rel="nofollow" href="https://www.thehamperemporium.com.au/contact-us">Contact Us</a>
 							</strong>
 							
-							<!-- <ul>
+							<ul>
 								<li class="dropdown dropdown-hover">
 									<span class="caret"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
 									<a href="/help-centre">Help</a>
@@ -152,10 +201,10 @@
 										<li><a rel="nofollow" href="https://www.thehamperemporium.com.au/contact-us">Contact Us</a></li>
 									</ul>
 								</li>
-							</ul> -->
-						<!-- </div>
+							</ul>
+						</div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</div>
@@ -332,6 +381,17 @@
 			</div>
 		</div>
 	</div>
-</div>
-<main [%if [@config:current_page_type@] eq 'category'%]itemprop="mainContentOfPage"[%/if%] id="main-content" class="main-content n_customer-padding-top" role="main">
-    [%if [@config:current_page_type@] eq 'category'%][%set [@cat_img@]%][%asset_url type:'content' id:'[@content_id@]'/%][%/set%]<meta itemprop="primaryImageOfPage" content="https://www.thehamperemporium.com.au[@cat_img@]?[@config:NETO_CSS_VERSION@]"/>[%/if%]
+</div> -->
+  [%load_template file:'headers/includes/menu-bar.template.html'/%] <main [%if
+  [@config:current_page_type@] eq
+  'category'%]itemprop="mainContentOfPage"[%/if%] id="main-content"
+  class="main-content n_customer-padding-top" role="main" > [%if
+  [@config:current_page_type@] eq 'category'%][%set [@cat_img@]%][%asset_url
+  type:'content' id:'[@content_id@]'/%][%/set%]
+  <meta
+    itemprop="primaryImageOfPage"
+    content="https://www.thehamperemporium.com.au[@cat_img@]?[@config:NETO_CSS_VERSION@]"
+  />
+  [%/if%] <div [%if [@config:current_page_type@] eq
+  'category'%]itemprop="mainEntity" itemscope
+  itemtype="https://schema.org/OfferCatalog"[%/if%]>

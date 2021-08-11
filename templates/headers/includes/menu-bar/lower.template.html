@@ -1,0 +1,172 @@
+<style>
+  .lower-menu-bar {
+    background-color: #000;
+    color: #fff;
+  }
+  .lower-menu-bar .d-content {
+    display: contents;
+  }
+  .lower-menu-bar .dropdown-toggle {
+    color: #fff;
+  }
+  .lower-menu-bar .dropdown-toggle::after {
+    display: none;
+  }
+  .lower-menu-bar .menu-bar-center-links a {
+    font-size: 15px;
+    color: #fff;
+    transition: border ease-out 500ms;
+  }
+  .lower-menu-bar .menu-bar-center-links a:hover {
+    text-decoration: none;
+    margin-bottom: -1px;
+    border-bottom: 1px solid #fff;
+  }
+  .lower-menu-bar .menu-bar-center-links a > div {
+    height: 0;
+    position: relative;
+    top: -40px;
+    z-index: 10;
+  }
+  .lower-menu-bar .dropdown .dropdown-toggle {
+    pointer-events: none;
+  }
+  .lower-menu-bar .dropdown:hover .dropdown-menu-hover {
+    display: block !important;
+    margin-top: 0;
+  }
+  @media (min-width: 1440px) {
+    .upper-menu-bar .container,
+    .lower-menu-bar .container {
+      max-width: 1440px;
+    }
+  }
+</style>
+<div class="col-12 lower-menu-bar px-0">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg px-lg-0">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="row d-none mx-0 d-lg-flex w-100">
+        <div class="col-2 px-0">
+          <ul class="navbar-nav mr-auto">
+            <!-- navbar dropdown menu -->
+            [%load_template
+            file:'headers/includes/menu-bar/dropdown-menu/menu.template.html'/%]
+            <!-- navbar dropdown menu -->
+            <!-- navbar dropdown search -->
+            [%load_template
+            file:'headers/includes/menu-bar/dropdown-menu/search.template.html'/%]
+            <!-- navbar dropdown search -->
+          </ul>
+        </div>
+        <div
+          class="
+            col-8
+            d-flex
+            px-0
+            justify-content-between
+            align-items-center
+            text-center
+            menu-bar-center-links
+          "
+        >
+          <a href="/gift-hampers" class="text-uppercase">All Gift Hampers</a>
+          <a href="/Wine-Hampers" class="text-uppercase">Gourmet Hampers</a>
+          <a href="/" title="logo">
+            <div>
+              <img
+                class="logo"
+                src="[@config:imageurl@]/website_logo.png?12"
+                alt="logo"
+              />
+            </div>
+          </a>
+          <a href="/Corporate-Hampers" class="text-uppercase"
+            >Corporate Hampers</a
+          >
+          <a href="/Christmas-Hampers" class="text-uppercase"
+            >Christmas Hampers</a
+          >
+        </div>
+        <div class="col-2 px-0">
+          <ul class="navbar-nav mr-auto justify-content-end">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenu"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Hi Name
+                <i class="fas fa-angle-down"></i>
+                <i class="fas fa-user-alt"></i>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-hover"
+                aria-labelledby="navbarDropdownMenu"
+              >
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownSearch"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-shopping-cart"></i>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-hover"
+                aria-labelledby="navbarDropdownSearch"
+              >
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-content d-lg-none">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
