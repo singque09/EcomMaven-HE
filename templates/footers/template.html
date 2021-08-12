@@ -1,4 +1,4 @@
-		
+		</div>
 	</main>
 	<!-- [%if [@config:current_page_type@] eq 'product' || [@config:current_page_type@] eq 'category' || [@config:current_page_type@] eq 'content' %]
 	<div class="row wrapper-footer-top padding-tb-big">
@@ -70,29 +70,131 @@
 	</div>
 	[%/if%] -->
 	[%load_template file:'footers/includes/top-footer.template.html'/%]
-	
-    <style>
-      footer.row {
-        background-color: #000000;
-        padding: 80px;
-      }
-      footer .container {
-        padding-left: 40px;
-        padding-right: 40px;
-      }
-    </style>
-    <footer class="row">
-      <div class="col-12">
-        <div class="container">
-          <div class="row">
-			[%load_template file:'footers/includes/left-side-footer.template.html'/%]
-            <div class="col-1"></div>
-			[%load_template file:'footers/includes/right-side-footer.template.html'/%]
-          </div>
-        </div>
-      </div>
-    </footer>
-	
+	<div class="row padding-tb-small wrapper-footer">
+		<div class="container px-5">
+			<div class="row">
+				<div class="col-12 col-sm-8 padding-tb-small">
+					<div class="row footer-menu-holder">
+						[%if [@user:username@]%]
+							<div class="user-is-logged"></div>
+						[%else%]
+							<div class="user-isnt-logged"></div>
+						[%/if%]
+						[%cache type:'cmenu' id:'web_footer'%]
+							[%menu id:'web_footer'%]
+								[%param *level_1%]
+									<div class="col-12 col-sm-4 footer-menu">
+										<h4 class="footer-menu-title mb-3">[@name@]</h4>
+										<ul class="nav d-flex flex-column">
+											[@next_level@]
+										</ul>
+									</div>
+								[%/param%]
+								[%param *level_2%]
+									<li><a href="[@url@]">[@name@]</a></li>
+								[%/param%]
+							[%/menu%]
+						[%/cache%]
+					</div>
+				</div>
+				<div class="col-12 col-sm-4">
+					<div class="row padding-tb-small">					
+						<div class="col-sm-12">	
+							<h4 class="footer-menu-title mb-5">Secure Payments</h4>
+							[%checkout_pay_icons show_icon:'1' ignore_balance:'1'%]
+								[%param header%]
+									<ul class="list-inline payment-icons" role="contentinfo" aria-label="Accepted payment methods">
+								[%/param%]
+								[%param *body%]
+										<li>
+											<div class="payment-icon-container">
+												<div 
+													class="payment-icon" 
+													style="
+														background-image: url([@processor_icon_url@]); 
+														height: 30px; 
+														filter: grayscale(1) 
+																[%if [@name@] ne 'MasterCard'%]brightness(1.25)[%/if%] 
+																[%if [@name@] eq 'Web Payments' or [@name@] eq 'Afterpay' or [@name@] eq 'PayPal Express' or [@name@] eq 'zipPay'%]invert(0.8)[%/if%]
+													"
+												>
+													<span class="sr-only">[@name@]</span>
+												</div>
+											</div>
+										</li>
+								[%/param%]
+								[%param *footer%]
+									</ul>
+								[%/param%]
+							[%/checkout_pay_icons%]
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-8">
+					<div class="row">
+						<div class="col-8 footer-address-description">
+							<p class="footer-text">
+								[%content_zone id:'footer_address'%][%end content_zone%]
+							</p>
+							<p class="footer-text">
+								Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]<br/>
+								[%if [@config:company_abn@]%]ABN: [@config:company_abn@][%/ if%]
+							</p>
+						</div>
+						<!-- TrustBox widget -->
+						<div class="col-4 trustpilot-footer">
+							<div
+							class="trustpilot-widget"
+							data-locale="en-US"
+							data-template-id="53aa8807dec7e10d38f59f32"
+							data-businessunit-id="559cc61a0000ff000580d967"
+							data-style-height="150px"
+							data-style-width="100%"
+							data-theme="dark"
+							>
+								<a href="https://www.trustpilot.com/review/www.thehamperemporium.com.au" target="_blank" rel="noopener">Trustpilot</a>
+							</div>
+						</div>
+						<!-- End TrustBox widget -->
+					</div>
+				</div>
+				<div class="col-sm-4">	
+					<div class="row">
+						<ul class="col-12 col-sm-12 padding-tb-small list-inline list-social text-right text-white">
+							[%if [@config:facebook_account_id@]%]
+							<li><a href="[@config:facebook_account_id@]" target="_blank"><i class="fab fa-facebook-f"></i></a>
+							</li>
+							[%/if%]
+							[%if [@config:twitter_account_id@]%]
+							<li><a href="[@config:twitter_account_id@]" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							[%/if%]
+							[%if [@config:googleplus_account_id@]%]
+							<li><a href="[@config:googleplus_account_id@]" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+							[%/if%]
+							[%if [@config:youtube_account_id@]%]
+							<li><a href="[@config:youtube_account_id@]" target="_blank"><i class="fab fa-youtube"></i></a></li>
+							[%/if%]
+							[%if [@config:instagram_account_id@]%]
+							<li><a href="[@config:instagram_account_id@]" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							[%/if%]
+							[%if [@config:pinterest_account_id@]%]
+							<li><a href="[@config:pinterest_account_id@]" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+							[%/if%]
+							[%if [@config:tumblr_account_id@]%]
+							<li><a href="[@config:tumblr_account_id@]" target="_blank"><i class="fab fa-tumblr"></i></a></li>
+							[%/if%]
+							[%if [@config:linkedin_account_id@]%]
+							<li><a href="[@config:linkedin_account_id@]" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+							[%/if%]
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Required Neto Scripts - DO NOT REMOVE -->
 	[%cdn_asset html:'1' type:'js' library:'jquery' version:'1.11.3'%]jquery.min.js[%/cdn_asset%]
 	[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
